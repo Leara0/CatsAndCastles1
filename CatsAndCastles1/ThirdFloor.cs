@@ -48,7 +48,7 @@ public class ThirdFloor()
                    Console.WriteLine("You turn back toward the door you first escaped from, the worn wood familiar " +
                                      "beneath your paws. Pushing it open, you step inside once more. The room is " +
                                      "just as you left it — dim, old, and eerily silent.\n");
-                   mainRoom.RestartMainRoom(cat, backPack);
+                   mainRoom.MainRoomMethod(cat, backPack);
                    return;
                case "2":
                    EnterRoom(cat, backPack, "third floor room 2");
