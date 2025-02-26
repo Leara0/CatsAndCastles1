@@ -1,19 +1,11 @@
 namespace CatsAndCastles1;
 
-public class ThirdFloor
+public class ThirdFloor(UserInput userInput)
 {
    public void ThirdFloorStory(Characters cat, BackPack backPack, Characters guardDog1)
    {
-       MainRoom mainRoom = new MainRoom();
+       MainRoom mainRoom = new MainRoom(userInput);
        cat.SuccessfulBribed = false;
-
-
-       backPack.Pack[0] = "150 gold coins"; //@fix get rid of these supplies in pack
-       backPack.Wallet = 150;
-       backPack.Pack[2] = "the short sword";
-       backPack.Pack[3] = "the ring of keys";
-       backPack.Pack[4] = "the shield";
-
 
        Console.Clear();
        Console.WriteLine("You slip into a dimly lit hallway. It's short and narrow, with three " +

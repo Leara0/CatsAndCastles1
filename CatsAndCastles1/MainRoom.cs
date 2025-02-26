@@ -1,29 +1,7 @@
 namespace CatsAndCastles1;
 
-public class MainRoom
+public class MainRoom (UserInput userInput)
 {
-   public static string UserChoice(int numberOfOptions = 2)
-   {
-       do
-       {
-           string input = Console.ReadLine().Trim();
-           for (int i = 1; i <= numberOfOptions; i++)
-           {
-               string iNumber = i.ToString();
-               if (iNumber == input)
-               {
-                   Console.Clear();
-                   return input;
-               }
-           }
-
-
-           Console.WriteLine("I'm sorry, but that isn't a valid choice. ");
-           Console.WriteLine("Please enter a number that corresponds with options above.");
-       } while (true);
-   }
-
-
    public void RunMainRoom(Characters cat, BackPack backPack)
    {
        Console.Clear();
@@ -46,7 +24,26 @@ public class MainRoom
    }
 
 
+   public static string UserChoice(int numberOfOptions = 2)
+   {
+       do
+       {
+           string input = Console.ReadLine().Trim();
+           for (int i = 1; i <= numberOfOptions; i++)
+           {
+               string iNumber = i.ToString();
+               if (iNumber == input)
+               {
+                   Console.Clear();
+                   return input;
+               }
+           }
 
+
+           Console.WriteLine("I'm sorry, but that isn't a valid choice. ");
+           Console.WriteLine("Please enter a number that corresponds with options above.");
+       } while (true);
+   }
 
    public static void SubsequentWakeUp(Characters cat, BackPack backPack)
    {
@@ -91,11 +88,8 @@ public class MainRoom
 
        void FirstRoomChoices()
        {
-          
-           backPack.Pack[1] = "the rusted set of tools";
-          
-          
-           Console.Clear();
+          //backPack.Pack[1] = "the rusted set of tools";
+          Console.Clear();
            Console.WriteLine("\n   <   <   <   <   <   <   <   <   =^.^=   >   >   >   >   >   >   >   >   >   \n");
            Console.WriteLine("Your eyes scan the room, taking in the details of your surroundings."
                              + " \n\nA few places stand out, each offering a chance to learn more:");

@@ -15,7 +15,8 @@ public class MainStory
 {
    public static void RunGame()
    {
-       var mainRoom = new MainRoom();
+       var userInput = new UserInput();
+       var mainRoom = new MainRoom(userInput);
 
 
        var cat = new Characters();
@@ -56,7 +57,7 @@ public class MainStory
 
 
 
-       CastleWithExitStrategies(cat, backPack, mainRoom, guardDog1, guardDog2, warden);
+       CastleWithExitStrategies(cat, backPack, mainRoom, guardDog1, guardDog2, warden, userInput);
 
 
        // you end up here if you fall out of the exit strategies loop - ie if you
@@ -73,7 +74,7 @@ public class MainStory
    }
 
 
-   private static void CastleWithExitStrategies(Characters cat, BackPack backPack, MainRoom mainRoom, Characters guardDog1, Characters guardDog2, Characters warden)
+   private static void CastleWithExitStrategies(Characters cat, BackPack backPack, MainRoom mainRoom, Characters guardDog1, Characters guardDog2, Characters warden, UserInput userInput)
    {
        mainRoom.RunMainRoom(cat, backPack);
        do // you get here after you come to the end of one of the main room story lines
@@ -84,7 +85,7 @@ public class MainStory
                    PassOut(cat, backPack);
                    break;
                case Characters.Place.ThirdFloor:
-                   ThirdFloor thirdFloor = new ThirdFloor();
+                   ThirdFloor thirdFloor = new ThirdFloor(userInput);
                    thirdFloor.ThirdFloorStory(cat, backPack, guardDog1);
                    break;//I put this in here so it just stops after you defeat the guard so the loop stops for ho
                case Characters.Place.SecondFloor:
