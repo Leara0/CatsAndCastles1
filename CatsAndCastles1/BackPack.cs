@@ -412,40 +412,15 @@ public class BackPack
 
                break;
            case "guard three":
-               Options[0] = "11 dull gold coins"; // this will be a problem between guard 1, 2, and 3!
+               Options[0] = "20 dull gold coins"; // this will be a problem between guard 1, 2, and 3!
                Descriptions[0] = "several dull gold coins in the guard's pocket";
-               if (guardDog.Weapon == "paws")
-               {
-                   Options[1] = "the note";
-                   Descriptions[1] = "a note with instructions — was the guard expecting something?";
-               }
-               else if (ListOfAllItemsPickedUp.Contains(guardDog.Weapon)) // if you already obtained this weapon
-               {
-                   Options[1] = "the note";
-                   Descriptions[1] = "a note with instructions — was the guard expecting something?";
-               }
-               else
-               {
-                   Options[1] = guardDog.Weapon;
-                   Descriptions[1] = guardDog.Weapon;
-               }
-
-
-               if (guardDog.HasShield)
-               {
-                   Options[2] = "the sturdy shield"; // this will be a problem between guard 1, 2, and 3!
-                   Descriptions[2] = "a crude but sturdy shield";
-               }
-               else
-               {
-                   Options[2] = "cat sketch"; // this will be a problem between guard 1, 2, and 3!
-                   Descriptions[2] = "A scrap of paper with a rough sketch of a cat… and a bounty amount";
-               }
-
-
+               Options[1] = "the loaf of bread";
+               Descriptions[1] = "a crusty, hearty loaf of bread";
+               Options[2] = "the elixir in a glass vial";
+               Descriptions[2] = "an elixir that you're sure will help heal your injuries";
                break;
            case "third floor room 2":
-               Options[0] = "the long dagger";
+               Options[0] = "the long dagger";//@add in the descriptions so I can white them out if they are taken
                Options[1] = "13 gold coins";
                Options[2] = "1 set of bedsheets";
                break;

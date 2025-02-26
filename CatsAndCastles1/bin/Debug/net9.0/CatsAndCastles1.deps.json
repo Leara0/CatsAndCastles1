@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "CatsAndCastles1/1.0.0": {
+        "runtime": {
+          "CatsAndCastles1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CatsAndCastles1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
