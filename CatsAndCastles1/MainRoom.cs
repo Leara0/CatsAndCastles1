@@ -1,70 +1,36 @@
 namespace CatsAndCastles1;
 
-public class MainRoom (UserInput userInput)
+public class MainRoom ()
 {
-   public void RunMainRoom(Characters cat, BackPack backPack)
+    private readonly UserInput _userInput = new UserInput();
+    private readonly Text _text = new Text();
+    
+    public void RunMainRoom(Characters cat, BackPack backPack)
    {
+       //readonly Text text;
        Console.Clear();
-
-
-       Console.Clear();
-       Console.WriteLine("\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n");
-       Console.WriteLine(
-           "Greetings, adventurer. The night has been long and unkind, and your memories of it are ");
-       Console.WriteLine("little more than a haze.");
-
-
-       Console.WriteLine("\nYou wake, dazed and disoriented, your senses slow to return as you instinctively ");
-       Console.WriteLine($"groom your soft coat. You feel a collar around your neck and notice a tag ");
-       Console.WriteLine($"with the name \"{cat.Name}\" attached. Hmmmm, that name seems faintly familiar? Is it ");
-       Console.WriteLine(
-           "yours? A loved one's? The answer alludes you. You notice you still have your pack that can ");
-       Console.WriteLine("hold 5 items, however, your spirits drop  as you realize it is empty. ");
+       Console.WriteLine($"\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n" +
+                         $"Greetings, adventurer. The night has been long and unkind, and your " +
+                         $"memories of it are little more than a haze. " +
+                         $"\n\nYou wake, dazed and disoriented, your senses slow to return as you " +
+                         $"instinctively groom your soft coat. You feel a collar around your neck " +
+                         $"and notice a tag \"{cat.Name}\" attached. Hmmmm, that name seems faintly " +
+                         $"familiar? Is it yours? A loved one's? The answer alludes you. You notice " +
+                         $"you still have your pack that can hold 5 items, however, your spirits " +
+                         $"drop as you realize it is empty. ");
        StartInRoom(cat, backPack);
    }
 
-
-   public static string UserChoice(int numberOfOptions = 2)
-   {
-       do
-       {
-           string input = Console.ReadLine().Trim();
-           for (int i = 1; i <= numberOfOptions; i++)
-           {
-               string iNumber = i.ToString();
-               if (iNumber == input)
-               {
-                   Console.Clear();
-                   return input;
-               }
-           }
-
-
-           Console.WriteLine("I'm sorry, but that isn't a valid choice. ");
-           Console.WriteLine("Please enter a number that corresponds with options above.");
-       } while (true);
-   }
-
-   public static void SubsequentWakeUp(Characters cat, BackPack backPack)
+   public void SubsequentWakeUp(Characters cat, BackPack backPack)
    {
        cat.Health = 60;
        Console.WriteLine("You wake, dazed and disoriented, your senses slow to return. ");
        StartInRoom(cat, backPack);
    }
 
-
-   public static void StartInRoom(Characters cat, BackPack backPack)
+   public void StartInRoom(Characters cat, BackPack backPack)
    {
-       Console.WriteLine("The air is damp and heavy, thick with the scent of old stone and");
-       Console.WriteLine("something faintly metallic. A chill clings to your fur, creeping in from the cold");
-       Console.WriteLine("stone floor beneath you. The dim light from a single flickering torch casts long,");
-       Console.WriteLine("wavering shadows across the chamber, making the jagged cracks in the walls seem");
-       Console.WriteLine("to shift and writhe");
-       Console.WriteLine("The hairs along your spine bristle. Something about this place feels wrong,");
-       Console.WriteLine("as though unseen eyes watch from the darkness, waiting.");
-       Console.WriteLine("You must escape but are unsure where to begin.");
-       Console.WriteLine("Press 'enter' to continue.");
-       Console.WriteLine("\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n");
+       Console.WriteLine(_text.startInRoom);
        Console.ReadLine();
        MainRoomMethod(cat, backPack);
    }
@@ -76,7 +42,7 @@ public class MainRoom (UserInput userInput)
    }
 
 
-   public static void MainRoomMethod(Characters cat, BackPack backPack)
+   public void MainRoomMethod(Characters cat, BackPack backPack)
    {
        cat.Location = Characters.Place.MainRoom;
        cat.EndGame = false;
@@ -88,6 +54,7 @@ public class MainRoom (UserInput userInput)
 
        void FirstRoomChoices()
        {
+           
           //backPack.Pack[1] = "the rusted set of tools";
           Console.Clear();
            Console.WriteLine("\n   <   <   <   <   <   <   <   <   =^.^=   >   >   >   >   >   >   >   >   >   \n");
@@ -119,7 +86,7 @@ public class MainRoom (UserInput userInput)
            Console.WriteLine("\n   <   <   <   <   <   <   <   <   =^.^=   >   >   >   >   >   >   >   >   >   \n");
 
 
-           switch (UserChoice(8))
+           switch (_userInput.UserChoice(8))
            {
                case "1":
                    ExploreDoor();
@@ -143,7 +110,7 @@ public class MainRoom (UserInput userInput)
                    backPack.ListContentsOfPack();
                    Console.WriteLine("Would you like to use or remove any items?" +
                                      "\nPlease press '1' to remove an item and '2' to continue exploring the room");
-                   while (UserChoice() == "1")
+                   while (_userInput.UserChoice() == "1")
                    {
                        backPack.RemoveItemsFromPack(cat);
                        backPack.ListContentsOfPack();
@@ -188,7 +155,7 @@ public class MainRoom (UserInput userInput)
                              "leave all the items untouched.");
 
 
-           if (UserChoice() == "1")
+           if (_userInput.UserChoice() == "1")
                backPack.TakeItems(cat, location);
            ReturnToMainPartOfRoom(location);
        }
@@ -269,7 +236,7 @@ public class MainRoom (UserInput userInput)
                "check your inventory for other options to assist you in climbing down. " +
                "The eerie stillness of the castle gnaws at your nerves, urging you to act quickly." +
                "\nPress '1' to check your inventory and '2' to leap down and '3' to continue exploring the room");
-           switch (UserChoice(3))
+           switch (_userInput.UserChoice(3))
            {
                case "1":
                    bool hasSheets = false;
@@ -293,7 +260,7 @@ public class MainRoom (UserInput userInput)
                                          "\n'2' - Use the rope." +
                                          "\n'3' - Jump directly down from the window ledge." +
                                          "\n'4' - Use the rope.");
-                       switch (UserChoice(4))
+                       switch (_userInput.UserChoice(4))
                        {
                            case "1":
                                UseSheets();
@@ -321,7 +288,7 @@ public class MainRoom (UserInput userInput)
                                          $"in the room.");
                        //@fix Console.WriteLine(
                        // @fix "\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n");
-                       switch (UserChoice(3))
+                       switch (_userInput.UserChoice(3))
                        {
                            case "1":
                                if (hasSheets)
@@ -346,7 +313,7 @@ public class MainRoom (UserInput userInput)
                            "\nPlease press '1' to choose to leap down and '2' to continue exploring other areas in the room.");
                        Console.WriteLine(
                            "\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n");
-                       if (UserChoice() == "1")
+                       if (_userInput.UserChoice() == "1")
                            JumpDown();
                        else
                            ReturnToMainPartOfRoom("door");
@@ -399,7 +366,7 @@ public class MainRoom (UserInput userInput)
                              "\n'2' - Jump directly from the window ledge." +
                              $"\n'3' - Pull up the {item} and stash {(item == "sheets" ? "them" : "it")} " +
                              $"then continue exploring the room.");
-           switch (UserChoice(3))
+           switch (_userInput.UserChoice(3))
            {
                case "1":
                    if (backPack.NumberOfSheets > 5 || item == "rope")
@@ -449,7 +416,7 @@ public class MainRoom (UserInput userInput)
                "Would you like to search your inventory for tools or items that might aid in unlocking the door " +
                "or continue exploring the room?");
            Console.WriteLine("Please press '1' to search your inventory and '2' to return to exploring the room");
-           if (UserChoice() == "1")
+           if (_userInput.UserChoice() == "1")
                AttemptToUnlockDoor();
            else
                ReturnToMainPartOfRoom("door");
@@ -506,7 +473,7 @@ public class MainRoom (UserInput userInput)
 
 
 
-               string response = UserChoice(4);
+               string response = _userInput.UserChoice(4);
                switch (response)
                {
                    case "1":
@@ -545,7 +512,7 @@ public class MainRoom (UserInput userInput)
                                  "\n'1' - Use the rock to bash the lock off." +
                                  "\n'2' - Use the shield to smash the lock off. " +
                                  "\n'3' - Keep exploring the room, hoping for another way out or more supplies that might help");
-               switch (UserChoice(3))
+               switch (_userInput.UserChoice(3))
                {
                    case "1":
                        HeavyObject("stone");
@@ -572,7 +539,7 @@ public class MainRoom (UserInput userInput)
                                  "'2' to return to exploring the room");
                Console.WriteLine(
                    "\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n");
-               if (UserChoice() == "1")
+               if (_userInput.UserChoice() == "1")
                    PickLock();
                else
                    ReturnToMainPartOfRoom("door");
@@ -591,7 +558,7 @@ public class MainRoom (UserInput userInput)
                                  "through.");
                Console.WriteLine("Please press '1' to try to use the shield to break the lock and " +
                                  "'2' to return to exploring the room");
-               if (UserChoice() == "1")
+               if (_userInput.UserChoice() == "1")
                    HeavyObject("shield");
                else
                    ReturnToMainPartOfRoom("door");
@@ -608,7 +575,7 @@ public class MainRoom (UserInput userInput)
                                  "'2' to return to exploring the room");
                Console.WriteLine(
                    "\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n");
-               if (UserChoice() == "1")
+               if (_userInput.UserChoice() == "1")
                    HeavyObject("stone");
                else
                    ReturnToMainPartOfRoom("door");

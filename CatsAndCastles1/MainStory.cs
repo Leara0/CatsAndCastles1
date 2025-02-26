@@ -13,19 +13,19 @@ namespace CatsAndCastles1;
 //up
 public class MainStory
 {
-   public static void RunGame()
+    private readonly UserInput _userInput = new UserInput();
+   public void RunGame()
    {
-       var userInput = new UserInput();
-       var mainRoom = new MainRoom(userInput);
+       
+       var mainRoom = new MainRoom();
 
 
        var cat = new Characters();
        {
-           cat.Name = cat.GetName();
+           cat.Name = _userInput.GetName();
            cat.Health = 60;
            cat.Location = Characters.Place.MainRoom;
        }
-
 
        var backPack = new BackPack();
        {
@@ -57,7 +57,7 @@ public class MainStory
 
 
 
-       CastleWithExitStrategies(cat, backPack, mainRoom, guardDog1, guardDog2, warden, userInput);
+       CastleWithExitStrategies(cat, backPack, mainRoom, guardDog1, guardDog2, warden);
 
 
        // you end up here if you fall out of the exit strategies loop - ie if you
@@ -74,7 +74,7 @@ public class MainStory
    }
 
 
-   private static void CastleWithExitStrategies(Characters cat, BackPack backPack, MainRoom mainRoom, Characters guardDog1, Characters guardDog2, Characters warden, UserInput userInput)
+   private void CastleWithExitStrategies(Characters cat, BackPack backPack, MainRoom mainRoom, Characters guardDog1, Characters guardDog2, Characters warden)
    {
        mainRoom.RunMainRoom(cat, backPack);
        do // you get here after you come to the end of one of the main room story lines
@@ -85,7 +85,7 @@ public class MainStory
                    PassOut(cat, backPack);
                    break;
                case Characters.Place.ThirdFloor:
-                   ThirdFloor thirdFloor = new ThirdFloor(userInput);
+                   ThirdFloor thirdFloor = new ThirdFloor();
                    thirdFloor.ThirdFloorStory(cat, backPack, guardDog1);
                    break;//I put this in here so it just stops after you defeat the guard so the loop stops for ho
                case Characters.Place.SecondFloor:
@@ -105,8 +105,9 @@ public class MainStory
    }
 
 
-   private static void PassOut(Characters cat, BackPack backPack)
+   private void PassOut(Characters cat, BackPack backPack)
    {
+       MainRoom mainRoom = new MainRoom();
        cat.Lives--;
       
        Console.WriteLine(
@@ -136,9 +137,9 @@ public class MainStory
            $"\n\n1. Revive in the room you first woke in and try again to escape." +
            $"\n2. Accept defeat and let the darkness claim you. (End Game.)" +
            $"\n\nWhat will you do?... \n");
-       if (cat.UserChoice() == "1")
+       if (_userInput.UserChoice() == "1")
        {
-           MainRoom.SubsequentWakeUp(cat, backPack);
+           mainRoom.SubsequentWakeUp(cat, backPack);
        }
        else
        {

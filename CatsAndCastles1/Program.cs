@@ -4,8 +4,9 @@ class Program
 {
     public static void Main(string[] args)
     {
+        MainStory mainStory = new MainStory();
       
-        MainStory.RunGame();
+        mainStory.RunGame();
       
     }
 }

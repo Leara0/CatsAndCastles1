@@ -22,4 +22,11 @@ public class UserInput
             Console.WriteLine("Please enter a number that corresponds with options above.");
         } while (true);
     }
+    
+    public string GetName()
+    {
+        Console.WriteLine("What is your name (or a name you like)?");
+        var name = Console.ReadLine();
+        return char.ToUpper(name[0]) + name.Substring(1);
+    }
 }

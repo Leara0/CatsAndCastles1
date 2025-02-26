@@ -3,7 +3,8 @@ namespace CatsAndCastles1;
 
 public class Fight
 {
-   public static void GuardDogEncounter(Characters cat, BackPack backPack, Characters guardDog, int guardNumber)
+    private readonly UserInput _userInput = new UserInput();
+   public void GuardDogEncounter(Characters cat, BackPack backPack, Characters guardDog, int guardNumber)
    {
        cat.LostToGuard = false;
        Weapons weapon = new Weapons();
@@ -92,7 +93,7 @@ public class Fight
            }
 
 
-           switch (backPack.UserChoice(3))
+           switch (_userInput.UserChoice(3))
            {
                case "1":
                    Combat();
@@ -207,7 +208,7 @@ public class Fight
                        $"gold presses against your claws — {backPack.Wallet} coins. You have what the " +
                        $"dog is asking for." +
                        $"\n\nPress '1' to pay the guard and '2' to choose to fight instead.");
-                   if (backPack.UserChoice() == "1")
+                   if (_userInput.UserChoice() == "1")
                    {
                        Console.WriteLine("\nWithout hesitation, you drop the gold coins into the waiting paw." +
                                          "\n\nIt eyes the payment, then smirks. \"Pleasure doing business with you.\"" +
@@ -400,7 +401,7 @@ public class Fight
                              "or leave the guard's remains undisturbed for the moment. Remember, if you choose not to " +
                              "take anything right now, you can always return later to search his body again.. " +
                              "\n\nPress '1' to loot and '2' to move on. ");
-           if (backPack.UserChoice() == "1")
+           if (_userInput.UserChoice() == "1")
            {
                backPack.TakeItems(cat, guardLocation, guardDog);
            }
@@ -472,7 +473,7 @@ public class Fight
                "\nChoose your weapon wisely. Enter the number of the item you wish to wield in this fight.");
 
 
-           int response = int.Parse(backPack.UserChoice(backPack.Pack.Length));
+           int response = int.Parse(_userInput.UserChoice(backPack.Pack.Length));
            string choice = backPack.Pack[response - 1];
 
 
@@ -507,7 +508,7 @@ public class Fight
                Console.WriteLine("\nYour pack holds a shield — it would offer +1 protection in this fight, but its " +
                                  "weight might slow you down, making you less agile. Do you want to use it in this fight?");
                Console.WriteLine("\nPlease press '1' if you'd like to use the shield and '2' to fight without it");
-               if (backPack.UserChoice() == "1")
+               if (_userInput.UserChoice() == "1")
                    hasShield = "1";
            }
 
