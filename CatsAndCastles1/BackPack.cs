@@ -113,7 +113,8 @@ public class BackPack
         if (NumberOfItemsInPack() == 0)
         {
             Console.WriteLine("There are no items in your pack.");
-            _userInput.DramaticPause();
+            _userInput.DramaticPauseClrScreen();
+            return;
         }
 
         int numToRemove = 0;

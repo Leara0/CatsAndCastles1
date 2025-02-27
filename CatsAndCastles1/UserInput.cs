@@ -38,7 +38,7 @@ public class UserInput
 
     public void DramaticPauseClrScreen()
     {
-        Console.WriteLine("Please press 'Enter' to continue...");
+        Console.WriteLine("\nPlease press 'Enter' to continue...");
         Console.ReadLine();
         Console.Clear();
     }

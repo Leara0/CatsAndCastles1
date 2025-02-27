@@ -153,15 +153,121 @@ public static class Text
                                           "\n\n You reach the end of the rope and leap down. At last, your feet touch " +
                                           "the ground. ";
 
-    public const string ClimbDownRope ="You grip the stiff rope tightly and ease yourself out the window, " +
-                                       "claws scraping against the stone as you begin your descent. The rope " +
-                                       "creaks under your weight, but it holds as you inch lower, the cool night " +
-                                       "air brushes against your fur." +
-                                       "\n\n You reach the end of the rope and leap down. At last, your feet touch " +
-                                       "the ground. ";
+    public const string ClimbDownRope = "You grip the stiff rope tightly and ease yourself out the window, " +
+                                        "claws scraping against the stone as you begin your descent. The rope " +
+                                        "creaks under your weight, but it holds as you inch lower, the cool night " +
+                                        "air brushes against your fur." +
+                                        "\n\n You reach the end of the rope and leap down. At last, your feet touch " +
+                                        "the ground. ";
 
     public const string ClimbDownToLeap = "You grip the knotted sheets tightly and ease yourself out the window, " +
                                           "claws scraping against the stone as you begin your descent. The fabric creaks " +
                                           "under your weight, but it holds as you inch lower, the cool night air brushing " +
                                           "against your fur.\n\nYou reach the end of your rope.";
+
+    public const string ExploreDoor =
+        "You approach the heavy wooden door, its frame dark and imposing against the stone wall." +
+        "Your eyes are drawn to the thick, old lock hanging from the latch. " +
+        "The lock looks sturdy, its cold metal catching the dim light. It's a formidable obstacle, " +
+        "preventing you from escaping, but you know you must find a way out. " +
+        "Would you like to search your inventory for tools or items that might aid in unlocking the door " +
+        "or continue exploring the room?" +
+        "\n\nPlease press '1' to search your inventory and '2' to return to exploring the room";
+
+    public const string AtDoorCheckInventoryHavePickAndSS =
+        "You pause and take a moment to look through your inventory, searching for " +
+        "something that might help. Your paws sift through the items you’ve collected so " +
+        "far, and you find two items that might be useful:" +
+        "\n- A rusted set of tools—small, delicate rods and a hook that might be able to " +
+        "fit into the lock, though they look far from reliable.";
+
+    public const string AtDoorAlsoHaveStone =
+        "- A heavy smooth rock, solid and weighty in your grasp. While not the most " +
+        "subtle choice, it might be capable of smashing the lock off with a few good strikes.";
+
+    public const string AtDoorAlsoHaveShield = "- A shield, its metal surface scratched and worn, but still sturdy. " +
+                                               "It could be used to bash the lock off with brute force.";
+
+    public const string OptionsAtDoorHavePickAndSS = "\nThe options sit before you. You can:" +
+                                                     "\n'1' - Keep exploring the room, hoping for another way out or more supplies " +
+                                                     "that might help. " +
+                                                     "\n'2' - Attempt to pick the lock with the rusted tools.";
+
+    public const string OptionsAtDoorHaveStoneAndShield = "'3' - Use the rock to smash the lock off." +
+                                                          "\n'4' - Use the shield to smash the lock off.";
+
+    public const string AtDoorCheckInventoryHaveSS =
+        "You pause and take a moment to look through your inventory, searching for " +
+        "something that might help. Your paws sift through the items you’ve collected so " +
+        "far, and you find two items that might be useful:" +
+        "\n- A heavy smooth rock, solid and weighty in your grasp. While not the most" +
+        "\nsubtle choice, it might be capable of smashing the lock off with a few good strikes." +
+        "\n- A shield, its metal surface scratched and worn, but still sturdy. " +
+        "It could be used to bash the lock off with brute force." +
+        "\n\nThe options sit before you. You can:" +
+        "\n'1' - Use the rock to bash the lock off." +
+        "\n'2' - Use the shield to smash the lock off. " +
+        "\n'3' - Keep exploring the room, hoping for another way out or more supplies that might help";
+
+    public const string AtDoorCheckInventoryHavePick =
+        "You dig through your pack, your paws brushing over familiar items until you " +
+        "feel something that might help. You pull out the rusted set of tools—small, " +
+        "delicate rods of metal, a hook, and a flattened key-like piece. " +
+        "Though worn and aged, they seem like they might fit together in some way. " +
+        "\nWould you like to attempt to use them to pick the lock or would you like" +
+        "to continue searching the room for other items that might help?" +
+        "\n\nPlease press '1' to try to pick the lock with the rusted tools and " +
+        "'2' to return to exploring the room";
+
+    public const string AtDoorCheckInventoryHaveShield =
+        "You dig through your pack, feeling the weight of each item, until your paw " +
+        "brushes against something solid. You pull out the shield. " +
+        "It feels solid in your grip, it might just be powerful enough to break the " +
+        "lock off the door." +
+        "\nThe lock seems secure, and the shield might be your only chance at forcing your way " +
+        "through." +
+        "\n\nPlease press '1' to try to use the shield to break the lock and " +
+        "'2' to return to exploring the room";
+
+    public const string AtDoorCheckInventoryHaveStone =
+        "You dig through your pack, feeling the weight of each item, until your paw " +
+        "brushes against something solid. You pull out a large stone, its surface smooth and " +
+        "worn. It feels heavy in your grip, it might just be powerful enough to break the " +
+        "lock off the door." +
+        "\nThe lock seems secure, and the stone might be your only chance at forcing your way " +
+        "through." +
+        "\n\nPlease press '1' to try to use the large stone to break the lock and " +
+        "'2' to return to exploring the room";
+
+    public const string AtDoorCheckInventoryFindNothing =
+        "You don't have any items in your inventory that can help you with the lock." +
+        "\n\nYou are unable to open the door.";
+
+    public const string UseStoneOnDoor = "You decide to try your luck with the stone. With a grunt, you lift it, " +
+                                         "its weight heavy in your hands. You aim it carefully at the lock and swing with all " +
+                                         "your might." +
+                                         "\n\nRoll a D20 for luck to see if you can smash the lock off the door" +
+                                         "\n\nYou need to roll higher than a 16 to be successful";
+
+    public const string StoneOrShieldWorked =
+        "You are victorious! The impact echoes as the metal shatters under your strike. The door creaks " +
+        "open — your resourcefulness has paid off, and the path ahead is now clear";
+
+    public const string UseShieldOnDoor =
+        "You decide to try your luck with the battered shield. With a grunt, you lift it, " +
+        "its weight heavy in your hands. You aim it carefully at the lock and swing with all " +
+        "your might." +
+        "\n\nRoll a D20 for luck to see if you can smash the lock off the door or if the door will destroy your shield" +
+        "\n\nYou need to roll higher than a 16 to successfully break the lock." +
+        "\nYou need to roll higher than a 5 to avoid ruining your shield.";
+
+    public const string ShieldBrakes = "Lady luck did not favor you. The force of the impact reverberates through the " +
+                                       "room, and in that critical moment, the shield can't take it — the blow " +
+                                       "shatters it into splinters.";
+    
+
+    public const string UsePickOnDoor = "You carefully examine the rusty set of tools. With steady hands, " +
+                                        "you select a small pick and a thin rod, using them to work the lock. The old lock " +
+                                        "resists at first, but with a soft click, it finally gives way. " +
+                                        "With a sigh of relief, you open the door slowly, careful not to make a sound.";
 }

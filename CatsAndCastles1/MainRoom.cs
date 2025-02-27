@@ -3,6 +3,7 @@ namespace CatsAndCastles1;
 public class MainRoom(Characters cat, BackPack backPack)
 {
     private readonly UserInput _userInput = new UserInput();
+    Random rnd = new Random();
 
 
     public void RunMainRoom()
@@ -295,16 +296,8 @@ public class MainRoom(Characters cat, BackPack backPack)
 
         void ExploreDoor() //@add revisit this
         {
-            Console.WriteLine(
-                "\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n");
-            Console.WriteLine(
-                "You approach the heavy wooden door, its frame dark and imposing against the stone wall." +
-                "Your eyes are drawn to the thick, old lock hanging from the latch. " +
-                "The lock looks sturdy, its cold metal catching the dim light. It's a formidable obstacle, " +
-                "preventing you from escaping, but you know you must find a way out. " +
-                "Would you like to search your inventory for tools or items that might aid in unlocking the door " +
-                "or continue exploring the room?");
-            Console.WriteLine("Please press '1' to search your inventory and '2' to return to exploring the room");
+            Console.WriteLine(Text.CatBorder1 + "\n" + Text.ExploreDoor);
+            Console.WriteLine("");
             if (_userInput.UserChoice() == "1")
                 AttemptToUnlockDoor();
             else
@@ -332,27 +325,19 @@ public class MainRoom(Characters cat, BackPack backPack)
 
             if (hasLockPick && (hasStone || hasShield))
             {
-                Console.WriteLine("You pause and take a moment to look through your inventory, searching for " +
-                                  "something that might help. Your paws sift through the items you’ve collected so " +
-                                  "far, and you find two items that might be useful:" +
-                                  "\n- A rusted set of tools—small, delicate rods and a hook that might be able to " +
-                                  "fit into the lock, though they look far from reliable.");
+                //listing what you find
+                Console.WriteLine(Text.AtDoorCheckInventoryHavePickAndSS);
                 if (hasStone)
-                    Console.WriteLine("- A heavy smooth rock, solid and weighty in your grasp. While not the most " +
-                                      "subtle choice, it might be capable of smashing the lock off with a few good strikes.");
+                    Console.WriteLine(Text.AtDoorAlsoHaveStone);
                 if (hasShield)
-                    Console.WriteLine("- A shield, its metal surface scratched and worn, but still sturdy. " +
-                                      "It could be used to bash the lock off with brute force.");
+                    Console.WriteLine(Text.AtDoorAlsoHaveShield);
 
+                //setting up options
+                Console.WriteLine(Text.OptionsAtDoorHavePickAndSS);
 
-                Console.WriteLine("\nThe options sit before you. You can:" +
-                                  "\n'1' - Keep exploring the room, hoping for another way out or more supplies " +
-                                  "that might help.");
-                Console.WriteLine("'2' - Attempt to pick the lock with the rusted tools.");
                 if (hasStone && hasShield)
                 {
-                    Console.WriteLine("'3' - Use the rock to smash the lock off.");
-                    Console.WriteLine("'4' - Use the shield to smash the lock off.");
+                    Console.WriteLine(Text.OptionsAtDoorHaveStoneAndShield);
                 }
                 else if (hasStone)
                     Console.WriteLine("'3' - Use the rock to smash the lock off.");
@@ -372,13 +357,13 @@ public class MainRoom(Characters cat, BackPack backPack)
                     default:
                         if (hasStone && hasShield)
                             if (response == "3")
-                                HeavyObject("stone");
+                                UseStone();
                             else
-                                HeavyObject("shield");
+                                UseShield();
                         else if (hasShield)
-                            HeavyObject("shield");
+                            UseShield();
                         else
-                            HeavyObject("stone");
+                            UseStone();
                         break;
                 }
             }
@@ -386,26 +371,14 @@ public class MainRoom(Characters cat, BackPack backPack)
 
             else if (hasStone && hasShield)
             {
-                Console.WriteLine("You pause and take a moment to look through your inventory, searching for " +
-                                  "something that might help. Your paws sift through the items you’ve collected so " +
-                                  "far, and you find two items that might be useful:" +
-                                  "\n- A heavy smooth rock, solid and weighty in your grasp. While not the most" +
-                                  "\nsubtle choice, it might be capable of smashing the lock off with a few good strikes." +
-                                  "\n- A shield, its metal surface scratched and worn, but still sturdy. " +
-                                  "It could be used to bash the lock off with brute force.");
-
-
-                Console.WriteLine("\nThe options sit before you. You can:" +
-                                  "\n'1' - Use the rock to bash the lock off." +
-                                  "\n'2' - Use the shield to smash the lock off. " +
-                                  "\n'3' - Keep exploring the room, hoping for another way out or more supplies that might help");
+                Console.WriteLine(Text.AtDoorCheckInventoryHaveSS);
                 switch (_userInput.UserChoice(3))
                 {
                     case "1":
-                        HeavyObject("stone");
+                        UseStone();
                         break;
                     case "2":
-                        HeavyObject("shield");
+                        UseShield();
                         break;
                     case "3":
                         ReturnToMainPartOfRoom("door");
@@ -416,16 +389,7 @@ public class MainRoom(Characters cat, BackPack backPack)
 
             else if (hasLockPick)
             {
-                Console.WriteLine("You dig through your pack, your paws brushing over familiar items until you " +
-                                  "feel something that might help. You pull out the rusted set of tools—small, " +
-                                  "delicate rods of metal, a hook, and a flattened key-like piece. " +
-                                  "Though worn and aged, they seem like they might fit together in some way. " +
-                                  "\nWould you like to attempt to use them to pick the lock or would you like" +
-                                  "to continue searching the room for other items that might help?"); //@fix this wording is awkward
-                Console.WriteLine("\nPlease press '1' to try to pick the lock with the rusted tools and " +
-                                  "'2' to return to exploring the room");
-                Console.WriteLine(
-                    "\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n");
+                Console.WriteLine(Text.AtDoorCheckInventoryHavePick + "\n" + Text.CatBorder1);
                 if (_userInput.UserChoice() == "1")
                     PickLock();
                 else
@@ -435,73 +399,97 @@ public class MainRoom(Characters cat, BackPack backPack)
 
             else if (hasShield)
             {
-                Console.WriteLine("You dig through your pack, feeling the weight of each item, until your paw " +
-                                  "brushes against something solid. You pull out the shield. " +
-                                  "It feels solid in your grip, it might just be powerful enough to break the " +
-                                  "lock off the door." +
-                                  "\nThe lock seems secure, and the shield might be your only chance at forcing your way " +
-                                  "through.");
-                Console.WriteLine("Please press '1' to try to use the shield to break the lock and " +
-                                  "'2' to return to exploring the room");
+                Console.WriteLine(Text.AtDoorCheckInventoryHaveShield + "\n" + Text.CatBorder1);
                 if (_userInput.UserChoice() == "1")
-                    HeavyObject("shield");
+                    UseShield();
                 else
                     ReturnToMainPartOfRoom("door");
             }
             else if (hasStone)
             {
-                Console.WriteLine("You dig through your pack, feeling the weight of each item, until your paw " +
-                                  "brushes against something solid. You pull out a large stone, its surface smooth and " +
-                                  "worn. It feels heavy in your grip, it might just be powerful enough to break the " +
-                                  "lock off the door." +
-                                  "\nThe lock seems secure, and the stone might be your only chance at forcing your way " +
-                                  "through.");
-                Console.WriteLine("Please press '1' to try to use the large stone to break the lock and " +
-                                  "'2' to return to exploring the room");
-                Console.WriteLine(
-                    "\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n");
+                Console.WriteLine(Text.AtDoorCheckInventoryHaveStone + "\n" + Text.CatBorder1);
                 if (_userInput.UserChoice() == "1")
-                    HeavyObject("stone");
+                    UseStone();
                 else
                     ReturnToMainPartOfRoom("door");
             }
             else
             {
-                Console.WriteLine("You don't have any items in your inventory that can help you with the lock.");
-                Console.WriteLine("You must continue to explore the room.");
-                Console.WriteLine("Press 'enter' to continue");
-                Console.ReadLine();
+                Console.WriteLine(Text.AtDoorCheckInventoryFindNothing);
+                _userInput.DramaticPause();
+                ReturnToMainPartOfRoom("door");
+            }
+        }
+
+        /* here's the flow:
+        - stone is similiar but no pass out, only damage OR it works
+        - shield can break OR work
+        */
+        void UseStone()
+        {
+            Console.WriteLine(Text.CatBorder3 + "\n" + Text.UseStoneOnDoor);
+            _userInput.DramaticPauseClrScreen();
+            int roll = rnd.Next(1, 21);
+            Console.WriteLine($"You rolled a {roll}");
+            if (roll > 16)
+            {
+                Console.WriteLine(Text.StoneOrShieldWorked);
+                _userInput.DramaticPause();
+                cat.Location = Characters.Place.ThirdFloor;
+            }
+            else
+            {
+                roll = rnd.Next(1, 7) + 1;
+                Console.WriteLine($"The stone bounces off the door and ricochets back towards you doing " +
+                                  $"{roll} (D6+1) damage");
+                cat.Health -= roll;
+                Console.WriteLine($"Your health is now {cat.Health} out of 60");
+                _userInput.DramaticPauseClrScreen();
+                ReturnToMainPartOfRoom("door");
+            }
+        }
+
+        void UseShield()
+        {
+            Console.WriteLine(Text.CatBorder3 + "\n" + Text.UseShieldOnDoor);
+            _userInput.DramaticPause();
+            int roll = rnd.Next(1, 21);
+            Console.WriteLine($"You rolled a {roll}");
+            if (roll > 25)
+            {
+                Console.WriteLine(Text.StoneOrShieldWorked);
+                _userInput.DramaticPause();
+                cat.Location = Characters.Place.ThirdFloor;
+            }
+            else if (roll > 24)
+            {
+                roll = rnd.Next(1, 7) + 1;
+                Console.WriteLine($"The shield bounces off the door and ricochets back towards you doing " +
+                                  $"{roll} (D6+1) damage");
+                cat.Health -= roll;
+                Console.WriteLine($"Your health is now {cat.Health} out of 60");
+                _userInput.DramaticPauseClrScreen();
+                ReturnToMainPartOfRoom("door");
+            }
+            else
+            {
+                Console.WriteLine(Text.ShieldBrakes);
+                _userInput.DramaticPauseClrScreen();
+
+                for (var i = 0; i < backPack.Pack.Length; i++)
+                {
+                    if (backPack.Pack[i].Contains("shield"))
+                        backPack.Pack[i] = "empty";
+                }
                 ReturnToMainPartOfRoom("door");
             }
         }
 
 
-        void HeavyObject(string objectName)
-        {
-            Console.WriteLine(
-                "\n   >   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n");
-            Console.WriteLine($"You decide to try your luck with the heavy {objectName}. With a grunt, you lift the");
-            Console.WriteLine($"{objectName}, its weight heavy in your hands. You aim it carefully at the lock and");
-            Console.WriteLine(
-                $"swing with all your might. The {objectName} slams into the lock with a loud crack, but the");
-            Console.WriteLine(
-                $"force causes it to bounce off the door, sending the {objectName} ricocheting back toward");
-            Console.WriteLine("you.");
-            Console.WriteLine($"Before you can react, the {objectName} strikes your head with a sharp blow.");
-            cat.Location = Characters.Place.PassedOut;
-        }
-
-
         void PickLock()
         {
-            Console.WriteLine(
-                "\n   >   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n");
-            Console.WriteLine("You carefully examine the rusty set of tools. With steady hands,");
-            Console.WriteLine("you select a small pick and a thin rod, using them to work the lock. The old lock");
-            Console.WriteLine("resists at first, but with a soft click, it finally gives way.");
-            Console.WriteLine("With a sigh of relief, you open the door slowly, careful not to make a sound.");
-            Console.WriteLine("Press 'enter' to continue");
-            Console.ReadLine();
+            Console.WriteLine(Text.UsePickOnDoor + "\n" + Text.CatBorder1);
+            _userInput.DramaticPause();
             cat.Location = Characters.Place.ThirdFloor;
         }
     }
