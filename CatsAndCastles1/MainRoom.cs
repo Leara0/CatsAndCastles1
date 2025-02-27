@@ -45,25 +45,19 @@ public class MainRoom
         {
             //backPack.Pack[1] = "the rusted set of tools";
             Console.Clear();
-           Console.WriteLine(Text.FirstRoomChoices);
+            Console.WriteLine(Text.FirstRoomChoices);
             if (backPack.DiscardedItems.Count == 1)
             {
-                Console.WriteLine("8 - An item you’ve chosen to discard—perhaps too hastily. " +
-                                  "If you've changed your mind, you can return to the pile and reclaim it..");
+                Console.WriteLine(Text.DiscardPile1Item);
             }
 
 
             if (backPack.DiscardedItems.Count > 1)
             {
-                Console.WriteLine("8 - A heap of items you’ve chosen to discard—perhaps too hastily. " +
-                                  "If you've changed your mind, you can return to the pile and reclaim items..");
+                Console.WriteLine(Text.DiscardPileMultiItems);
             }
 
-
-            Console.WriteLine("\nWhere would you like to explore?");
-            Console.WriteLine("Please press the number corresponding with your choice.");
-            Console.WriteLine("\n   <   <   <   <   <   <   <   <   =^.^=   >   >   >   >   >   >   >   >   >   \n");
-
+            Console.WriteLine(Text.WhereToExplore);
 
             switch (_userInput.UserChoice(8))
             {
@@ -71,32 +65,29 @@ public class MainRoom
                     ExploreDoor();
                     return;
                 case "2":
-                    ExploreCloset(); //@done
+                    ExploreCloset();
                     return;
                 case "3":
-                    ExploreWindow(); //@done
+                    ExploreWindow();
                     return;
                 case "4":
-                    ExploreNightStand(); //@done
+                    ExploreNightStand();
                     return;
                 case "5":
-                    ExploreBookshelf(); //@done
+                    ExploreBookshelf();
                     return;
                 case "6":
-                    ExploreHearth(); //@done
+                    ExploreHearth();
                     return;
                 case "7":
                     backPack.ListContentsOfPack();
-                    Console.WriteLine("Would you like to use or remove any items?" +
-                                      "\nPlease press '1' to remove an item and '2' to continue exploring the room");
+                    Console.WriteLine(Text.UseOrRemoveFirstItem);
                     while (_userInput.UserChoice() == "1")
                     {
                         backPack.RemoveItemsFromPack(cat);
                         backPack.ListContentsOfPack();
-                        Console.WriteLine("Would you like to use or remove another item?" +
-                                          "\n Press '1' to remove another item and '2' to continue exploring the room");
+                        Console.WriteLine(Text.UseOrRemoveMoreItems);
                     }
-
 
                     FirstRoomChoices();
                     return;
@@ -106,7 +97,6 @@ public class MainRoom
                     return;
             }
         }
-
 
         void ReturnToMainPartOfRoom(string fromLocation)
         {
@@ -127,11 +117,9 @@ public class MainRoom
             }
         }
 
-
         void DecisionTime(string location)
         {
-            Console.WriteLine("Please press '1' if you'd like to take some items with you and '2' if you'd like to " +
-                              "leave all the items untouched.");
+            Console.WriteLine(Text.TakeItemsOrLeaveRoom);
 
 
             if (_userInput.UserChoice() == "1")
@@ -139,56 +127,35 @@ public class MainRoom
             ReturnToMainPartOfRoom(location);
         }
 
-
         void ExploreNightStand()
         {
-            Console.WriteLine("Your eyes land on the nightstand—a small, unassuming piece of " +
-                              "furniture beside the cushion where you first woke up. Its surface " +
-                              "is scratched, its single drawer slightly ajar, as if someone once " +
-                              "meant to close it but never quite did." +
-                              "\n\nInside, you find:");
+            Console.WriteLine(Text.ExploreNightStand);
             ListItemsInLocation("nightstand");
-            Console.WriteLine("\nThe drawer holds no more secrets, only the question of whether " +
-                              "any of these things might be useful to you." +
-                              "\n\nWould you like to take anything?");
+            Console.WriteLine(Text.ChoiceToTakeItemsNightStand);
             DecisionTime("nightstand");
         }
 
-
         void ExploreCloset()
         {
-            Console.WriteLine("You move toward the small door on the opposite wall, its wood worn and cracked. " +
-                              "It creaks loudly as you push it open, revealing a narrow, dim space." +
-                              "Upon stepping inside, you realize this is a closet. The air is stale, thick with dust." +
-                              "\n\nThe shelves are cluttered with the following items:");
+            Console.WriteLine(Text.ExploreCloset);
             ListItemsInLocation("closet");
-            Console.WriteLine("\nThis space hasn't been used in a long time—and whatever it was used for " +
-                              "doesn't seem welcoming. \n\nWould you like to take anything?");
+            Console.WriteLine(Text.ChoiceToTakeItemsCloset);
             DecisionTime("closet");
         }
 
-
         void ExploreBookshelf()
         {
-            Console.WriteLine("You approach the bookshelf, your paws silent against the cold floor. " +
-                              "It stands tall against the wall, its once-polished wood " +
-                              "now dull and splintered. Most of the shelves are bare, coated in dust thick enough " +
-                              "to leave tracks." +
-                              "\n\nScanning the empty spaces, your eyes catch a few forgotten objects:");
+            Console.WriteLine(Text.ExploreBookshelf);
             ListItemsInLocation("bookshelf");
-            Console.WriteLine("\nThe air here is still, as though these objects have been waiting undisturbed for a " +
-                              "long time.\n\nWould you like to take anything with you?");
+            Console.WriteLine(Text.ChoiceToTakeItemsBookshelf);
             DecisionTime("bookshelf");
         }
 
-
         void ExploreHearth()
         {
-            Console.WriteLine("Your gaze drifts to the hearth—large and cold, its once-grand stonework now " +
-                              "stained with time. \n\nAs you step closer, your paws stir the dust, revealing " +
-                              "forgotten things among the ashes and shadows:");
+            Console.WriteLine(Text.ExploreHearth);
             ListItemsInLocation("hearth");
-            Console.WriteLine("Would you like to take anything?");
+            Console.WriteLine(Text.WouldYouLikeToTakeAnything);
             DecisionTime("hearth");
         }
 
@@ -196,21 +163,7 @@ public class MainRoom
         void ExploreWindow()
         {
             Console.Clear();
-            Console.WriteLine(
-                "\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n");
-            Console.WriteLine("You move toward the window, and as you draw closer, the suffocating weight of");
-            Console.WriteLine("the castle's gloom seems to ease—if only slightly. Springing forward you leap");
-            Console.WriteLine(
-                "onto the sill and peer outside. Below, the ground looms a daunting thirty or more feet");
-            Console.WriteLine(
-                "down, bathed in the pale glow of the moon. A fall from this height would be dangerous,");
-            Console.WriteLine("but not impossible.");
-            Console.WriteLine("Your muscles tense as you consider your options. ");
-            Console.WriteLine(
-                "You could take the leap, relying on your feline agility and luck to land safely. Or you could " +
-                "check your inventory for other options to assist you in climbing down. " +
-                "The eerie stillness of the castle gnaws at your nerves, urging you to act quickly." +
-                "\nPress '1' to check your inventory and '2' to leap down and '3' to continue exploring the room");
+            Console.WriteLine(Text.ExploreWindow);
             switch (_userInput.UserChoice(3))
             {
                 case "1":
@@ -227,14 +180,7 @@ public class MainRoom
 
                     if (hasSheets && hasRope)
                     {
-                        Console.WriteLine("You check your inventory, searching for anything that might help. " +
-                                          "You find a length of rope and several bed sheets that could be tied " +
-                                          "together into a makeshift rope. " +
-                                          "\n\nHow would you like to proceed?" +
-                                          "\n'1' - Use the sheets." +
-                                          "\n'2' - Use the rope." +
-                                          "\n'3' - Jump directly down from the window ledge." +
-                                          "\n'4' - Use the rope.");
+                        Console.WriteLine(Text.HowToProceedWithSheetsAndRope);
                         switch (_userInput.UserChoice(4))
                         {
                             case "1":
