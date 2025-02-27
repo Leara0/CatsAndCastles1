@@ -16,16 +16,16 @@ public class MainStory
     private readonly UserInput _userInput = new UserInput();
    public void RunGame()
    {
-       
-       var mainRoom = new MainRoom();
-
-
        var cat = new Characters();
        {
            cat.Name = _userInput.GetName();
            cat.Health = 60;
            cat.Location = Characters.Place.MainRoom;
        }
+       
+
+
+       
 
        var backPack = new BackPack();
        {
@@ -53,6 +53,7 @@ public class MainStory
            warden.Location = Characters.Place.FirstFloor;
            warden.Health = warden.SetHealth(60, 75);
        }
+       var mainRoom = new MainRoom(cat, backPack);
 
 
 
@@ -76,7 +77,7 @@ public class MainStory
 
    private void CastleWithExitStrategies(Characters cat, BackPack backPack, MainRoom mainRoom, Characters guardDog1, Characters guardDog2, Characters warden)
    {
-       mainRoom.RunMainRoom(cat, backPack);
+       mainRoom.RunMainRoom();
        do // you get here after you come to the end of one of the main room story lines
        {
            switch (cat.Location)
@@ -107,7 +108,7 @@ public class MainStory
 
    private void PassOut(Characters cat, BackPack backPack)
    {
-       MainRoom mainRoom = new MainRoom();
+       MainRoom mainRoom = new MainRoom(cat, backPack);
        cat.Lives--;
       
        Console.WriteLine(
@@ -139,7 +140,7 @@ public class MainStory
            $"\n\nWhat will you do?... \n");
        if (_userInput.UserChoice() == "1")
        {
-           mainRoom.SubsequentWakeUp(cat, backPack);
+           mainRoom.SubsequentWakeUp();
        }
        else
        {

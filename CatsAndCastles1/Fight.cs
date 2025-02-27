@@ -107,8 +107,7 @@ public class Fight
                    Console.WriteLine(
                        $"\nRoll a D20 for luck. You must get higher than {(guardNumber == 1 ? "5" : "10")} " +
                        $"to successfully sneak away");
-                   Console.WriteLine("Press 'enter' to continue");
-                   Console.ReadLine();
+                   _userInput.DramaticPause();
                    Console.WriteLine($"You roll a {roll}.\n");
 
 
@@ -116,8 +115,7 @@ public class Fight
                        (guardNumber != 1 && roll > 10))
                    {
                        Console.WriteLine(floorSpecificWording[guardNumber, 2]);
-                       Console.WriteLine("Press 'enter' to continue");
-                       Console.ReadLine();
+                       _userInput.DramaticPause();
                        Console.Clear();
                        if (guardNumber != 1)
                            cat.Location = Characters.Place.SecondFloor;
@@ -189,8 +187,8 @@ public class Fight
            Console.WriteLine(
                $"\nRoll a D20. You must roll higher than {(guardNumber == 2 ? "17" : "5")} for the " +
                $"guard to be open to taking a bribe.");
-           Console.WriteLine("Press 'enter' to continue.");
-           Console.ReadLine();
+           _userInput.DramaticPause();
+           
            Console.WriteLine($"You roll a {bribable}");
            if ((guardNumber != 2 && bribable > 5) || (guardNumber == 2 && bribable > 17))
            {
@@ -236,8 +234,7 @@ public class Fight
                                  $"hackles raised. \"Guess we’re doing this " +
                                  "the hard way.\"" +
                                  "\n\nYou have no choice now — you must fight.");
-               Console.WriteLine("Press 'enter' to continue");
-               Console.ReadLine();
+               _userInput.DramaticPause();
                return false;
            }
 
@@ -283,8 +280,7 @@ public class Fight
 
            WeaponsReminder(cat, "cat");
            WeaponsReminder(guardDog, "guardDog");
-           Console.WriteLine("Press 'enter' to continue.");
-           Console.ReadLine();
+           _userInput.DramaticPause();
 
 
            int attack;
@@ -307,10 +303,10 @@ public class Fight
 
                if (cat.Health > 0)
                {
-                   Console.WriteLine("Please press 'enter' to continue.");
-                   Console.WriteLine(
-                       "\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n");
-                   Console.ReadLine();
+                   Console.WriteLine(Text.CatBorder1);
+                   _userInput.DramaticPause();
+                   
+                   
                }
            }
 
@@ -351,10 +347,9 @@ public class Fight
                Console.WriteLine($"\nYour remaining health is {(cat.Health >= 0 ? cat.Health : "0")} out of 60");
                if (cat.Health > 0)
                {
-                   Console.WriteLine("\nPlease press 'enter' to continue.");
-                   Console.WriteLine(
-                       "\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n");
-                   Console.ReadLine();
+                   Console.WriteLine(Text.CatBorder1);
+                   _userInput.DramaticPause();
+                   
                }
            } while (cat.Health > 0);
 
