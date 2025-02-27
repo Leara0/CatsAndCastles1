@@ -3,6 +3,8 @@ namespace CatsAndCastles1;
 
 public class FirstFloor
 {
+    private readonly UserInput _userInput = new UserInput();
+    private readonly Fight fight = new Fight();
    public void FirstFloorStory(Characters cat, BackPack backPack, Characters warden)
    {
        cat.SuccessfulBribed = false;
@@ -16,7 +18,7 @@ public class FirstFloor
                              "the atmosphere shifts—heavy, charged, dangerous. The room before you is vast, its purpose " +
                              "unclear, but there is no time to dwell on the details." +
                              "\n\nBecause you are not alone.");
-           Fight.GuardDogEncounter(cat, backPack, warden, 2);
+           fight.GuardDogEncounter(cat, backPack, warden, 2);
        }
 
 
@@ -44,7 +46,7 @@ public class FirstFloor
            if (cat.SuccessfulBribed)
                Console.WriteLine("Bear in mind, if you leave this floor the guard will expect another bribe or a " +
                                  "fight");
-           if (backPack.UserChoice() == "1")
+           if (_userInput.UserChoice() == "1")
            {
                Console.WriteLine("\nYou stagger forward, each step pulling you away from the gloom of the castle, " +
                                  "away from the danger, away from death itself. One final push, and are free.");

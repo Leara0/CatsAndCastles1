@@ -3,7 +3,8 @@ namespace CatsAndCastles1;
 
 public class SecondFloor
 {
-   //@fix readjust all this to be the second floor!!!
+    private readonly UserInput _userInput = new UserInput();
+    private readonly Fight fight = new Fight();
 
 
    public void SecondFloorStory(Characters cat, BackPack backPack, Characters guardDog)
@@ -36,7 +37,7 @@ public class SecondFloor
                              "\n'6' - If doubt gnaws at you, you could  turn back and return upstairs, " +
                              "retracing your steps to see if there's anything you've overlooked." +
                              "\n'7' - Access your inventory;");
-           switch (backPack.UserChoice(7))
+           switch (_userInput.UserChoice(7))
            {
                case "1": // need keys or lock pick to get in here
                    Console.WriteLine("You approach Door 1 and test the handle — it's locked.");
@@ -101,7 +102,7 @@ public class SecondFloor
                    backPack.ListContentsOfPack();
                    Console.WriteLine("Would you like to use or remove any items?" +
                                      "\nPlease press '1' to use or remove an item and '2' to continue exploring the room");
-                   while (backPack.UserChoice() == "1")
+                   while (_userInput.UserChoice() == "1")
                    {
                        backPack.RemoveItemsFromPack(cat);
                        backPack.ListContentsOfPack();
@@ -124,7 +125,7 @@ public class SecondFloor
        DescriptionOfItems(room, backPack);
        Console.WriteLine("\nDo you want to take any of these items with you? Press '1' to take items and '2' " +
                          "to leave the room");
-       if (backPack.UserChoice() == "1")
+       if (_userInput.UserChoice() == "1")
            backPack.TakeItems(cat, room);
        Console.WriteLine("Feeling finished with this room, you step back into the hallway.");
    }
@@ -180,7 +181,7 @@ public class SecondFloor
 
 
        Console.WriteLine("Press '1' to loot and '2' to move on.");
-       if (backPack.UserChoice() == "1")
+       if (_userInput.UserChoice() == "1")
        {
            backPack.TakeItems(cat, "guard two", guardDog);
        }
@@ -195,7 +196,7 @@ public class SecondFloor
        if (guardDog.Location != Characters.Place.Dead && !cat.SuccessfulBribed)
            //if you haven't defeated or bribed the guard yet
        {
-           Fight.GuardDogEncounter(cat, backPack, guardDog, 1);
+           fight.GuardDogEncounter(cat, backPack, guardDog, 1);
            if ((guardDog.Location != Characters.Place.Dead && !cat.SuccessfulBribed) ||
                cat.Location ==
                Characters.Place.PassedOut) // if you successfully run away or get knocked out leave this room
@@ -230,7 +231,7 @@ public class SecondFloor
                    "Press '3' if you'd like to return to the guard's body to see if you missed " +
                    "anything");
           
-           switch (backPack.UserChoice(3))
+           switch (_userInput.UserChoice(3))
            {
                case "1":
                    backPack.TakeItems(cat, "second floor room 4");

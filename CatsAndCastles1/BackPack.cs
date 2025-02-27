@@ -3,6 +3,7 @@ namespace CatsAndCastles1;
 
 public class BackPack
 {
+    private readonly UserInput _userInput = new UserInput();
    public string emptySpot = "a faint outline marking the spot where something once rested";
    public string[] Pack { get; set; } = new string[5];
    public List<string> DiscardedItems { get; set; }
@@ -17,30 +18,7 @@ public class BackPack
 
    public int NumberOfSheets { get; set; }
    //@add is it possible to make all possible items into an enum so I don't have to worry about string typos
-
-
-   public string UserChoice(int numberOfOptions = 2)
-   {
-       do
-       {
-           string input = Console.ReadLine().Trim();
-           for (int i = 1; i <= numberOfOptions; i++)
-           {
-               string iNumber = i.ToString();
-               if (iNumber == input)
-               {
-                   Console.Clear();
-                   return input;
-               }
-           }
-
-
-           Console.WriteLine("I'm sorry, but that isn't a valid choice. ");
-           Console.WriteLine("Please enter a number that corresponds with options above.");
-       } while (true);
-   }
-
-
+   
    public int NumberOfItemsInPack() // counts how many items are in pack
    {
        var counter = 0;
@@ -64,9 +42,6 @@ public class BackPack
            Console.WriteLine($"  {i + 1} - {Pack[i]}");
    }
 
-
-
-
    public void PickUpItemsFromDiscarded(Characters cat)
    {
        Console.WriteLine("Your discarded stash contains the following item/s:");
@@ -80,7 +55,7 @@ public class BackPack
                          $"Or press {DiscardedItems.Count + 1} to return to exploring the room");
 
 
-       int response = Convert.ToInt32(UserChoice(DiscardedItems.Count + 1));
+       int response = Convert.ToInt32(_userInput.UserChoice(DiscardedItems.Count + 1));
 
 
        if (response < DiscardedItems.Count + 1)
@@ -107,7 +82,7 @@ public class BackPack
 
 
        Console.WriteLine("\nPlease enter the number of the item you would like to use or remove or press '6'.");
-       var numToRemove = int.Parse(UserChoice(6));
+       var numToRemove = int.Parse(_userInput.UserChoice(6));
 
 
 
@@ -224,7 +199,7 @@ public class BackPack
            Console.WriteLine("Your pack is too burdened to add any more items. You must remove" +
                              $" something to make space for {item}.");
            Console.WriteLine("Please press '1' to remove items and '2' to make no changes to your pack.");
-           if (UserChoice() == "1")
+           if (_userInput.UserChoice() == "1")
            {
                bool somethingWasRemoved = RemoveItemsFromPack(cat);
                if (!somethingWasRemoved)
@@ -480,7 +455,7 @@ public class BackPack
 
 
 
-           switch (UserChoice(4))
+           switch (_userInput.UserChoice(4))
            {
                case "1":
                    AddItemToPack(cat, Options[0]);

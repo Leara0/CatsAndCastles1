@@ -1,10 +1,12 @@
 namespace CatsAndCastles1;
 
-public class ThirdFloor(UserInput userInput)
+public class ThirdFloor()
 {
+    private readonly UserInput _userInput = new UserInput();
+    private readonly Fight fight = new Fight();
    public void ThirdFloorStory(Characters cat, BackPack backPack, Characters guardDog1)
    {
-       MainRoom mainRoom = new MainRoom(userInput);
+       MainRoom mainRoom = new MainRoom();
        cat.SuccessfulBribed = false;
 
        Console.Clear();
@@ -16,7 +18,7 @@ public class ThirdFloor(UserInput userInput)
        if (guardDog1.Location != Characters.Place.Dead && !cat.SuccessfulBribed)
        {
            // if the guard is not dead & not bribed you must deal with him
-           Fight.GuardDogEncounter(cat, backPack, guardDog1, 0);
+           fight.GuardDogEncounter(cat, backPack, guardDog1, 0);
            if (cat.Location == Characters.Place.SecondFloor || cat.Location == Characters.Place.PassedOut)
                //// if you successfully run away (to floor 2) or get knocked out
                return;
@@ -40,13 +42,13 @@ public class ThirdFloor(UserInput userInput)
                              "\n'6' - Access your inventory");
            if (guardDog1.Location == Characters.Place.Dead)
                Console.WriteLine("'7' - Revisit the guard's body to loot anything you missed");
-           switch (backPack.UserChoice(7))
+           switch (_userInput.UserChoice(7))
            {
                case "1":
                    Console.WriteLine("You turn back toward the door you first escaped from, the worn wood familiar " +
                                      "beneath your paws. Pushing it open, you step inside once more. The room is " +
                                      "just as you left it — dim, old, and eerily silent.\n");
-                   mainRoom.RestartMainRoom(cat, backPack);
+                   mainRoom.MainRoomMethod(cat, backPack);
                    return;
                case "2":
                    EnterRoom(cat, backPack, "third floor room 2");
@@ -82,7 +84,7 @@ public class ThirdFloor(UserInput userInput)
                    backPack.ListContentsOfPack();
                    Console.WriteLine("Would you like to use or remove any items?" +
                                      "\nPlease press '1' to use or remove an item and '2' to continue exploring the room");
-                   while (backPack.UserChoice() == "1")
+                   while (_userInput.UserChoice() == "1")
                    {
                        backPack.RemoveItemsFromPack(cat);
                        backPack.ListContentsOfPack();
@@ -118,7 +120,7 @@ public class ThirdFloor(UserInput userInput)
        DescriptionOfItems(room);
        Console.WriteLine("\n Do you want to take any of these items with you? Press '1' to take items and '2' " +
                          "to leave the room");
-       if (backPack.UserChoice() == "1")
+       if (_userInput.UserChoice() == "1")
            backPack.TakeItems(cat, room);
        Console.WriteLine("Feeling finished with this room, you step back into the hallway. ");
    }
@@ -168,7 +170,7 @@ public class ThirdFloor(UserInput userInput)
 
 
        Console.WriteLine("Press '1' to loot and '2' to move on.");
-       if (backPack.UserChoice() == "1")
+       if (_userInput.UserChoice() == "1")
        {
            backPack.TakeItems(cat, "guard one", guardDog);
        }
