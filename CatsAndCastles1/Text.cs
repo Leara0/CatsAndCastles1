@@ -2,6 +2,15 @@ namespace CatsAndCastles1;
 
 public static class Text
 {
+    public const string CatBorder1 =
+        "\n\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n";
+
+    public const string CatBorder2 =
+        "\n\n   <   <   <   <   <   <   <   <   =^.^=   >   >   >   >   >   >   >   >   >   \n";
+
+    public const string CatBorder3 =
+        "\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n";
+
     public const string StartInRoom = "The air is damp and heavy, thick with the scent of old stone and something " +
                                       "faintly metallic. A chill clings to your fur, creeping in from the cold " +
                                       "stone floor beneath you. The dim light from a single flickering torch casts long, " +
@@ -16,7 +25,6 @@ public static class Text
     public const string SubsequentWakeUp = "You wake, dazed and disoriented, your senses slow to return. ";
 
     public const string FirstRoomChoices =
-        "\n\n   <   <   <   <   <   <   <   <   =^.^=   >   >   >   >   >   >   >   >   >   \n" +
         "\nYour eyes scan the room, taking in the details of your surroundings. " +
         "\n\nA few places stand out, each offering a chance to learn more: " +
         "\n\n1 - A heavy wooden door, its iron hinges rusted with age." +
@@ -27,7 +35,7 @@ public static class Text
         "\n6 - A large stone hearth, cold and imposing" +
         "\n7 - Your pack. You can inspect the contents and discard ones you no longer want";
 
-    public const string DiscardPile1Item = "8 - An item you’ve chosen to discard—perhaps too hastily. " +
+    public const string DiscardPile1Item = "8 - An item you’ve chosen to discard — perhaps too hastily. " +
                                            "If you've changed your mind, you can return to the pile and reclaim it..";
 
     public const string DiscardPileMultiItems = "8 - A heap of items you’ve chosen to discard—perhaps too hastily. " +
@@ -106,4 +114,54 @@ public static class Text
         "\n'2' - Use the rope." +
         "\n'3' - Jump directly down from the window ledge." +
         "\n'4' - Use the rope.";
+
+    public const string MakeAChoiceWithSheets = "You find a pile of old sheets in your inventory. " +
+                                                "You realize they could be tied together to make a rope to assist you in climbing down." +
+                                                $"\n\nPress '1' to use the sheets to assist you, " +
+                                                $"'2' to choose to leap down and '3' to continue exploring other areas " +
+                                                "in the room.";
+
+    public const string MakeAChoiceWithRope = "You find a 20 foot length of rope in your inventory. " +
+                                              "You realize they could be tied together to make a rope to assist you in climbing down." +
+                                              $"\n\nPress '1' to use the rope to assist you, " +
+                                              $"'2' to choose to leap down and '3' to continue exploring other areas " +
+                                              "in the room.";
+
+    public const string MakeChoiceNoSheetsOrRope =
+        "You take a deep breath and leap into the night, trusting your agility. For a brief " +
+        "moment, you feel weightless—until you land with a jarring thud. The ground is " +
+        "unforgiving, your 4 legs give way beneath you and your head smacks against the hard earth.";
+
+    public const string LeapDown =
+        "You take a deep breath and leap into the night, trusting your agility. For a brief " +
+        "moment, you feel weightless—until you land with a jarring thud. The ground is " +
+        "unforgiving, your 4 legs give way beneath you and your head smacks against the hard earth.";
+
+    public const string UseSheets = "You reach into your pack and withdraw the worn but sturdy sheets. Working " +
+                                    "quickly, you tie them together, each knot pulled tight between your claws. You find a solid " +
+                                    "anchor — an iron ring embedded in the wall — and tie the sheets securely around it. " +
+                                    "With a final, cautious tug, you toss the bundle out the window.";
+
+    public const string UseRope = "You reach into your pack and withdraw the thick rope. You find a solid " +
+                                  "anchor — an iron ring embedded in the wall — and tie the rope securely around it. " +
+                                  "With a final, cautious tug, you toss the rope out the window.";
+
+    public const string ClimbDownSheets = "You grip the knotted sheets tightly and ease yourself out the window, " +
+                                          "claws scraping against the stone as you begin your descent. The fabric " +
+                                          "creaks under your weight, but it holds as you inch lower, the cool night " +
+                                          "air brushes against your fur." +
+                                          "\n\n You reach the end of the rope and leap down. At last, your feet touch " +
+                                          "the ground. ";
+
+    public const string ClimbDownRope ="You grip the stiff rope tightly and ease yourself out the window, " +
+                                       "claws scraping against the stone as you begin your descent. The rope " +
+                                       "creaks under your weight, but it holds as you inch lower, the cool night " +
+                                       "air brushes against your fur." +
+                                       "\n\n You reach the end of the rope and leap down. At last, your feet touch " +
+                                       "the ground. ";
+
+    public const string ClimbDownToLeap = "You grip the knotted sheets tightly and ease yourself out the window, " +
+                                          "claws scraping against the stone as you begin your descent. The fabric creaks " +
+                                          "under your weight, but it holds as you inch lower, the cool night air brushing " +
+                                          "against your fur.\n\nYou reach the end of your rope.";
 }

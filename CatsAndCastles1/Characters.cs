@@ -42,6 +42,5 @@ public class Characters
 
     public bool LeftFirstFloor { get; set; }
 
-
     
 }

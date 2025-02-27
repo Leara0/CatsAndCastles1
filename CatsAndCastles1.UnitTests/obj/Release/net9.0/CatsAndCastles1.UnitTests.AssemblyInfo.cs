@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CatsAndCastles1.UnitTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f836cf0139679b4ad161c9106dd5a0aee6cda80")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+faac54ad4f3e87244a00b375a5f969b9103409f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("CatsAndCastles1.UnitTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CatsAndCastles1.UnitTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
