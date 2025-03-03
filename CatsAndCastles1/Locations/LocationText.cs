@@ -1,8 +1,10 @@
 namespace CatsAndCastles1;
 
-public static class Text
+public class LocationText
 {
-    public const string CatBorder1 =
+    
+    
+    public const string CatBorder1 =    
         "\n\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n";
 
     public const string CatBorder2 =
@@ -55,7 +57,7 @@ public static class Text
         "Please press '1' if you'd like to take some items with you and '2' if you'd like to " +
         "leave all the items untouched.";
 
-    public const string ExploreNightStand = "Your eyes land on the nightstand—a small, unassuming piece of " +
+    public const string ExploreNightStand = "Your eyes land on the nightstand — a small, unassuming piece of " +
                                             "furniture beside the cushion where you first woke up. Its surface " +
                                             "is scratched, its single drawer slightly ajar, as if someone once " +
                                             "meant to close it but never quite did." +
@@ -72,10 +74,16 @@ public static class Text
         "Upon stepping inside, you realize this is a closet. The air is stale, thick with dust." +
         "\n\nThe shelves are cluttered with the following items:";
 
-    public const string ChoiceToTakeItemsCloset =
-        "\nThis space hasn't been used in a long time—and whatever it was used for " +
-        "doesn't seem welcoming. \n\nWould you like to take anything?";
-
+    public const string ChoiceToTakeItems =
+        "\n\nEach item has its own allure, yet you know that adding too much to your pack could slow you down. " +
+        "You also have the option to leave this location without taking anything, knowing you can always return " +
+        "later if desired... " +
+        "\n\nPlease enter the number cooresponding with the item you would like to pickup or press 4 to leave this area";
+    //@TODO add choice to take items to every call
+    public const string ChoiceToTakeMoreItems =
+        "Would you like to take any more items? If so, please enter the number " +
+        "cooresponding with the item you would like to pickup or press 4 to leave this area";
+    
     public const string ExploreBookshelf = "You approach the bookshelf, your paws silent against the cold floor. " +
                                            "It stands tall against the wall, its once-polished wood " +
                                            "now dull and splintered. Most of the shelves are bare, coated in dust thick enough " +
@@ -270,4 +278,68 @@ public static class Text
                                         "you select a small pick and a thin rod, using them to work the lock. The old lock " +
                                         "resists at first, but with a soft click, it finally gives way. " +
                                         "With a sigh of relief, you open the door slowly, careful not to make a sound.";
+    
+    
+    
+    
+    public const string TwoSheets =  "Several folded bed sheets, their fabric yellowed but sturdy.";
+    public const string BroomAndDustPan = "A broom and dustpan that lean against the far wall, unused for " +
+                                          "what seems like years.";
+    public const string Manacles = "A set of manacles, their chains coiled and rusted, almost blending into " +
+                                   "the shadowy corner.";
+    public const string TenCoins = "Ten gold coins, their surfaces dull with age but still carrying a " +
+                                   "reassuring weight.";
+    public const string Glasses = "A pair of glasses, their lenses smudged with dust, the frames bent slightly " +
+                                  "out of shape.";
+    public const string BookOfPrayers = "A book of prayers, its leather cover cracked with age, the pages thin and delicate.";
+    public const string Dagger = "A dagger, its handle wrapped in worn leather, the blade dull but still sharp enough to be dangerous.";
+    public const string LockPickSet = "A small, rusted set of tools—a few thin rods of metal, a hook, and something " +
+                                      "resembling a flattened key. They seem out of place, their purpose unclear at " +
+                                      "first, though their delicate shapes suggest they might fit into something " +
+                                      "small and stubborn.";
+    public const string CatFigurine = "A wooden figurine, carved in the shape of a cat. It’s crude but detailed enough " +
+                                      "to capture the curve of a tail and the prickle of carved fur along its back. " +
+                                      "The eyes, once painted, have long since faded, leaving behind empty impressions in the wood.";
+    public const string FirePoker = "A fire poker, its iron worn smooth from years of use, still sturdy " +
+                                    "enough to be a weapon or a tool.";
+    public const string LargeStone = "A large, loose stone, sitting slightly askew among the others. Heavier than " +
+                                     "it looks, it would be perfect for smashing something stubborn.";
+    public const string BatteredShield = "A shield, nearly invisible at first, hidden beneath layers of dust and cobwebs. " +
+                                         "Its wood is worn, its emblem barely discernible, but it remains solid—built " +
+                                         "to withstand blows.";
+    public const string RingOfKeys = "A ring carrying several small keys that might help you escape or uncover other useful items along your journey.";
+    
+    public const string CrudeShield ="a crude but sturdy shield";
+    
+    public const string LongDagger = "A slender dagger with an extended blade, perfect for precise, stealthy strikes.";
+    
+    public const string  OneSheet= " A single, plain set of sheets.";
+
+    public const string GlassVial =
+        "A delicate vial filled with a glowing liquid that shifts between blue and green hues—promising and restorative.";
+
+    public const string TwelveCoins = "A handful of coins with intricate engravings that gleam invitingly";//@TODO make money trackable again
+    public const string ThirteenCoins = "A handful of coins with intricate engravings that gleam invitingly";
+    public const string TwentyCoins = "A handful of coins with intricate engravings that gleam invitingly";
+    public const string CatCollar = "A simple, worn collar that once belonged to a feline; now, it's little more than a sentimental trinket.";
+    public const string DogStatue = "A small, carved statue of a dog—more ornamental than practical, serving as a quiet reminder of danger.";
+
+    public const string Shield = "A battered shield marked by past battles; it may still offer vital protection.";
+    public const string FourSheets = "Worn but neatly folded sheets that, when tied together, could form a makeshift rope for climbing.";
+    
+    public const string Rope = "A sturdy length of rope that might aid you in climbing down from a window or navigating obstacles.";
+
+    public const string ShortSword = "A compact, well-balanced blade, perfect for swift, decisive strikes.";
+    public const string WorryBeads = " A string of polished beads that offer a calming, rhythmic clack when held.";
+    public const string DogWhistle = "A simple metallic whistle that emits a faint, unimpressive sound, likely of little practical use.";
+    public const string LoadOfBread = "A crusty, hearty loaf that, despite its age, smells inviting and promises nourishment.";
+    /*public const string
+    public const string
+    public const string
+    public const string
+    public const string
+    public const string
+    public const string
+    */
+
 }

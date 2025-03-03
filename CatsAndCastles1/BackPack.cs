@@ -3,6 +3,9 @@ namespace CatsAndCastles1;
 public class BackPack
 {
     private readonly UserInput _userInput = new UserInput();
+    public string[] Options = new string[3];
+    public string[] Descriptions = new string[3];
+    
     public string emptySpot = "a faint outline marking the spot where something once rested";
     public string[] Pack { get; set; } = new string[5];
     public List<string> DiscardedItems { get; set; }
@@ -13,8 +16,6 @@ public class BackPack
 
     public int Wallet { get; set; }
     public int NumberOfSheets { get; set; }
-    //@add is it possible to make all possible items into an enum so I don't have to worry about string typos
-
     public int NumberOfItemsInPack() // counts how many items are in pack
     {
         var counter = 0;
@@ -299,8 +300,7 @@ public class BackPack
     }
 
 
-    public string[] Options = new string[3];
-    public string[] Descriptions = new string[3];
+    
 
 
     public void AssignItemsBasedOnLocation(string location, Characters guardDog = null)

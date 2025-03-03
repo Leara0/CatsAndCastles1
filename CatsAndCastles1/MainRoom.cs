@@ -8,9 +8,9 @@ public class MainRoom(Characters cat, BackPack backPack)
 
     public void RunMainRoom()
     {
-        //readonly Text text;
+        //readonly LocationText LocationText;
         Console.Clear();
-        Console.WriteLine(Text.CatBorder1);
+        Console.WriteLine(LocationText.CatBorder1);
         Console.WriteLine($"Greetings, adventurer. The night has been long and unkind, and your " +
                           $"memories of it are little more than a haze. " +
                           $"\n\nYou wake, dazed and disoriented, your senses slow to return as you " +
@@ -25,13 +25,13 @@ public class MainRoom(Characters cat, BackPack backPack)
     public void SubsequentWakeUp()
     {
         cat.Health = 60;
-        Console.WriteLine(Text.SubsequentWakeUp);
+        Console.WriteLine(LocationText.SubsequentWakeUp);
         StartInRoom();
     }
 
     public void StartInRoom()
     {
-        Console.WriteLine(Text.StartInRoom);
+        Console.WriteLine(LocationText.StartInRoom);
         Console.ReadLine();
         MainRoomMethod();
     }
@@ -46,20 +46,20 @@ public class MainRoom(Characters cat, BackPack backPack)
         {
             //backPack.Pack[1] = "the rusted set of tools";
             Console.Clear();
-            Console.WriteLine(Text.CatBorder1);
-            Console.WriteLine(Text.FirstRoomChoices);
+            Console.WriteLine(LocationText.CatBorder1);
+            Console.WriteLine(LocationText.FirstRoomChoices);
             if (backPack.DiscardedItems.Count == 1)
             {
-                Console.WriteLine(Text.DiscardPile1Item);
+                Console.WriteLine(LocationText.DiscardPile1Item);
             }
 
 
             if (backPack.DiscardedItems.Count > 1)
             {
-                Console.WriteLine(Text.DiscardPileMultiItems);
+                Console.WriteLine(LocationText.DiscardPileMultiItems);
             }
 
-            Console.WriteLine(Text.WhereToExplore);
+            Console.WriteLine(LocationText.WhereToExplore);
 
             switch (_userInput.UserChoice(8))
             {
@@ -114,7 +114,7 @@ public class MainRoom(Characters cat, BackPack backPack)
 
         void DecisionTime(string location)
         {
-            Console.WriteLine(Text.TakeItemsOrLeaveRoom);
+            Console.WriteLine(LocationText.TakeItemsOrLeaveRoom);
 
 
             if (_userInput.UserChoice() == "1")
@@ -124,33 +124,33 @@ public class MainRoom(Characters cat, BackPack backPack)
 
         void ExploreNightStand()
         {
-            Console.WriteLine(Text.ExploreNightStand);
+            Console.WriteLine(LocationText.ExploreNightStand);
             ListItemsInLocation("nightstand");
-            Console.WriteLine(Text.ChoiceToTakeItemsNightStand);
+            Console.WriteLine(LocationText.ChoiceToTakeItemsNightStand);
             DecisionTime("nightstand");
         }
 
         void ExploreCloset()
         {
-            Console.WriteLine(Text.ExploreCloset);
+            Console.WriteLine(LocationText.ExploreCloset);
             ListItemsInLocation("closet");
-            Console.WriteLine(Text.ChoiceToTakeItemsCloset);
+            Console.WriteLine(LocationText.ChoiceToTakeItems);//changed this;
             DecisionTime("closet");
         }
 
         void ExploreBookshelf()
         {
-            Console.WriteLine(Text.ExploreBookshelf);
+            Console.WriteLine(LocationText.ExploreBookshelf);
             ListItemsInLocation("bookshelf");
-            Console.WriteLine(Text.ChoiceToTakeItemsBookshelf);
+            Console.WriteLine(LocationText.ChoiceToTakeItemsBookshelf);
             DecisionTime("bookshelf");
         }
 
         void ExploreHearth()
         {
-            Console.WriteLine(Text.ExploreHearth);
+            Console.WriteLine(LocationText.ExploreHearth);
             ListItemsInLocation("hearth");
-            Console.WriteLine(Text.WouldYouLikeToTakeAnything);
+            Console.WriteLine(LocationText.WouldYouLikeToTakeAnything);
             DecisionTime("hearth");
         }
 
@@ -158,7 +158,7 @@ public class MainRoom(Characters cat, BackPack backPack)
         void ExploreWindow()
         {
             Console.Clear();
-            Console.WriteLine(Text.ExploreWindow);
+            Console.WriteLine(LocationText.ExploreWindow);
             switch (_userInput.UserChoice(3))
             {
                 case "1":
@@ -175,7 +175,7 @@ public class MainRoom(Characters cat, BackPack backPack)
 
                     if (hasSheets && hasRope)
                     {
-                        Console.WriteLine(Text.HowToProceedWithSheetsAndRope);
+                        Console.WriteLine(LocationText.HowToProceedWithSheetsAndRope);
                         switch (_userInput.UserChoice(4))
                         {
                             case "1":
@@ -195,9 +195,9 @@ public class MainRoom(Characters cat, BackPack backPack)
                     else if (hasSheets || hasRope)
                     {
                         if (hasSheets)
-                            Console.WriteLine(Text.MakeAChoiceWithSheets);
+                            Console.WriteLine(LocationText.MakeAChoiceWithSheets);
                         if (hasRope)
-                            Console.WriteLine(Text.MakeAChoiceWithRope);
+                            Console.WriteLine(LocationText.MakeAChoiceWithRope);
 
                         switch (_userInput.UserChoice(3))
                         {
@@ -217,8 +217,8 @@ public class MainRoom(Characters cat, BackPack backPack)
                     }
                     else
                     {
-                        Console.WriteLine(Text.MakeChoiceNoSheetsOrRope);
-                        Console.WriteLine(Text.CatBorder1);
+                        Console.WriteLine(LocationText.MakeChoiceNoSheetsOrRope);
+                        Console.WriteLine(LocationText.CatBorder1);
                         if (_userInput.UserChoice() == "1")
                             JumpDown();
                         else
@@ -239,19 +239,19 @@ public class MainRoom(Characters cat, BackPack backPack)
 
         void JumpDown()
         {
-            Console.WriteLine(Text.CatBorder1);
-            Console.WriteLine(Text.LeapDown);
+            Console.WriteLine(LocationText.CatBorder1);
+            Console.WriteLine(LocationText.LeapDown);
             cat.Location = Characters.Place.PassedOut;
         }
 
 
         void UseSheets(string item = "sheets")
         {
-            Console.WriteLine(Text.CatBorder1);
+            Console.WriteLine(LocationText.CatBorder1);
             if (item == "sheets")
-                Console.WriteLine(Text.UseSheets);
+                Console.WriteLine(LocationText.UseSheets);
             else if (item == "rope")
-                Console.WriteLine(Text.UseRope);
+                Console.WriteLine(LocationText.UseRope);
             if (backPack.NumberOfSheets > 5 || item == "rope")
                 Console.WriteLine(
                     $"Your {(item == "sheets" ? $"sheets reach {backPack.NumberOfSheets * 4}" : "rope reaches 20")} feet " +
@@ -272,14 +272,14 @@ public class MainRoom(Characters cat, BackPack backPack)
                     if (backPack.NumberOfSheets > 5 || item == "rope")
                     {
                         if (item == "sheets")
-                            Console.WriteLine(Text.ClimbDownSheets);
+                            Console.WriteLine(LocationText.ClimbDownSheets);
                         else
-                            Console.WriteLine(Text.ClimbDownRope);
+                            Console.WriteLine(LocationText.ClimbDownRope);
                         cat.Location = Characters.Place.OutsideCastle;
                     }
                     else
                     {
-                        Console.WriteLine(Text.ClimbDownToLeap);
+                        Console.WriteLine(LocationText.ClimbDownToLeap);
                         JumpDown();
                     }
 
@@ -296,7 +296,7 @@ public class MainRoom(Characters cat, BackPack backPack)
 
         void ExploreDoor() //@add revisit this
         {
-            Console.WriteLine(Text.CatBorder1 + "\n" + Text.ExploreDoor);
+            Console.WriteLine(LocationText.CatBorder1 + "\n" + LocationText.ExploreDoor);
             Console.WriteLine("");
             if (_userInput.UserChoice() == "1")
                 AttemptToUnlockDoor();
@@ -326,18 +326,18 @@ public class MainRoom(Characters cat, BackPack backPack)
             if (hasLockPick && (hasStone || hasShield))
             {
                 //listing what you find
-                Console.WriteLine(Text.AtDoorCheckInventoryHavePickAndSS);
+                Console.WriteLine(LocationText.AtDoorCheckInventoryHavePickAndSS);
                 if (hasStone)
-                    Console.WriteLine(Text.AtDoorAlsoHaveStone);
+                    Console.WriteLine(LocationText.AtDoorAlsoHaveStone);
                 if (hasShield)
-                    Console.WriteLine(Text.AtDoorAlsoHaveShield);
+                    Console.WriteLine(LocationText.AtDoorAlsoHaveShield);
 
                 //setting up options
-                Console.WriteLine(Text.OptionsAtDoorHavePickAndSS);
+                Console.WriteLine(LocationText.OptionsAtDoorHavePickAndSS);
 
                 if (hasStone && hasShield)
                 {
-                    Console.WriteLine(Text.OptionsAtDoorHaveStoneAndShield);
+                    Console.WriteLine(LocationText.OptionsAtDoorHaveStoneAndShield);
                 }
                 else if (hasStone)
                     Console.WriteLine("'3' - Use the rock to smash the lock off.");
@@ -371,7 +371,7 @@ public class MainRoom(Characters cat, BackPack backPack)
 
             else if (hasStone && hasShield)
             {
-                Console.WriteLine(Text.AtDoorCheckInventoryHaveSS);
+                Console.WriteLine(LocationText.AtDoorCheckInventoryHaveSS);
                 switch (_userInput.UserChoice(3))
                 {
                     case "1":
@@ -389,7 +389,7 @@ public class MainRoom(Characters cat, BackPack backPack)
 
             else if (hasLockPick)
             {
-                Console.WriteLine(Text.AtDoorCheckInventoryHavePick + "\n" + Text.CatBorder1);
+                Console.WriteLine(LocationText.AtDoorCheckInventoryHavePick + "\n" + LocationText.CatBorder1);
                 if (_userInput.UserChoice() == "1")
                     PickLock();
                 else
@@ -399,7 +399,7 @@ public class MainRoom(Characters cat, BackPack backPack)
 
             else if (hasShield)
             {
-                Console.WriteLine(Text.AtDoorCheckInventoryHaveShield + "\n" + Text.CatBorder1);
+                Console.WriteLine(LocationText.AtDoorCheckInventoryHaveShield + "\n" + LocationText.CatBorder1);
                 if (_userInput.UserChoice() == "1")
                     UseShield();
                 else
@@ -407,7 +407,7 @@ public class MainRoom(Characters cat, BackPack backPack)
             }
             else if (hasStone)
             {
-                Console.WriteLine(Text.AtDoorCheckInventoryHaveStone + "\n" + Text.CatBorder1);
+                Console.WriteLine(LocationText.AtDoorCheckInventoryHaveStone + "\n" + LocationText.CatBorder1);
                 if (_userInput.UserChoice() == "1")
                     UseStone();
                 else
@@ -415,7 +415,7 @@ public class MainRoom(Characters cat, BackPack backPack)
             }
             else
             {
-                Console.WriteLine(Text.AtDoorCheckInventoryFindNothing);
+                Console.WriteLine(LocationText.AtDoorCheckInventoryFindNothing);
                 _userInput.DramaticPause();
                 ReturnToMainPartOfRoom("door");
             }
@@ -427,13 +427,13 @@ public class MainRoom(Characters cat, BackPack backPack)
         */
         void UseStone()
         {
-            Console.WriteLine(Text.CatBorder3 + "\n" + Text.UseStoneOnDoor);
+            Console.WriteLine(LocationText.CatBorder3 + "\n" + LocationText.UseStoneOnDoor);
             _userInput.DramaticPauseClrScreen();
             int roll = rnd.Next(1, 21);
             Console.WriteLine($"You rolled a {roll}");
             if (roll > 16)
             {
-                Console.WriteLine(Text.StoneOrShieldWorked);
+                Console.WriteLine(LocationText.StoneOrShieldWorked);
                 _userInput.DramaticPause();
                 cat.Location = Characters.Place.ThirdFloor;
             }
@@ -451,13 +451,13 @@ public class MainRoom(Characters cat, BackPack backPack)
 
         void UseShield()
         {
-            Console.WriteLine(Text.CatBorder3 + "\n" + Text.UseShieldOnDoor);
+            Console.WriteLine(LocationText.CatBorder3 + "\n" + LocationText.UseShieldOnDoor);
             _userInput.DramaticPause();
             int roll = rnd.Next(1, 21);
             Console.WriteLine($"You rolled a {roll}");
             if (roll > 25)
             {
-                Console.WriteLine(Text.StoneOrShieldWorked);
+                Console.WriteLine(LocationText.StoneOrShieldWorked);
                 _userInput.DramaticPause();
                 cat.Location = Characters.Place.ThirdFloor;
             }
@@ -473,7 +473,7 @@ public class MainRoom(Characters cat, BackPack backPack)
             }
             else
             {
-                Console.WriteLine(Text.ShieldBrakes);
+                Console.WriteLine(LocationText.ShieldBrakes);
                 _userInput.DramaticPauseClrScreen();
 
                 for (var i = 0; i < backPack.Pack.Length; i++)
@@ -488,7 +488,7 @@ public class MainRoom(Characters cat, BackPack backPack)
 
         void PickLock()
         {
-            Console.WriteLine(Text.UsePickOnDoor + "\n" + Text.CatBorder1);
+            Console.WriteLine(LocationText.UsePickOnDoor + "\n" + LocationText.CatBorder1);
             _userInput.DramaticPause();
             cat.Location = Characters.Place.ThirdFloor;
         }

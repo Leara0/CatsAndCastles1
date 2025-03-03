@@ -85,7 +85,7 @@ public class Fight
            {
                Console.WriteLine($"\nYou have a choice: do you engage the guard or do you flee");
                Console.WriteLine(
-                   "\nPress '1' to engage the guard, risking a fight but possibly gaining valuable loot." +
+                   "\nPress '1' to engage the guard, risking a fight but possibly gaining valuable LocationText." +
                    "\nPress '2' to attempt to bribe the guard, trusting your coin to buy you time to explore while" +
                    $"you explore this floor.- you have {backPack.Wallet} gold coins" +
                    "\nPress '3' to carefully step away, leaving him undisturbed and continuing your exploration " +
@@ -303,7 +303,7 @@ public class Fight
 
                if (cat.Health > 0)
                {
-                   Console.WriteLine(Text.CatBorder1);
+                   Console.WriteLine(LocationText.CatBorder1);
                    _userInput.DramaticPause();
                    
                    
@@ -329,7 +329,7 @@ public class Fight
                {
                    Console.WriteLine("\nYou are victorious in the fight against the guard");
                    guardDog.Location = Characters.Place.Dead;
-                   LootBody();
+                   LocationTextBody();
                    return;
                }
 
@@ -347,7 +347,7 @@ public class Fight
                Console.WriteLine($"\nYour remaining health is {(cat.Health >= 0 ? cat.Health : "0")} out of 60");
                if (cat.Health > 0)
                {
-                   Console.WriteLine(Text.CatBorder1);
+                   Console.WriteLine(LocationText.CatBorder1);
                    _userInput.DramaticPause();
                    
                }
@@ -364,7 +364,7 @@ public class Fight
 
 
 
-       void LootBody()
+       void LocationTextBody()
        {
            Console.WriteLine("\nYou stand over the fallen guard, the echoes of battle slowly fading. His motionless " +
                              "body lies before you, and you notice several items that might aid you on your journey:");
@@ -392,10 +392,10 @@ public class Fight
            }
 
 
-           Console.WriteLine("You have a choice: loot the body now and gather any supplies that might be useful, " +
+           Console.WriteLine("You have a choice: LocationText the body now and gather any supplies that might be useful, " +
                              "or leave the guard's remains undisturbed for the moment. Remember, if you choose not to " +
                              "take anything right now, you can always return later to search his body again.. " +
-                             "\n\nPress '1' to loot and '2' to move on. ");
+                             "\n\nPress '1' to LocationText and '2' to move on. ");
            if (_userInput.UserChoice() == "1")
            {
                backPack.TakeItems(cat, guardLocation, guardDog);
