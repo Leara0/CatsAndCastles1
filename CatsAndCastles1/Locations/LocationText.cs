@@ -77,8 +77,11 @@ public class LocationText
     public const string ChoiceToTakeItems =
         "\n\nEach item has its own allure, yet you know that adding too much to your pack could slow you down. " +
         "You also have the option to leave this location without taking anything, knowing you can always return " +
-        "later if desired... " +
-        "\n\nPlease enter the number cooresponding with the item you would like to pickup or press 4 to leave this area";
+        "later if desired... ";
+
+    public const string PickAnItem = "Please use the \u001b[35mup\u001b[0m and \u001b[35mdown\u001b[0m arrow key to " +
+                                     "navigate and press 'enter' to select.";
+        
     //@TODO add choice to take items to every call
     public const string ChoiceToTakeMoreItems =
         "Would you like to take any more items? If so, please enter the number " +
