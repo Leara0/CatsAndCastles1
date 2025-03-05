@@ -48,8 +48,6 @@ public class UserInput ()
 
     public bool SpaceInPack(string item, BackPack backpack) //this method will deal with a full pack
     {
-        if (packMethods.GoldInPack(item) || packMethods.SheetsInPack(item))
-            return true;
         if (packMethods.NumberOfItemsInPack() == 5)
         {
             Console.WriteLine("Your pack is too burdened to add any more items. You must remove" +
@@ -76,7 +74,9 @@ public class UserInput ()
         {
             
         }
-        
+        //show interactive menu options <-- these are all user interactions
+        //capture choice
+        //feed into backpack
     }
 
 
