@@ -4,7 +4,7 @@ namespace CatsAndCastles1;
 
 public class InteractiveMenu
 {
-    public int GiveChoices(string[] options, string leave)
+    public int GiveChoices(List<string> options, string leave)
     {
         int optionSelected = 0;
         ConsoleKeyInfo key;
@@ -17,10 +17,10 @@ public class InteractiveMenu
         while (!isSelected)
         {
             Console.SetCursorPosition(left, top);
-            for (int i = 0; i < options.Length; i++)
+            for (int i = 0; i < options.Count; i++)
                 Console.WriteLine($"{(optionSelected == i ? color : "    ")}{options[i]}\u001b[0m");
             if (leave != "")
-                Console.WriteLine($"{(optionSelected == options.Length ? color : "    ")}{leave}\u001b[0m");
+                Console.WriteLine($"{(optionSelected == options.Count ? color : "    ")}{leave}\u001b[0m");
             
 
             key = Console.ReadKey();
@@ -30,14 +30,14 @@ public class InteractiveMenu
                 case ConsoleKey.UpArrow:
                     if (optionSelected == 0)
                     {
-                        optionSelected = options.Length;
+                        optionSelected = options.Count;
                         break;
                     }
 
                     optionSelected--;
                     break;
                 case ConsoleKey.DownArrow:
-                    if (optionSelected == options.Length)
+                    if (optionSelected == options.Count)
                     {
                         optionSelected = 0;
                         break;

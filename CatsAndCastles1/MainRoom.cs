@@ -150,7 +150,7 @@ public class MainRoom(Characters cat, BackPack backPack)
         {
             Console.WriteLine(LocationText.ExploreHearth);
             ListItemsInLocation("hearth");
-            Console.WriteLine(LocationText.WouldYouLikeToTakeAnything);
+            //Add question do you want to take anything
             DecisionTime("hearth");
         }
 

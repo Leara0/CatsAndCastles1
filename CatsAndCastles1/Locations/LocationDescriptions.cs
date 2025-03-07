@@ -2,214 +2,208 @@ namespace CatsAndCastles1;
 
 public class LocationDescriptions
 {
-    public string[] ClosetDescription =
+    public List<string> ClosetDescription = new List<string>()
     {
-        LocationText.ExploreCloset,
-        LocationText.TwoSheetsDesc,
-        LocationText.BroomAndDustPanDesc,
-        LocationText.ManaclesDesc,
-        //footer/pick LocationText same for all locations
+        ItemDescriptionText.TwoSheetsDesc,
+        ItemDescriptionText.BroomAndDustPanDesc,
+        ItemDescriptionText.ManaclesDesc,
+        //footer/pick ItemDescriptionText same for all locations
     };
 
-    public string[] ClosetItems =
+    public List<string> ClosetItems =new List<string>()
     {
-        LocationText.TwoSheets,
-        LocationText.BroomAndDustPan,
-        LocationText.Manacles,
+        ItemDescriptionText.TwoSheets,
+        ItemDescriptionText.BroomAndDustPan,
+        ItemDescriptionText.Manacles,
     };
 
-    public string[] NightStandDescription =
+    public List<string> NightStandDescription =new List<string>()
     {
-        LocationText.ExploreNightStand,
-        LocationText.TenCoinsDesc,
-        LocationText.GlassesDesc,
-        LocationText.BookOfPrayersDesc
+       
+        ItemDescriptionText.TenCoinsDesc,
+        ItemDescriptionText.GlassesDesc,
+        ItemDescriptionText.BookOfPrayersDesc
     };
 
-    public string[] NightStandItems =
+    public List<string> NightStandItems =new List<string>()
     {
-        LocationText.TenCoins,
-        LocationText.Glasses,
-        LocationText.BookOfPrayers
+        ItemDescriptionText.TenCoins,
+        ItemDescriptionText.Glasses,
+        ItemDescriptionText.BookOfPrayers
     };
 
-    public string[] BookshelfDescription =
+    public List<string> BookshelfDescription = new List<string>()
     {
-        LocationText.ExploreBookshelf,
-        LocationText.DaggerDesc,
-        LocationText.LockPickSetDesc,
-        LocationText.CatFigurineDesc
+        
+        ItemDescriptionText.DaggerDesc,
+        ItemDescriptionText.LockPickSetDesc,
+        ItemDescriptionText.CatFigurineDesc
     };
 
-    public string[] BookshelfItems =
+    public List<string> BookshelfItems = new List<string>()
     {
-        LocationText.Dagger,
-        LocationText.LockPickSet,
-        LocationText.CatFigurine
+        ItemDescriptionText.Dagger,
+        ItemDescriptionText.LockPickSet,
+        ItemDescriptionText.CatFigurine
+    };
+ 
+    public List<string> HearthDescription =new List<string>()
+    {
+       
+        ItemDescriptionText.FirePokerDesc,
+        ItemDescriptionText.LargeStoneDesc,
+        ItemDescriptionText.BatteredShieldDesc
     };
 
-    public string[] HearthDescription =
+    public List<string> HearthItems =new List<string>()
     {
-        LocationText.ExploreHearth,
-        LocationText.FirePokerDesc,
-        LocationText.LargeStoneDesc,
-        LocationText.BatteredShieldDesc
+        ItemDescriptionText.FirePoker,
+        ItemDescriptionText.LargeStone,
+        ItemDescriptionText.BatteredShield
     };
 
-    public string[] HearthItems =
+    public List<string> F3Room2Description =new List<string>()
     {
-        LocationText.FirePoker,
-        LocationText.LargeStone,
-        LocationText.BatteredShield
+       
+        ItemDescriptionText.LongDaggerDesc,
+        ItemDescriptionText.ThirteenCoinsDesc,
     };
 
-    public string[] F3Room2Description =
+    public List<string> F3Room2Items =new List<string>()
     {
-        //LocationText/ExploreF3Room2 @TODO write this
-        LocationText.LongDaggerDesc,
-        LocationText.ThirteenCoinsDesc,
+        ItemDescriptionText.LongDagger,
+        ItemDescriptionText.ThirteenCoins,
     };
 
-    public string[] F3Room2Items =
+    public List<string> F3Room3Description =new List<string>()
     {
-        LocationText.LongDagger,
-        LocationText.ThirteenCoins,
+       
+        ItemDescriptionText.GlassVialDesc,
+        ItemDescriptionText.TwelveCoinsDesc,
+        ItemDescriptionText.CatCollarDesc
     };
 
-    public string[] F3Room3Description =
+    public List<string> F3Room3Items =new List<string>()
     {
-        //LocationText/ExploreF3Room3 @TODO write this
-        LocationText.GlassVialDesc,
-        LocationText.TwelveCoinsDesc,
-        LocationText.CatCollarDesc
+        ItemDescriptionText.GlassVial,
+        ItemDescriptionText.TwelveCoins,
+        ItemDescriptionText.CatCollar
     };
 
-    public string[] F3Room3Items =
+    public List<string> F3Room4Description =new List<string>()
     {
-        LocationText.GlassVial,
-        LocationText.TwelveCoins,
-        LocationText.CatCollar
+       
+        ItemDescriptionText.TenCoinsDesc,
+        ItemDescriptionText.DaggerDesc,
+        ItemDescriptionText.CrudeShieldDesc
     };
 
-    public string[] F3Room4Description =
+    public List<string> F3Room4Items =new List<string>()
     {
-        //LocationText/ExploreF3Room4 @TODO write this
-        LocationText.TenCoinsDesc,
-        LocationText.DaggerDesc,
-        LocationText.CrudeShieldDesc
+        ItemDescriptionText.TenCoins,
+        ItemDescriptionText.Dagger,
+        ItemDescriptionText.CrudeShield
     };
 
-    public string[] F3Room4Items =
+    public List<string> F2Room1Description =new List<string>()
     {
-        LocationText.TenCoins,
-        LocationText.Dagger,
-        LocationText.CrudeShield
+        
+        ItemDescriptionText.DogStatueDesc,
+        ItemDescriptionText.GlassVialDesc,
+        ItemDescriptionText.CrudeShieldDesc
     };
 
-    public string[] F2Room1Description =
+    public List<string> F2Room1Items =new List<string>()
     {
-        //LocationText/ExploreF2Room1 @TODO write this
-        LocationText.DogStatueDesc,
-        LocationText.GlassVialDesc,
-        LocationText.CrudeShieldDesc
+        ItemDescriptionText.DogStatue,
+        ItemDescriptionText.GlassVial,
+        ItemDescriptionText.CrudeShield
     };
 
-    public string[] F2Room1Items =
+    public List<string> F2Room2Description = new List<string>()
     {
-        LocationText.DogStatue,
-        LocationText.GlassVial,
-        LocationText.CrudeShield
+        
+        ItemDescriptionText.ThirteenCoinsDesc,
+        ItemDescriptionText.GlassesDesc
     };
 
-    public string[] F2Room2Description =
+    public List<string> F2Room2Items = new List<string>()
     {
-        //LocationText/ExploreF2Room2 @TODO write this
-        LocationText.ThirteenCoinsDesc,
-        LocationText.GlassesDesc
+        ItemDescriptionText.ThirteenCoins,
+        ItemDescriptionText.Glasses,
     };
 
-    public string[] F2Room2Items =
+    public List<string> F2Room3Description = new List<string>()
     {
-        LocationText.ThirteenCoins,
-        LocationText.Glasses,
+           ItemDescriptionText.RopeDesc,
+        ItemDescriptionText.GlassesDesc,
+        ItemDescriptionText.ShortSwordDesc
     };
 
-    public string[] F2Room3Description =
+    public List<string> F2Room3Items = new List<string>()
     {
-        //LocationText/ExploreF2Room3 @TODO write this
-        LocationText.RopeDesc,
-        LocationText.GlassesDesc,
-        LocationText.ShortSwordDesc
+        ItemDescriptionText.Rope,
+        ItemDescriptionText.Glasses,
+        ItemDescriptionText.ShortSword
     };
 
-    public string[] F2Room3Items =
+    public List<string> F2Room4Description = new List<string>()
     {
-        LocationText.Rope,
-        LocationText.Glasses,
-        LocationText.ShortSword
+                ItemDescriptionText.TwoSheetsDesc,
+        ItemDescriptionText.GlassVialDesc,
+        ItemDescriptionText.CrudeShieldDesc
     };
 
-    public string[] F2Room4Description =
+    public List<string> F2Room4Items = new List<string>()
     {
-        //LocationText/ExploreF2Room4 @TODO write this
-        LocationText.TwoSheetsDesc,
-        LocationText.GlassVialDesc,
-        LocationText.CrudeShieldDesc
+        ItemDescriptionText.TwoSheets,
+        ItemDescriptionText.GlassVial,
+        ItemDescriptionText.CrudeShield,
     };
 
-    public string[] F2Room4Items =
+    public List<string> Guard1Description = new List<string>()
     {
-        LocationText.TwoSheets,
-        LocationText.GlassVial,
-        LocationText.CrudeShield,
+                ItemDescriptionText.RingOfKeysDesc,
+        ItemDescriptionText.DogWhistleDesc,
+        ItemDescriptionText.CrudeShieldDesc,
+        ItemDescriptionText.TwoSheetsDesc,
     };
 
-    public string[] Guard1Description =
+    public List<string> Guard1Items = new List<string>()
     {
-        //LocationText/ExploreGuard1 @TODO write this
-        LocationText.RingOfKeysDesc,
-        LocationText.DogWhistleDesc,
-        LocationText.CrudeShieldDesc,
-        LocationText.TwoSheetsDesc,
+        ItemDescriptionText.RingOfKeys,
+        ItemDescriptionText.DogWhistle,
+        ItemDescriptionText.CrudeShield,
+        ItemDescriptionText.TwoSheets,
     };
 
-    public string[] Guard1Items =
+    public List<string> Guard2Description = new List<string>()
     {
-        LocationText.RingOfKeys,
-        LocationText.DogWhistle,
-        LocationText.CrudeShield,
-        LocationText.TwoSheets,
+               ItemDescriptionText.TenCoinsDesc,
+        ItemDescriptionText.WorryBeadsDesc,
+        ItemDescriptionText.BatteredShieldDesc,
+        ItemDescriptionText.DogWhistleDesc
     };
 
-    public string[] Guard2Description =
+    public List<string> Guard2Items = new List<string>()
     {
-        //LocationText/ExploreGuard2 @TODO write this
-        LocationText.TenCoinsDesc,
-        LocationText.WorryBeadsDesc,
-        LocationText.BatteredShieldDesc,
-        LocationText.DogWhistleDesc
+        ItemDescriptionText.TenCoins,
+        ItemDescriptionText.WorryBeads,
+        ItemDescriptionText.BatteredShield,
+        ItemDescriptionText.DogWhistle,
     };
 
-    public string[] Guard2Items =
+    public List<string> WardenDescription = new List<string>()
     {
-        LocationText.TenCoins,
-        LocationText.WorryBeads,
-        LocationText.BatteredShield,
-        LocationText.DogWhistle,
+        ItemDescriptionText.TwentyCoinsDesc,
+        ItemDescriptionText.LoafOfBreadDesc,
+        ItemDescriptionText.GlassVialDesc
     };
 
-    public string[] WardenDescription =
+    public List<string> WardenItems = new List<string>()
     {
-        //LocationText/ExploreWarden @TODO write this
-        LocationText.TwentyCoinsDesc,
-        LocationText.LoafOfBreadDesc,
-        LocationText.GlassVialDesc
-    };
-
-    public string[] WardenItems =
-    {
-        LocationText.TwentyCoins,
-        LocationText.LoafOfBread,
-        LocationText.GlassVial
+        ItemDescriptionText.TwentyCoins,
+        ItemDescriptionText.LoafOfBread,
+        ItemDescriptionText.GlassVial
     };
 }
