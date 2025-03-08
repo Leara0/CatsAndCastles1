@@ -12,12 +12,13 @@ namespace CatsAndCastles1;
 public class MainStory
 {
     private readonly UserInput _userInput = new UserInput();
-    ListsForLocations _listsForLocations = new ListsForLocations();
+    ListsForLocations lists = new ListsForLocations();
     UserInteractionsBackpack userInteractBK = new UserInteractionsBackpack();
 
-
+    
     public void RunGame()
     {
+        #region instantiating Classes
         var cat = new Characters();
         {
             cat.Name = _userInput.GetName();
@@ -46,10 +47,20 @@ public class MainStory
             warden.Location = Characters.Place.FirstFloor;
             warden.Health = warden.SetHealth(60, 75);
         }
+        DerivedItemsLocation closet = new DerivedItemsLocation
+            (LocationText.ExploreCloset, lists.ClosetItems, lists.ClosetDescription);
+        DerivedItemsLocation nightstand = new DerivedItemsLocation
+            (LocationText.ExploreNightStand, lists.NightStandItems, lists.NightStandDescription);
+        DerivedItemsLocation bookshelf = new DerivedItemsLocation
+            (LocationText.ExploreBookshelf, lists.BookshelfItems, lists.BookshelfDescription);
+        DerivedItemsLocation hearth = new DerivedItemsLocation
+            (LocationText.ExploreHearth, lists.HearthItems, lists.HearthDescription);
         //var mainRoom = new MainRoom(cat, backPackMethod);
+        #endregion
 
+        
         GameTree gameTree = new GameTree();
-        gameTree.MainRoomSwitchboard(backPackMethod, cat);
+        gameTree.MainRoomSwitchboard(backPackMethod, cat, closet, nightstand, bookshelf, hearth);
 
         //CastleWithExitStrategies(cat, backPackMethod, mainRoom, guardDog1, guardDog2, warden);
 

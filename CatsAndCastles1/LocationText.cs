@@ -13,6 +13,13 @@ public class LocationText
     public const string CatBorder3 =
         "\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n";
 
+    public const string IntroCutScene = "Greetings, adventurer. The night has been long and unkind, and your " +
+                                        "memories of it are little more than a haze. " +
+                                        "\n\nYou wake, dazed and disoriented, your senses slow to return as you " +
+                                        "instinctively groom your soft coat. A quick glance reveals your trusty pack — a " +
+                                        "container meant to carry up to five treasures. Yet as you inspect it, your heart sinks: " +
+                                        "it is empty.";
+
     public const string StartInRoom = "The air is damp and heavy, thick with the scent of old stone and something " +
                                       "faintly metallic. A chill clings to your fur, creeping in from the cold " +
                                       "stone floor beneath you. The dim light from a single flickering torch casts long, " +
