@@ -12,9 +12,9 @@ namespace CatsAndCastles1;
 public class MainStory
 {
     private readonly UserInput _userInput = new UserInput();
-    LocationDescriptions locationDescriptions = new LocationDescriptions();
+    ListsForLocations _listsForLocations = new ListsForLocations();
     UserInteractionsBackpack userInteractBK = new UserInteractionsBackpack();
-    
+
 
     public void RunGame()
     {
@@ -24,16 +24,8 @@ public class MainStory
             cat.Health = 60;
             cat.Location = Characters.Place.MainRoom;
         }
-        //Setup the locations @TODO add the rest
-        InteractWithLocation closet = new InteractWithLocation
-            (LocationText.ExploreCloset, locationDescriptions.ClosetDescription, locationDescriptions.ClosetItems);
-        InteractWithLocation nightStand = new InteractWithLocation
-            (LocationText.ExploreNightStand, locationDescriptions.NightStandDescription, locationDescriptions.NightStandItems);
-        InteractWithLocation bookshelf = new InteractWithLocation
-            (LocationText.ExploreBookshelf, locationDescriptions.BookshelfDescription, locationDescriptions.BookshelfItems);
 
-
-        var backPackMethod = new BackpackMethods();
+        var backPackMethod = new Inventory();
         {
             backPackMethod.Pack = new List<string>(); // creates a new pack 
             backPackMethod.DiscardedItems = new List<string>(); // create a record of all items that have been discarded
@@ -56,17 +48,18 @@ public class MainStory
         }
         //var mainRoom = new MainRoom(cat, backPackMethod);
 
-        closet.DisplayLocationInfo();
-        closet.AddItemsToInventory(backPackMethod);
-        closet.DisplayLocationInfo();
-        closet.AddItemsToInventory(backPackMethod);
+        GameTree gameTree = new GameTree();
+        gameTree.MainRoomSwitchboard(backPackMethod, cat);
 
-        
         //CastleWithExitStrategies(cat, backPackMethod, mainRoom, guardDog1, guardDog2, warden);
 
-
+        DeadEnding(cat);
         // you end up here if you fall out of the exit strategies loop - ie if you
         // die and choose not to escape
+    }
+
+    private void DeadEnding(Characters cat)
+    {
         if (cat.Location == Characters.Place.Dead)
             Console.WriteLine("\nAs the darkness takes hold, a strange sense of peace washes over you. " +
                               "The struggle, the fear, the desperate clawing for survival — it all fades into " +
@@ -79,10 +72,9 @@ public class MainStory
     }
 
 
-    private void CastleWithExitStrategies(Characters cat, BackPack backPack, MainRoom mainRoom, Characters guardDog1,
+    private void CastleWithExitStrategies(Characters cat, BackPack backPack, Characters guardDog1,
         Characters guardDog2, Characters warden)
     {
-        mainRoom.RunMainRoom();
         do // you get here after you come to the end of one of the main room story lines
         {
             switch (cat.Location)
@@ -114,7 +106,7 @@ public class MainStory
 
     private void PassOut(Characters cat, BackPack backPack)
     {
-        MainRoom mainRoom = new MainRoom(cat, backPack);
+        //MainRoom mainRoom = new MainRoom(cat, backPack);
         cat.Lives--;
 
         Console.WriteLine(
@@ -147,7 +139,7 @@ public class MainStory
                           $"\n\nWhat will you do?... \n");
         if (_userInput.UserChoice() == "1")
         {
-            mainRoom.SubsequentWakeUp();
+            //mainRoom.SubsequentWakeUp();
         }
         else
         {

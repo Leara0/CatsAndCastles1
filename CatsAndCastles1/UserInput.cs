@@ -2,6 +2,7 @@ namespace CatsAndCastles1;
 
 public class UserInput()
 {
+    UserInteractiveMenu _userInteractiveMenu = new UserInteractiveMenu();
     public string UserChoice(int numberOfOptions = 2)
     {
         do
@@ -49,5 +50,10 @@ public class UserInput()
         Console.WriteLine("\nPlease press 'Enter' to continue...");
         Console.ReadLine();
         Console.Clear();
+    }
+
+    public int GetChoice(List<string> choiceOptions, string extra)
+    {
+        return _userInteractiveMenu.GiveChoices(choiceOptions, extra);
     }
 }

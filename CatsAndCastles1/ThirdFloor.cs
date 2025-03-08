@@ -6,7 +6,7 @@ public class ThirdFloor()
     private readonly Fight fight = new Fight();
    public void ThirdFloorStory(Characters cat, BackPack backPack, Characters guardDog1)
    {
-       MainRoom mainRoom = new MainRoom(cat, backPack);
+       //MainRoom mainRoom = new MainRoom(cat, backPack);
        cat.SuccessfulBribed = false;
 
        Console.Clear();
@@ -48,7 +48,7 @@ public class ThirdFloor()
                    Console.WriteLine("You turn back toward the door you first escaped from, the worn wood familiar " +
                                      "beneath your paws. Pushing it open, you step inside once more. The room is " +
                                      "just as you left it — dim, old, and eerily silent.\n");
-                   mainRoom.MainRoomMethod();
+                   //mainRoom.MainRoomMethod();
                    return;
                case "2":
                    EnterRoom(cat, backPack, "third floor room 2");

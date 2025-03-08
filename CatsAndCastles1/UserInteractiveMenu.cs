@@ -2,10 +2,12 @@ using System.Net.Mime;
 
 namespace CatsAndCastles1;
 
-public class InteractiveMenu
+public class UserInteractiveMenu
 {
-    public int GiveChoices(List<string> options, string leave)
+    public int GiveChoices(List<string> options, string leave = "")
     {
+        Console.WriteLine(LocationText.HowToPickAnItem+ "\n");
+        
         int optionSelected = 0;
         ConsoleKeyInfo key;
         bool isSelected = false;

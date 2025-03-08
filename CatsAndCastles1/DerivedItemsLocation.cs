@@ -1,21 +1,26 @@
 namespace CatsAndCastles1;
 
-public class InteractWithLocation(string description, List<string> locationsDescription, List<string> ItemsAtLocation)
+public class DerivedItemsLocation(string description, List<string> itemsAtLocation, List<string> locationsDescription)
+    : BaseLocation(description, itemsAtLocation)
 {
     private readonly UserInput _userInput = new UserInput();
     UserInteractionsBackpack userInteractionsBackpack = new UserInteractionsBackpack();
 
-    public bool DoorUnlocked { get; set; }
 
-    public string LocationDescription = description;
-    public List<string> LocationAndItemsDescriptions = locationsDescription;
-    public List<string> InventoryItemsAtLocation = ItemsAtLocation;
+    private List<string> LocationAndItemsDescriptions { get; }= locationsDescription; 
+    public List<string> InventoryItemsAtLocation { get; }= itemsAtLocation;
 
+    public void LocationMethod(Inventory inventory) // this is the method to call all the stuff for one location!!
+    {
+        DisplayLocationInfo();
+        if (InventoryItemsAtLocation.Count > 0)
+            AddItemsToInventory(inventory);
+    }
 
-    public void DisplayLocationInfo()
+    private void DisplayLocationInfo()
     {
         Console.Clear();
-        Console.WriteLine(LocationDescription);
+        Console.WriteLine(description);
         if (LocationAndItemsDescriptions.Count == 0)
             Console.WriteLine("\n" + LocationText.NothingLeft);
         else
@@ -28,20 +33,14 @@ public class InteractWithLocation(string description, List<string> locationsDesc
         _userInput.DramaticPauseClrScreen();
     } //List items with no call to take items then clear screen and ask 'which to take' then have interactive menu with choice to leave location
 
-    public void AddItemsToInventory(BackpackMethods backpackMethods)
+    private void AddItemsToInventory(Inventory inventory)
     {
-        userInteractionsBackpack.AddItemToInventoryFromLocation(this, backpackMethods);
+        userInteractionsBackpack.AddItemToInventoryFromLocation(this, inventory);
     }
 
     public void ItemHasBeenPickedUp(int itemNumber)
     {
-        
         InventoryItemsAtLocation.RemoveAt(itemNumber);
         LocationAndItemsDescriptions.RemoveAt(itemNumber);
-    }
-
-    public void isDoorUnlocked(bool isUnlocked)
-    {
-        DoorUnlocked = isUnlocked;
     }
 }

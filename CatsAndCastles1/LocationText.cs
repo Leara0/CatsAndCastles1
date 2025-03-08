@@ -27,18 +27,22 @@ public class LocationText
     public const string SubsequentWakeUp = "You wake, dazed and disoriented, your senses slow to return. ";
 
     public const string FirstRoomChoices =
-        "\nYour eyes scan the room, taking in the details of your surroundings. " +
-        "\n\nA few places stand out, each offering a chance to learn more: " +
-        "\n\n1 - A heavy wooden door, its iron hinges rusted with age." +
-        "\n2 - A second smaller wooden door, it looks as if it has seen little use." +
-        "\n3 - A window, just high enough to reach with a careful leap." +
-        "\n4 - The nightstand, small but perhaps hiding something useful." +
-        "\n5 - The bookshelf, mostly bare, its empty shelves coated in dust." +
-        "\n6 - A large stone hearth, cold and imposing" +
-        "\n7 - Your pack. You can inspect the contents and discard ones you no longer want";
+        "Your eyes scan the room, taking in the details of your surroundings. " +
+        "\n\nA few places stand out, each offering a chance to learn more: \n";
 
-    public const string DiscardPile1Item = "8 - An item you’ve chosen to discard — perhaps too hastily. " +
-                                           "If you've changed your mind, you can return to the pile and reclaim it..";
+    public const string ExitDoor = "A heavy wooden door, its iron hinges rusted with age.";
+    public const string ClosetDoor = "A second smaller wooden door, it looks as if it has seen little use.";
+    public const string WindowOption = "A window, just high enough to reach with a careful leap.";
+    public const string NightStandOption = "The nightstand, small but perhaps hiding something useful.";
+    public const string BookshelfOption = "The bookshelf, mostly bare, its empty shelves coated in dust.";
+    public const string HearthOption = "A large stone hearth, cold and imposing.";
+    public const string PackOption = "Your pack. You can inspect the contents and discard ones you no longer want.";
+     
+
+    public const string DiscardRevisitOption = "Item/s you’ve chosen to discard — perhaps too hastily."; 
+        
+
+    
 
     public const string DiscardPileMultiItems = "8 - A heap of items you’ve chosen to discard—perhaps too hastily. " +
                                                 "If you've changed your mind, you can return to the pile and reclaim items..";
@@ -83,7 +87,7 @@ public class LocationText
     public const string ExploreHearth = "Your gaze drifts to the hearth—large and cold, its once-grand stonework now " +
                                         "stained with time.";
     public const string ChoiceToTakeItems =
-        "\n\nEach item has its own allure, yet you know that adding too much to your pack could slow you down. " +
+        "Each item has its own allure, yet you know that adding too much to your pack could slow you down. " +
         "You also have the option to leave this location without taking anything, knowing you can always return " +
         "later if desired... ";
 
@@ -107,9 +111,9 @@ public class LocationText
                                           "Some might still be useful on your journey.";
 
     public const string ThinkAboutInventory =
-        "Your inventory is completely full. You take a moment to review the contents " +
+        "You take a moment to review the contents " +
         "of your pack, weighing the value of each item. Some may no longer serve your journey " +
-        "as well as others, and space is precious.";
+        "as well as others, and space is precious since you can only carry 5 items.";
 
     public const string InsufficientFunds = "You don't have enough funds for this transaction";
         
