@@ -111,6 +111,8 @@ public class LocationText
     public const string RemoveNothing = "do not remove any items";
     public const string PickUpNothing = "leave all the items as they are";
     public const string LeaveLocation = "leave this location";
+    public const string LeaveLockedDoor = "leave the door alone and explore other areas instead";
+    
     public const string EmptyStash = "There are no items in your discard stash.";
     public const string EmptyInventory = "There are no items in your inventory.";
 

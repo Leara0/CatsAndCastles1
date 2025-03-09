@@ -1,20 +1,10 @@
 namespace CatsAndCastles1;
 
-//@fix - questions for deep improvements
-//question about enums that can take strings
-//I have a LONG list of items that can be found in each room and I'd rather they not all be strings.
-//I want to make them variables but I don't really want to declare that many variables
-
-//I also want to be able to reuse item names but my system for tracking if an item has been taken from a
-//particular location is to record the specific name
-//otherwise I'd need a different system to track if every object number from each location has been picked
-//up
 public class MainStory
 {
     private readonly UserInput _userInput = new UserInput();
     ListsForLocations lists = new ListsForLocations();
     UserInteractionsBackpack userInteractBK = new UserInteractionsBackpack();
-
     
     public void RunGame()
     {
@@ -57,9 +47,9 @@ public class MainStory
             (LocationText.ExploreHearth, lists.HearthItems, lists.HearthDescription);
         //var mainRoom = new MainRoom(cat, backPackMethod);
         #endregion
-
-        
+        IntroFluff introFluff = new IntroFluff();
         GameTree gameTree = new GameTree();
+        introFluff.IntroCutScene();
         gameTree.MainRoomSwitchboard(backPackMethod, cat, closet, nightstand, bookshelf, hearth);
 
         //CastleWithExitStrategies(cat, backPackMethod, mainRoom, guardDog1, guardDog2, warden);

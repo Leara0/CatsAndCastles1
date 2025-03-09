@@ -1,7 +1,7 @@
 namespace CatsAndCastles1;
 
 public class DerivedItemsLocation(string description, List<string> itemsAtLocation, List<string> locationsDescription)
-    : BaseLocation(description, itemsAtLocation)
+    : BaseLocation
 {
     private readonly UserInput _userInput = new UserInput();
     UserInteractionsBackpack userInteractionsBackpack = new UserInteractionsBackpack();

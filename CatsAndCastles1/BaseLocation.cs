@@ -1,12 +1,27 @@
 namespace CatsAndCastles1;
 
-public class BaseLocation(string locationIntro, List<string> optionsAtLocation)
+public class BaseLocation
 {
+    
     private readonly UserInput _userInput = new UserInput();
     UserInteractionsBackpack userInteractionsBackpack = new UserInteractionsBackpack();
     UserInput userInput = new UserInput();
+    
+    private string LocationIntro;
     public bool DoorUnlocked { get; set; }
-    public List<string> OptionsAtLocation = optionsAtLocation;
+    public List<string> OptionsAtLocation { get; set; }
+    
+
+    public BaseLocation()
+    {
+        
+    }
+
+    public BaseLocation(string locationIntro, List<string> optionsAtLocation)
+    {
+        OptionsAtLocation = optionsAtLocation;
+        LocationIntro = locationIntro;
+    }
 
 
     //order of events:
@@ -16,8 +31,8 @@ public class BaseLocation(string locationIntro, List<string> optionsAtLocation)
     public int RoomMethod() // this is the method to call all the stuff for this location
     {
         Console.Clear();
-        Console.WriteLine(locationIntro);
-        int choice =  userInput.GetChoice(optionsAtLocation, LocationText.DiscardRevisitOption);
+        Console.WriteLine(LocationIntro);
+        int choice =  userInput.GetChoice(OptionsAtLocation, LocationText.DiscardRevisitOption);
         return choice;
     }
 

@@ -22,7 +22,7 @@ public class ItemDescriptionText
     public const string BookOfPrayers = "a book of prayers";
     public const string DaggerDesc = "A dagger, its handle wrapped in worn leather, the blade dull but still sharp enough to be dangerous.";
     public const string Dagger = "the dagger";
-    public const string LockPickSetDesc = "A small, rusted set of tools—a few thin rods of metal, a hook, and something " +
+    public const string LockPickSetDesc = "A small, rusted set of tools — a few thin rods of metal, a hook, and something " +
                                           "resembling a flattened key. They seem out of place, their purpose unclear at " +
                                           "first, though their delicate shapes suggest they might fit into something " +
                                           "small and stubborn.";
