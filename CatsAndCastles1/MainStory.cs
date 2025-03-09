@@ -37,20 +37,21 @@ public class MainStory
             warden.Location = Characters.Place.FirstFloor;
             warden.Health = warden.SetHealth(60, 75);
         }
+        BaseLocation mainRoom = new BaseLocation(TextLocation.FirstRoomChoices, lists.MainRoomChoices);
         DerivedItemsLocation closet = new DerivedItemsLocation
-            (LocationText.ExploreCloset, lists.ClosetItems, lists.ClosetDescription);
+            (TextLocation.ExploreCloset, lists.ClosetItems, lists.ClosetDescription);
         DerivedItemsLocation nightstand = new DerivedItemsLocation
-            (LocationText.ExploreNightStand, lists.NightStandItems, lists.NightStandDescription);
+            (TextLocation.ExploreNightStand, lists.NightStandItems, lists.NightStandDescription);
         DerivedItemsLocation bookshelf = new DerivedItemsLocation
-            (LocationText.ExploreBookshelf, lists.BookshelfItems, lists.BookshelfDescription);
+            (TextLocation.ExploreBookshelf, lists.BookshelfItems, lists.BookshelfDescription);
         DerivedItemsLocation hearth = new DerivedItemsLocation
-            (LocationText.ExploreHearth, lists.HearthItems, lists.HearthDescription);
+            (TextLocation.ExploreHearth, lists.HearthItems, lists.HearthDescription);
         //var mainRoom = new MainRoom(cat, backPackMethod);
         #endregion
         IntroFluff introFluff = new IntroFluff();
         GameTree gameTree = new GameTree();
         introFluff.IntroCutScene();
-        gameTree.MainRoomSwitchboard(backPackMethod, cat, closet, nightstand, bookshelf, hearth);
+        gameTree.MainRoomSwitchboard(backPackMethod, cat, mainRoom, closet, nightstand, bookshelf, hearth);
 
         //CastleWithExitStrategies(cat, backPackMethod, mainRoom, guardDog1, guardDog2, warden);
 

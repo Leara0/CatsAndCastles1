@@ -1,6 +1,6 @@
 namespace CatsAndCastles1;
 
-public class ItemDescriptionText
+public class TextItemDescription
 {
     public const string TwoSheetsDesc =  "Several folded bed sheets, their fabric yellowed but sturdy.";
     public const string TwoSheets = "2 sets of sheets";

@@ -1,6 +1,6 @@
 namespace CatsAndCastles1;
 
-public class LocationText
+public class TextLocation
 {
     
     
@@ -50,14 +50,7 @@ public class LocationText
         
 
     
-
-    public const string DiscardPileMultiItems = "8 - A heap of items you’ve chosen to discard—perhaps too hastily. " +
-                                                "If you've changed your mind, you can return to the pile and reclaim items..";
-
-    public const string WhereToExplore = "\n\nWhere would you like to explore?" +
-                                         "\n\nPlease press the number corresponding with your choice." +
-                                         "\n\n   <   <   <   <   <   <   <   <   =^.^=   >   >   >   >   >   >   >   >   >   \n";
-
+   
     public const string UseOrRemoveFirstItem = "Would you like to use or remove any items?" +
                                                "\nPlease press '1' to remove an item and '2' to continue exploring the room";
 
@@ -207,20 +200,18 @@ public class LocationText
                                           "against your fur.\n\nYou reach the end of your rope.";
 
     public const string ExploreDoor =
-        "You approach the heavy wooden door, its frame dark and imposing against the stone wall." +
+        "You approach the wooden door, its frame dark and imposing against the stone wall." +
         "Your eyes are drawn to the thick, old lock hanging from the latch. " +
         "The lock looks sturdy, its cold metal catching the dim light. It's a formidable obstacle, " +
-        "preventing you from escaping, but you know you must find a way out. " +
-        "Would you like to search your inventory for tools or items that might aid in unlocking the door " +
-        "or continue exploring the room?" +
-        "\n\nPlease press '1' to search your inventory and '2' to return to exploring the room";
+        "preventing you from venturing through, but you feel you must find a way. ";
+    public const string OpenDoor = "You approach the wooden door, its frame dark and imposing against the stone wall." +
+                                   "The door is unlocked - inviting you to pass through. The mystery of what lies beyond" +
+                                   "is about to be revealed.";
 
-    public const string AtDoorCheckInventoryHavePickAndSS =
+    public const string AtDoorCheckInventory =
         "You pause and take a moment to look through your inventory, searching for " +
         "something that might help. Your paws sift through the items you’ve collected so " +
-        "far, and you find two items that might be useful:" +
-        "\n- A rusted set of tools—small, delicate rods and a hook that might be able to " +
-        "fit into the lock, though they look far from reliable.";
+        "far\n";
 
     public const string AtDoorAlsoHaveStone =
         "- A heavy smooth rock, solid and weighty in your grasp. While not the most " +
@@ -284,6 +275,18 @@ public class LocationText
         "You don't have any items in your inventory that can help you with the lock." +
         "\n\nYou are unable to open the door.";
 
+    public const string LockPickWontWork = "With practiced precision, you pull out your set of tools — a collection " +
+                                           "that has served you well already. Your claws work the tools inside the " +
+                                           "lock’s mechanism, but no matter how carefully you manipulate them, " +
+                                           "the lock remains stubbornly sealed.";
+
+    public const string KeysWontWork =
+        "You stand before the locked door, the ring of keys from the guard's body clutched firmly " +
+        "in your paw. One by one, you try each key, inserting them into the lock with careful " +
+        "precision. However, none of the keys seem to fit — the mechanism refuses to yield, and " +
+        "the tumblers won't align.It appears the keys you gathered were meant for other locks " +
+        "in the castle - this door remains locked.";
+
     public const string UseStoneOnDoor = "You decide to try your luck with the stone. With a grunt, you lift it, " +
                                          "its weight heavy in your hands. You aim it carefully at the lock and swing with all " +
                                          "your might." +
@@ -311,6 +314,14 @@ public class LocationText
                                         "you select a small pick and a thin rod, using them to work the lock. The old lock " +
                                         "resists at first, but with a soft click, it finally gives way. " +
                                         "With a sigh of relief, you open the door slowly, careful not to make a sound.";
+
+    public const string UseKeysOnDoor =
+        "You stand before the door, ring of keys in paw. With a mix of hope and careful precision, " +
+        "you select a few keys and try them one by one. At last, a slender key seems to fit perfectly. " +
+        "You slide it into the lock, turning it slowly as you listen to the tumblers shift. A series " +
+        "of soft clicks fills the silence, and with a gentle creak, the door swings open — revealing what lies beyond.";
+
+    public const string YourRoll = "You rolled: ";
     
     
     

@@ -4,209 +4,209 @@ public class ListsForLocations
 {
     public List<string> MainRoomChoices = new List<string>()
     {
-        LocationText.ExitDoor,
-        LocationText.ClosetDoor,
-        LocationText.WindowOption,
-        LocationText.NightStandOption,
-        LocationText.BookshelfOption,
-        LocationText.HearthOption,
-        LocationText.PackOption, 
+        TextLocation.ExitDoor,
+        TextLocation.ClosetDoor,
+        TextLocation.WindowOption,
+        TextLocation.NightStandOption,
+        TextLocation.BookshelfOption,
+        TextLocation.HearthOption,
+        TextLocation.PackOption, 
         };
 
     public List<string> ClosetDescription = new List<string>()
     {
-        ItemDescriptionText.TwoSheetsDesc,
-        ItemDescriptionText.BroomAndDustPanDesc,
-        ItemDescriptionText.ManaclesDesc,
+        TextItemDescription.TwoSheetsDesc,
+        TextItemDescription.BroomAndDustPanDesc,
+        TextItemDescription.ManaclesDesc,
         //footer/pick ItemDescriptionText same for all locations
     };
 
     public List<string> ClosetItems = new List<string>()
     {
-        ItemDescriptionText.TwoSheets,
-        ItemDescriptionText.BroomAndDustPan,
-        ItemDescriptionText.Manacles,
+        TextItemDescription.TwoSheets,
+        TextItemDescription.BroomAndDustPan,
+        TextItemDescription.Manacles,
     };
 
     public List<string> NightStandDescription = new List<string>()
     {
-        ItemDescriptionText.TenCoinsDesc,
-        ItemDescriptionText.GlassesDesc,
-        ItemDescriptionText.BookOfPrayersDesc
+        TextItemDescription.TenCoinsDesc,
+        TextItemDescription.GlassesDesc,
+        TextItemDescription.BookOfPrayersDesc
     };
 
     public List<string> NightStandItems = new List<string>()
     {
-        ItemDescriptionText.TenCoins,
-        ItemDescriptionText.Glasses,
-        ItemDescriptionText.BookOfPrayers
+        TextItemDescription.TenCoins,
+        TextItemDescription.Glasses,
+        TextItemDescription.BookOfPrayers
     };
 
     public List<string> BookshelfDescription = new List<string>()
     {
-        ItemDescriptionText.DaggerDesc,
-        ItemDescriptionText.LockPickSetDesc,
-        ItemDescriptionText.CatFigurineDesc
+        TextItemDescription.DaggerDesc,
+        TextItemDescription.LockPickSetDesc,
+        TextItemDescription.CatFigurineDesc
     };
 
     public List<string> BookshelfItems = new List<string>()
     {
-        ItemDescriptionText.Dagger,
-        ItemDescriptionText.LockPickSet,
-        ItemDescriptionText.CatFigurine
+        TextItemDescription.Dagger,
+        TextItemDescription.LockPickSet,
+        TextItemDescription.CatFigurine
     };
 
     public List<string> HearthDescription = new List<string>()
     {
-        ItemDescriptionText.FirePokerDesc,
-        ItemDescriptionText.LargeStoneDesc,
-        ItemDescriptionText.BatteredShieldDesc
+        TextItemDescription.FirePokerDesc,
+        TextItemDescription.LargeStoneDesc,
+        TextItemDescription.BatteredShieldDesc
     };
 
     public List<string> HearthItems = new List<string>()
     {
-        ItemDescriptionText.FirePoker,
-        ItemDescriptionText.LargeStone,
-        ItemDescriptionText.BatteredShield
+        TextItemDescription.FirePoker,
+        TextItemDescription.LargeStone,
+        TextItemDescription.BatteredShield
     };
 
     public List<string> F3Room2Description = new List<string>()
     {
-        ItemDescriptionText.LongDaggerDesc,
-        ItemDescriptionText.ThirteenCoinsDesc,
+        TextItemDescription.LongDaggerDesc,
+        TextItemDescription.ThirteenCoinsDesc,
     };
 
     public List<string> F3Room2Items = new List<string>()
     {
-        ItemDescriptionText.LongDagger,
-        ItemDescriptionText.ThirteenCoins,
+        TextItemDescription.LongDagger,
+        TextItemDescription.ThirteenCoins,
     };
 
     public List<string> F3Room3Description = new List<string>()
     {
-        ItemDescriptionText.GlassVialDesc,
-        ItemDescriptionText.TwelveCoinsDesc,
-        ItemDescriptionText.CatCollarDesc
+        TextItemDescription.GlassVialDesc,
+        TextItemDescription.TwelveCoinsDesc,
+        TextItemDescription.CatCollarDesc
     };
 
     public List<string> F3Room3Items = new List<string>()
     {
-        ItemDescriptionText.GlassVial,
-        ItemDescriptionText.TwelveCoins,
-        ItemDescriptionText.CatCollar
+        TextItemDescription.GlassVial,
+        TextItemDescription.TwelveCoins,
+        TextItemDescription.CatCollar
     };
 
     public List<string> F3Room4Description = new List<string>()
     {
-        ItemDescriptionText.TenCoinsDesc,
-        ItemDescriptionText.DaggerDesc,
-        ItemDescriptionText.CrudeShieldDesc
+        TextItemDescription.TenCoinsDesc,
+        TextItemDescription.DaggerDesc,
+        TextItemDescription.CrudeShieldDesc
     };
 
     public List<string> F3Room4Items = new List<string>()
     {
-        ItemDescriptionText.TenCoins,
-        ItemDescriptionText.Dagger,
-        ItemDescriptionText.CrudeShield
+        TextItemDescription.TenCoins,
+        TextItemDescription.Dagger,
+        TextItemDescription.CrudeShield
     };
 
     public List<string> F2Room1Description = new List<string>()
     {
-        ItemDescriptionText.DogStatueDesc,
-        ItemDescriptionText.GlassVialDesc,
-        ItemDescriptionText.CrudeShieldDesc
+        TextItemDescription.DogStatueDesc,
+        TextItemDescription.GlassVialDesc,
+        TextItemDescription.CrudeShieldDesc
     };
 
     public List<string> F2Room1Items = new List<string>()
     {
-        ItemDescriptionText.DogStatue,
-        ItemDescriptionText.GlassVial,
-        ItemDescriptionText.CrudeShield
+        TextItemDescription.DogStatue,
+        TextItemDescription.GlassVial,
+        TextItemDescription.CrudeShield
     };
 
     public List<string> F2Room2Description = new List<string>()
     {
-        ItemDescriptionText.ThirteenCoinsDesc,
-        ItemDescriptionText.GlassesDesc
+        TextItemDescription.ThirteenCoinsDesc,
+        TextItemDescription.GlassesDesc
     };
 
     public List<string> F2Room2Items = new List<string>()
     {
-        ItemDescriptionText.ThirteenCoins,
-        ItemDescriptionText.Glasses,
+        TextItemDescription.ThirteenCoins,
+        TextItemDescription.Glasses,
     };
 
     public List<string> F2Room3Description = new List<string>()
     {
-        ItemDescriptionText.RopeDesc,
-        ItemDescriptionText.GlassesDesc,
-        ItemDescriptionText.ShortSwordDesc
+        TextItemDescription.RopeDesc,
+        TextItemDescription.GlassesDesc,
+        TextItemDescription.ShortSwordDesc
     };
 
     public List<string> F2Room3Items = new List<string>()
     {
-        ItemDescriptionText.Rope,
-        ItemDescriptionText.Glasses,
-        ItemDescriptionText.ShortSword
+        TextItemDescription.Rope,
+        TextItemDescription.Glasses,
+        TextItemDescription.ShortSword
     };
 
     public List<string> F2Room4Description = new List<string>()
     {
-        ItemDescriptionText.TwoSheetsDesc,
-        ItemDescriptionText.GlassVialDesc,
-        ItemDescriptionText.CrudeShieldDesc
+        TextItemDescription.TwoSheetsDesc,
+        TextItemDescription.GlassVialDesc,
+        TextItemDescription.CrudeShieldDesc
     };
 
     public List<string> F2Room4Items = new List<string>()
     {
-        ItemDescriptionText.TwoSheets,
-        ItemDescriptionText.GlassVial,
-        ItemDescriptionText.CrudeShield,
+        TextItemDescription.TwoSheets,
+        TextItemDescription.GlassVial,
+        TextItemDescription.CrudeShield,
     };
 
     public List<string> Guard1Description = new List<string>()
     {
-        ItemDescriptionText.RingOfKeysDesc,
-        ItemDescriptionText.DogWhistleDesc,
-        ItemDescriptionText.CrudeShieldDesc,
-        ItemDescriptionText.TwoSheetsDesc,
+        TextItemDescription.RingOfKeysDesc,
+        TextItemDescription.DogWhistleDesc,
+        TextItemDescription.CrudeShieldDesc,
+        TextItemDescription.TwoSheetsDesc,
     };
 
     public List<string> Guard1Items = new List<string>()
     {
-        ItemDescriptionText.RingOfKeys,
-        ItemDescriptionText.DogWhistle,
-        ItemDescriptionText.CrudeShield,
-        ItemDescriptionText.TwoSheets,
+        TextItemDescription.RingOfKeys,
+        TextItemDescription.DogWhistle,
+        TextItemDescription.CrudeShield,
+        TextItemDescription.TwoSheets,
     };
 
     public List<string> Guard2Description = new List<string>()
     {
-        ItemDescriptionText.TenCoinsDesc,
-        ItemDescriptionText.WorryBeadsDesc,
-        ItemDescriptionText.BatteredShieldDesc,
-        ItemDescriptionText.DogWhistleDesc
+        TextItemDescription.TenCoinsDesc,
+        TextItemDescription.WorryBeadsDesc,
+        TextItemDescription.BatteredShieldDesc,
+        TextItemDescription.DogWhistleDesc
     };
 
     public List<string> Guard2Items = new List<string>()
     {
-        ItemDescriptionText.TenCoins,
-        ItemDescriptionText.WorryBeads,
-        ItemDescriptionText.BatteredShield,
-        ItemDescriptionText.DogWhistle,
+        TextItemDescription.TenCoins,
+        TextItemDescription.WorryBeads,
+        TextItemDescription.BatteredShield,
+        TextItemDescription.DogWhistle,
     };
 
     public List<string> WardenDescription = new List<string>()
     {
-        ItemDescriptionText.TwentyCoinsDesc,
-        ItemDescriptionText.LoafOfBreadDesc,
-        ItemDescriptionText.GlassVialDesc
+        TextItemDescription.TwentyCoinsDesc,
+        TextItemDescription.LoafOfBreadDesc,
+        TextItemDescription.GlassVialDesc
     };
 
     public List<string> WardenItems = new List<string>()
     {
-        ItemDescriptionText.TwentyCoins,
-        ItemDescriptionText.LoafOfBread,
-        ItemDescriptionText.GlassVial
+        TextItemDescription.TwentyCoins,
+        TextItemDescription.LoafOfBread,
+        TextItemDescription.GlassVial
     };
 }

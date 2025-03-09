@@ -1,15 +1,16 @@
 namespace CatsAndCastles1;
 
-public class DerivedLockedLocations(string description, List<string> itemsThatHelp) :
-    BaseLocation
+public class DerivedLockedLocations(string description, List<string> itemsThatHelp, List<string> itemsThatWontHelp) :
+    DerivedItemsLocation
 {
     //what is my goal here:
     /*Create a tree for what items you have vs need
      *
      *
      */
-    private List<string> ItemsThatCouldHelp { get; set; } = itemsThatHelp;
-    int situation = 0;
+    private List<string> AllPossibleUsefulItems { get; set; } = itemsThatHelp;
+    public List<string> ItemsThatWontHelp { get; set; } = itemsThatWontHelp;
+    private readonly UserInput _userInput = new UserInput();
 
 
     public string GetObjectChoice(Inventory inventory)
@@ -19,7 +20,7 @@ public class DerivedLockedLocations(string description, List<string> itemsThatHe
 
         int choiceNumber = userInteractionLockedRoom.GetChoiceForLockedRoom(listForIMenu);
         if (choiceNumber == listForIMenu.Count)
-            return "";//if they choose to do nothing return ""
+            return ""; //if they choose to do nothing return ""
 
         string itemChoice = listForIMenu[choiceNumber];
         return itemChoice;
@@ -30,65 +31,55 @@ public class DerivedLockedLocations(string description, List<string> itemsThatHe
     {
         List<string> optionsForIMenu = new List<string>();
 
-        for (int i = 0; i < inventory.Pack.Count; i++)
+        foreach (string item in inventory.Pack)
         {
-            for (int j = 0; j < ItemsThatCouldHelp.Count; j++)
-                if (inventory.Pack[i] == ItemsThatCouldHelp[j])
-                    optionsForIMenu.Add(ItemsThatCouldHelp[j]);
+            foreach (string usefulItems in AllPossibleUsefulItems)
+                if (item == usefulItems)
+                    optionsForIMenu.Add(usefulItems);
         }
-
-/*bool packContainsItem1 = false;
-        bool packContainsItem2 = false;
-        bool packContainsItem3 = false;
-
-        if (inventory.Pack.Contains(ItemsThatCouldHelp[0]))
-            packContainsItem1 = true;
-        if (inventory.Pack.Contains(ItemsThatCouldHelp[1]))
-            packContainsItem2 = true;
-        if (inventory.Pack.Contains(ItemsThatCouldHelp[2]))
-            packContainsItem3 = true;
-
-        if (packContainsItem1 && packContainsItem2 && packContainsItem3)
-        {
-            optionsForIMenu.Add(ItemsThatCouldHelp[0]);
-            optionsForIMenu.Add(ItemsThatCouldHelp[1]);
-            optionsForIMenu.Add(ItemsThatCouldHelp[2]);
-        }
-        else if (packContainsItem1 && packContainsItem2)
-        {
-            optionsForIMenu.Add(ItemsThatCouldHelp[0]);
-            optionsForIMenu.Add(ItemsThatCouldHelp[1]);
-        }
-        else if (packContainsItem1 && packContainsItem3)
-        {
-            optionsForIMenu.Add(ItemsThatCouldHelp[0]);
-            optionsForIMenu.Add(ItemsThatCouldHelp[2]);
-        }
-        else if (packContainsItem2 && packContainsItem3)
-        {
-            optionsForIMenu.Add(ItemsThatCouldHelp[1]);
-            optionsForIMenu.Add(ItemsThatCouldHelp[2]);
-        }
-        else if (packContainsItem1)
-        {
-            optionsForIMenu.Add(ItemsThatCouldHelp[0]);
-        }
-        else if (packContainsItem2)
-        {
-            optionsForIMenu.Add(ItemsThatCouldHelp[1]);
-        }
-        else if (packContainsItem3)
-        {
-            optionsForIMenu.Add(ItemsThatCouldHelp[2]);
-        }
-
-        for (int i = 0; i < optionsForIMenu.Count; i++)
-        {
-            if (optionsForIMenu[i].Contains("shield"))
-                optionsForIMenu[i] = "the shield";
-        } // change the phrases to make better sense in a list*/
-
 
         return optionsForIMenu;
+    }
+
+    public void ApproachLockedDoor()
+    {
+        Console.WriteLine(TextLocation.ExploreDoor);
+        _userInput.DramaticPauseClrScreen();
+    }
+    public string InteractWithLockedDoor(Inventory inventory)
+    {
+        Console.WriteLine(TextLocation.AtDoorCheckInventory);
+        if (MakeListForInteractiveMenu(inventory).Count == 0)
+        {
+            Console.WriteLine(TextLocation.AtDoorCheckInventoryFindNothing);
+            _userInput.DramaticPauseClrScreen();
+            return "leave"; //explain you found nothing and return empty string to indicate leave this location
+        }
+
+        string item = GetObjectChoice(inventory);
+        if (item == "")
+        {
+            _userInput.DramaticPauseClrScreen();
+            return "leave"; //leave this area if they choose to
+        }
+
+        if (ItemsThatWontHelp.Contains(item))
+        {
+            if (item == TextItemDescription.RingOfKeys)
+                Console.WriteLine(TextLocation.KeysWontWork);
+            if (item == TextItemDescription.LockPickSet)
+                Console.WriteLine(TextLocation.LockPickWontWork);
+            _userInput.DramaticPauseClrScreen();
+            return ""; // if you tried a tool that doesn't work you need to loop again
+        }
+
+        return item;
+    }
+
+    public void ApproachOpenDoor()
+    {
+        Console.WriteLine(TextLocation.OpenDoor); //approach door
+        _userInput.DramaticPauseClrScreen();
+        
     }
 }

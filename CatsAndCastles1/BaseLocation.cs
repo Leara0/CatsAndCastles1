@@ -3,16 +3,14 @@ namespace CatsAndCastles1;
 public class BaseLocation
 {
     
-    private readonly UserInput _userInput = new UserInput();
-    UserInteractionsBackpack userInteractionsBackpack = new UserInteractionsBackpack();
-    UserInput userInput = new UserInput();
+    UserInput _userInput = new UserInput();
     
-    private string LocationIntro;
-    public bool DoorUnlocked { get; set; }
+    private readonly string _locationIntro;
+    private bool DoorOpen { get; set; }
     public List<string> OptionsAtLocation { get; set; }
     
 
-    public BaseLocation()
+    protected BaseLocation()
     {
         
     }
@@ -20,7 +18,7 @@ public class BaseLocation
     public BaseLocation(string locationIntro, List<string> optionsAtLocation)
     {
         OptionsAtLocation = optionsAtLocation;
-        LocationIntro = locationIntro;
+        _locationIntro = locationIntro;
     }
 
 
@@ -31,13 +29,19 @@ public class BaseLocation
     public int RoomMethod() // this is the method to call all the stuff for this location
     {
         Console.Clear();
-        Console.WriteLine(LocationIntro);
-        int choice =  userInput.GetChoice(OptionsAtLocation, LocationText.DiscardRevisitOption);
+        Console.WriteLine(_locationIntro);
+        int choice =  _userInput.GetChoice(OptionsAtLocation, TextLocation.DiscardRevisitOption);
         return choice;
     }
 
-    public void isDoorUnlocked(bool isUnlocked)
+    public void ChangeDoorLockStatus(bool isUnlocked)
     {
-        DoorUnlocked = isUnlocked;
+        DoorOpen = isUnlocked;
     }
+
+    public bool DoorisOpen()
+    {
+        return DoorOpen;
+    }
+
 }

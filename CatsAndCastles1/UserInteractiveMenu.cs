@@ -6,7 +6,7 @@ public class UserInteractiveMenu
 {
     public int GiveChoices(List<string> options, string leave = "")
     {
-        Console.WriteLine(LocationText.HowToPickAnItem+ "\n");
+        Console.WriteLine(TextLocation.HowToPickAnItem+ "\n");
         
         int optionSelected = 0;
         ConsoleKeyInfo key;

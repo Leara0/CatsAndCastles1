@@ -1,14 +1,25 @@
 namespace CatsAndCastles1;
 
-public class DerivedItemsLocation(string description, List<string> itemsAtLocation, List<string> locationsDescription)
-    : BaseLocation
+public class DerivedItemsLocation : BaseLocation
 {
     private readonly UserInput _userInput = new UserInput();
-    UserInteractionsBackpack userInteractionsBackpack = new UserInteractionsBackpack();
+    private readonly UserInteractionsBackpack _userInteractionsBackpack = new UserInteractionsBackpack();
+    private readonly string _description;
 
+    private List<string> LocationAndItemsDescriptions { get; }
+    public List<string> InventoryItemsAtLocation { get; }
 
-    private List<string> LocationAndItemsDescriptions { get; }= locationsDescription; 
-    public List<string> InventoryItemsAtLocation { get; }= itemsAtLocation;
+    public DerivedItemsLocation()
+    {
+    }
+
+    public DerivedItemsLocation(string description, List<string> itemsAtLocation, List<string> locationsDescription)
+    {
+        LocationAndItemsDescriptions = locationsDescription;
+        InventoryItemsAtLocation = itemsAtLocation;
+        _description = description;
+    }
+
 
     public void LocationMethod(Inventory inventory) // this is the method to call all the stuff for one location!!
     {
@@ -20,12 +31,12 @@ public class DerivedItemsLocation(string description, List<string> itemsAtLocati
     private void DisplayLocationInfo()
     {
         Console.Clear();
-        Console.WriteLine(description);
+        Console.WriteLine(_description);
         if (LocationAndItemsDescriptions.Count == 0)
-            Console.WriteLine("\n" + LocationText.NothingLeft);
+            Console.WriteLine("\n" + TextLocation.NothingLeft);
         else
         {
-            Console.WriteLine(LocationText.PrepToListItems);
+            Console.WriteLine(TextLocation.PrepToListItems);
             foreach (string item in LocationAndItemsDescriptions)
                 Console.WriteLine(item);
         }
@@ -35,7 +46,7 @@ public class DerivedItemsLocation(string description, List<string> itemsAtLocati
 
     private void AddItemsToInventory(Inventory inventory)
     {
-        userInteractionsBackpack.AddItemToInventoryFromLocation(this, inventory);
+        _userInteractionsBackpack.AddItemToInventoryFromLocation(this, inventory);
     }
 
     public void ItemHasBeenPickedUp(int itemNumber)

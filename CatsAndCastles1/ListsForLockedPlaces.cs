@@ -2,35 +2,35 @@ namespace CatsAndCastles1;
 
 public class ListsForLockedPlaces
 {
-    public List<string> MainRoomDoor = new List<string>()
+    public List<string> AllPossibleOptions = new List<string>()
     {
-        ItemDescriptionText.LockPickSet,
-        ItemDescriptionText.BatteredShield,
-        ItemDescriptionText.LargeStone,
+        TextItemDescription.LockPickSet,
+        TextItemDescription.BatteredShield,
+        TextItemDescription.RingOfKeys,
+        TextItemDescription.CrudeShield,
+        TextItemDescription.Shield,
+        TextItemDescription.LargeStone,
 
     };
 
-    public List<string> RandomDoor1 = new List<string>()
+    public List<string> UnHelpfulKeys = new List<string>()
     {
-        ItemDescriptionText.LockPickSet,
-        ItemDescriptionText.BatteredShield,
-        ItemDescriptionText.RingOfKeys,
-        ItemDescriptionText.CrudeShield,
-        ItemDescriptionText.Shield
+        TextItemDescription.RingOfKeys,
     };
 
-    public List<string> RandomDoor2 = new List<string>()
+    public List<string> UnHelpfulLockPick = new List<string>()
     {
-        ItemDescriptionText.LockPickSet,
-        ItemDescriptionText.LargeStone,
-        ItemDescriptionText.RingOfKeys,
+        TextItemDescription.LockPickSet,
     };
+    
+    public List<string> UnHelpfulPickAndKeys = new List<string>()
+    {
+        TextItemDescription.LockPickSet,
+        TextItemDescription.RingOfKeys,
+    };
+    
+    
 
-    public List<string> RandomDoor3 = new List<string>()
-    {
-        ItemDescriptionText.LockPickSet,
-        ItemDescriptionText.RingOfKeys,
-    };
 
 
 
