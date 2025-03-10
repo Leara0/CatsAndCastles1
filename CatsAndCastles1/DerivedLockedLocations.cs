@@ -1,6 +1,6 @@
 namespace CatsAndCastles1;
 
-public class DerivedLockedLocations(string description, List<string> itemsThatHelp, List<string> itemsThatWontHelp) :
+public class DerivedLockedLocations(string description, List<string> itemsThatWontHelp) :
     DerivedItemsLocation
 {
     //what is my goal here:
@@ -8,15 +8,16 @@ public class DerivedLockedLocations(string description, List<string> itemsThatHe
      *
      *
      */
-    private List<string> AllPossibleUsefulItems { get; set; } = itemsThatHelp;
+    private List<string> _allPossibleUsefulItems = ListsForLockedPlaces.AllPossibleOptions;
     public List<string> ItemsThatWontHelp { get; set; } = itemsThatWontHelp;
     private readonly UserInput _userInput = new UserInput();
+    UserInteractionLockedRooms userInteractionLockedRoom = new UserInteractionLockedRooms();
 
 
     public string GetObjectChoice(Inventory inventory)
     {
         List<string> listForIMenu = MakeListForInteractiveMenu(inventory);
-        UserInteractionLockedRooms userInteractionLockedRoom = new UserInteractionLockedRooms();
+        
 
         int choiceNumber = userInteractionLockedRoom.GetChoiceForLockedRoom(listForIMenu);
         if (choiceNumber == listForIMenu.Count)
@@ -33,7 +34,7 @@ public class DerivedLockedLocations(string description, List<string> itemsThatHe
 
         foreach (string item in inventory.Pack)
         {
-            foreach (string usefulItems in AllPossibleUsefulItems)
+            foreach (string usefulItems in _allPossibleUsefulItems)
                 if (item == usefulItems)
                     optionsForIMenu.Add(usefulItems);
         }
@@ -43,7 +44,8 @@ public class DerivedLockedLocations(string description, List<string> itemsThatHe
 
     public void ApproachLockedDoor()
     {
-        Console.WriteLine(TextLocation.ExploreDoor);
+        Console.Clear();
+        Console.WriteLine(description);//@TODO change this to the description in the parameters
         _userInput.DramaticPauseClrScreen();
     }
     public string InteractWithLockedDoor(Inventory inventory)
@@ -81,5 +83,15 @@ public class DerivedLockedLocations(string description, List<string> itemsThatHe
         Console.WriteLine(TextLocation.OpenDoor); //approach door
         _userInput.DramaticPauseClrScreen();
         
+    }
+
+    public bool AttemptStoneOnDoor(Characters cat)
+    {
+        return userInteractionLockedRoom.UseStoneOnDoor(cat);
+    }
+
+    public bool AttemptShieldOnDoor(string item, Inventory inventory)
+    {
+        return userInteractionLockedRoom.UseShieldOnDoor(item, inventory);
     }
 }

@@ -5,8 +5,9 @@ public class GameTree()
     //how to weave in fluff intro scenes about the earlier cut scenes?
     public void MainRoomSwitchboard(Inventory inventory, Characters cat, BaseLocation mainRoom,
         DerivedItemsLocation closet,
-        DerivedItemsLocation nightstand, DerivedItemsLocation bookshelf, DerivedItemsLocation hearth)
+        DerivedItemsLocation nightstand, DerivedItemsLocation bookshelf, DerivedItemsLocation hearth, DerivedLockedLocations mainDoor)
     {
+        Console.Clear();
         cat.Location = Characters.Place.MainRoom;
         cat.EndGame = false;
         UserInteractionsBackpack userInteractionsBackpack = new UserInteractionsBackpack();
@@ -16,6 +17,7 @@ public class GameTree()
             switch (mainRoom.RoomMethod()) //this is a call on the BaseLocation class
             {
                 case 0: // this is the only exit!!!
+                    DoorsSwitchboard(inventory, cat, mainDoor);
                     //exit.LocationMethod(backpackMethods
                     //if mainDoor.DoorIsOpen
                     //cat.Location == Characters.Place.ThirdFloor
@@ -69,13 +71,18 @@ public class GameTree()
                         catEscaped = true;
                         break;
                     case TextItemDescription.LargeStone:
+                        if(place.AttemptStoneOnDoor(cat))
+                           catEscaped = true;
                         break;
                     case TextItemDescription.BatteredShield:
                     case TextItemDescription.Shield:
                     case TextItemDescription.CrudeShield:
+                        if(place.AttemptShieldOnDoor(item, inventory))
+                            catEscaped = true;
                         break;
                 }
             } while (!catEscaped);
+            place.ChangeDoorLockStatus(true); 
             cat.Location = Characters.Place.MainRoom;
         }
         else

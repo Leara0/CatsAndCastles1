@@ -28,8 +28,7 @@ public class TextLocation
                                       "\n\nThe hairs along your spine bristle. Something about this place feels wrong, " +
                                       "as though unseen eyes watch from the darkness, waiting. " +
                                       "\n\nYou must escape but are unsure where to begin." +
-                                      "\n\nPress 'enter' to continue." +
-                                      "\n\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n";
+                                     "\n\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n";
 
     public const string SubsequentWakeUp = "You wake, dazed and disoriented, your senses slow to return. ";
 
@@ -213,64 +212,7 @@ public class TextLocation
         "something that might help. Your paws sift through the items you’ve collected so " +
         "far\n";
 
-    public const string AtDoorAlsoHaveStone =
-        "- A heavy smooth rock, solid and weighty in your grasp. While not the most " +
-        "subtle choice, it might be capable of smashing the lock off with a few good strikes.";
-
-    public const string AtDoorAlsoHaveShield = "- A shield, its metal surface scratched and worn, but still sturdy. " +
-                                               "It could be used to bash the lock off with brute force.";
-
-    public const string OptionsAtDoorHavePickAndSS = "\nThe options sit before you. You can:" +
-                                                     "\n'1' - Keep exploring the room, hoping for another way out or more supplies " +
-                                                     "that might help. " +
-                                                     "\n'2' - Attempt to pick the lock with the rusted tools.";
-
-    public const string OptionsAtDoorHaveStoneAndShield = "'3' - Use the rock to smash the lock off." +
-                                                          "\n'4' - Use the shield to smash the lock off.";
-
-    public const string AtDoorCheckInventoryHaveSS =
-        "You pause and take a moment to look through your inventory, searching for " +
-        "something that might help. Your paws sift through the items you’ve collected so " +
-        "far, and you find two items that might be useful:" +
-        "\n- A heavy smooth rock, solid and weighty in your grasp. While not the most" +
-        "\nsubtle choice, it might be capable of smashing the lock off with a few good strikes." +
-        "\n- A shield, its metal surface scratched and worn, but still sturdy. " +
-        "It could be used to bash the lock off with brute force." +
-        "\n\nThe options sit before you. You can:" +
-        "\n'1' - Use the rock to bash the lock off." +
-        "\n'2' - Use the shield to smash the lock off. " +
-        "\n'3' - Keep exploring the room, hoping for another way out or more supplies that might help";
-
-    public const string AtDoorCheckInventoryHavePick =
-        "You dig through your pack, your paws brushing over familiar items until you " +
-        "feel something that might help. You pull out the rusted set of tools—small, " +
-        "delicate rods of metal, a hook, and a flattened key-like piece. " +
-        "Though worn and aged, they seem like they might fit together in some way. " +
-        "\nWould you like to attempt to use them to pick the lock or would you like" +
-        "to continue searching the room for other items that might help?" +
-        "\n\nPlease press '1' to try to pick the lock with the rusted tools and " +
-        "'2' to return to exploring the room";
-
-    public const string AtDoorCheckInventoryHaveShield =
-        "You dig through your pack, feeling the weight of each item, until your paw " +
-        "brushes against something solid. You pull out the shield. " +
-        "It feels solid in your grip, it might just be powerful enough to break the " +
-        "lock off the door." +
-        "\nThe lock seems secure, and the shield might be your only chance at forcing your way " +
-        "through." +
-        "\n\nPlease press '1' to try to use the shield to break the lock and " +
-        "'2' to return to exploring the room";
-
-    public const string AtDoorCheckInventoryHaveStone =
-        "You dig through your pack, feeling the weight of each item, until your paw " +
-        "brushes against something solid. You pull out a large stone, its surface smooth and " +
-        "worn. It feels heavy in your grip, it might just be powerful enough to break the " +
-        "lock off the door." +
-        "\nThe lock seems secure, and the stone might be your only chance at forcing your way " +
-        "through." +
-        "\n\nPlease press '1' to try to use the large stone to break the lock and " +
-        "'2' to return to exploring the room";
-
+   
     public const string AtDoorCheckInventoryFindNothing =
         "You don't have any items in your inventory that can help you with the lock." +
         "\n\nYou are unable to open the door.";
@@ -291,11 +233,21 @@ public class TextLocation
                                          "its weight heavy in your hands. You aim it carefully at the lock and swing with all " +
                                          "your might." +
                                          "\n\nRoll a D20 for luck to see if you can smash the lock off the door" +
-                                         "\n\nYou need to roll higher than a 16 to be successful";
+                                         "\n\nYou need to roll higher than a 16 to be successful\n";
 
     public const string StoneOrShieldWorked =
         "You are victorious! The impact echoes as the metal shatters under your strike. The door creaks " +
         "open — your resourcefulness has paid off, and the path ahead is now clear";
+
+    public const string StoneDidntWork =
+        "You heft a the heavy stone in your paw, determined to smash the stubborn lock with brute force. " +
+        "With a fierce swing, you bring the stone down upon the door. But the lock proves resilient — it " +
+        "deflects the stone with a sharp, unexpected bounce. In a split second, the stone ricochets off " +
+        "the door and strikes you squarely on the head." +
+        "\n\nThe stone does ";
+
+    public const string StoneEndOfDamage = " damage (D6 +1). ";
+    
 
     public const string UseShieldOnDoor =
         "You decide to try your luck with the battered shield. With a grunt, you lift it, " +
@@ -304,8 +256,14 @@ public class TextLocation
         "\n\nRoll a D20 for luck to see if you can smash the lock off the door or if the door will destroy your shield" +
         "\n\nYou need to roll higher than a 16 to successfully break the lock." +
         "\nYou need to roll higher than a 5 to avoid ruining your shield.";
+    public const string ShieldDidntWork =
+        "You heft a the heavy shield in your paw, determined to smash the stubborn lock with brute force. " +
+        "With a fierce swing, you bring the shield down upon the door. But the lock proves resilient — it " +
+        "deflects the shield with a sharp, unexpected bounce. In a split second, the shield ricochets off " +
+        "the door and strikes you squarely on the head." +
+        "\n\nThe shield does ";
 
-    public const string ShieldBrakes = "Lady luck did not favor you. The force of the impact reverberates through the " +
+    public const string ShieldBreaks = "Lady luck did not favor you. The force of the impact reverberates through the " +
                                        "room, and in that critical moment, the shield can't take it — the blow " +
                                        "shatters it into splinters.";
     
@@ -320,17 +278,11 @@ public class TextLocation
         "you select a few keys and try them one by one. At last, a slender key seems to fit perfectly. " +
         "You slide it into the lock, turning it slowly as you listen to the tumblers shift. A series " +
         "of soft clicks fills the silence, and with a gentle creak, the door swings open — revealing what lies beyond.";
+        
+
 
     public const string YourRoll = "You rolled: ";
-    
-    
-    
-    
-    
-    public const string EmptySpot = "a faint outline marking the spot where something once rested";
 
-    public const string NothingHere = "Nothing remains in this spot. Please make an alternate selection.";
-    
-
-
+    public const string YourHealth = "Your current health is ";
+    public const string OutOfTotalHealth = " out of ";
 }

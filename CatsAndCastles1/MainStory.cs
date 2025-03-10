@@ -9,6 +9,7 @@ public class MainStory
     public void RunGame()
     {
         #region instantiating Classes
+        #region Characters
         var cat = new Characters();
         {
             cat.Name = _userInput.GetName();
@@ -37,6 +38,9 @@ public class MainStory
             warden.Location = Characters.Place.FirstFloor;
             warden.Health = warden.SetHealth(60, 75);
         }
+        #endregion
+        
+        #region MainRoom Areas
         BaseLocation mainRoom = new BaseLocation(TextLocation.FirstRoomChoices, lists.MainRoomChoices);
         DerivedItemsLocation closet = new DerivedItemsLocation
             (TextLocation.ExploreCloset, lists.ClosetItems, lists.ClosetDescription);
@@ -46,12 +50,15 @@ public class MainStory
             (TextLocation.ExploreBookshelf, lists.BookshelfItems, lists.BookshelfDescription);
         DerivedItemsLocation hearth = new DerivedItemsLocation
             (TextLocation.ExploreHearth, lists.HearthItems, lists.HearthDescription);
-        //var mainRoom = new MainRoom(cat, backPackMethod);
+        DerivedLockedLocations mainDoor =
+            new DerivedLockedLocations(TextLocation.ExploreDoor, ListsForLockedPlaces.UnHelpfulKeys);
+        #endregion
+        
         #endregion
         IntroFluff introFluff = new IntroFluff();
         GameTree gameTree = new GameTree();
         introFluff.IntroCutScene();
-        gameTree.MainRoomSwitchboard(backPackMethod, cat, mainRoom, closet, nightstand, bookshelf, hearth);
+        gameTree.MainRoomSwitchboard(backPackMethod, cat, mainRoom, closet, nightstand, bookshelf, hearth, mainDoor);
 
         //CastleWithExitStrategies(cat, backPackMethod, mainRoom, guardDog1, guardDog2, warden);
 
