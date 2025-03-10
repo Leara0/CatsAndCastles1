@@ -12,7 +12,6 @@ public class MainStory
         #region Characters
         var cat = new Characters();
         {
-            cat.Name = _userInput.GetName();
             cat.Health = 60;
             cat.Location = Characters.Place.MainRoom;
         }
@@ -52,13 +51,15 @@ public class MainStory
             (TextLocation.ExploreHearth, lists.HearthItems, lists.HearthDescription);
         DerivedLockedLocations mainDoor =
             new DerivedLockedLocations(TextLocation.ExploreDoor, ListsForLockedPlaces.UnHelpfulKeys);
+        DerivedWindowLocation window = new DerivedWindowLocation(TextLocation.ExploreWindow, 
+            ListsForLockedPlaces.AllPossibleOptions, ListsForLockedPlaces.WindowNeedsRope);
         #endregion
         
         #endregion
         IntroFluff introFluff = new IntroFluff();
         GameTree gameTree = new GameTree();
         introFluff.IntroCutScene();
-        gameTree.MainRoomSwitchboard(backPackMethod, cat, mainRoom, closet, nightstand, bookshelf, hearth, mainDoor);
+        gameTree.MainRoomSwitchboard(backPackMethod, cat, mainRoom, closet, nightstand, bookshelf, hearth, mainDoor, window);
 
         //CastleWithExitStrategies(cat, backPackMethod, mainRoom, guardDog1, guardDog2, warden);
 

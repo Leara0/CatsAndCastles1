@@ -3,29 +3,35 @@ namespace CatsAndCastles1;
 public class GameTree()
 {
     //how to weave in fluff intro scenes about the earlier cut scenes?
+    private readonly UserInput _userInput = new UserInput();
+
     public void MainRoomSwitchboard(Inventory inventory, Characters cat, BaseLocation mainRoom,
         DerivedItemsLocation closet,
-        DerivedItemsLocation nightstand, DerivedItemsLocation bookshelf, DerivedItemsLocation hearth, DerivedLockedLocations mainDoor)
+        DerivedItemsLocation nightstand, DerivedItemsLocation bookshelf, DerivedItemsLocation hearth,
+        DerivedLockedLocations mainDoor, DerivedWindowLocation window)
     {
         Console.Clear();
         cat.Location = Characters.Place.MainRoom;
         cat.EndGame = false;
         UserInteractionsBackpack userInteractionsBackpack = new UserInteractionsBackpack();
 
+
         do
         {
-            switch (mainRoom.RoomMethod()) //this is a call on the BaseLocation class
+            int item = mainRoom.RoomMethod();
+            Console.Clear();
+            switch (item) //this is a call on the BaseLocation class
             {
                 case 0: // this is the only exit!!!
                     DoorsSwitchboard(inventory, cat, mainDoor);
-                    //exit.LocationMethod(backpackMethods
-                    //if mainDoor.DoorIsOpen
-                    //cat.Location == Characters.Place.ThirdFloor
+                    if (mainDoor.DoorIsOpen())
+                        cat.Location = Characters.Place.ThirdFloor;
                     break;
                 case 1: //closet
                     closet.LocationMethod(inventory);
                     break;
                 case 2: //window
+                    WindowSwitchboard(inventory, cat, window);
                     break;
                 case 3: //nightstand
                     nightstand.LocationMethod(inventory);
@@ -48,19 +54,20 @@ public class GameTree()
 
     public void DoorsSwitchboard(Inventory inventory, Characters cat, DerivedLockedLocations place)
     {
-        if (!place.DoorisOpen())
+        if (!place.DoorIsOpen())
         {
             place.ApproachLockedDoor();
             bool catEscaped = false;
             do
-            { 
+            {
                 string item = place.InteractWithLockedDoor(inventory);
 
+                Console.Clear();
                 if (item == "leave")
                     return;
                 switch (item)
                 {
-                    case ""://this case is if you pick a tool that doesn't work in this location
+                    case "": //this case is if you pick a tool that doesn't work in this location
                         break;
                     case TextItemDescription.LockPickSet:
                         Console.WriteLine(TextLocation.UsePickOnDoor);
@@ -71,36 +78,51 @@ public class GameTree()
                         catEscaped = true;
                         break;
                     case TextItemDescription.LargeStone:
-                        if(place.AttemptStoneOnDoor(cat))
-                           catEscaped = true;
+                        if (place.AttemptStoneOnDoor(cat))
+                            catEscaped = true;
                         break;
                     case TextItemDescription.BatteredShield:
                     case TextItemDescription.Shield:
                     case TextItemDescription.CrudeShield:
-                        if(place.AttemptShieldOnDoor(item, inventory))
+                        if (place.AttemptShieldOnDoor(cat, item, inventory))
                             catEscaped = true;
                         break;
                 }
+
+                _userInput.DramaticPauseClrScreen();
             } while (!catEscaped);
-            place.ChangeDoorLockStatus(true); 
+
+            place.ChangeDoorLockStatus(true);
             cat.Location = Characters.Place.MainRoom;
         }
         else
         {
             place.ApproachOpenDoor();
         }
-        /* intro about these are the items you find in your pack that might be helpful
-         * string item = (place.GetObjectChoice(inventory))
-         * if (place.ItemsThatWontHelp.Contains(item)
-         * give a message about that this item won't work on this door but will likely work on other doors
-         * switch(item)
-         * case "" - they chose to leave this location so return?? - check if this is right
-         * case ringOfKeys - words abou door opens
-         * case lockpick - words about door opens
-         * case stone - do stone method
-         * case shield - do shield method
-         * do until location changes to floor 3 (if they choose to stop
-         * do a call on the door that should play the intro then do the interactivemenu and return the item choice
-         */
+    }
+
+    public void WindowSwitchboard(Inventory inventory, Characters cat, DerivedWindowLocation place)
+    {
+        place.ApproachLockedDoor();
+        string item = place.InteractWithLockedDoor(inventory);
+
+            Console.Clear();
+            if (item == "leave")
+                return;
+            switch (item)
+            {
+                case TextItemDescription.Rope:
+                    Console.WriteLine(TextLocation.ClimbDownRope);
+                    cat.Location = Characters.Place.OutsideCastle;
+                    break;
+                case "jump down":
+                    Console.WriteLine(TextLocation.LeapDown);
+                    cat.Location = Characters.Place.Dead;
+                    break;
+            }
+
+            _userInput.DramaticPauseClrScreen();
+       
+        
     }
 }

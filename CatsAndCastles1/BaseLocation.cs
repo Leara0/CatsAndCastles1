@@ -39,7 +39,7 @@ public class BaseLocation
         DoorOpen = isUnlocked;
     }
 
-    public bool DoorisOpen()
+    public bool DoorIsOpen()
     {
         return DoorOpen;
     }

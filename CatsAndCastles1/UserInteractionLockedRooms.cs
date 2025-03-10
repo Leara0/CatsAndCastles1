@@ -17,27 +17,26 @@ public class UserInteractionLockedRooms
         Console.WriteLine(TextLocation.UseStoneOnDoor);
         _userInput.DramaticPause();
         int roll = _rnd.Next(1, 21);
-        Console.WriteLine(TextLocation.YourRoll + roll.ToString());
+        Console.WriteLine(TextLocation.YourRoll + roll +"\n");
         if (roll > 16)
         {
             Console.WriteLine(TextLocation.StoneOrShieldWorked);
             return true;
         }
 
-        cat.Health -= roll;
         roll = _rnd.Next(1, 7) + 1;
-        Console.WriteLine(TextLocation.StoneDidntWork + roll.ToString() + TextLocation.StoneEndOfDamage);
-        _userInput.DramaticPauseClrScreen();
-
+        cat.Health -= roll;
+        Console.WriteLine(TextLocation.StoneDidntWork + roll + TextLocation.StoneEndOfDamage + TextLocation.YourHealth + cat.Health);
+        
         return false;
     }
 
-    public bool UseShieldOnDoor(string item, Inventory inventory)
+    public bool UseShieldOnDoor(Characters cat, string item, Inventory inventory)
     {
         Console.WriteLine(TextLocation.UseShieldOnDoor);
         _userInput.DramaticPause();
         int roll = _rnd.Next(1, 21);
-        Console.WriteLine(TextLocation.YourRoll + roll.ToString());
+        Console.WriteLine(TextLocation.YourRoll + roll +"\n");
         if (roll > 16)
         {
             Console.WriteLine(TextLocation.StoneOrShieldWorked);
@@ -48,15 +47,13 @@ public class UserInteractionLockedRooms
         {
             Console.WriteLine(TextLocation.ShieldBreaks);
             inventory.Pack.Remove(item);
-            _userInput.DramaticPauseClrScreen();
             return false;
         }
 
-        
         roll = _rnd.Next(1, 7) + 1;
-        Console.WriteLine(TextLocation.ShieldDidntWork + roll.ToString() + TextLocation.StoneEndOfDamage);
-        _userInput.DramaticPauseClrScreen();
-
+        cat.Health -= roll;
+        Console.WriteLine(TextLocation.ShieldDidntWork + roll + TextLocation.StoneEndOfDamage +
+                          TextLocation.YourHealth + cat.Health);
         return false;
         }
 }

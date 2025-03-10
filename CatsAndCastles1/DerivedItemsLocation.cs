@@ -30,7 +30,6 @@ public class DerivedItemsLocation : BaseLocation
 
     private void DisplayLocationInfo()
     {
-        Console.Clear();
         Console.WriteLine(_description);
         if (LocationAndItemsDescriptions.Count == 0)
             Console.WriteLine("\n" + TextLocation.NothingLeft);

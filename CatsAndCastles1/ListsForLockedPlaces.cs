@@ -28,8 +28,13 @@ public class ListsForLockedPlaces
         TextItemDescription.LockPickSet,
         TextItemDescription.RingOfKeys,
     };
-    
-    
+
+    public static List<string> WindowNeedsRope = new List<string>()
+    {
+        TextItemDescription.Rope
+    };
+
+
 
 
 

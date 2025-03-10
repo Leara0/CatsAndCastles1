@@ -3,21 +3,30 @@ namespace CatsAndCastles1;
 public class DerivedLockedLocations(string description, List<string> itemsThatWontHelp) :
     DerivedItemsLocation
 {
-    //what is my goal here:
-    /*Create a tree for what items you have vs need
-     *
-     *
-     */
     private List<string> _allPossibleUsefulItems = ListsForLockedPlaces.AllPossibleOptions;
     public List<string> ItemsThatWontHelp { get; set; } = itemsThatWontHelp;
     private readonly UserInput _userInput = new UserInput();
     UserInteractionLockedRooms userInteractionLockedRoom = new UserInteractionLockedRooms();
 
+   #region Methods
 
-    public string GetObjectChoice(Inventory inventory)
+   public List<string> MakeListForInteractiveMenu(Inventory inventory)
+   {
+       List<string> optionsForIMenu = new List<string>();
+
+       foreach (string item in inventory.Pack)
+       {
+           foreach (string usefulItems in _allPossibleUsefulItems)
+               if (item == usefulItems)
+                   optionsForIMenu.Add(usefulItems);
+       }
+
+       return optionsForIMenu;
+   }
+    public virtual string GetObjectChoice(Inventory inventory)
     {
         List<string> listForIMenu = MakeListForInteractiveMenu(inventory);
-        
+
 
         int choiceNumber = userInteractionLockedRoom.GetChoiceForLockedRoom(listForIMenu);
         if (choiceNumber == listForIMenu.Count)
@@ -26,29 +35,16 @@ public class DerivedLockedLocations(string description, List<string> itemsThatWo
         string itemChoice = listForIMenu[choiceNumber];
         return itemChoice;
     }
-
-
-    public List<string> MakeListForInteractiveMenu(Inventory inventory)
-    {
-        List<string> optionsForIMenu = new List<string>();
-
-        foreach (string item in inventory.Pack)
-        {
-            foreach (string usefulItems in _allPossibleUsefulItems)
-                if (item == usefulItems)
-                    optionsForIMenu.Add(usefulItems);
-        }
-
-        return optionsForIMenu;
-    }
+    
 
     public void ApproachLockedDoor()
     {
         Console.Clear();
-        Console.WriteLine(description);//@TODO change this to the description in the parameters
+        Console.WriteLine(description); //@TODO change this to the description in the parameters
         _userInput.DramaticPauseClrScreen();
     }
-    public string InteractWithLockedDoor(Inventory inventory)
+
+    public virtual string InteractWithLockedDoor(Inventory inventory)
     {
         Console.WriteLine(TextLocation.AtDoorCheckInventory);
         if (MakeListForInteractiveMenu(inventory).Count == 0)
@@ -82,7 +78,6 @@ public class DerivedLockedLocations(string description, List<string> itemsThatWo
     {
         Console.WriteLine(TextLocation.OpenDoor); //approach door
         _userInput.DramaticPauseClrScreen();
-        
     }
 
     public bool AttemptStoneOnDoor(Characters cat)
@@ -90,8 +85,10 @@ public class DerivedLockedLocations(string description, List<string> itemsThatWo
         return userInteractionLockedRoom.UseStoneOnDoor(cat);
     }
 
-    public bool AttemptShieldOnDoor(string item, Inventory inventory)
+    public bool AttemptShieldOnDoor(Characters cat, string item, Inventory inventory)
     {
-        return userInteractionLockedRoom.UseShieldOnDoor(item, inventory);
+        return userInteractionLockedRoom.UseShieldOnDoor(cat, item, inventory);
     }
+
+    #endregion
 }

@@ -5,7 +5,7 @@ public class TextLocation
     
     
     public const string CatBorder1 =    
-        "\n\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n";
+        "   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n";
 
     public const string CatBorder2 =
         "\n\n   <   <   <   <   <   <   <   <   =^.^=   >   >   >   >   >   >   >   >   >   \n";
@@ -126,7 +126,7 @@ public class TextLocation
     
 
     public const string ExploreWindow =
-        "\n\n   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n" +
+        "   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n" +
         "\n\nYou move toward the window, and as you draw closer, the suffocating weight of " +
         "the castle's gloom seems to ease—if only slightly. Springing forward you leap " +
         "onto the sill and peer outside. Below, the ground looms a daunting thirty or more feet " +
@@ -134,9 +134,9 @@ public class TextLocation
         "but not impossible." +
         "\n\nYour muscles tense as you consider your options. \n\nYou could take the leap, " +
         "relying on your feline agility and luck to land safely. Or you could check your " +
-        "inventory for other options to assist you in climbing down. " +
-        "The eerie stillness of the castle gnaws at your nerves, urging you to act quickly." +
-        "\nPress '1' to check your inventory and '2' to leap down and '3' to continue exploring the room";
+        "inventory for other options to assist you in climbing down. If your inventory is lacking you " +
+        "might need to search other parts of the castle for an item to assist you. " +
+        "The eerie stillness of the castle gnaws at your nerves, urging you to act quickly.";
 
     public const string HowToProceedWithSheetsAndRope =
         "You check your inventory, searching for anything that might help. " +
@@ -203,19 +203,27 @@ public class TextLocation
         "Your eyes are drawn to the thick, old lock hanging from the latch. " +
         "The lock looks sturdy, its cold metal catching the dim light. It's a formidable obstacle, " +
         "preventing you from venturing through, but you feel you must find a way. ";
-    public const string OpenDoor = "You approach the wooden door, its frame dark and imposing against the stone wall." +
+    public const string OpenDoor = "You approach the wooden door, its frame dark and imposing against the stone wall. " +
                                    "The door is unlocked - inviting you to pass through. The mystery of what lies beyond" +
                                    "is about to be revealed.";
 
     public const string AtDoorCheckInventory =
         "You pause and take a moment to look through your inventory, searching for " +
         "something that might help. Your paws sift through the items you’ve collected so " +
-        "far\n";
+        "far.\n";
+    public const string AtWindowCheckInventory =
+        "You pause and take a moment to look through your inventory, searching for " +
+        "something that might help. Your paws sift through the items you’ve collected so " +
+        "far. \n";
 
-   
+    public const string AtWindowCheckInventoryFindNothing =
+        "You don't have any items in your inventory that can help you climb down the wall. You must decide between " +
+        "jumping down and leaving the window to continue exploring other areas inside the castle.";
     public const string AtDoorCheckInventoryFindNothing =
         "You don't have any items in your inventory that can help you with the lock." +
         "\n\nYou are unable to open the door.";
+
+    public const string WindowOptions = "You have the following options:";
 
     public const string LockPickWontWork = "With practiced precision, you pull out your set of tools — a collection " +
                                            "that has served you well already. Your claws work the tools inside the " +
@@ -265,7 +273,7 @@ public class TextLocation
 
     public const string ShieldBreaks = "Lady luck did not favor you. The force of the impact reverberates through the " +
                                        "room, and in that critical moment, the shield can't take it — the blow " +
-                                       "shatters it into splinters.";
+                                       "shatters it into splinters.\n\nThis shield has been removed from your inventory.";
     
 
     public const string UsePickOnDoor = "You carefully examine the rusty set of tools. With steady hands, " +
