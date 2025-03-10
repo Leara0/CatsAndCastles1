@@ -1,39 +1,22 @@
 namespace CatsAndCastles1;
 
-//@fix - questions for deep improvements
-//question about enums that can take strings
-//I have a LONG list of items that can be found in each room and I'd rather they not all be strings.
-//I want to make them variables but I don't really want to declare that many variables
-
-//I also want to be able to reuse item names but my system for tracking if an item has been taken from a
-//particular location is to record the specific name
-//otherwise I'd need a different system to track if every object number from each location has been picked
-//up
 public class MainStory
 {
     private readonly UserInput _userInput = new UserInput();
-    LocationDescriptions locationDescriptions = new LocationDescriptions();
+    ListsForLocations lists = new ListsForLocations();
     UserInteractionsBackpack userInteractBK = new UserInteractionsBackpack();
     
-
     public void RunGame()
     {
+        #region instantiating Classes
+        #region Characters
         var cat = new Characters();
         {
-            cat.Name = _userInput.GetName();
             cat.Health = 60;
             cat.Location = Characters.Place.MainRoom;
         }
-        //Setup the locations @TODO add the rest
-        InteractWithLocation closet = new InteractWithLocation
-            (LocationText.ExploreCloset, locationDescriptions.ClosetDescription, locationDescriptions.ClosetItems);
-        InteractWithLocation nightStand = new InteractWithLocation
-            (LocationText.ExploreNightStand, locationDescriptions.NightStandDescription, locationDescriptions.NightStandItems);
-        InteractWithLocation bookshelf = new InteractWithLocation
-            (LocationText.ExploreBookshelf, locationDescriptions.BookshelfDescription, locationDescriptions.BookshelfItems);
 
-
-        var backPackMethod = new BackpackMethods();
+        var backPackMethod = new Inventory();
         {
             backPackMethod.Pack = new List<string>(); // creates a new pack 
             backPackMethod.DiscardedItems = new List<string>(); // create a record of all items that have been discarded
@@ -54,19 +37,39 @@ public class MainStory
             warden.Location = Characters.Place.FirstFloor;
             warden.Health = warden.SetHealth(60, 75);
         }
-        //var mainRoom = new MainRoom(cat, backPackMethod);
-
-        closet.DisplayLocationInfo();
-        closet.AddItemsToInventory(backPackMethod);
-        closet.DisplayLocationInfo();
-        closet.AddItemsToInventory(backPackMethod);
-
+        #endregion
         
+        #region MainRoom Areas
+        BaseLocation mainRoom = new BaseLocation(TextLocation.FirstRoomChoices, lists.MainRoomChoices);
+        DerivedItemsLocation closet = new DerivedItemsLocation
+            (TextLocation.ExploreCloset, lists.ClosetItems, lists.ClosetDescription);
+        DerivedItemsLocation nightstand = new DerivedItemsLocation
+            (TextLocation.ExploreNightStand, lists.NightStandItems, lists.NightStandDescription);
+        DerivedItemsLocation bookshelf = new DerivedItemsLocation
+            (TextLocation.ExploreBookshelf, lists.BookshelfItems, lists.BookshelfDescription);
+        DerivedItemsLocation hearth = new DerivedItemsLocation
+            (TextLocation.ExploreHearth, lists.HearthItems, lists.HearthDescription);
+        DerivedLockedLocations mainDoor =
+            new DerivedLockedLocations(TextLocation.ExploreDoor, ListsForLockedPlaces.UnHelpfulKeys);
+        DerivedWindowLocation window = new DerivedWindowLocation(TextLocation.ExploreWindow, 
+            ListsForLockedPlaces.AllPossibleOptions, ListsForLockedPlaces.WindowNeedsRope);
+        #endregion
+        
+        #endregion
+        IntroFluff introFluff = new IntroFluff();
+        GameTree gameTree = new GameTree();
+        introFluff.IntroCutScene();
+        gameTree.MainRoomSwitchboard(backPackMethod, cat, mainRoom, closet, nightstand, bookshelf, hearth, mainDoor, window);
+
         //CastleWithExitStrategies(cat, backPackMethod, mainRoom, guardDog1, guardDog2, warden);
 
-
+        DeadEnding(cat);
         // you end up here if you fall out of the exit strategies loop - ie if you
         // die and choose not to escape
+    }
+
+    private void DeadEnding(Characters cat)
+    {
         if (cat.Location == Characters.Place.Dead)
             Console.WriteLine("\nAs the darkness takes hold, a strange sense of peace washes over you. " +
                               "The struggle, the fear, the desperate clawing for survival — it all fades into " +
@@ -79,10 +82,9 @@ public class MainStory
     }
 
 
-    private void CastleWithExitStrategies(Characters cat, BackPack backPack, MainRoom mainRoom, Characters guardDog1,
+    private void CastleWithExitStrategies(Characters cat, BackPack backPack, Characters guardDog1,
         Characters guardDog2, Characters warden)
     {
-        mainRoom.RunMainRoom();
         do // you get here after you come to the end of one of the main room story lines
         {
             switch (cat.Location)
@@ -114,7 +116,7 @@ public class MainStory
 
     private void PassOut(Characters cat, BackPack backPack)
     {
-        MainRoom mainRoom = new MainRoom(cat, backPack);
+        //MainRoom mainRoom = new MainRoom(cat, backPack);
         cat.Lives--;
 
         Console.WriteLine(
@@ -147,7 +149,7 @@ public class MainStory
                           $"\n\nWhat will you do?... \n");
         if (_userInput.UserChoice() == "1")
         {
-            mainRoom.SubsequentWakeUp();
+            //mainRoom.SubsequentWakeUp();
         }
         else
         {

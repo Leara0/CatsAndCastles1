@@ -2,7 +2,7 @@ using System.Net.Mime;
 
 namespace CatsAndCastles1;
 
-public class BackpackMethods //I got rid of the chance to use sheets to climb down. Now its just the rope options
+public class Inventory //I got rid of the chance to use sheets to climb down. Now its just the rope options
 {
     private readonly UserInput _userInput = new UserInput();
 

@@ -4,7 +4,7 @@ public class UserInteractionsBackpack
 {
     #region Fields and Class Instances
 
-    InteractiveMenu interactiveMenu = new InteractiveMenu();
+    UserInteractiveMenu _userInteractiveMenu = new UserInteractiveMenu();
     public int selectionNumber;
     private readonly UserInput _userInput = new UserInput();
 
@@ -16,7 +16,7 @@ public class UserInteractionsBackpack
     {
     }
 
-    public UserInteractionsBackpack(LocationDescriptions location, BackpackMethods packMethods)
+    public UserInteractionsBackpack(ListsForLocations location, Inventory inventory)
     {
     }
 
@@ -24,17 +24,20 @@ public class UserInteractionsBackpack
 
     #region Public Methods
 
-    public bool SpaceInPack(string item, BackpackMethods packMethods) //this method will deal with a full pack
+    public bool SpaceInPack(string item, Inventory inventory) //this method will deal with a full pack
     {
-        if (packMethods.Pack.Count > 4)
+        if (inventory.Pack.Count > 4)
         {
+            Console.Clear();
             Console.WriteLine("Your pack is too burdened to add any more items. You must remove" +
                               $" something to make space for {item}.");
-            selectionNumber = interactiveMenu.GiveChoices(packMethods.Pack, LocationText.RemoveNothing);
-            if (selectionNumber < packMethods.Pack.Count)
-            {
-                packMethods.Pack.RemoveAt(selectionNumber);
-                Console.WriteLine($"You have removed {item} from your pack");
+            selectionNumber = _userInteractiveMenu.GiveChoices(inventory.Pack, TextLocation.RemoveNothing);
+            if (selectionNumber < inventory.Pack.Count)
+            {   
+                inventory.DiscardedItems.Add(inventory.Pack[selectionNumber]);
+                Console.WriteLine($"You have removed {inventory.Pack[selectionNumber]} from your pack");
+                inventory.Pack.RemoveAt(selectionNumber);
+                
                 _userInput.DramaticPauseClrScreen();
                 return true;
             }
@@ -49,7 +52,7 @@ public class UserInteractionsBackpack
         return true; //if there are fewer than 5 items then there is space
     }
 
-    public void AddItemToInventoryFromLocation(InteractWithLocation specificLocation, BackpackMethods packMethods)
+    public void AddItemToInventoryFromLocation(DerivedItemsLocation specificLocation, Inventory inventory)
     {
         do
         {
@@ -60,127 +63,129 @@ public class UserInteractionsBackpack
             string item = specificLocation.InventoryItemsAtLocation[itemNumber];
 
             if (item.Contains("gold"))
-                AddGold(item, packMethods);
-
-            else if (SpaceInPack(item, packMethods))
             {
-                packMethods.Pack.Add(item);
+                AddGold(item, inventory);
+                specificLocation.ItemHasBeenPickedUp(itemNumber);
+                _userInput.DramaticPauseClrScreen();
+            }
+            else if (SpaceInPack(item, inventory))
+            {
+                inventory.Pack.Add(item);
                 Console.WriteLine($"You pack now contains {item}");
                 specificLocation.ItemHasBeenPickedUp(itemNumber);
                 _userInput.DramaticPauseClrScreen();
             }
+            
         } while (true); // this ends if they choose to leave this area
     }
 
-    public void AddGold(string item, BackpackMethods packMethods)
+    public void AddGold(string item, Inventory inventory)
     {
-        Console.WriteLine($"Your coin purse now contains {packMethods.AddGoldToPurse(item)} gold coins");
+        Console.WriteLine($"Your coin purse now contains {inventory.AddGoldToPurse(item)} gold coins");
     }
 
-    public void AddItemToInventoryFromDiscard(BackpackMethods packMethods)
+    public void AddItemToInventoryFromDiscard(Inventory inventory)
     {
         do
         {
-            int itemNumber = PickFromDiscard(packMethods);
-            if (itemNumber == -1 || itemNumber == packMethods.DiscardedItems.Count)
+            int itemNumber = PickFromDiscard(inventory);
+            if (itemNumber == -1 || itemNumber == inventory.DiscardedItems.Count)
                 return; //return if all the items are gone or they chose to leave the stash alone
 
-            string item = packMethods.DiscardedItems[itemNumber];
+            string item = inventory.DiscardedItems[itemNumber];
 
-            if (SpaceInPack(item, packMethods))
+            if (SpaceInPack(item, inventory))
             {
-                packMethods.Pack.Add(item);
+                inventory.Pack.Add(item);
                 Console.WriteLine($"You pack now contains {item}");
-                packMethods.DiscardedItems.RemoveAt(itemNumber);
-                _userInput.DramaticPauseClrScreen();
-            }
-        } while (true); // this ends if they choose to leave this area
-    }
-    public void RemoveItemFromInventory(BackpackMethods packMethods)
-    {
-        do
-        {
-            int itemNumber = PickFromInventory(packMethods);
-            if (itemNumber == -1 || itemNumber == packMethods.Pack.Count)
-                return; //return if all the items are gone or they chose to quit removing from inventory
-
-            string item = packMethods.Pack[itemNumber];
-
-            if (SpaceInPack(item, packMethods))
-            {
-                packMethods.DiscardedItems.Add(item);
-                Console.WriteLine($"You have removed {item} from your pack");
-                packMethods.Pack.RemoveAt(itemNumber);
+                inventory.DiscardedItems.RemoveAt(itemNumber);
                 _userInput.DramaticPauseClrScreen();
             }
         } while (true); // this ends if they choose to leave this area
     }
 
-    public int GetItemSelection(InteractWithLocation specificLocation)
+    #endregion
+
+
+    public int GetItemSelection(DerivedItemsLocation specificLocation)
     {
         if (specificLocation.InventoryItemsAtLocation.Count == 0)
         {
             // if all the items have been taken display that info and pause
-            Console.WriteLine(LocationText.NothingLeft);
+            Console.WriteLine(TextLocation.NothingLeft);
             _userInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Console.WriteLine(LocationText.ChoiceToTakeItems + "\n");
-        Console.WriteLine(LocationText.HowToPickAnItem);
+        Console.WriteLine(TextLocation.ChoiceToTakeItems + "\n");
         selectionNumber =
-            interactiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, LocationText.LeaveLocation);
+            _userInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, TextLocation.LeaveLocation);
 
         return selectionNumber;
     }
 
-    public int PickFromDiscard(BackpackMethods packMethods)
+    public int PickFromDiscard(Inventory inventory)
     {
-        if (packMethods.DiscardedItems.Count == 0)
+        Console.Clear();
+        if (inventory.DiscardedItems.Count == 0)
         {
-            Console.WriteLine(LocationText.EmptyStash);
+            Console.WriteLine(TextLocation.EmptyStash);
             _userInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Console.WriteLine(LocationText.PickUpFromStash + "\n");
-        Console.WriteLine(LocationText.HowToPickAnItem);
+        Console.WriteLine(TextLocation.PickUpFromStash + "\n");
         selectionNumber =
-            interactiveMenu.GiveChoices(packMethods.DiscardedItems, LocationText.PickUpNothing);
+            _userInteractiveMenu.GiveChoices(inventory.DiscardedItems, TextLocation.PickUpNothing);
 
         return selectionNumber;
     }
 
-    public int PickFromInventory(BackpackMethods packMethods)
+    public void RemoveItemFromInventory(Inventory inventory)
     {
-        if (packMethods.Pack.Count == 0)
+        Console.Clear();
+        do
         {
-            Console.WriteLine(LocationText.EmptyInventory);
+            int itemNumber = PickFromInventory(inventory);
+            if (itemNumber == -1 || itemNumber == inventory.Pack.Count)
+                return; //return if all the items are gone or they chose to quit removing from inventory
+
+            string item = inventory.Pack[itemNumber];
+
+            inventory.DiscardedItems.Add(item);
+            Console.WriteLine($"You have removed {item} from your pack");
+            inventory.Pack.RemoveAt(itemNumber);
+            _userInput.DramaticPauseClrScreen();
+        } while (true); // this ends if they choose to leave this area
+    }
+
+    public int PickFromInventory(Inventory inventory)
+    {
+        if (inventory.Pack.Count == 0)
+        {
+            Console.WriteLine(TextLocation.EmptyInventory);
             _userInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Console.WriteLine(LocationText.ThinkAboutInventory + "\n");
-        Console.WriteLine(LocationText.HowToPickAnItem);
+        Console.WriteLine(TextLocation.ThinkAboutInventory + "\n");
         selectionNumber =
-            interactiveMenu.GiveChoices(packMethods.Pack, LocationText.PickUpNothing);
+            _userInteractiveMenu.GiveChoices(inventory.Pack, TextLocation.PickUpNothing);
 
         return selectionNumber;
     }
 
-    
 
-    public void SpendGold(int amount, BackpackMethods backpackMethods)
+    public void SpendGold(int amount, Inventory inventory)
     {
-        int total = backpackMethods.SpendGold(amount);
+        int total = inventory.SpendGold(amount);
         if (total == -1)
         {
-            Console.WriteLine(LocationText.InsufficientFunds);
+            Console.WriteLine(TextLocation.InsufficientFunds);
         }
         else
         {
             Console.WriteLine($"Your purse now contains {total} gold coins");
         }
     }
-   #endregion
 }
