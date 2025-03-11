@@ -15,7 +15,6 @@ public class GameTree()
         cat.EndGame = false;
         UserInteractionsBackpack userInteractionsBackpack = new UserInteractionsBackpack();
 
-
         do
         {
             int item = mainRoom.RoomMethod();
@@ -93,7 +92,6 @@ public class GameTree()
             } while (!catEscaped);
 
             place.ChangeDoorLockStatus(true);
-            cat.Location = Characters.Place.MainRoom;
         }
         else
         {
@@ -106,23 +104,21 @@ public class GameTree()
         place.ApproachLockedDoor();
         string item = place.InteractWithLockedDoor(inventory);
 
-            Console.Clear();
-            if (item == "leave")
-                return;
-            switch (item)
-            {
-                case TextItemDescription.Rope:
-                    Console.WriteLine(TextLocation.ClimbDownRope);
-                    cat.Location = Characters.Place.OutsideCastle;
-                    break;
-                case "jump down":
-                    Console.WriteLine(TextLocation.LeapDown);
-                    cat.Location = Characters.Place.Dead;
-                    break;
-            }
+        Console.Clear();
+        if (item == "leave")
+            return;
+        switch (item)
+        {
+            case TextItemDescription.Rope:
+                Console.WriteLine(TextLocation.ClimbDownRope);
+                cat.Location = Characters.Place.OutsideCastle;
+                break;
+            case "jump down":
+                Console.WriteLine(TextLocation.LeapDown);
+                cat.Location = Characters.Place.Dead;
+                break;
+        }
 
-            _userInput.DramaticPauseClrScreen();
-       
-        
+        _userInput.DramaticPauseClrScreen();
     }
 }
