@@ -2,9 +2,7 @@ namespace CatsAndCastles1;
 
 public class TextLocation
 {
-    
-    
-    public const string CatBorder1 =    
+    public const string CatBorder1 =
         "   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n";
 
     public const string CatBorder2 =
@@ -12,6 +10,8 @@ public class TextLocation
 
     public const string CatBorder3 =
         "\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n";
+
+    #region intro fluff
 
     public const string IntroCutScene = "Greetings, adventurer. The night has been long and unkind, and your " +
                                         "memories of it are little more than a haze. " +
@@ -28,9 +28,13 @@ public class TextLocation
                                       "\n\nThe hairs along your spine bristle. Something about this place feels wrong, " +
                                       "as though unseen eyes watch from the darkness, waiting. " +
                                       "\n\nYou must escape but are unsure where to begin." +
-                                     "\n\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n";
+                                      "\n\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n";
 
     public const string SubsequentWakeUp = "You wake, dazed and disoriented, your senses slow to return. ";
+
+    #endregion
+
+    #region MainRoom texts
 
     public const string FirstRoomChoices =
         "Your eyes scan the room, taking in the details of your surroundings. " +
@@ -42,69 +46,54 @@ public class TextLocation
     public const string NightStandOption = "The nightstand, small but perhaps hiding something useful.";
     public const string BookshelfOption = "The bookshelf, mostly bare, its empty shelves coated in dust.";
     public const string HearthOption = "A large stone hearth, cold and imposing.";
-    public const string PackOption = "Your pack. You can inspect the contents and discard ones you no longer want.";
-     
 
-    public const string DiscardRevisitOption = "Item/s you’ve chosen to discard — perhaps too hastily."; 
-        
+    public const string ExploreCloset =
+        "You move toward the small door on the opposite wall, its wood worn and cracked. " +
+        "It creaks loudly as you push it open, revealing a narrow, dim space. " +
+        "Upon stepping inside, you realize this is a closet. The air is stale, thick with dust.";
 
-    
-   
-    public const string UseOrRemoveFirstItem = "Would you like to use or remove any items?" +
-                                               "\nPlease press '1' to remove an item and '2' to continue exploring the room";
+    public const string ExploreBookshelf = "You approach the bookshelf, your paws silent against the cold floor. " +
+                                           "It stands tall against the wall, its once-polished wood " +
+                                           "now dull and splintered. Most of the shelves are bare, coated in dust thick enough " +
+                                           "to leave tracks.";
 
-    public const string UseOrRemoveMoreItems = "Would you like to use or remove another item?" +
-                                               "\n Press '1' to remove another item and '2' to continue exploring the room";
 
-    public const string TakeItemsOrLeaveRoom =
-        "Please press '1' if you'd like to take some items with you and '2' if you'd like to " +
-        "leave all the items untouched.";
+    public const string ExploreHearth = "Your gaze drifts to the hearth—large and cold, its once-grand stonework now " +
+                                        "stained with time.";
 
     public const string ExploreNightStand = "Your eyes land on the nightstand — a small, unassuming piece of " +
                                             "furniture beside the cushion where you first woke up. Its surface " +
                                             "is scratched, its single drawer slightly ajar, as if someone once " +
                                             "meant to close it but never quite did.";
 
+    #endregion
+
+
+    public const string PackOption = "Your pack. You can inspect the contents and discard ones you no longer want.";
+
+    public const string DiscardRevisitOption = "Item/s you’ve chosen to discard — perhaps too hastily.";
+
     public const string PrepToListItems = "\nYou find the following item/s that might be helpful:\n";
 
-    public const string ChoiceToTakeItemsNightStand =
-        "\nThe drawer holds no more secrets, only the question of whether " +
-        "any of these things might be useful to you." +
-        "\n\nWould you like to take anything?";
-
-    public const string ExploreCloset =
-        "You move toward the small door on the opposite wall, its wood worn and cracked. " +
-        "It creaks loudly as you push it open, revealing a narrow, dim space. " +
-        "Upon stepping inside, you realize this is a closet. The air is stale, thick with dust.";
-    
-    public const string ExploreBookshelf = "You approach the bookshelf, your paws silent against the cold floor. " +
-                                           "It stands tall against the wall, its once-polished wood " +
-                                           "now dull and splintered. Most of the shelves are bare, coated in dust thick enough " +
-                                           "to leave tracks.";
-
-    
-    public const string ExploreHearth = "Your gaze drifts to the hearth—large and cold, its once-grand stonework now " +
-                                        "stained with time.";
     public const string ChoiceToTakeItems =
         "Each item has its own allure, yet you know that adding too much to your pack could slow you down. " +
         "You also have the option to leave this location without taking anything, knowing you can always return " +
         "later if desired... ";
-
-    public const string WhatDoYouWantToTake = "Which items would you like to take with you?";
 
     public const string NothingLeft =
         "You've scoured every nook and cranny of this area. Every hidden corner has been " +
         "examined, and every item of value has been claimed. There's nothing left here — this " +
         "location has been completely cleared.";
 
-    public const string HowToPickAnItem = "Please use the \u001b[35mup\u001b[0m and \u001b[35mdown\u001b[0m arrow key to " +
-                                     "navigate and press 'enter' to select.";
-    
+    public const string HowToPickAnItem =
+        "Please use the \u001b[35mup\u001b[0m and \u001b[35mdown\u001b[0m arrow key to " +
+        "navigate and press 'enter' to select.";
+
     public const string RemoveNothing = "do not remove any items";
     public const string PickUpNothing = "leave all the items as they are";
     public const string LeaveLocation = "leave this location";
     public const string LeaveLockedDoor = "leave the door alone and explore other areas instead";
-    
+
     public const string EmptyStash = "There are no items in your discard stash.";
     public const string EmptyInventory = "There are no items in your inventory.";
 
@@ -117,13 +106,8 @@ public class TextLocation
         "as well as others, and space is precious since you can only carry 5 items.";
 
     public const string InsufficientFunds = "You don't have enough funds for this transaction";
-        
-    
-    public const string ChoiceToTakeItemsBookshelf =
-        "\nThe air here is still, as though these objects have been waiting undisturbed for a " +
-        "long time.\n\nWould you like to take anything with you?";
 
-    
+    #region Door and Window Text
 
     public const string ExploreWindow =
         "   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n" +
@@ -138,53 +122,21 @@ public class TextLocation
         "might need to search other parts of the castle for an item to assist you. " +
         "The eerie stillness of the castle gnaws at your nerves, urging you to act quickly.";
 
-    public const string HowToProceedWithSheetsAndRope =
-        "You check your inventory, searching for anything that might help. " +
-        "You find a length of rope and several bed sheets that could be tied " +
-        "together into a makeshift rope. " +
-        "\n\nHow would you like to proceed?" +
-        "\n'1' - Use the sheets." +
-        "\n'2' - Use the rope." +
-        "\n'3' - Jump directly down from the window ledge." +
-        "\n'4' - Use the rope.";
+    public const string ExploreDoor =
+        "You approach the heavy wooden door, its frame dark and imposing against the stone wall." +
+        "Your eyes are drawn to the thick, old lock hanging from the latch. " +
+        "The lock looks sturdy, its cold metal catching the dim light. It's a formidable obstacle, " +
+        "preventing you from venturing through, but you feel you must find a way. ";
 
-    public const string MakeAChoiceWithSheets = "You find a pile of old sheets in your inventory. " +
-                                                "You realize they could be tied together to make a rope to assist you in climbing down." +
-                                                $"\n\nPress '1' to use the sheets to assist you, " +
-                                                $"'2' to choose to leap down and '3' to continue exploring other areas " +
-                                                "in the room.";
-
-    public const string MakeAChoiceWithRope = "You find a 20 foot length of rope in your inventory. " +
-                                              "You realize they could be tied together to make a rope to assist you in climbing down." +
-                                              $"\n\nPress '1' to use the rope to assist you, " +
-                                              $"'2' to choose to leap down and '3' to continue exploring other areas " +
-                                              "in the room.";
-
-    public const string MakeChoiceNoSheetsOrRope =
-        "You take a deep breath and leap into the night, trusting your agility. For a brief " +
-        "moment, you feel weightless—until you land with a jarring thud. The ground is " +
-        "unforgiving, your 4 legs give way beneath you and your head smacks against the hard earth.";
+    public const string OpenDoor =
+        "You approach the wooden door, its frame dark and imposing against the stone wall. " +
+        "The door is unlocked - inviting you to pass through. The mystery of what lies beyond" +
+        "is about to be revealed.";
 
     public const string LeapDown =
         "You take a deep breath and leap into the night, trusting your agility. For a brief " +
         "moment, you feel weightless—until you land with a jarring thud. The ground is " +
         "unforgiving, your 4 legs give way beneath you and your head smacks against the hard earth.";
-
-    public const string UseSheets = "You reach into your pack and withdraw the worn but sturdy sheets. Working " +
-                                    "quickly, you tie them together, each knot pulled tight between your claws. You find a solid " +
-                                    "anchor — an iron ring embedded in the wall — and tie the sheets securely around it. " +
-                                    "With a final, cautious tug, you toss the bundle out the window.";
-
-    public const string UseRope = "You reach into your pack and withdraw the thick rope. You find a solid " +
-                                  "anchor — an iron ring embedded in the wall — and tie the rope securely around it. " +
-                                  "With a final, cautious tug, you toss the rope out the window.";
-
-    public const string ClimbDownSheets = "You grip the knotted sheets tightly and ease yourself out the window, " +
-                                          "claws scraping against the stone as you begin your descent. The fabric " +
-                                          "creaks under your weight, but it holds as you inch lower, the cool night " +
-                                          "air brushes against your fur." +
-                                          "\n\n You reach the end of the rope and leap down. At last, your feet touch " +
-                                          "the ground. ";
 
     public const string ClimbDownRope = "You grip the stiff rope tightly and ease yourself out the window, " +
                                         "claws scraping against the stone as you begin your descent. The rope " +
@@ -193,24 +145,11 @@ public class TextLocation
                                         "\n\n You reach the end of the rope and leap down. At last, your feet touch " +
                                         "the ground. ";
 
-    public const string ClimbDownToLeap = "You grip the knotted sheets tightly and ease yourself out the window, " +
-                                          "claws scraping against the stone as you begin your descent. The fabric creaks " +
-                                          "under your weight, but it holds as you inch lower, the cool night air brushing " +
-                                          "against your fur.\n\nYou reach the end of your rope.";
-
-    public const string ExploreDoor =
-        "You approach the wooden door, its frame dark and imposing against the stone wall." +
-        "Your eyes are drawn to the thick, old lock hanging from the latch. " +
-        "The lock looks sturdy, its cold metal catching the dim light. It's a formidable obstacle, " +
-        "preventing you from venturing through, but you feel you must find a way. ";
-    public const string OpenDoor = "You approach the wooden door, its frame dark and imposing against the stone wall. " +
-                                   "The door is unlocked - inviting you to pass through. The mystery of what lies beyond" +
-                                   "is about to be revealed.";
-
     public const string AtDoorCheckInventory =
         "You pause and take a moment to look through your inventory, searching for " +
         "something that might help. Your paws sift through the items you’ve collected so " +
         "far.\n";
+
     public const string AtWindowCheckInventory =
         "You pause and take a moment to look through your inventory, searching for " +
         "something that might help. Your paws sift through the items you’ve collected so " +
@@ -219,6 +158,7 @@ public class TextLocation
     public const string AtWindowCheckInventoryFindNothing =
         "You don't have any items in your inventory that can help you climb down the wall. You must decide between " +
         "jumping down and leaving the window to continue exploring other areas inside the castle.";
+
     public const string AtDoorCheckInventoryFindNothing =
         "You don't have any items in your inventory that can help you with the lock." +
         "\n\nYou are unable to open the door.";
@@ -255,7 +195,7 @@ public class TextLocation
         "\n\nThe stone does ";
 
     public const string StoneEndOfDamage = " damage (D6 +1). ";
-    
+
 
     public const string UseShieldOnDoor =
         "You decide to try your luck with the battered shield. With a grunt, you lift it, " +
@@ -264,6 +204,7 @@ public class TextLocation
         "\n\nRoll a D20 for luck to see if you can smash the lock off the door or if the door will destroy your shield" +
         "\n\nYou need to roll higher than a 16 to successfully break the lock." +
         "\nYou need to roll higher than a 5 to avoid ruining your shield.";
+
     public const string ShieldDidntWork =
         "You heft a the heavy shield in your paw, determined to smash the stubborn lock with brute force. " +
         "With a fierce swing, you bring the shield down upon the door. But the lock proves resilient — it " +
@@ -271,10 +212,11 @@ public class TextLocation
         "the door and strikes you squarely on the head." +
         "\n\nThe shield does ";
 
-    public const string ShieldBreaks = "Lady luck did not favor you. The force of the impact reverberates through the " +
-                                       "room, and in that critical moment, the shield can't take it — the blow " +
-                                       "shatters it into splinters.\n\nThis shield has been removed from your inventory.";
-    
+    public const string ShieldBreaks =
+        "Lady luck did not favor you. The force of the impact reverberates through the " +
+        "room, and in that critical moment, the shield can't take it — the blow " +
+        "shatters it into splinters.\n\nThis shield has been removed from your inventory.";
+
 
     public const string UsePickOnDoor = "You carefully examine the rusty set of tools. With steady hands, " +
                                         "you select a small pick and a thin rod, using them to work the lock. The old lock " +
@@ -286,11 +228,29 @@ public class TextLocation
         "you select a few keys and try them one by one. At last, a slender key seems to fit perfectly. " +
         "You slide it into the lock, turning it slowly as you listen to the tumblers shift. A series " +
         "of soft clicks fills the silence, and with a gentle creak, the door swings open — revealing what lies beyond.";
-        
 
+    #endregion
 
     public const string YourRoll = "You rolled: ";
 
     public const string YourHealth = "Your current health is ";
     public const string OutOfTotalHealth = " out of ";
+
+    #region Third Floor
+
+    public const string ThirdFloorEntrance =
+        "You slip into a dimly lit hallway. It's short and narrow, with three doors to your right, " +
+        "one slightly ajar. The stairway to your left leads downward, offering a potential escape — but " +
+        "the air is thick with uncertainty.";
+
+    public const string ThirdFloorTreeHeading = "Do you approach one of the other doors to uncover what lies " +
+                                                "beyond? Do you descend the stairs, venturing deeper into the castle? " +
+                                                "Or do you return to the room you first escaped from?";
+
+    #endregion
+    #region Dealing With Guard
+
+    public const string DealtWithGuard = "You have dealt with the guard and now must choose you're next move.";
+
+    #endregion
 }

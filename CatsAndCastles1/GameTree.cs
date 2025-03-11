@@ -102,7 +102,7 @@ public class GameTree()
     public void WindowSwitchboard(Inventory inventory, Characters cat, DerivedWindowLocation place)
     {
         place.ApproachLockedDoor();
-        string item = place.InteractWithLockedDoor(inventory);
+        string item = place.InteractWithlockedWindow(inventory);
 
         Console.Clear();
         if (item == "leave")
@@ -110,11 +110,11 @@ public class GameTree()
         switch (item)
         {
             case TextItemDescription.Rope:
-                Console.WriteLine(TextLocation.ClimbDownRope);
+                place.ClimbDownWithRope();
                 cat.Location = Characters.Place.OutsideCastle;
                 break;
             case "jump down":
-                Console.WriteLine(TextLocation.LeapDown);
+                place.JumpDown();
                 cat.Location = Characters.Place.Dead;
                 break;
         }

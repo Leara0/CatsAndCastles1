@@ -9,7 +9,7 @@ public class MainStory
     public void RunGame()
     {
         #region instantiating Classes
-        #region Characters
+        #region Character Class Instantiation
         var cat = new Characters();
         {
             cat.Health = 60;
@@ -39,7 +39,7 @@ public class MainStory
         }
         #endregion
         
-        #region MainRoom Areas
+        #region MainRoom Location Class Instantiation
         BaseLocation mainRoom = new BaseLocation(TextLocation.FirstRoomChoices, lists.MainRoomChoices);
         DerivedItemsLocation closet = new DerivedItemsLocation
             (TextLocation.ExploreCloset, lists.ClosetItems, lists.ClosetDescription);
@@ -53,6 +53,14 @@ public class MainStory
             new DerivedLockedLocations(TextLocation.ExploreDoor, ListsForLockedPlaces.UnHelpfulKeys);
         DerivedWindowLocation window = new DerivedWindowLocation(TextLocation.ExploreWindow, 
             ListsForLockedPlaces.AllPossibleOptions, ListsForLockedPlaces.WindowNeedsRope);
+        #endregion
+        
+        #region ThirdFloor Location Class Instantiation
+        DerivedLockedLocations floor3Door2 =
+            new DerivedLockedLocations(TextLocation.ExploreDoor, ListsForLockedPlaces.UnHelpfulLockPick);
+        
+        
+        
         #endregion
         
         #endregion
