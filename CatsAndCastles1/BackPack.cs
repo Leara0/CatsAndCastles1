@@ -3,6 +3,9 @@ namespace CatsAndCastles1;
 public class BackPack
 {
     private readonly UserInput _userInput = new UserInput();
+    public string[] Options = new string[3];
+    public string[] Descriptions = new string[3];
+    
     public string emptySpot = "a faint outline marking the spot where something once rested";
     public string[] Pack { get; set; } = new string[5];
     public List<string> DiscardedItems { get; set; }
@@ -11,13 +14,8 @@ public class BackPack
     public List<string>
         ListOfAllItemsPickedUp { get; set; } //use this to prevent player from picking up the same object multiple times
 
-
     public int Wallet { get; set; }
-
-
     public int NumberOfSheets { get; set; }
-    //@add is it possible to make all possible items into an enum so I don't have to worry about string typos
-
     public int NumberOfItemsInPack() // counts how many items are in pack
     {
         var counter = 0;
@@ -28,7 +26,6 @@ public class BackPack
                 counter++;
             }
         }
-
 
         return counter;
     }
@@ -49,13 +46,10 @@ public class BackPack
             Console.WriteLine($"{i + 1} - {DiscardedItems[i]}");
         }
 
-
         Console.WriteLine($"\nPlease type the number of the item you would like to pick up. " +
                           $"Or press {DiscardedItems.Count + 1} to return to exploring the room");
 
-
         int response = Convert.ToInt32(_userInput.UserChoice(DiscardedItems.Count + 1));
-
 
         if (response < DiscardedItems.Count + 1)
         {
@@ -108,12 +102,13 @@ public class BackPack
         return true;
     }
 
-    public void RemoveItemsFromPack(Characters cat, bool broken = false)
+    public void RemoveItemsFromPack(Characters cat)
     {
         if (NumberOfItemsInPack() == 0)
         {
             Console.WriteLine("There are no items in your pack.");
-            _userInput.DramaticPause();
+            _userInput.DramaticPauseClrScreen();
+            return;
         }
 
         int numToRemove = 0;
@@ -138,11 +133,6 @@ public class BackPack
                 {
                     Console.WriteLine("You have chosen to drink an elixir. It has restored your health by 10");
                     cat.Health += 10;
-                    Pack[numToRemove - 1] = "empty";
-                }
-                else if (broken)
-                {
-                    Console.WriteLine("Your item is broken and has been removed from your pack");
                     Pack[numToRemove - 1] = "empty";
                 }
                 else
@@ -310,8 +300,7 @@ public class BackPack
     }
 
 
-    public string[] Options = new string[3];
-    public string[] Descriptions = new string[3];
+    
 
 
     public void AssignItemsBasedOnLocation(string location, Characters guardDog = null)
