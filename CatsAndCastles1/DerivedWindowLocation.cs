@@ -4,7 +4,7 @@ public class DerivedWindowLocation(string description, List<string> itemsThatWon
     DerivedLockedLocations(description, itemsThatWontHelp)
 {
     private List<string> _allPossibleUsefulItems = needRope;
-    UserInteractionLockedRooms userInteractionLockedRoom = new UserInteractionLockedRooms();
+    UserInteractionLockedRooms _userInteractionLockedRoom = new UserInteractionLockedRooms();
     private readonly UserInput _userInput = new UserInput();
 
 
@@ -14,7 +14,7 @@ public class DerivedWindowLocation(string description, List<string> itemsThatWon
         listForIMenu.Add("jump down");
 
 
-        int choiceNumber = userInteractionLockedRoom.GetChoiceForLockedRoom(listForIMenu);
+        int choiceNumber = _userInteractionLockedRoom.GetChoiceForLockedRoom(listForIMenu);
         if (choiceNumber == listForIMenu.Count)
             return ""; //if they choose to do nothing return ""
 
@@ -22,7 +22,7 @@ public class DerivedWindowLocation(string description, List<string> itemsThatWon
         return itemChoice;
     }
 
-    public override string InteractWithLockedDoor(Inventory inventory)
+    public string InteractWithlockedWindow(Inventory inventory)
     {
         Console.WriteLine(TextLocation.AtWindowCheckInventory);
         if (!MakeListForInteractiveMenu(inventory).Contains(TextItemDescription.Rope)) //you don't have the rope
@@ -42,6 +42,19 @@ public class DerivedWindowLocation(string description, List<string> itemsThatWon
         }
 
         return item;
+    }
+    public override List<string> MakeListForInteractiveMenu(Inventory inventory)
+    {
+        List<string> optionsForIMenu = new List<string>();
+
+        foreach (string item in inventory.Pack)
+        {
+            foreach (string usefulItems in _allPossibleUsefulItems)
+                if (item == usefulItems)
+                    optionsForIMenu.Add(usefulItems);
+        }
+
+        return optionsForIMenu;
     }
 
     public void ClimbDownWithRope()

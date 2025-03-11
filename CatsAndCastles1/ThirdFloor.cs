@@ -10,9 +10,7 @@ public class ThirdFloor()
        cat.SuccessfulBribed = false;
 
        Console.Clear();
-       Console.WriteLine("You slip into a dimly lit hallway. It's short and narrow, with three " +
-                         "doors to your right, one slightly ajar. The stairway to your left leads downward, offering " +
-                         "a potential escape—but the air is thick with uncertainty.");
+       Console.WriteLine(TextLocation.ThirdFloorEntrance);
 
 
        if (guardDog1.Location != Characters.Place.Dead && !cat.SuccessfulBribed)
@@ -23,16 +21,14 @@ public class ThirdFloor()
                //// if you successfully run away (to floor 2) or get knocked out
                return;
           
-           Console.WriteLine("You have dealt with the guard and now must choose you're next move.");
+           Console.WriteLine(TextLocation.DealtWithGuard);
           
        }
 
 
        do
        {
-           Console.WriteLine("Do you approach one of the other doors to uncover what lies " +
-                             "beyond? Do you descend the stairs, venturing deeper into the castle? " +
-                             "Or do you return to the room you first escaped from?");
+           Console.WriteLine(TextLocation.ThirdFloorTreeHeading);
            Console.WriteLine("\nPlease make a selection:" +
                              "\n'1' - Return to the room from whence you came. You now see the door is marked 1" +
                              "\n'2' - Approach a large worn door, marked with the number 2." +

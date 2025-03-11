@@ -6,9 +6,10 @@ public class DerivedItemsLocation : BaseLocation
     private readonly UserInteractionsBackpack _userInteractionsBackpack = new UserInteractionsBackpack();
     private readonly string _description;
 
-    private List<string> LocationAndItemsDescriptions { get; }
-    public List<string> InventoryItemsAtLocation { get; }
+    public List<string> LocationAndItemsDescriptions { get; set; }
+    public List<string> InventoryItemsAtLocation { get; set; }
 
+    #region Constructors
     public DerivedItemsLocation()
     {
     }
@@ -20,6 +21,7 @@ public class DerivedItemsLocation : BaseLocation
         _description = description;
     }
 
+    #endregion
 
     public void LocationMethod(Inventory inventory) // this is the method to call all the stuff for one location!!
     {

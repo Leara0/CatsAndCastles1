@@ -1,28 +1,49 @@
 namespace CatsAndCastles1;
 
-public class DerivedLockedLocations(string description, List<string> itemsThatWontHelp) :
-    DerivedItemsLocation
+public class DerivedLockedLocations : DerivedItemsLocation
 {
     private List<string> _allPossibleUsefulItems = ListsForLockedPlaces.AllPossibleOptions;
-    public List<string> ItemsThatWontHelp { get; set; } = itemsThatWontHelp;
+    public List<string> ItemsThatWontHelp { get; set; }
     private readonly UserInput _userInput = new UserInput();
     UserInteractionLockedRooms userInteractionLockedRoom = new UserInteractionLockedRooms();
+    public string Description = "";
 
-   #region Methods
+    #region Constructors
 
-   public List<string> MakeListForInteractiveMenu(Inventory inventory)
-   {
-       List<string> optionsForIMenu = new List<string>();
+    public DerivedLockedLocations(string description, List<string> itemsThatWontHelp)
+    {
+        Description = description;
+        ItemsThatWontHelp = itemsThatWontHelp;
+    }
 
-       foreach (string item in inventory.Pack)
-       {
-           foreach (string usefulItems in _allPossibleUsefulItems)
-               if (item == usefulItems)
-                   optionsForIMenu.Add(usefulItems);
-       }
+    public DerivedLockedLocations(string description, List<string> itemsThatWontHelp, List<string> itemsAtLocation,
+        List<string> locationsDescription)
+    {
+        Description = description;
+        ItemsThatWontHelp = itemsThatWontHelp;
+        LocationAndItemsDescriptions = locationsDescription;
+        InventoryItemsAtLocation = itemsAtLocation;
+    }
 
-       return optionsForIMenu;
-   }
+    #endregion
+
+
+    #region Methods
+
+    public virtual List<string> MakeListForInteractiveMenu(Inventory inventory)
+    {
+        List<string> optionsForIMenu = new List<string>();
+
+        foreach (string item in inventory.Pack)
+        {
+            foreach (string usefulItems in _allPossibleUsefulItems)
+                if (item == usefulItems)
+                    optionsForIMenu.Add(usefulItems);
+        }
+
+        return optionsForIMenu;
+    }
+
     public virtual string GetObjectChoice(Inventory inventory)
     {
         List<string> listForIMenu = MakeListForInteractiveMenu(inventory);
@@ -35,12 +56,12 @@ public class DerivedLockedLocations(string description, List<string> itemsThatWo
         string itemChoice = listForIMenu[choiceNumber];
         return itemChoice;
     }
-    
+
 
     public void ApproachLockedDoor()
     {
         Console.Clear();
-        Console.WriteLine(description); //@TODO change this to the description in the parameters
+        Console.WriteLine(Description); //@TODO change this to the description in the parameters
         _userInput.DramaticPauseClrScreen();
     }
 
