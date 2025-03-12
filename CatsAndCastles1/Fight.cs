@@ -303,7 +303,7 @@ public class Fight
 
                if (cat.Health > 0)
                {
-                   Console.WriteLine(TextLocation.CatBorder1);
+                   Console.WriteLine(Text.CatBorder1);
                    _userInput.DramaticPause();
                    
                    
@@ -347,7 +347,7 @@ public class Fight
                Console.WriteLine($"\nYour remaining health is {(cat.Health >= 0 ? cat.Health : "0")} out of 60");
                if (cat.Health > 0)
                {
-                   Console.WriteLine(TextLocation.CatBorder1);
+                   Console.WriteLine(Text.CatBorder1);
                    _userInput.DramaticPause();
                    
                }

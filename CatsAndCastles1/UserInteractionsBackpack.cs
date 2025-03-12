@@ -31,7 +31,7 @@ public class UserInteractionsBackpack
             Console.Clear();
             Console.WriteLine("Your pack is too burdened to add any more items. You must remove" +
                               $" something to make space for {item}.");
-            selectionNumber = _userInteractiveMenu.GiveChoices(inventory.Pack, TextLocation.RemoveNothing);
+            selectionNumber = _userInteractiveMenu.GiveChoices(inventory.Pack, Text.RemoveNothing);
             if (selectionNumber < inventory.Pack.Count)
             {   
                 inventory.DiscardedItems.Add(inventory.Pack[selectionNumber]);
@@ -112,14 +112,14 @@ public class UserInteractionsBackpack
         if (specificLocation.InventoryItemsAtLocation.Count == 0)
         {
             // if all the items have been taken display that info and pause
-            Console.WriteLine(TextLocation.NothingLeft);
+            Console.WriteLine(Text.NothingLeft);
             _userInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Console.WriteLine(TextLocation.ChoiceToTakeItems + "\n");
+        Console.WriteLine(Text.ChoiceToTakeItems + "\n");
         selectionNumber =
-            _userInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, TextLocation.LeaveLocation);
+            _userInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, Text.LeaveLocation);
 
         return selectionNumber;
     }
@@ -129,14 +129,14 @@ public class UserInteractionsBackpack
         Console.Clear();
         if (inventory.DiscardedItems.Count == 0)
         {
-            Console.WriteLine(TextLocation.EmptyStash);
+            Console.WriteLine(Text.EmptyStash);
             _userInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Console.WriteLine(TextLocation.PickUpFromStash + "\n");
+        Console.WriteLine(Text.PickUpFromStash + "\n");
         selectionNumber =
-            _userInteractiveMenu.GiveChoices(inventory.DiscardedItems, TextLocation.PickUpNothing);
+            _userInteractiveMenu.GiveChoices(inventory.DiscardedItems, Text.PickUpNothing);
 
         return selectionNumber;
     }
@@ -163,14 +163,14 @@ public class UserInteractionsBackpack
     {
         if (inventory.Pack.Count == 0)
         {
-            Console.WriteLine(TextLocation.EmptyInventory);
+            Console.WriteLine(Text.EmptyInventory);
             _userInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Console.WriteLine(TextLocation.ThinkAboutInventory + "\n");
+        Console.WriteLine(Text.ThinkAboutInventory + "\n");
         selectionNumber =
-            _userInteractiveMenu.GiveChoices(inventory.Pack, TextLocation.PickUpNothing);
+            _userInteractiveMenu.GiveChoices(inventory.Pack, Text.PickUpNothing);
 
         return selectionNumber;
     }
@@ -181,7 +181,7 @@ public class UserInteractionsBackpack
         int total = inventory.SpendGold(amount);
         if (total == -1)
         {
-            Console.WriteLine(TextLocation.InsufficientFunds);
+            Console.WriteLine(Text.InsufficientFunds);
         }
         else
         {

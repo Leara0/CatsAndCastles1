@@ -6,17 +6,17 @@ public class IntroFluff
     public void IntroCutScene()
     {
         Console.Clear();
-        Console.WriteLine(TextLocation.CatBorder1);
-        Console.WriteLine(TextLocation.IntroCutScene);
-        Console.WriteLine(TextLocation.StartInRoom);
+        Console.WriteLine(Text.CatBorder1);
+        Console.WriteLine(Text.IntroCutScene);
+        Console.WriteLine(Text.StartInRoom);
         _userInput.DramaticPauseClrScreen();
         }
 
     public void SubsequentWakeUp(Characters cat)
     {
         cat.Health = 60;
-        Console.WriteLine(TextLocation.SubsequentWakeUp);
-        Console.WriteLine(TextLocation.StartInRoom);
+        Console.WriteLine(Text.SubsequentWakeUp);
+        Console.WriteLine(Text.StartInRoom);
         _userInput.DramaticPauseClrScreen();
         }
 

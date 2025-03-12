@@ -8,6 +8,7 @@ public class BaseLocation
     private readonly string _locationIntro;
     private bool DoorOpen { get; set; }
     public List<string> OptionsAtLocation { get; set; }
+    private readonly string _menuHeader = "";
     
 
     protected BaseLocation()
@@ -15,10 +16,11 @@ public class BaseLocation
         
     }
 
-    public BaseLocation(string locationIntro, List<string> optionsAtLocation)
+    public BaseLocation(string locationIntro, string pickMenuHeader, List<string> optionsAtLocation)
     {
         OptionsAtLocation = optionsAtLocation;
         _locationIntro = locationIntro;
+        _menuHeader = pickMenuHeader;
     }
 
 
@@ -29,9 +31,15 @@ public class BaseLocation
     public int RoomMethod() // this is the method to call all the stuff for this location
     {
         Console.Clear();
-        Console.WriteLine(_locationIntro);
-        int choice =  _userInput.GetChoice(OptionsAtLocation, TextLocation.DiscardRevisitOption);
+        Console.WriteLine(_menuHeader);
+        int choice =  _userInput.GetChoice(OptionsAtLocation, Text.PackOption);
         return choice;
+    }
+
+    public void PrintIntro()
+    {
+        Console.WriteLine(_locationIntro);
+        _userInput.DramaticPauseClrScreen();
     }
 
     public void ChangeDoorLockStatus(bool isUnlocked)

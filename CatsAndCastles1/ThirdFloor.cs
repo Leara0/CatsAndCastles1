@@ -10,7 +10,7 @@ public class ThirdFloor()
        cat.SuccessfulBribed = false;
 
        Console.Clear();
-       Console.WriteLine(TextLocation.ThirdFloorEntrance);
+       Console.WriteLine(Text.ThirdFloorEntrance);
 
 
        if (guardDog1.Location != Characters.Place.Dead && !cat.SuccessfulBribed)
@@ -21,29 +21,27 @@ public class ThirdFloor()
                //// if you successfully run away (to floor 2) or get knocked out
                return;
           
-           Console.WriteLine(TextLocation.DealtWithGuard);
+           Console.WriteLine(Text.DealtWithGuard);
           
        }
 
 
        do
        {
-           Console.WriteLine(TextLocation.ThirdFloorTreeHeading);
+           Console.WriteLine(Text.ThirdFloorTreeHeading);
            Console.WriteLine("\nPlease make a selection:" +
-                             "\n'1' - Return to the room from whence you came. You now see the door is marked 1" +
-                             "\n'2' - Approach a large worn door, marked with the number 2." +
-                             "\n'3' - Approach the door that is standing ajar, marked with a 3." +
-                             "\n'4' - Approach the room at the end of the hallway, marked with a faded 4." +
-                             "\n'5' - Head down the spiral staircase." +
+                             "\n'1' - " +
+                             "\n'2' - " +
+                             "\n'3' - " +
+                             "\n'4' - " +
+                             "\n'5' - " +
                              "\n'6' - Access your inventory");
            if (guardDog1.Location == Characters.Place.Dead)
                Console.WriteLine("'7' - Revisit the guard's body to loot anything you missed");
            switch (_userInput.UserChoice(7))
            {
                case "1":
-                   Console.WriteLine("You turn back toward the door you first escaped from, the worn wood familiar " +
-                                     "beneath your paws. Pushing it open, you step inside once more. The room is " +
-                                     "just as you left it — dim, old, and eerily silent.\n");
+                   Console.WriteLine(Text.ReEnterMainRoom);
                    //mainRoom.MainRoomMethod();
                    return;
                case "2":
@@ -66,11 +64,7 @@ public class ThirdFloor()
 
 
                case "5":
-                   Console.WriteLine("You feel you’ve explored enough for now. The stairway at the end of the hall " +
-                                     "beckons, offering the chance to move closer to freedom. " +
-                                     "\n\nWith a soft sigh, you make your way to the stairs, each step taking you " +
-                                     "closer to your goal. This floor fades into the shadows behind you as you " +
-                                     "descend, the stairwell opens up to new, uncertain territory.");
+                   Console.WriteLine(Text.HeadDownStairs);
                    Console.WriteLine("\nPress 'enter' to continue...");
                    Console.ReadLine();
                    Console.Clear();
@@ -115,7 +109,7 @@ public class ThirdFloor()
                          "to leave the room");
        if (_userInput.UserChoice() == "1")
            backPack.TakeItems(cat, room);
-       Console.WriteLine("Feeling finished with this room, you step back into the hallway. ");
+       Console.WriteLine("");
    }
 
 
@@ -124,22 +118,10 @@ public class ThirdFloor()
        switch (room)
        {
            case "third floor room 2":
-               Console.WriteLine($"You step toward the room marked '2', its worn surface showing " +
-                                 $"signs of age but no immediate hints of what lies beyond. The handle is cool beneath " +
-                                 $"your paw, the door resisting slightly as you press against it." +
-                                 $"\n\n You step inside, the dim light revealing a sparse but " +
-                                 "functional room. Dust lingers in the air, undisturbed." +
-                                 "\n\nYour eyes scan the space. On the nightstand, you spot a long dagger resting beside a " +
-                                 "small pile of 13 gold coins. Across the room, an open closet reveals a single set of bedsheets " +
-                                 "on a shelf.");
+               Console.WriteLine();
                break;
            case "third floor room 3":
-               Console.WriteLine("You step toward the ajar door, nudging it open with caution. The room beyond is " +
-                                 "dim, the air carrying a faint, unfamiliar scent. As you scan your surroundings, " +
-                                 "a few things catch your eye.\n\nOn a small table, you find a small glass vial " +
-                                 "filled with a shimmering liquid. You don’t know exactly what it does, but something " +
-                                 "about it feels... good. Beside it, you spot 12 gold coins stacked neatly and a " +
-                                 "collar with a bell – meant for a cat? but why is it here?.");
+               Console.WriteLine();
                break;
            case "third floor room 4":
                // can't get in here in floor 3

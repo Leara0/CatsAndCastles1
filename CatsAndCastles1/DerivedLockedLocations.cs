@@ -14,7 +14,7 @@ public class DerivedLockedLocations : DerivedItemsLocation
     {
         Description = description;
         ItemsThatWontHelp = itemsThatWontHelp;
-    }
+    }//use this one for the door in the main room
 
     public DerivedLockedLocations(string description, List<string> itemsThatWontHelp, List<string> itemsAtLocation,
         List<string> locationsDescription)
@@ -23,7 +23,7 @@ public class DerivedLockedLocations : DerivedItemsLocation
         ItemsThatWontHelp = itemsThatWontHelp;
         LocationAndItemsDescriptions = locationsDescription;
         InventoryItemsAtLocation = itemsAtLocation;
-    }
+    }//use this constructor to create a room you want to enter with a locked door
 
     #endregion
 
@@ -67,10 +67,10 @@ public class DerivedLockedLocations : DerivedItemsLocation
 
     public virtual string InteractWithLockedDoor(Inventory inventory)
     {
-        Console.WriteLine(TextLocation.AtDoorCheckInventory);
+        Console.WriteLine(Text.AtDoorCheckInventory);
         if (MakeListForInteractiveMenu(inventory).Count == 0)
         {
-            Console.WriteLine(TextLocation.AtDoorCheckInventoryFindNothing);
+            Console.WriteLine(Text.AtDoorCheckInventoryFindNothing);
             _userInput.DramaticPauseClrScreen();
             return "leave"; //explain you found nothing and return empty string to indicate leave this location
         }
@@ -84,10 +84,10 @@ public class DerivedLockedLocations : DerivedItemsLocation
 
         if (ItemsThatWontHelp.Contains(item))
         {
-            if (item == TextItemDescription.RingOfKeys)
-                Console.WriteLine(TextLocation.KeysWontWork);
-            if (item == TextItemDescription.LockPickSet)
-                Console.WriteLine(TextLocation.LockPickWontWork);
+            if (item == Text.RingOfKeys)
+                Console.WriteLine(Text.KeysWontWork);
+            if (item == Text.LockPickSet)
+                Console.WriteLine(Text.LockPickWontWork);
             _userInput.DramaticPauseClrScreen();
             return ""; // if you tried a tool that doesn't work you need to loop again
         }
@@ -97,7 +97,7 @@ public class DerivedLockedLocations : DerivedItemsLocation
 
     public void ApproachOpenDoor()
     {
-        Console.WriteLine(TextLocation.OpenDoor); //approach door
+        Console.WriteLine(Text.OpenDoor); //approach door
         _userInput.DramaticPauseClrScreen();
     }
 

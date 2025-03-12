@@ -4,34 +4,34 @@ public class ListsForLockedPlaces
 {
     public static List<string> AllPossibleOptions = new List<string>()
     {
-        TextItemDescription.LockPickSet,
-        TextItemDescription.BatteredShield,
-        TextItemDescription.RingOfKeys,
-        TextItemDescription.CrudeShield,
-        TextItemDescription.Shield,
-        TextItemDescription.LargeStone,
+        Text.LockPickSet,
+        Text.BatteredShield,
+        Text.RingOfKeys,
+        Text.CrudeShield,
+        Text.Shield,
+        Text.LargeStone,
 
     };
 
     public static List<string> UnHelpfulKeys = new List<string>()
     {
-        TextItemDescription.RingOfKeys,
+        Text.RingOfKeys,
     };
 
     public static List<string> UnHelpfulLockPick = new List<string>()
     {
-        TextItemDescription.LockPickSet,
+        Text.LockPickSet,
     };
     
     public static List<string> UnHelpfulPickAndKeys = new List<string>()
     {
-        TextItemDescription.LockPickSet,
-        TextItemDescription.RingOfKeys,
+        Text.LockPickSet,
+        Text.RingOfKeys,
     };
 
     public static List<string> WindowNeedsRope = new List<string>()
     {
-        TextItemDescription.Rope
+        Text.Rope
     };
 
 

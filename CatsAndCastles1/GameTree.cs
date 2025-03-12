@@ -14,6 +14,7 @@ public class GameTree()
         cat.Location = Characters.Place.MainRoom;
         cat.EndGame = false;
         UserInteractionsBackpack userInteractionsBackpack = new UserInteractionsBackpack();
+        mainRoom.PrintIntro();
 
         do
         {
@@ -68,21 +69,21 @@ public class GameTree()
                 {
                     case "": //this case is if you pick a tool that doesn't work in this location
                         break;
-                    case TextItemDescription.LockPickSet:
-                        Console.WriteLine(TextLocation.UsePickOnDoor);
+                    case Text.LockPickSet:
+                        Console.WriteLine(Text.UsePickOnDoor);
                         catEscaped = true;
                         break;
-                    case TextItemDescription.RingOfKeys:
-                        Console.WriteLine(TextLocation.UseKeysOnDoor);
+                    case Text.RingOfKeys:
+                        Console.WriteLine(Text.UseKeysOnDoor);
                         catEscaped = true;
                         break;
-                    case TextItemDescription.LargeStone:
+                    case Text.LargeStone:
                         if (place.AttemptStoneOnDoor(cat))
                             catEscaped = true;
                         break;
-                    case TextItemDescription.BatteredShield:
-                    case TextItemDescription.Shield:
-                    case TextItemDescription.CrudeShield:
+                    case Text.BatteredShield:
+                    case Text.Shield:
+                    case Text.CrudeShield:
                         if (place.AttemptShieldOnDoor(cat, item, inventory))
                             catEscaped = true;
                         break;
@@ -109,7 +110,7 @@ public class GameTree()
             return;
         switch (item)
         {
-            case TextItemDescription.Rope:
+            case Text.Rope:
                 place.ClimbDownWithRope();
                 cat.Location = Characters.Place.OutsideCastle;
                 break;

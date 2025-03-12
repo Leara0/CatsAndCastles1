@@ -24,14 +24,14 @@ public class DerivedWindowLocation(string description, List<string> itemsThatWon
 
     public string InteractWithlockedWindow(Inventory inventory)
     {
-        Console.WriteLine(TextLocation.AtWindowCheckInventory);
-        if (!MakeListForInteractiveMenu(inventory).Contains(TextItemDescription.Rope)) //you don't have the rope
+        Console.WriteLine(Text.AtWindowCheckInventory);
+        if (!MakeListForInteractiveMenu(inventory).Contains(Text.Rope)) //you don't have the rope
         {
-            Console.WriteLine(TextLocation.AtWindowCheckInventoryFindNothing);
+            Console.WriteLine(Text.AtWindowCheckInventoryFindNothing);
         }
         else
         {
-            Console.WriteLine(TextLocation.WindowOptions);
+            Console.WriteLine(Text.WindowOptions);
         }
 
         string item = GetObjectChoice(inventory);
@@ -59,12 +59,12 @@ public class DerivedWindowLocation(string description, List<string> itemsThatWon
 
     public void ClimbDownWithRope()
     {
-        Console.WriteLine(TextLocation.ClimbDownRope);
+        Console.WriteLine(Text.ClimbDownRope);
     }
 
     public void JumpDown()
     {
-        Console.WriteLine(TextLocation.LeapDown);
+        Console.WriteLine(Text.LeapDown);
     }
 }
 

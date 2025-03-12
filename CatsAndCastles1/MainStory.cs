@@ -40,24 +40,27 @@ public class MainStory
         #endregion
         
         #region MainRoom Location Class Instantiation
-        BaseLocation mainRoom = new BaseLocation(TextLocation.FirstRoomChoices, lists.MainRoomChoices);
+        BaseLocation mainRoom = new BaseLocation(Text.StartInRoom, Text.FirstRoomChoices, 
+            lists.MainRoomChoices);
         DerivedItemsLocation closet = new DerivedItemsLocation
-            (TextLocation.ExploreCloset, lists.ClosetItems, lists.ClosetDescription);
+            (Text.ExploreCloset, lists.ClosetItems, lists.ClosetDescription);
         DerivedItemsLocation nightstand = new DerivedItemsLocation
-            (TextLocation.ExploreNightStand, lists.NightStandItems, lists.NightStandDescription);
+            (Text.ExploreNightStand, lists.NightStandItems, lists.NightStandDescription);
         DerivedItemsLocation bookshelf = new DerivedItemsLocation
-            (TextLocation.ExploreBookshelf, lists.BookshelfItems, lists.BookshelfDescription);
+            (Text.ExploreBookshelf, lists.BookshelfItems, lists.BookshelfDescription);
         DerivedItemsLocation hearth = new DerivedItemsLocation
-            (TextLocation.ExploreHearth, lists.HearthItems, lists.HearthDescription);
+            (Text.ExploreHearth, lists.HearthItems, lists.HearthDescription);
         DerivedLockedLocations mainDoor =
-            new DerivedLockedLocations(TextLocation.ExploreDoor, ListsForLockedPlaces.UnHelpfulKeys);
-        DerivedWindowLocation window = new DerivedWindowLocation(TextLocation.ExploreWindow, 
+            new DerivedLockedLocations(Text.ApproachDoor, ListsForLockedPlaces.UnHelpfulKeys);
+        DerivedWindowLocation window = new DerivedWindowLocation(Text.ExploreWindow, 
             ListsForLockedPlaces.AllPossibleOptions, ListsForLockedPlaces.WindowNeedsRope);
         #endregion
         
         #region ThirdFloor Location Class Instantiation
-        DerivedLockedLocations floor3Door2 =
-            new DerivedLockedLocations(TextLocation.ExploreDoor, ListsForLockedPlaces.UnHelpfulLockPick);
+        BaseLocation thirdFloor = new BaseLocation(Text.ThirdFloorEntrance, 
+            Text.ThirdFloorTreeHeading, lists.ThirdFloorChoices);
+        //DerivedLockedLocations floor3Door2 =
+            new DerivedLockedLocations(Text.ApproachDoor, ListsForLockedPlaces.UnHelpfulLockPick);
         
         
         

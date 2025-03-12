@@ -34,10 +34,10 @@ public class DerivedItemsLocation : BaseLocation
     {
         Console.WriteLine(_description);
         if (LocationAndItemsDescriptions.Count == 0)
-            Console.WriteLine("\n" + TextLocation.NothingLeft);
+            Console.WriteLine("\n" + Text.NothingLeft);
         else
         {
-            Console.WriteLine(TextLocation.PrepToListItems);
+            Console.WriteLine(Text.PrepToListItems);
             foreach (string item in LocationAndItemsDescriptions)
                 Console.WriteLine(item);
         }

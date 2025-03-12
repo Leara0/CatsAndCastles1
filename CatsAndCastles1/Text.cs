@@ -1,7 +1,8 @@
 namespace CatsAndCastles1;
 
-public class TextLocation
+public class Text
 {
+    #region Borders
     public const string CatBorder1 =
         "   -   -   -   -   -   -   -   -   =^.^=   -   -   -   -   -   -   -   -   -   -   \n";
 
@@ -10,6 +11,7 @@ public class TextLocation
 
     public const string CatBorder3 =
         "\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n";
+    #endregion
 
     #region intro fluff
 
@@ -68,6 +70,7 @@ public class TextLocation
 
     #endregion
 
+    #region inventory and discard textx
 
     public const string PackOption = "Your pack. You can inspect the contents and discard ones you no longer want.";
 
@@ -85,15 +88,6 @@ public class TextLocation
         "examined, and every item of value has been claimed. There's nothing left here — this " +
         "location has been completely cleared.";
 
-    public const string HowToPickAnItem =
-        "Please use the \u001b[35mup\u001b[0m and \u001b[35mdown\u001b[0m arrow key to " +
-        "navigate and press 'enter' to select.";
-
-    public const string RemoveNothing = "do not remove any items";
-    public const string PickUpNothing = "leave all the items as they are";
-    public const string LeaveLocation = "leave this location";
-    public const string LeaveLockedDoor = "leave the door alone and explore other areas instead";
-
     public const string EmptyStash = "There are no items in your discard stash.";
     public const string EmptyInventory = "There are no items in your inventory.";
 
@@ -106,6 +100,17 @@ public class TextLocation
         "as well as others, and space is precious since you can only carry 5 items.";
 
     public const string InsufficientFunds = "You don't have enough funds for this transaction";
+
+    #endregion
+
+    public const string HowToPickAnItem =
+        "Please use the \u001b[35mup\u001b[0m and \u001b[35mdown\u001b[0m arrow key to " +
+        "navigate and press 'enter' to select.";
+
+    public const string RemoveNothing = "do not remove any items";
+    public const string PickUpNothing = "leave all the items as they are";
+    public const string LeaveLocation = "leave this location";
+    public const string LeaveLockedDoor = "leave the door alone and explore other areas instead";
 
     #region Door and Window Text
 
@@ -122,11 +127,6 @@ public class TextLocation
         "might need to search other parts of the castle for an item to assist you. " +
         "The eerie stillness of the castle gnaws at your nerves, urging you to act quickly.";
 
-    public const string ExploreDoor =
-        "You approach the heavy wooden door, its frame dark and imposing against the stone wall." +
-        "Your eyes are drawn to the thick, old lock hanging from the latch. " +
-        "The lock looks sturdy, its cold metal catching the dim light. It's a formidable obstacle, " +
-        "preventing you from venturing through, but you feel you must find a way. ";
 
     public const string OpenDoor =
         "You approach the wooden door, its frame dark and imposing against the stone wall. " +
@@ -229,6 +229,12 @@ public class TextLocation
         "You slide it into the lock, turning it slowly as you listen to the tumblers shift. A series " +
         "of soft clicks fills the silence, and with a gentle creak, the door swings open — revealing what lies beyond.";
 
+    public const string ApproachDoor =
+        "You approach the wooden door, its frame dark and imposing against the stone wall." +
+        "Your eyes are drawn to the thick, old lock hanging from the latch. " +
+        "The lock looks sturdy, its cold metal catching the dim light. It's a formidable obstacle, " +
+        "preventing you from venturing through, but you feel you must find a way. ";
+
     #endregion
 
     public const string YourRoll = "You rolled: ";
@@ -247,10 +253,160 @@ public class TextLocation
                                                 "beyond? Do you descend the stairs, venturing deeper into the castle? " +
                                                 "Or do you return to the room you first escaped from?";
 
+    public const string ReturnToMainRoomOption =
+        "Return to the room from whence you came. You now see the door is marked 1";
+
+    public const string ThirdFloorDoor2Option = "Approach the large worn door, marked with the number 2.";
+    public const string ThirdFloorDoor3Option = "Approach the door that is standing ajar, marked with a 3.";
+    public const string ThirdFloorDoor4Option = "Approach the room at the end of the hallway, marked with a faded 4.";
+    public const string HeadDownStairsOption = "Head down the spiral staircase.";
+
+    public const string ReEnterMainRoom =
+        "You turn back toward the door you first escaped from, the worn wood familiar " +
+        "beneath your paws. Pushing it open, you step inside once more. The room is " +
+        "just as you left it — dim, old, and eerily silent.";
+
+    //which doors are locked????
+    public const string ExploreStudyF3D2 = 
+        "You quietly step into the room and find that a large wooden desk dominates the space, its surface covered in " +
+        "scattered papers, ink stains, and an open book with faded writing. A single chair has been pushed back as if " +
+        "someone left in a hurry. A half-burned candle sits in a brass holder, melted wax pooled beneath it.";
+
+    public const string ExploreBedroomF3D3 = //second bedroom
+        "You pad inside, your steps light against the floor. A thin layer of dust coats everything, undisturbed for " +
+        "quite some time. The bed is unmade, its blankets " +
+        "tangled and stiff with age. A cracked mirror hangs on the wall, reflecting the dim light of the hallway.";
+
+    public const string ExploreClosetF3D4 = //storage closet
+        "You slink through the entrance, moving with practiced stealth. Inside you find a cramped, musty space filled " +
+        "with dust and cobwebs - likely a storage closet of some sort. Wooden shelves line the walls, though most of " +
+        "them are empty or hold long-forgotten clutter.";
+
+    public const string HeadDownStairs =
+        "You feel you’ve explored enough for now. The stairway at the end of the hall " +
+        "beckons, offering the chance to move closer to freedom. " +
+        "\n\nWith a soft sigh, you make your way to the stairs, each step taking you " +
+        "closer to your goal. This floor fades into the shadows behind you as you " +
+        "descend, the stairwell opens up to new, uncertain territory.";
+
     #endregion
+
+    public const string FinishExploringInHall = "Feeling finished with this room, you step back into the hallway.";
+
+    #region SecondFloor
+    public const string ExploreMeetingRoomF2R1 = //meeting room  
+        "You creep into the room, ears perked for any sign of danger. You find a long wooden table dominates the center " +
+        "of the room, its surface scarred with knife marks and old stains. " +
+        "Chairs are haphazardly arranged, some knocked over. A single candle, long burned out, rests in an iron holder.";
+
+    public const string ExploreGuardRoomF2R2 = //guard's quarters
+        "The smell of sweat and old leather lingers in the air. As you look around the room you notice several crude " +
+        "cots are pushed against the walls, and a nearly empty weapons rack stands in the corner.";
+
+    public const string ExploreClosetF2R3 = //storage closet 
+        "You slink into the darkness, muscles poised to react. You find a cramped space, though this one looks as if it " +
+        "was ransacked recently. The shelves are in disarray, and the floor is littered with broken crates.";
+
+    public const string ExploreLibraryF2R4 = //library
+        "You step across the threshold, careful to stay unnoticed. The scent of old parchment and dried ink fills the air. " +
+        "Towering bookshelves line the walls, many of them missing books or sagging under the weight of their forgotten knowledge.";
+    #endregion
+
+    public const string ExploreFirstFloor = "";
+
+
     #region Dealing With Guard
 
     public const string DealtWithGuard = "You have dealt with the guard and now must choose you're next move.";
 
     #endregion
+    
+    #region Inventory Items
+    public const string TwoSheetsDesc =  "Several folded bed sheets, their fabric yellowed but sturdy.";
+    public const string TwoSheets = "2 sets of sheets";
+    public const string BroomAndDustPanDesc = "A broom and dustpan that lean against the far wall, unused for " +
+                                          "what seems like years.";
+    public const string BroomAndDustPan = "the broom and dustpan";
+    public const string ManaclesDesc = "A set of manacles, their chains coiled and rusted, almost blending into " +
+                                       "the shadowy corner.";
+
+    public const string Manacles = "the set of manacles";
+    public const string TenCoinsDesc = "Ten gold coins, their surfaces dull with age but still carrying a " +
+                                       "reassuring weight.";
+
+    public const string TenCoins = "10 gold coins";
+    public const string GlassesDesc = "A pair of glasses, their lenses smudged with dust, the frames bent slightly " +
+                                      "out of shape.";
+    public const string Glasses = "a pair of glasses";
+    public const string BookOfPrayersDesc = "A book of prayers, its leather cover cracked with age, the pages thin and delicate.";
+    public const string BookOfPrayers = "a book of prayers";
+    public const string DaggerDesc = "A dagger, its handle wrapped in worn leather, the blade dull but still sharp enough to be dangerous.";
+    public const string Dagger = "the dagger";
+    public const string LockPickSetDesc = "A small, rusted set of tools — a few thin rods of metal, a hook, and something " +
+                                          "resembling a flattened key. They seem out of place, their purpose unclear at " +
+                                          "first, though their delicate shapes suggest they might fit into something " +
+                                          "small and stubborn.";
+
+    public const string LockPickSet = "the set of tools";
+    public const string CatFigurineDesc = "A wooden figurine, carved in the shape of a cat. It’s crude but detailed enough " +
+                                          "to capture the curve of a tail and the prickle of carved fur along its back. " +
+                                          "The eyes, once painted, have long since faded, leaving behind empty impressions in the wood.";
+    public const string CatFigurine = "the cat figurine";
+    public const string FirePokerDesc = "A fire poker, its iron worn smooth from years of use, still sturdy " +
+                                        "enough to be a weapon or a tool.";
+    public const string FirePoker = "the fire poker";
+    public const string LargeStoneDesc = "A large, loose stone, sitting slightly askew among the others. Heavier than " +
+                                         "it looks, it would be perfect for smashing something stubborn.";
+    public const string LargeStone = "the large stone";
+    public const string BatteredShieldDesc = "A shield, nearly invisible at first, hidden beneath layers of dust and cobwebs. " +
+                                             "Its wood is worn, its emblem barely discernible, but it remains solid—built " +
+                                             "to withstand blows.";
+    public const string BatteredShield = "the battered shield";
+    public const string RingOfKeysDesc = "A ring carrying several small keys that might help you escape or uncover other " +
+                                         "useful items along your journey.";
+
+    public const string RingOfKeys = "the ring of keys";
+    public const string CrudeShieldDesc ="a crude but sturdy shield";
+    public const string CrudeShield = "the crude shield";
+    public const string LongDaggerDesc = "A slender dagger with an extended blade, perfect for precise, stealthy strikes.";
+    public const string LongDagger = "the long dagger";
+    
+    public const string GlassVialDesc = "A delicate vial filled with a glowing liquid that shifts between blue " +
+                                        "and green hues—promising and restorative.";
+    public const string GlassVial = "the glass vial";
+    public const string TwelveCoinsDesc = "A set of coins with a rough, matte finish—evidence of long use.";//@TODO make money trackable again
+    public const string TwelveCoins = "12 gold coins";
+    public const string ThirteenCoinsDesc = "A handful of gold coins with intricate engravings that gleam invitingly.";
+    public const string ThirteenCoins = "13 gold coins";
+    public const string TwentyCoinsDesc = "A handful of coins with intricate designs, now dulled by time.";
+    public const string TwentyCoins = "20 gold coins";
+    public const string CatCollarDesc = "A simple, worn collar that once belonged to a feline; now, it's little more than a sentimental trinket.";
+    public const string CatCollar = "the cat collar";
+    public const string DogStatueDesc = "A small, carved statue of a dog—more ornamental than practical, serving as a quiet reminder of danger.";
+    public const string DogStatue = "the dog statue";
+    public const string ShieldDesc = "A battered shield marked by past battles; it may still offer vital protection.";
+    public const string Shield = "the shield";
+    public const string RopeDesc = "A sturdy length of rope that might aid you in climbing down from a window or navigating obstacles.";
+    public const string Rope = "the rope";
+    public const string ShortSwordDesc = "A compact, well-balanced blade, perfect for swift, decisive strikes.";
+    public const string ShortSword = "the short-sword";
+    public const string WorryBeadsDesc = " A string of polished beads that offer a calming, rhythmic clack when held.";
+    public const string WorryBeads = "the worry beads";
+    public const string DogWhistleDesc = "A simple metallic whistle that emits a faint, unimpressive sound, likely of little practical use.";
+    public const string DogWhistle = "the dog whistle";
+    public const string LoafOfBreadDesc = "A crusty, hearty loaf that, despite its age, smells inviting and promises nourishment.";
+    public const string LoafOfBread = "the loaf of bread";
+    public const string CatWantedPosterDesc = "A worn poster shows a rough sketch of a cat: \"WANTED – THEFT & MISCHIEF.\"";
+    public const string CatWantedPoster = "the cat wanted poster";
+    public const string RustedLanternDesc = "A rusted lantern with no oil.";
+    public const string RustedLantern = "the rusted lantern";
+    public const string DiceDesc = "A set of dice – one is chipped, the other is missing dots";
+    public const string Dice = "the dice";
+    public const string DustyBookDesc = "A dusty book, the title is faded, and the pages are brittle.";
+    public const string DustyBook = "the dusty book";
+    public const string CandleStubDesc = "A candle stub - melted wax clings to the base.";
+    public const string CandleStub = "the candle stub";
+
+    #endregion
+
 }
