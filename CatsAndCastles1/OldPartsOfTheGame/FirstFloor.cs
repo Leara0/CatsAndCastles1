@@ -5,14 +5,14 @@ public class FirstFloor
 {
     private readonly UserInput _userInput = new UserInput();
     private readonly Fight fight = new Fight();
-   public void FirstFloorStory(Characters cat, BackPack backPack, Characters warden)
+   public void FirstFloorStory(MainCharacter cat, BackPack backPack, Character warden)
    {
        cat.SuccessfulBribed = false;
        Console.WriteLine("You descend the stairs, each step measured, each breath steady.");
-       if(warden.Location == Characters.Place.Dead)
+       if(warden.IsDead)
            Console.WriteLine("\nAs you reach the main floor, a vast room opens up before you. It's purpose is unclear " +
                              "but you don't feel drawn to investigate.");
-       if (warden.Location != Characters.Place.Dead)
+       if (!warden.IsDead)
        {
            Console.WriteLine("As you reach the main floor, " +
                              "the atmosphere shifts—heavy, charged, dangerous. The room before you is vast, its purpose " +
@@ -23,9 +23,9 @@ public class FirstFloor
 
 
        // stuff here to wrap things up is you get past him
-       if (warden.Location == Characters.Place.Dead || cat.SuccessfulBribed)
+       if (warden.IsDead || cat.SuccessfulBribed)
        {
-           if (warden.Location == Characters.Place.Dead && !cat.LeftFirstFloor)
+           if (warden.IsDead && !cat.LeftFirstFloor)
                Console.WriteLine(
                    "\nThe battle was brutal. The Warden was relentless. You dodged, clawed, bit, and fought " +
                    "with everything you had." +
@@ -50,7 +50,7 @@ public class FirstFloor
            {
                Console.WriteLine("\nYou stagger forward, each step pulling you away from the gloom of the castle, " +
                                  "away from the danger, away from death itself. One final push, and are free.");
-               cat.Location = Characters.Place.OutsideCastle;
+               cat.Location = MainCharacter.Place.OutsideCastle;
            }
            else
            {
@@ -62,18 +62,18 @@ public class FirstFloor
                                  "resolve — there’s more to be gathered, more to be learned before you face the " +
                                  "unknown outside. As you reach the landing, you wonder what other tools or clues " +
                                  "might lie waiting in the higher levels of this ancient fortress.");
-               cat.Location = Characters.Place.SecondFloor;
+               cat.Location = MainCharacter.Place.SecondFloor;
                Console.WriteLine("Press 'enter' to continue");
                Console.ReadLine();
                Console.Clear();
            }
        }
-       else if (cat.Location == Characters.Place.SecondFloor)
+       else if (cat.Location == MainCharacter.Place.SecondFloor)
            return;
        else
        {
            cat.LostToGuard = true;
-           cat.Location = Characters.Place.PassedOut;
+           cat.Location = MainCharacter.Place.PassedOut;
        }
    }
 }

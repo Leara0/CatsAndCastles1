@@ -4,7 +4,7 @@ public class ThirdFloor()
 {
     private readonly UserInput _userInput = new UserInput();
     private readonly Fight fight = new Fight();
-   public void ThirdFloorStory(Characters cat, BackPack backPack, Characters guardDog1)
+   public void ThirdFloorStory(MainCharacter cat, BackPack backPack, Character guardDog1)
    {
        //MainRoom mainRoom = new MainRoom(cat, backPack);
        cat.SuccessfulBribed = false;
@@ -13,11 +13,11 @@ public class ThirdFloor()
        Console.WriteLine(Text.ThirdFloorEntrance);
 
 
-       if (guardDog1.Location != Characters.Place.Dead && !cat.SuccessfulBribed)
+       if (!guardDog1.IsDead && !cat.SuccessfulBribed)
        {
            // if the guard is not dead & not bribed you must deal with him
            fight.GuardDogEncounter(cat, backPack, guardDog1, 0);
-           if (cat.Location == Characters.Place.SecondFloor || cat.Location == Characters.Place.PassedOut)
+           if (cat.Location == MainCharacter.Place.SecondFloor || cat.Location == MainCharacter.Place.PassedOut)
                //// if you successfully run away (to floor 2) or get knocked out
                return;
           
@@ -36,7 +36,7 @@ public class ThirdFloor()
                              "\n'4' - " +
                              "\n'5' - " +
                              "\n'6' - Access your inventory");
-           if (guardDog1.Location == Characters.Place.Dead)
+           if (guardDog1.IsDead)
                Console.WriteLine("'7' - Revisit the guard's body to loot anything you missed");
            switch (_userInput.UserChoice(7))
            {
@@ -68,7 +68,7 @@ public class ThirdFloor()
                    Console.WriteLine("\nPress 'enter' to continue...");
                    Console.ReadLine();
                    Console.Clear();
-                   cat.Location = Characters.Place.SecondFloor;
+                   cat.Location = MainCharacter.Place.SecondFloor;
                    return;
                case "6":
                    backPack.ListContentsOfPack();
@@ -85,7 +85,7 @@ public class ThirdFloor()
                        "once again lay before you.");
                    break;
                case "7":
-                   if (guardDog1.Location == Characters.Place.Dead)
+                   if (guardDog1.IsDead)
                        LootBody(cat, backPack, guardDog1);
                    else
                    {
@@ -102,7 +102,7 @@ public class ThirdFloor()
    }
 
 
-   void EnterRoom(Characters cat, BackPack backPack, string room)
+   void EnterRoom(MainCharacter cat, BackPack backPack, string room)
    {
        DescriptionOfItems(room);
        Console.WriteLine("\n Do you want to take any of these items with you? Press '1' to take items and '2' " +
@@ -130,7 +130,7 @@ public class ThirdFloor()
    }
 
 
-   void LootBody(Characters cat, BackPack backPack, Characters guardDog)
+   void LootBody(MainCharacter cat, BackPack backPack, Character guardDog)
    {
        Console.WriteLine("\nYou return to the body and take a moment to search it, uncovering:");
 

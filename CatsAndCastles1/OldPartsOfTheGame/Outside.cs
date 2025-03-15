@@ -3,14 +3,14 @@ namespace CatsAndCastles1;
 
 public class OutsideCastle
 {
-    public void OutsideTheCastle(Characters cat, BackPack backPack)
+    public void OutsideTheCastle(MainCharacter cat, BackPack backPack)
     {
         SuccessfulEscape(cat);
         //@add something about checking backpack for supplies and gold to make it to the next town
     }
 
 
-    public void SuccessfulEscape(Characters cat)
+    public void SuccessfulEscape(MainCharacter cat)
     {
         Console.WriteLine("Cool night air rushes over you, crisp and clean, so different from the stale dampness of " +
                           "the castle. The sky stretches vast and open above, dotted with stars. Grass, soft and dewy, " +

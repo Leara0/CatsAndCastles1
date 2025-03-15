@@ -1,6 +1,6 @@
 namespace CatsAndCastles1;
 
-public class UserInteractionLockedRooms
+public class UILockedRooms
 {
     UserInput _userInput = new UserInput();
     Random _rnd = new Random();
@@ -12,7 +12,7 @@ public class UserInteractionLockedRooms
         return choiceNumber;
     }
 
-    public bool UseStoneOnDoor(Characters cat)
+    public bool UseStoneOnDoor(Character cat)
     {
         Console.WriteLine(Text.UseStoneOnDoor);
         _userInput.DramaticPause();
@@ -31,7 +31,7 @@ public class UserInteractionLockedRooms
         return false;
     }
 
-    public bool UseShieldOnDoor(Characters cat, string item, Inventory inventory)
+    public bool UseShieldOnDoor(Character cat, string item, Inventory inventory)
     {
         Console.WriteLine(Text.UseShieldOnDoor);
         _userInput.DramaticPause();

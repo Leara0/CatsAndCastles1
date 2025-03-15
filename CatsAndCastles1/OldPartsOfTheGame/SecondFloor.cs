@@ -6,7 +6,7 @@ public class SecondFloor
     private readonly Fight fight = new Fight();
 
 
-    public void SecondFloorStory(Characters cat, BackPack backPack, Characters guardDog)
+    public void SecondFloorStory(MainCharacter cat, BackPack backPack, Character guardDog)
     {
         cat.SuccessfulBribed = false;
 
@@ -71,7 +71,7 @@ public class SecondFloor
                     break;
                 case "4": //guard dog
                     Room4(cat, backPack, guardDog);
-                    if (cat.Location == Characters.Place.PassedOut)
+                    if (cat.Location == MainCharacter.Place.PassedOut)
                         return;
                     break;
                 case "5": // go downstairs
@@ -83,14 +83,14 @@ public class SecondFloor
                     Console.WriteLine("Press 'enter' to continue...");
                     Console.ReadLine();
                     cat.SuccessfulBribed = false;
-                    cat.Location = Characters.Place.FirstFloor;
+                    cat.Location = MainCharacter.Place.FirstFloor;
                     Console.Clear();
                     return;
                 case "6":
                     Console.WriteLine("You turn and head back toward the stairs, making your way up. You feel there" +
                                       "must be something you missed and are eager to retrace your steps.");
                     cat.SuccessfulBribed = false;
-                    cat.Location = Characters.Place.ThirdFloor;
+                    cat.Location = MainCharacter.Place.ThirdFloor;
                     Console.WriteLine("Press 'enter' to continue...");
                     Console.ReadLine();
                     Console.Clear();
@@ -111,7 +111,7 @@ public class SecondFloor
     }
 
 
-    public void EnterRoom(Characters cat, BackPack backPack, string room)
+    public void EnterRoom(MainCharacter cat, BackPack backPack, string room)
     {
         DescriptionOfItems(room, backPack);
         Console.WriteLine("\nDo you want to take any of these items with you? Press '1' to take items and '2' " +
@@ -157,7 +157,7 @@ public class SecondFloor
     }
 
 
-    void LootBody(Characters cat, BackPack backPack, Characters guardDog)
+    void LootBody(MainCharacter cat, BackPack backPack, Character guardDog)
     {
         Console.WriteLine("\nYou see the body of the guard you dispatched and take a moment to search it, uncovering:");
 
@@ -182,15 +182,15 @@ public class SecondFloor
     }
 
 
-    void Room4(Characters cat, BackPack backPack, Characters guardDog)
+    void Room4(MainCharacter cat, BackPack backPack, Character guardDog)
     {
-        if (guardDog.Location != Characters.Place.Dead && !cat.SuccessfulBribed)
+        if (!guardDog.IsDead && !cat.SuccessfulBribed)
             //if you haven't defeated or bribed the guard yet
         {
             fight.GuardDogEncounter(cat, backPack, guardDog, 1);
-            if ((guardDog.Location != Characters.Place.Dead && !cat.SuccessfulBribed) ||
+            if ((!guardDog.IsDead && !cat.SuccessfulBribed) ||
                 cat.Location ==
-                Characters.Place.PassedOut) // if you successfully run away or get knocked out leave this room
+                MainCharacter.Place.PassedOut) // if you successfully run away or get knocked out leave this room
                 return;
         }
 
@@ -204,7 +204,7 @@ public class SecondFloor
                           "promises to mend wounds." +
                           "\nA short sword, its blade modest but sharp, glinting in the low light — " +
                           "a weapon that could serve you well.");
-        if (guardDog.Location == Characters.Place.Dead)
+        if (guardDog.IsDead)
             Console.WriteLine("The guard’s fallen form lies nearby, a silent testament to the battle " +
                               "you just fought.");
 
@@ -217,7 +217,7 @@ public class SecondFloor
             Console.Write("\nPlease make a choice:" +
                           "\nPress '1' if you'd like to take some items from this room with you." +
                           "Press '2' if you'd like to return to the hall.");
-            if (guardDog.Location == Characters.Place.Dead)
+            if (guardDog.IsDead)
                 Console.WriteLine(
                     "Press '3' if you'd like to return to the guard's body to see if you missed " +
                     "anything");
@@ -233,7 +233,7 @@ public class SecondFloor
                     stayInRoom = false;
                     break;
                 case "3":
-                    if (guardDog.Location == Characters.Place.Dead)
+                    if (guardDog.IsDead)
                         LootBody(cat, backPack, guardDog);
                     else
                         Console.WriteLine("That is not a valid selection.");

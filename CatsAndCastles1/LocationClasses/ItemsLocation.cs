@@ -1,20 +1,20 @@
 namespace CatsAndCastles1;
 
-public class DerivedItemsLocation : BaseLocation
+public class ItemsLocation : Location
 {
     private readonly UserInput _userInput = new UserInput();
-    private readonly UserInteractionsBackpack _userInteractionsBackpack = new UserInteractionsBackpack();
+    private readonly UIInventory _uiInventory = new UIInventory();
     private readonly string _description;
 
     public List<string> LocationAndItemsDescriptions { get; set; }
     public List<string> InventoryItemsAtLocation { get; set; }
 
     #region Constructors
-    public DerivedItemsLocation()
+    public ItemsLocation()
     {
     }
 
-    public DerivedItemsLocation(string description, List<string> itemsAtLocation, List<string> locationsDescription)
+    public ItemsLocation(string description, List<string> itemsAtLocation, List<string> locationsDescription)
     {
         LocationAndItemsDescriptions = locationsDescription;
         InventoryItemsAtLocation = itemsAtLocation;
@@ -47,7 +47,7 @@ public class DerivedItemsLocation : BaseLocation
 
     private void AddItemsToInventory(Inventory inventory)
     {
-        _userInteractionsBackpack.AddItemToInventoryFromLocation(this, inventory);
+        _uiInventory.AddItemToInventoryFromLocation(this, inventory);
     }
 
     public void ItemHasBeenPickedUp(int itemNumber)

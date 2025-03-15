@@ -1,6 +1,6 @@
 namespace CatsAndCastles1;
 
-public class BaseLocation
+public class Location
 {
     
     UserInput _userInput = new UserInput();
@@ -11,12 +11,12 @@ public class BaseLocation
     private readonly string _menuHeader = "";
     
 
-    protected BaseLocation()
+    protected Location()
     {
         
     }
 
-    public BaseLocation(string locationIntro, string pickMenuHeader, List<string> optionsAtLocation)
+    public Location(string locationIntro, string pickMenuHeader, List<string> optionsAtLocation)
     {
         OptionsAtLocation = optionsAtLocation;
         _locationIntro = locationIntro;

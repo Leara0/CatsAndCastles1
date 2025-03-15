@@ -4,7 +4,7 @@ namespace CatsAndCastles1;
 public class Fight
 {
     private readonly UserInput _userInput = new UserInput();
-   public void GuardDogEncounter(Characters cat, BackPack backPack, Characters guardDog, int guardNumber)
+   public void GuardDogEncounter(MainCharacter cat, BackPack backPack, Character guardDog, int guardNumber)
    {
        cat.LostToGuard = false;
        Weapons weapon = new Weapons();
@@ -118,7 +118,7 @@ public class Fight
                        _userInput.DramaticPause();
                        Console.Clear();
                        if (guardNumber != 1)
-                           cat.Location = Characters.Place.SecondFloor;
+                           cat.Location = MainCharacter.Place.SecondFloor;
                    }
                    else
                    {
@@ -328,7 +328,7 @@ public class Fight
                if (guardDog.Health <= 0)
                {
                    Console.WriteLine("\nYou are victorious in the fight against the guard");
-                   guardDog.Location = Characters.Place.Dead;
+                   guardDog.IsDead = true;//@TODO I changed this from enum Dead to bool so probably need to fix in other places
                    LocationTextBody();
                    return;
                }
@@ -357,7 +357,7 @@ public class Fight
            if (cat.Health <= 0)
            {
                Console.WriteLine("\nThe guard has been victorious in this fight\n");
-               cat.Location = Characters.Place.PassedOut;
+               cat.Location = MainCharacter.Place.PassedOut;
            }
        }
 
@@ -406,14 +406,14 @@ public class Fight
        }
 
 
-       int Attack(Characters attacker)
+       int Attack(Character attacker)
        {
            int[] weaponStats = weapon.WeaponChoice(attacker.Weapon);
            return rnd.Next(1, weaponStats[0] + 1) + weaponStats[1];
        }
 
 
-       void WeaponsReminder(Characters attacker, string animalType)
+       void WeaponsReminder(Character attacker, string animalType)
        {
            int[] weaponStats = weapon.WeaponChoice(attacker.Weapon);
            Console.WriteLine(

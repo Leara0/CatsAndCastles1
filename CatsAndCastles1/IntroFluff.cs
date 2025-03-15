@@ -12,7 +12,7 @@ public class IntroFluff
         _userInput.DramaticPauseClrScreen();
         }
 
-    public void SubsequentWakeUp(Characters cat)
+    public void SubsequentWakeUp(Character cat)
     {
         cat.Health = 60;
         Console.WriteLine(Text.SubsequentWakeUp);

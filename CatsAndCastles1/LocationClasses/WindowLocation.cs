@@ -1,10 +1,10 @@
 namespace CatsAndCastles1;
 
-public class DerivedWindowLocation(string description, List<string> itemsThatWontHelp, List<string> needRope) :
-    DerivedLockedLocations(description, itemsThatWontHelp)
+public class WindowLocation(string description, List<string> itemsThatWontHelp, List<string> needRope) :
+    LockedLocations(description, itemsThatWontHelp)
 {
     private List<string> _allPossibleUsefulItems = needRope;
-    UserInteractionLockedRooms _userInteractionLockedRoom = new UserInteractionLockedRooms();
+    UILockedRooms _uiLockedRoom = new UILockedRooms();
     private readonly UserInput _userInput = new UserInput();
 
 
@@ -14,7 +14,7 @@ public class DerivedWindowLocation(string description, List<string> itemsThatWon
         listForIMenu.Add("jump down");
 
 
-        int choiceNumber = _userInteractionLockedRoom.GetChoiceForLockedRoom(listForIMenu);
+        int choiceNumber = _uiLockedRoom.GetChoiceForLockedRoom(listForIMenu);
         if (choiceNumber == listForIMenu.Count)
             return ""; //if they choose to do nothing return ""
 

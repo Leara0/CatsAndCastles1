@@ -38,7 +38,7 @@ public class BackPack
             Console.WriteLine($"  {i + 1} - {Pack[i]}");
     }
 
-    public void PickUpItemsFromDiscarded(Characters cat)
+    public void PickUpItemsFromDiscarded(Character cat)
     {
         Console.WriteLine("Your discarded stash contains the following item/s:");
         for (int i = 0; i < DiscardedItems.Count; i++)
@@ -58,7 +58,7 @@ public class BackPack
         }
     }
 
-    public bool RemoveToReplaceItem(Characters cat)
+    public bool RemoveToReplaceItem(Character cat)
     {
         int numToRemove = 0;
 
@@ -102,7 +102,7 @@ public class BackPack
         return true;
     }
 
-    public void RemoveItemsFromPack(Characters cat)
+    public void RemoveItemsFromPack(Character cat)
     {
         if (NumberOfItemsInPack() == 0)
         {
@@ -208,7 +208,7 @@ public class BackPack
     }
 
 
-    public bool AddItemToPack(Characters cat, string item)
+    public bool AddItemToPack(Character cat, string item)
     {
         bool goldAlreadyInPack = false;
         bool sheetsAlreadyInPack = false;
@@ -303,7 +303,7 @@ public class BackPack
     
 
 
-    public void AssignItemsBasedOnLocation(string location, Characters guardDog = null)
+    public void AssignItemsBasedOnLocation(string location, Character guardDog = null)
     {
         switch (location)
         {
@@ -452,7 +452,7 @@ public class BackPack
     }
 
 
-    public void TakeItems(Characters cat, string location, Characters guardDog = null)
+    public void TakeItems(Character cat, string location, Character guardDog = null)
     {
         AssignItemsBasedOnLocation(location, guardDog);
 

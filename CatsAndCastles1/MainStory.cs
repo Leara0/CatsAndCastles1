@@ -3,17 +3,17 @@ namespace CatsAndCastles1;
 public class MainStory
 {
     private readonly UserInput _userInput = new UserInput();
-    ListsForLocations lists = new ListsForLocations();
-    UserInteractionsBackpack userInteractBK = new UserInteractionsBackpack();
+    LocationsLists _locationsLists = new LocationsLists();
+    UIInventory userInteractBK = new UIInventory();
     
     public void RunGame()
     {
         #region instantiating Classes
         #region Character Class Instantiation
-        var cat = new Characters();
+        var cat = new MainCharacter();
         {
             cat.Health = 60;
-            cat.Location = Characters.Place.MainRoom;
+            cat.Location = MainCharacter.Place.MainRoom;
         }
 
         var backPackMethod = new Inventory();
@@ -22,45 +22,42 @@ public class MainStory
             backPackMethod.DiscardedItems = new List<string>(); // create a record of all items that have been discarded
         }
 
-        var guardDog1 = new Characters();
+        var guardDog1 = new Character();
         {
-            guardDog1.Location = Characters.Place.ThirdFloor; // @fix is this later used???
             guardDog1.Health = guardDog1.SetHealth(25, 35);
         }
-        var guardDog2 = new Characters();
+        var guardDog2 = new Character();
         {
-            guardDog2.Location = Characters.Place.SecondFloor;
             guardDog2.Health = guardDog2.SetHealth(25, 35);
         }
-        var warden = new Characters();
+        var warden = new Character();
         {
-            warden.Location = Characters.Place.FirstFloor;
             warden.Health = warden.SetHealth(60, 75);
         }
         #endregion
         
         #region MainRoom Location Class Instantiation
-        BaseLocation mainRoom = new BaseLocation(Text.StartInRoom, Text.FirstRoomChoices, 
-            lists.MainRoomChoices);
-        DerivedItemsLocation closet = new DerivedItemsLocation
-            (Text.ExploreCloset, lists.ClosetItems, lists.ClosetDescription);
-        DerivedItemsLocation nightstand = new DerivedItemsLocation
-            (Text.ExploreNightStand, lists.NightStandItems, lists.NightStandDescription);
-        DerivedItemsLocation bookshelf = new DerivedItemsLocation
-            (Text.ExploreBookshelf, lists.BookshelfItems, lists.BookshelfDescription);
-        DerivedItemsLocation hearth = new DerivedItemsLocation
-            (Text.ExploreHearth, lists.HearthItems, lists.HearthDescription);
-        DerivedLockedLocations mainDoor =
-            new DerivedLockedLocations(Text.ApproachDoor, ListsForLockedPlaces.UnHelpfulKeys);
-        DerivedWindowLocation window = new DerivedWindowLocation(Text.ExploreWindow, 
-            ListsForLockedPlaces.AllPossibleOptions, ListsForLockedPlaces.WindowNeedsRope);
+        Location mainRoom = new Location(Text.StartInRoom, Text.FirstRoomChoices, 
+            _locationsLists.MainRoomChoices);
+        ItemsLocation closet = new ItemsLocation
+            (Text.ExploreCloset, _locationsLists.ClosetItems, _locationsLists.ClosetDescription);
+        ItemsLocation nightstand = new ItemsLocation
+            (Text.ExploreNightStand, _locationsLists.NightStandItems, _locationsLists.NightStandDescription);
+        ItemsLocation bookshelf = new ItemsLocation
+            (Text.ExploreBookshelf, _locationsLists.BookshelfItems, _locationsLists.BookshelfDescription);
+        ItemsLocation hearth = new ItemsLocation
+            (Text.ExploreHearth, _locationsLists.HearthItems, _locationsLists.HearthDescription);
+        LockedLocations mainDoor =
+            new LockedLocations(Text.ApproachDoor, LockedPlacesLists.UnHelpfulKeys);
+        WindowLocation window = new WindowLocation(Text.ExploreWindow, 
+            LockedPlacesLists.AllPossibleOptions, LockedPlacesLists.WindowNeedsRope);
         #endregion
         
         #region ThirdFloor Location Class Instantiation
-        BaseLocation thirdFloor = new BaseLocation(Text.ThirdFloorEntrance, 
-            Text.ThirdFloorTreeHeading, lists.ThirdFloorChoices);
+        Location thirdFloor = new Location(Text.ThirdFloorEntrance, 
+            Text.ThirdFloorTreeHeading, _locationsLists.ThirdFloorChoices);
         //DerivedLockedLocations floor3Door2 =
-            new DerivedLockedLocations(Text.ApproachDoor, ListsForLockedPlaces.UnHelpfulLockPick);
+            new LockedLocations(Text.ApproachDoor, LockedPlacesLists.UnHelpfulLockPick);
         
         
         
@@ -79,9 +76,9 @@ public class MainStory
         // die and choose not to escape
     }
 
-    private void DeadEnding(Characters cat)
+    private void DeadEnding(MainCharacter cat)
     {
-        if (cat.Location == Characters.Place.Dead)
+        if (cat.Location == MainCharacter.Place.Dead)
             Console.WriteLine("\nAs the darkness takes hold, a strange sense of peace washes over you. " +
                               "The struggle, the fear, the desperate clawing for survival — it all fades into " +
                               "nothingness.\n\nThe castle will remain, its cold stone walls holding secrets " +
@@ -93,29 +90,29 @@ public class MainStory
     }
 
 
-    private void CastleWithExitStrategies(Characters cat, BackPack backPack, Characters guardDog1,
-        Characters guardDog2, Characters warden)
+    private void CastleWithExitStrategies(MainCharacter cat, BackPack backPack, Character guardDog1,
+        Character guardDog2, Character warden)
     {
         do // you get here after you come to the end of one of the main room story lines
         {
             switch (cat.Location)
             {
-                case Characters.Place.PassedOut: //@add something about taking health in main room
+                case MainCharacter.Place.PassedOut: //@add something about taking health in main room
                     PassOut(cat, backPack);
                     break;
-                case Characters.Place.ThirdFloor:
+                case MainCharacter.Place.ThirdFloor:
                     ThirdFloor thirdFloor = new ThirdFloor();
                     thirdFloor.ThirdFloorStory(cat, backPack, guardDog1);
                     break; //I put this in here so it just stops after you defeat the guard so the loop stops for ho
-                case Characters.Place.SecondFloor:
+                case MainCharacter.Place.SecondFloor:
                     SecondFloor secondFloor = new SecondFloor();
                     secondFloor.SecondFloorStory(cat, backPack, guardDog2);
                     break;
-                case Characters.Place.FirstFloor:
+                case MainCharacter.Place.FirstFloor:
                     FirstFloor firstFloor = new FirstFloor();
                     firstFloor.FirstFloorStory(cat, backPack, warden);
                     break;
-                case Characters.Place.OutsideCastle:
+                case MainCharacter.Place.OutsideCastle:
                     OutsideCastle outside = new OutsideCastle();
                     outside.OutsideTheCastle(cat, backPack);
                     break;
@@ -125,7 +122,7 @@ public class MainStory
     }
 
 
-    private void PassOut(Characters cat, BackPack backPack)
+    private void PassOut(MainCharacter cat, BackPack backPack)
     {
         //MainRoom mainRoom = new MainRoom(cat, backPack);
         cat.Lives--;
@@ -139,7 +136,7 @@ public class MainStory
         {
             Console.WriteLine("Nine lives, and you’ve spent them all. Shadows close in once more — but this time, " +
                               "there is no return.");
-            cat.Location = Characters.Place.Dead;
+            cat.Location = MainCharacter.Place.Dead;
             cat.EndGame = true;
             return;
         }
@@ -164,7 +161,7 @@ public class MainStory
         }
         else
         {
-            cat.Location = Characters.Place.Dead;
+            cat.Location = MainCharacter.Place.Dead;
             cat.EndGame = true;
         }
     }

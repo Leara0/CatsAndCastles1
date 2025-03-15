@@ -1,6 +1,6 @@
 namespace CatsAndCastles1;
 
-public class ListsForLocations
+public class LocationsLists
 {
     public List<string> MainRoomChoices = new List<string>()
     {
@@ -87,7 +87,7 @@ public class ListsForLocations
 
     public List<string> StudyF3D2Items = new List<string>()
     {
-        Text.CatWantedPoster,
+        Text.CatWantedPoster ,
         Text.ThirteenCoins,
         Text.Glasses,
     };

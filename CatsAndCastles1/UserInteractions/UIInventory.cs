@@ -1,6 +1,6 @@
 namespace CatsAndCastles1;
 
-public class UserInteractionsBackpack
+public class UIInventory
 {
     #region Fields and Class Instances
 
@@ -12,11 +12,11 @@ public class UserInteractionsBackpack
 
     #region Constructor
 
-    public UserInteractionsBackpack()
+    public UIInventory()
     {
     }
 
-    public UserInteractionsBackpack(ListsForLocations location, Inventory inventory)
+    public UIInventory(LocationsLists location, Inventory inventory)
     {
     }
 
@@ -52,7 +52,7 @@ public class UserInteractionsBackpack
         return true; //if there are fewer than 5 items then there is space
     }
 
-    public void AddItemToInventoryFromLocation(DerivedItemsLocation specificLocation, Inventory inventory)
+    public void AddItemToInventoryFromLocation(ItemsLocation specificLocation, Inventory inventory)
     {
         do
         {
@@ -107,7 +107,7 @@ public class UserInteractionsBackpack
     #endregion
 
 
-    public int GetItemSelection(DerivedItemsLocation specificLocation)
+    public int GetItemSelection(ItemsLocation specificLocation)
     {
         if (specificLocation.InventoryItemsAtLocation.Count == 0)
         {

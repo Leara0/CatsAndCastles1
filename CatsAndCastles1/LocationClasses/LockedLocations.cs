@@ -1,22 +1,22 @@
 namespace CatsAndCastles1;
 
-public class DerivedLockedLocations : DerivedItemsLocation
+public class LockedLocations : ItemsLocation
 {
-    private List<string> _allPossibleUsefulItems = ListsForLockedPlaces.AllPossibleOptions;
+    private List<string> _allPossibleUsefulItems = LockedPlacesLists.AllPossibleOptions;
     public List<string> ItemsThatWontHelp { get; set; }
     private readonly UserInput _userInput = new UserInput();
-    UserInteractionLockedRooms userInteractionLockedRoom = new UserInteractionLockedRooms();
+    UILockedRooms _uiLockedRoom = new UILockedRooms();
     public string Description = "";
 
     #region Constructors
 
-    public DerivedLockedLocations(string description, List<string> itemsThatWontHelp)
+    public LockedLocations(string description, List<string> itemsThatWontHelp)
     {
         Description = description;
         ItemsThatWontHelp = itemsThatWontHelp;
     }//use this one for the door in the main room
 
-    public DerivedLockedLocations(string description, List<string> itemsThatWontHelp, List<string> itemsAtLocation,
+    public LockedLocations(string description, List<string> itemsThatWontHelp, List<string> itemsAtLocation,
         List<string> locationsDescription)
     {
         Description = description;
@@ -49,7 +49,7 @@ public class DerivedLockedLocations : DerivedItemsLocation
         List<string> listForIMenu = MakeListForInteractiveMenu(inventory);
 
 
-        int choiceNumber = userInteractionLockedRoom.GetChoiceForLockedRoom(listForIMenu);
+        int choiceNumber = _uiLockedRoom.GetChoiceForLockedRoom(listForIMenu);
         if (choiceNumber == listForIMenu.Count)
             return ""; //if they choose to do nothing return ""
 
@@ -101,14 +101,14 @@ public class DerivedLockedLocations : DerivedItemsLocation
         _userInput.DramaticPauseClrScreen();
     }
 
-    public bool AttemptStoneOnDoor(Characters cat)
+    public bool AttemptStoneOnDoor(Character cat)
     {
-        return userInteractionLockedRoom.UseStoneOnDoor(cat);
+        return _uiLockedRoom.UseStoneOnDoor(cat);
     }
 
-    public bool AttemptShieldOnDoor(Characters cat, string item, Inventory inventory)
+    public bool AttemptShieldOnDoor(Character cat, string item, Inventory inventory)
     {
-        return userInteractionLockedRoom.UseShieldOnDoor(cat, item, inventory);
+        return _uiLockedRoom.UseShieldOnDoor(cat, item, inventory);
     }
 
     #endregion

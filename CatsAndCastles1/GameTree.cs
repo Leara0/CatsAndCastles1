@@ -5,15 +5,15 @@ public class GameTree()
     //how to weave in fluff intro scenes about the earlier cut scenes?
     private readonly UserInput _userInput = new UserInput();
 
-    public void MainRoomSwitchboard(Inventory inventory, Characters cat, BaseLocation mainRoom,
-        DerivedItemsLocation closet,
-        DerivedItemsLocation nightstand, DerivedItemsLocation bookshelf, DerivedItemsLocation hearth,
-        DerivedLockedLocations mainDoor, DerivedWindowLocation window)
+    public void MainRoomSwitchboard(Inventory inventory, MainCharacter cat, Location mainRoom,
+        ItemsLocation closet,
+        ItemsLocation nightstand, ItemsLocation bookshelf, ItemsLocation hearth,
+        LockedLocations mainDoor, WindowLocation window)
     {
         Console.Clear();
-        cat.Location = Characters.Place.MainRoom;
+        cat.Location = MainCharacter.Place.MainRoom;
         cat.EndGame = false;
-        UserInteractionsBackpack userInteractionsBackpack = new UserInteractionsBackpack();
+        UIInventory uiInventory = new UIInventory();
         mainRoom.PrintIntro();
 
         do
@@ -25,7 +25,7 @@ public class GameTree()
                 case 0: // this is the only exit!!!
                     DoorsSwitchboard(inventory, cat, mainDoor);
                     if (mainDoor.DoorIsOpen())
-                        cat.Location = Characters.Place.ThirdFloor;
+                        cat.Location = MainCharacter.Place.ThirdFloor;
                     break;
                 case 1: //closet
                     closet.LocationMethod(inventory);
@@ -43,16 +43,16 @@ public class GameTree()
                     hearth.LocationMethod(inventory);
                     break;
                 case 6: //inventory
-                    userInteractionsBackpack.RemoveItemFromInventory(inventory);
+                    uiInventory.RemoveItemFromInventory(inventory);
                     break;
                 case 7: //check discard
-                    userInteractionsBackpack.AddItemToInventoryFromDiscard(inventory);
+                    uiInventory.AddItemToInventoryFromDiscard(inventory);
                     break;
             }
-        } while (cat.Location == Characters.Place.MainRoom);
+        } while (cat.Location == MainCharacter.Place.MainRoom);
     }
 
-    public void DoorsSwitchboard(Inventory inventory, Characters cat, DerivedLockedLocations place)
+    public void DoorsSwitchboard(Inventory inventory, MainCharacter cat, LockedLocations place)
     {
         if (!place.DoorIsOpen())
         {
@@ -100,7 +100,7 @@ public class GameTree()
         }
     }
 
-    public void WindowSwitchboard(Inventory inventory, Characters cat, DerivedWindowLocation place)
+    public void WindowSwitchboard(Inventory inventory, MainCharacter cat, WindowLocation place)
     {
         place.ApproachLockedDoor();
         string item = place.InteractWithlockedWindow(inventory);
@@ -112,11 +112,11 @@ public class GameTree()
         {
             case Text.Rope:
                 place.ClimbDownWithRope();
-                cat.Location = Characters.Place.OutsideCastle;
+                cat.Location = MainCharacter.Place.OutsideCastle;
                 break;
             case "jump down":
                 place.JumpDown();
-                cat.Location = Characters.Place.Dead;
+                cat.Location = MainCharacter.Place.Dead;
                 break;
         }
 
