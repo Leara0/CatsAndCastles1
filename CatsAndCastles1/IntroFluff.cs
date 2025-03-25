@@ -1,3 +1,6 @@
+using CatsAndCastles1.Characters;
+using CatsAndCastles1.UserInteractions;
+
 namespace CatsAndCastles1;
 
 public class IntroFluff

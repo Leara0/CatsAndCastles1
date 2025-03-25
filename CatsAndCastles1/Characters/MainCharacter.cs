@@ -1,4 +1,4 @@
-namespace CatsAndCastles1;
+namespace CatsAndCastles1.Characters;
 
 public class MainCharacter:Character
 {

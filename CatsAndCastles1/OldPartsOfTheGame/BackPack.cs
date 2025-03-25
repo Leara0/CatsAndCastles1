@@ -1,4 +1,7 @@
-namespace CatsAndCastles1;
+using CatsAndCastles1.Characters;
+using CatsAndCastles1.UserInteractions;
+
+namespace CatsAndCastles1.OldPartsOfTheGame;
 
 public class BackPack
 {

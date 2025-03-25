@@ -230,7 +230,7 @@ public class Text
         "of soft clicks fills the silence, and with a gentle creak, the door swings open — revealing what lies beyond.";
 
     public const string ApproachDoor =
-        "You approach the wooden door, its frame dark and imposing against the stone wall." +
+        "You approach the wooden door, its frame dark and imposing against the stone wall. " +
         "Your eyes are drawn to the thick, old lock hanging from the latch. " +
         "The lock looks sturdy, its cold metal catching the dim light. It's a formidable obstacle, " +
         "preventing you from venturing through, but you feel you must find a way. ";

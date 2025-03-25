@@ -1,4 +1,6 @@
-namespace CatsAndCastles1;
+using CatsAndCastles1.UserInteractions;
+
+namespace CatsAndCastles1.LocationClasses;
 
 public class WindowLocation(string description, List<string> itemsThatWontHelp, List<string> needRope) :
     LockedLocations(description, itemsThatWontHelp)

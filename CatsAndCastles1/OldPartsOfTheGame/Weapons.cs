@@ -1,4 +1,4 @@
-namespace CatsAndCastles1;
+namespace CatsAndCastles1.OldPartsOfTheGame;
 
 
 public class Weapons

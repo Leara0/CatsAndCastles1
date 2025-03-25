@@ -1,4 +1,4 @@
-namespace CatsAndCastles1;
+namespace CatsAndCastles1.Lists;
 
 public class LockedPlacesLists
 {
@@ -32,6 +32,11 @@ public class LockedPlacesLists
     public static List<string> WindowNeedsRope = new List<string>()
     {
         Text.Rope
+    };
+
+    public static List<string> UnHelpfulNothing = new List<string>()
+    {
+
     };
 
 

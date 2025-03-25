@@ -1,12 +1,14 @@
-namespace CatsAndCastles1;
+using CatsAndCastles1.UserInteractions;
+
+namespace CatsAndCastles1.LocationClasses;
 
 public class ItemsLocation : Location
 {
     private readonly UserInput _userInput = new UserInput();
     private readonly UIInventory _uiInventory = new UIInventory();
-    private readonly string _description;
+    public string description;
 
-    public List<string> LocationAndItemsDescriptions { get; set; }
+    public List<string> LongDescriptionOfItemsAtLocation { get; set; }
     public List<string> InventoryItemsAtLocation { get; set; }
 
     #region Constructors
@@ -16,9 +18,9 @@ public class ItemsLocation : Location
 
     public ItemsLocation(string description, List<string> itemsAtLocation, List<string> locationsDescription)
     {
-        LocationAndItemsDescriptions = locationsDescription;
+        LongDescriptionOfItemsAtLocation = locationsDescription;
         InventoryItemsAtLocation = itemsAtLocation;
-        _description = description;
+        description = description;
     }
 
     #endregion
@@ -32,13 +34,13 @@ public class ItemsLocation : Location
 
     private void DisplayLocationInfo()
     {
-        Console.WriteLine(_description);
-        if (LocationAndItemsDescriptions.Count == 0)
+        Console.WriteLine(description);
+        if (LongDescriptionOfItemsAtLocation.Count == 0)
             Console.WriteLine("\n" + Text.NothingLeft);
         else
         {
             Console.WriteLine(Text.PrepToListItems);
-            foreach (string item in LocationAndItemsDescriptions)
+            foreach (string item in LongDescriptionOfItemsAtLocation)
                 Console.WriteLine(item);
         }
 
@@ -53,6 +55,6 @@ public class ItemsLocation : Location
     public void ItemHasBeenPickedUp(int itemNumber)
     {
         InventoryItemsAtLocation.RemoveAt(itemNumber);
-        LocationAndItemsDescriptions.RemoveAt(itemNumber);
+        LongDescriptionOfItemsAtLocation.RemoveAt(itemNumber);
     }
 }

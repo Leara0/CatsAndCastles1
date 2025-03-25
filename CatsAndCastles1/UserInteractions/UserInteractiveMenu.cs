@@ -1,6 +1,4 @@
-using System.Net.Mime;
-
-namespace CatsAndCastles1;
+namespace CatsAndCastles1.UserInteractions;
 
 public class UserInteractiveMenu
 {

@@ -1,11 +1,13 @@
-namespace CatsAndCastles1;
+using CatsAndCastles1.UserInteractions;
+
+namespace CatsAndCastles1.LocationClasses;
 
 public class Location
 {
     
     UserInput _userInput = new UserInput();
     
-    private readonly string _locationIntro;
+   public string LocationIntro;
     private bool DoorOpen { get; set; }
     public List<string> OptionsAtLocation { get; set; }
     private readonly string _menuHeader = "";
@@ -19,7 +21,7 @@ public class Location
     public Location(string locationIntro, string pickMenuHeader, List<string> optionsAtLocation)
     {
         OptionsAtLocation = optionsAtLocation;
-        _locationIntro = locationIntro;
+        LocationIntro = locationIntro;
         _menuHeader = pickMenuHeader;
     }
 
@@ -38,7 +40,7 @@ public class Location
 
     public void PrintIntro()
     {
-        Console.WriteLine(_locationIntro);
+        Console.WriteLine(LocationIntro);
         _userInput.DramaticPauseClrScreen();
     }
 

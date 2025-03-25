@@ -1,0 +1,32 @@
+using CatsAndCastles1.Characters;
+using CatsAndCastles1.LocationClasses;
+using CatsAndCastles1.UserInteractions;
+
+namespace CatsAndCastles1.GameTreeSwitchBoards;
+
+public class WindowTree
+{
+    private readonly UserInput _userInput = new UserInput();
+    public void WindowSwitchboard(Inventory inventory, MainCharacter cat, WindowLocation place)
+    {
+        place.ApproachLockedDoor();
+        string item = place.InteractWithlockedWindow(inventory);
+
+        Console.Clear();
+        if (item == "leave")
+            return;
+        switch (item)
+        {
+            case Text.Rope:
+                place.ClimbDownWithRope();
+                cat.Location = MainCharacter.Place.OutsideCastle;
+                break;
+            case "jump down":
+                place.JumpDown();
+                cat.Location = MainCharacter.Place.Dead;
+                break;
+        }
+
+        _userInput.DramaticPauseClrScreen();
+    }
+}

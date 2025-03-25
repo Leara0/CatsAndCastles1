@@ -1,4 +1,4 @@
-namespace CatsAndCastles1;
+namespace CatsAndCastles1.Lists;
 
 public class LocationsLists
 {
@@ -19,6 +19,7 @@ public class LocationsLists
         Text.ThirdFloorDoor2Option,
         Text.ThirdFloorDoor3Option,
         Text.ThirdFloorDoor4Option,
+        Text.HeadDownStairsOption
     };
 
     public List<string> ClosetDescription = new List<string>()

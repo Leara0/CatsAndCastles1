@@ -1,27 +1,34 @@
-namespace CatsAndCastles1;
+using CatsAndCastles1.Characters;
+using CatsAndCastles1.Lists;
+using CatsAndCastles1.UserInteractions;
+
+namespace CatsAndCastles1.LocationClasses;
 
 public class LockedLocations : ItemsLocation
 {
-    private List<string> _allPossibleUsefulItems = LockedPlacesLists.AllPossibleOptions;
-    public List<string> ItemsThatWontHelp { get; set; }
     private readonly UserInput _userInput = new UserInput();
     UILockedRooms _uiLockedRoom = new UILockedRooms();
-    public string Description = "";
+    
+    private List<string> _allPossibleUsefulItems = LockedPlacesLists.AllPossibleOptions;
+    public List<string> ItemsThatWontHelp { get; set; }
+    
+    public string DoorDescription = "";
 
     #region Constructors
 
     public LockedLocations(string description, List<string> itemsThatWontHelp)
     {
-        Description = description;
+        DoorDescription = description;
         ItemsThatWontHelp = itemsThatWontHelp;
     }//use this one for the door in the main room
 
-    public LockedLocations(string description, List<string> itemsThatWontHelp, List<string> itemsAtLocation,
-        List<string> locationsDescription)
+    public LockedLocations(string doorDescription, string descriptionInsideRoom, List<string> itemsThatWontHelp, List<string> itemsAtLocation,
+        List<string> longDescOfItemsAtLocation)
     {
-        Description = description;
+        DoorDescription = doorDescription;
+        description = descriptionInsideRoom;
         ItemsThatWontHelp = itemsThatWontHelp;
-        LocationAndItemsDescriptions = locationsDescription;
+        LongDescriptionOfItemsAtLocation = longDescOfItemsAtLocation;
         InventoryItemsAtLocation = itemsAtLocation;
     }//use this constructor to create a room you want to enter with a locked door
 
@@ -61,7 +68,7 @@ public class LockedLocations : ItemsLocation
     public void ApproachLockedDoor()
     {
         Console.Clear();
-        Console.WriteLine(Description); //@TODO change this to the description in the parameters
+        Console.WriteLine(DoorDescription); //@TODO change this to the description in the parameters
         _userInput.DramaticPauseClrScreen();
     }
 

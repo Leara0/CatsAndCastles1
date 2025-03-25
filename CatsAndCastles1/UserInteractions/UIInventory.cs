@@ -1,11 +1,14 @@
-namespace CatsAndCastles1;
+using CatsAndCastles1.Lists;
+using CatsAndCastles1.LocationClasses;
+
+namespace CatsAndCastles1.UserInteractions;
 
 public class UIInventory
 {
     #region Fields and Class Instances
 
     UserInteractiveMenu _userInteractiveMenu = new UserInteractiveMenu();
-    public int selectionNumber;
+    private int _selectionNumber;
     private readonly UserInput _userInput = new UserInput();
 
     #endregion
@@ -31,12 +34,12 @@ public class UIInventory
             Console.Clear();
             Console.WriteLine("Your pack is too burdened to add any more items. You must remove" +
                               $" something to make space for {item}.");
-            selectionNumber = _userInteractiveMenu.GiveChoices(inventory.Pack, Text.RemoveNothing);
-            if (selectionNumber < inventory.Pack.Count)
+            _selectionNumber = _userInteractiveMenu.GiveChoices(inventory.Pack, Text.RemoveNothing);
+            if (_selectionNumber < inventory.Pack.Count)
             {   
-                inventory.DiscardedItems.Add(inventory.Pack[selectionNumber]);
-                Console.WriteLine($"You have removed {inventory.Pack[selectionNumber]} from your pack");
-                inventory.Pack.RemoveAt(selectionNumber);
+                inventory.DiscardedItems.Add(inventory.Pack[_selectionNumber]);
+                Console.WriteLine($"You have removed {inventory.Pack[_selectionNumber]} from your pack");
+                inventory.Pack.RemoveAt(_selectionNumber);
                 
                 _userInput.DramaticPauseClrScreen();
                 return true;
@@ -107,7 +110,7 @@ public class UIInventory
     #endregion
 
 
-    public int GetItemSelection(ItemsLocation specificLocation)
+    private int GetItemSelection(ItemsLocation specificLocation)
     {
         if (specificLocation.InventoryItemsAtLocation.Count == 0)
         {
@@ -118,13 +121,13 @@ public class UIInventory
         }
 
         Console.WriteLine(Text.ChoiceToTakeItems + "\n");
-        selectionNumber =
+        _selectionNumber =
             _userInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, Text.LeaveLocation);
 
-        return selectionNumber;
+        return _selectionNumber;
     }
 
-    public int PickFromDiscard(Inventory inventory)
+    private int PickFromDiscard(Inventory inventory)
     {
         Console.Clear();
         if (inventory.DiscardedItems.Count == 0)
@@ -135,10 +138,25 @@ public class UIInventory
         }
 
         Console.WriteLine(Text.PickUpFromStash + "\n");
-        selectionNumber =
+        _selectionNumber =
             _userInteractiveMenu.GiveChoices(inventory.DiscardedItems, Text.PickUpNothing);
 
-        return selectionNumber;
+        return _selectionNumber;
+    }
+    private int PickFromInventory(Inventory inventory)
+    {
+        if (inventory.Pack.Count == 0)
+        {
+            Console.WriteLine(Text.EmptyInventory);
+            _userInput.DramaticPauseClrScreen();
+            return -1;
+        }
+
+        Console.WriteLine(Text.ThinkAboutInventory + "\n");
+        _selectionNumber =
+            _userInteractiveMenu.GiveChoices(inventory.Pack, Text.PickUpNothing);
+
+        return _selectionNumber;
     }
 
     public void RemoveItemFromInventory(Inventory inventory)
@@ -159,21 +177,7 @@ public class UIInventory
         } while (true); // this ends if they choose to leave this area
     }
 
-    public int PickFromInventory(Inventory inventory)
-    {
-        if (inventory.Pack.Count == 0)
-        {
-            Console.WriteLine(Text.EmptyInventory);
-            _userInput.DramaticPauseClrScreen();
-            return -1;
-        }
-
-        Console.WriteLine(Text.ThinkAboutInventory + "\n");
-        selectionNumber =
-            _userInteractiveMenu.GiveChoices(inventory.Pack, Text.PickUpNothing);
-
-        return selectionNumber;
-    }
+    
 
 
     public void SpendGold(int amount, Inventory inventory)

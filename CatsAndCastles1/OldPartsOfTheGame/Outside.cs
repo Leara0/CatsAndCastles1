@@ -1,4 +1,6 @@
-namespace CatsAndCastles1;
+using CatsAndCastles1.Characters;
+
+namespace CatsAndCastles1.OldPartsOfTheGame;
 
 
 public class OutsideCastle

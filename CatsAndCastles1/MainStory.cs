@@ -1,3 +1,10 @@
+using CatsAndCastles1.Characters;
+using CatsAndCastles1.GameTreeSwitchBoards;
+using CatsAndCastles1.Lists;
+using CatsAndCastles1.LocationClasses;
+using CatsAndCastles1.OldPartsOfTheGame;
+using CatsAndCastles1.UserInteractions;
+
 namespace CatsAndCastles1;
 
 public class MainStory
@@ -5,11 +12,13 @@ public class MainStory
     private readonly UserInput _userInput = new UserInput();
     LocationsLists _locationsLists = new LocationsLists();
     UIInventory userInteractBK = new UIInventory();
-    
+
     public void RunGame()
     {
         #region instantiating Classes
+
         #region Character Class Instantiation
+
         var cat = new MainCharacter();
         {
             cat.Health = 60;
@@ -34,10 +43,12 @@ public class MainStory
         {
             warden.Health = warden.SetHealth(60, 75);
         }
+
         #endregion
-        
+
         #region MainRoom Location Class Instantiation
-        Location mainRoom = new Location(Text.StartInRoom, Text.FirstRoomChoices, 
+
+        Location mainRoom = new Location(Text.StartInRoom, Text.FirstRoomChoices,
             _locationsLists.MainRoomChoices);
         ItemsLocation closet = new ItemsLocation
             (Text.ExploreCloset, _locationsLists.ClosetItems, _locationsLists.ClosetDescription);
@@ -49,25 +60,60 @@ public class MainStory
             (Text.ExploreHearth, _locationsLists.HearthItems, _locationsLists.HearthDescription);
         LockedLocations mainDoor =
             new LockedLocations(Text.ApproachDoor, LockedPlacesLists.UnHelpfulKeys);
-        WindowLocation window = new WindowLocation(Text.ExploreWindow, 
+        WindowLocation window = new WindowLocation(Text.ExploreWindow,
             LockedPlacesLists.AllPossibleOptions, LockedPlacesLists.WindowNeedsRope);
+
         #endregion
-        
+
         #region ThirdFloor Location Class Instantiation
-        Location thirdFloor = new Location(Text.ThirdFloorEntrance, 
+
+        Location thirdFloor = new Location(Text.ThirdFloorEntrance,
             Text.ThirdFloorTreeHeading, _locationsLists.ThirdFloorChoices);
-        //DerivedLockedLocations floor3Door2 =
-            new LockedLocations(Text.ApproachDoor, LockedPlacesLists.UnHelpfulLockPick);
-        
-        
-        
+        LockedLocations studyF3D2 = new LockedLocations(Text.ApproachDoor, Text.ExploreStudyF3D2,
+            LockedPlacesLists.UnHelpfulLockPick, _locationsLists.StudyF3D2Items, _locationsLists.StudyF3D2Description);
+        LockedLocations bedroomF3D3 = new LockedLocations(Text.ApproachDoor, Text.ExploreBedroomF3D3,
+            LockedPlacesLists.UnHelpfulKeys, _locationsLists.BedroomF3D3Items, _locationsLists.BedroomF3D3Description);
+        bedroomF3D3.ChangeDoorLockStatus(true);
+        LockedLocations closetF3D4 = new LockedLocations(Text.ApproachDoor, Text.ExploreClosetF3D4,
+            LockedPlacesLists.UnHelpfulNothing, _locationsLists.ClosetF3D4Items, _locationsLists.ClosetF3D4Description);
+
         #endregion
-        
+
+        #region Decision Trees
+
+        MainRoomGameTree mainRoomGameTree = new MainRoomGameTree();
+        ThirdFloorTree thirdFloorTree = new ThirdFloorTree();
+
         #endregion
+
+        #endregion
+
+
         IntroFluff introFluff = new IntroFluff();
-        GameTree gameTree = new GameTree();
         introFluff.IntroCutScene();
-        gameTree.MainRoomSwitchboard(backPackMethod, cat, mainRoom, closet, nightstand, bookshelf, hearth, mainDoor, window);
+        mainRoom.PrintIntro();
+        //put the tree for the castle here!
+        do
+        {
+            switch (cat.Location)
+            {
+                case MainCharacter.Place.MainRoom:
+                    mainRoomGameTree.MainRoomSwitchboard(backPackMethod, cat, mainRoom, closet, nightstand, bookshelf,
+                        hearth, mainDoor, window);
+                    break;
+                case MainCharacter.Place.ThirdFloor:
+                    thirdFloorTree.ThirdFloorSwitchboard(backPackMethod, cat, thirdFloor, studyF3D2, bedroomF3D3,
+                        closetF3D4);
+                    break;
+                case MainCharacter.Place.SecondFloor:
+                    Console.WriteLine(
+                        "Congrats you made it as far as you can go at this point. Since you can never escape I'm sending you back to the main room.");
+                    _userInput.DramaticPauseClrScreen();
+                    cat.Location = MainCharacter.Place.MainRoom;
+                    break;
+            }
+        } while (true); //CHange this!!
+
 
         //CastleWithExitStrategies(cat, backPackMethod, mainRoom, guardDog1, guardDog2, warden);
 
