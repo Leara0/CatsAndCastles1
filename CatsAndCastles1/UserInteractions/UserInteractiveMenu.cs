@@ -10,7 +10,7 @@ public class UserInteractiveMenu
         ConsoleKeyInfo key;
         bool isSelected = false;
         (int left, int top) = Console.GetCursorPosition();
-        string color = "--> \u001b[32m";
+        string selected = "--> \u001b[32m";
         Console.CursorVisible = false;
 
 
@@ -18,9 +18,9 @@ public class UserInteractiveMenu
         {
             Console.SetCursorPosition(left, top);
             for (int i = 0; i < options.Count; i++)
-                Console.WriteLine($"{(optionSelected == i ? color : "    ")}{options[i]}\u001b[0m");
+                Screen.Print($"{(optionSelected != i ? "   \u001b[0m" : selected )}{options[i]}\u001b[0m");
             if (leave != "")
-                Console.WriteLine($"{(optionSelected == options.Count ? color : "    ")}{leave}\u001b[0m");
+                Screen.Print($"{(optionSelected == options.Count ? selected : "   \u001b[0m")}{leave}\u001b[0m");
             
 
             key = Console.ReadKey();
