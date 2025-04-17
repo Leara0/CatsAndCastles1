@@ -26,14 +26,14 @@ public class WindowLocation(string description, List<string> itemsThatWontHelp, 
 
     public string InteractWithlockedWindow(Inventory inventory)
     {
-        Console.WriteLine(Text.AtWindowCheckInventory);
+        Screen.Print(Text.AtWindowCheckInventory);
         if (!MakeListForInteractiveMenu(inventory).Contains(Text.Rope)) //you don't have the rope
         {
-            Console.WriteLine(Text.AtWindowCheckInventoryFindNothing);
+            Screen.Print(Text.AtWindowCheckInventoryFindNothing);
         }
         else
         {
-            Console.WriteLine(Text.WindowOptions);
+            Screen.Print(Text.WindowOptions);
         }
 
         string item = GetObjectChoice(inventory);
@@ -61,12 +61,12 @@ public class WindowLocation(string description, List<string> itemsThatWontHelp, 
 
     public void ClimbDownWithRope()
     {
-        Console.WriteLine(Text.ClimbDownRope);
+        Screen.Print(Text.ClimbDownRope);
     }
 
     public void JumpDown()
     {
-        Console.WriteLine(Text.LeapDown);
+        Screen.Print(Text.LeapDown);
     }
 }
 

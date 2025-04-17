@@ -6,7 +6,7 @@ namespace CatsAndCastles1.GameTreeSwitchBoards;
 public class LockedDoorTree
 {
     private readonly UserInput _userInput = new UserInput();
-    public void DoorsSwitchboard(Inventory inventory, MainCharacter cat, LockedLocations place)
+    public void DoorsSwitchboard(Inventory inventory, Hero cat, LockedLocations place)
         {
             if (!place.DoorIsOpen())
             {
@@ -24,11 +24,11 @@ public class LockedDoorTree
                         case "": //this case is if you pick a tool that doesn't work in this location
                             break;
                         case Text.LockPickSet:
-                            Console.WriteLine(Text.UsePickOnDoor);
+                            Screen.Print(Text.UsePickOnDoor);
                             catEscaped = true;
                             break;
                         case Text.RingOfKeys:
-                            Console.WriteLine(Text.UseKeysOnDoor);
+                            Screen.Print(Text.UseKeysOnDoor);
                             catEscaped = true;
                             break;
                         case Text.LargeStone:

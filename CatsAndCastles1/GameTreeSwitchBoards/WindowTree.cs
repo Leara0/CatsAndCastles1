@@ -7,7 +7,7 @@ namespace CatsAndCastles1.GameTreeSwitchBoards;
 public class WindowTree
 {
     private readonly UserInput _userInput = new UserInput();
-    public void WindowSwitchboard(Inventory inventory, MainCharacter cat, WindowLocation place)
+    public void WindowSwitchboard(Inventory inventory, Hero cat, WindowLocation place)
     {
         place.ApproachLockedDoor();
         string item = place.InteractWithlockedWindow(inventory);
@@ -19,11 +19,11 @@ public class WindowTree
         {
             case Text.Rope:
                 place.ClimbDownWithRope();
-                cat.Location = MainCharacter.Place.OutsideCastle;
+                cat.Location = Hero.Place.OutsideCastle;
                 break;
             case "jump down":
                 place.JumpDown();
-                cat.Location = MainCharacter.Place.Dead;
+                cat.Location = Hero.Place.Dead;
                 break;
         }
 

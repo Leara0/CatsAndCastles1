@@ -1,6 +1,6 @@
 namespace CatsAndCastles1.Characters;
 
-public class Character
+public abstract class Character
 {
     public int Health { get; set; }
     public string Weapon { get; set; } = "";

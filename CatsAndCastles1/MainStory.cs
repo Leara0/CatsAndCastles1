@@ -19,10 +19,10 @@ public class MainStory
 
         #region Character Class Instantiation
 
-        var cat = new MainCharacter();
+        var cat = new Hero();
         {
             cat.Health = 60;
-            cat.Location = MainCharacter.Place.MainRoom;
+            cat.Location = Hero.Place.MainRoom;
         }
 
         var backPackMethod = new Inventory();
@@ -31,15 +31,15 @@ public class MainStory
             backPackMethod.DiscardedItems = new List<string>(); // create a record of all items that have been discarded
         }
 
-        var guardDog1 = new Character();
+        var guardDog1 = new BadGuy();
         {
             guardDog1.Health = guardDog1.SetHealth(25, 35);
         }
-        var guardDog2 = new Character();
+        var guardDog2 = new BadGuy();
         {
             guardDog2.Health = guardDog2.SetHealth(25, 35);
         }
-        var warden = new Character();
+        var warden = new BadGuy();
         {
             warden.Health = warden.SetHealth(60, 75);
         }
@@ -97,19 +97,19 @@ public class MainStory
         {
             switch (cat.Location)
             {
-                case MainCharacter.Place.MainRoom:
+                case Hero.Place.MainRoom:
                     mainRoomGameTree.MainRoomSwitchboard(backPackMethod, cat, mainRoom, closet, nightstand, bookshelf,
                         hearth, mainDoor, window);
                     break;
-                case MainCharacter.Place.ThirdFloor:
+                case Hero.Place.ThirdFloor:
                     thirdFloorTree.ThirdFloorSwitchboard(backPackMethod, cat, thirdFloor, studyF3D2, bedroomF3D3,
                         closetF3D4);
                     break;
-                case MainCharacter.Place.SecondFloor:
-                    Console.WriteLine(
+                case Hero.Place.SecondFloor:
+                    Screen.Print(
                         "Congrats you made it as far as you can go at this point. Since you can never escape I'm sending you back to the main room.");
                     _userInput.DramaticPauseClrScreen();
-                    cat.Location = MainCharacter.Place.MainRoom;
+                    cat.Location = Hero.Place.MainRoom;
                     break;
             }
         } while (true); //CHange this!!
@@ -122,10 +122,10 @@ public class MainStory
         // die and choose not to escape
     }
 
-    private void DeadEnding(MainCharacter cat)
+    private void DeadEnding(Hero cat)
     {
-        if (cat.Location == MainCharacter.Place.Dead)
-            Console.WriteLine("\nAs the darkness takes hold, a strange sense of peace washes over you. " +
+        if (cat.Location == Hero.Place.Dead)
+            Screen.Print("\nAs the darkness takes hold, a strange sense of peace washes over you. " +
                               "The struggle, the fear, the desperate clawing for survival — it all fades into " +
                               "nothingness.\n\nThe castle will remain, its cold stone walls holding secrets " +
                               "you will never uncover. The paths you might have taken, the dangers you might " +
@@ -136,29 +136,29 @@ public class MainStory
     }
 
 
-    private void CastleWithExitStrategies(MainCharacter cat, BackPack backPack, Character guardDog1,
+    private void CastleWithExitStrategies(Hero cat, BackPack backPack, Character guardDog1,
         Character guardDog2, Character warden)
     {
         do // you get here after you come to the end of one of the main room story lines
         {
             switch (cat.Location)
             {
-                case MainCharacter.Place.PassedOut: //@add something about taking health in main room
+                case Hero.Place.PassedOut: //@add something about taking health in main room
                     PassOut(cat, backPack);
                     break;
-                case MainCharacter.Place.ThirdFloor:
+                case Hero.Place.ThirdFloor:
                     ThirdFloor thirdFloor = new ThirdFloor();
                     thirdFloor.ThirdFloorStory(cat, backPack, guardDog1);
                     break; //I put this in here so it just stops after you defeat the guard so the loop stops for ho
-                case MainCharacter.Place.SecondFloor:
+                case Hero.Place.SecondFloor:
                     SecondFloor secondFloor = new SecondFloor();
                     secondFloor.SecondFloorStory(cat, backPack, guardDog2);
                     break;
-                case MainCharacter.Place.FirstFloor:
+                case Hero.Place.FirstFloor:
                     FirstFloor firstFloor = new FirstFloor();
                     firstFloor.FirstFloorStory(cat, backPack, warden);
                     break;
-                case MainCharacter.Place.OutsideCastle:
+                case Hero.Place.OutsideCastle:
                     OutsideCastle outside = new OutsideCastle();
                     outside.OutsideTheCastle(cat, backPack);
                     break;
@@ -168,36 +168,36 @@ public class MainStory
     }
 
 
-    private void PassOut(MainCharacter cat, BackPack backPack)
+    private void PassOut(Hero cat, BackPack backPack)
     {
         //MainRoom mainRoom = new MainRoom(cat, backPack);
         cat.Lives--;
 
-        Console.WriteLine(
+        Screen.Print(
             "\nThe pain is immediate and blinding, the world tilts around you, and darkness swallows you whole. " +
             "For a moment, there is nothing—no pain, no sound, no sense of time. " +
             "Then, a strange awareness creeps in. A feeling both familiar and deeply unsettling." +
             "\n\nCats have nine lives... but you suddenly realize this isn’t your first brush with death.");
         if (cat.Lives < 1)
         {
-            Console.WriteLine("Nine lives, and you’ve spent them all. Shadows close in once more — but this time, " +
+            Screen.Print("Nine lives, and you’ve spent them all. Shadows close in once more — but this time, " +
                               "there is no return.");
-            cat.Location = MainCharacter.Place.Dead;
+            cat.Location = Hero.Place.Dead;
             cat.EndGame = true;
             return;
         }
 
 
-        Console.WriteLine(
+        Screen.Print(
             $"You’ve already lost {9 - cat.Lives}. That leaves only {cat.Lives} more chances. {cat.Lives} more lives " +
             $"to escape this cursed castle before the darkness takes you for good.");
         if (cat.LostToGuard)
         {
-            Console.WriteLine("\nIf you choose to return, the guard will still bear the wounds you inflicted. " +
+            Screen.Print("\nIf you choose to return, the guard will still bear the wounds you inflicted. " +
                               "They will not regain his strength.");
         }
 
-        Console.WriteLine($"\nA choice stands before you:" +
+        Screen.Print($"\nA choice stands before you:" +
                           $"\n\n1. Revive in the room you first woke in and try again to escape." +
                           $"\n2. Accept defeat and let the darkness claim you. (End Game.)" +
                           $"\n\nWhat will you do?... \n");
@@ -207,7 +207,7 @@ public class MainStory
         }
         else
         {
-            cat.Location = MainCharacter.Place.Dead;
+            cat.Location = Hero.Place.Dead;
             cat.EndGame = true;
         }
     }

@@ -9,12 +9,12 @@ public class SecondFloor
     private readonly Fight fight = new Fight();
 
 
-    public void SecondFloorStory(MainCharacter cat, BackPack backPack, Character guardDog)
+    public void SecondFloorStory(Hero cat, BackPack backPack, Character guardDog)
     {
         cat.SuccessfulBribed = false;
 
 
-        Console.WriteLine("You reach the second floor, your paws light against the cold stone. The hallway " +
+        Screen.Print("You reach the second floor, your paws light against the cold stone. The hallway " +
                           "stretches before you, nearly identical to the one above. Four doors line the hallway, " +
                           "each one marked with a number — just like on the previous floor." +
                           "\n\nYou feel lucky that there’s no guard patrolling here, but the absence is strange. " +
@@ -24,8 +24,8 @@ public class SecondFloor
 
         do
         {
-            Console.WriteLine("Your tail flicks as you consider your options.?");
-            Console.WriteLine("\nPlease make a selection:" +
+            Screen.Print("Your tail flicks as you consider your options.?");
+            Screen.Print("\nPlease make a selection:" +
                               "\n'1' - A sturdy and solid door, its frame slightly warped with age" +
                               "\n'2' - A heavy, reinforced, with deep scratches marring the bottom edge. " +
                               "The number appears to have fallen or been torn off but the un-aged wood shows it was a 2" +
@@ -40,17 +40,17 @@ public class SecondFloor
             switch (_userInput.UserChoice(7))
             {
                 case "1": // need keys or lock pick to get in here
-                    Console.WriteLine("You approach Door 1 and test the handle — it's locked.");
+                    Screen.Print("You approach Door 1 and test the handle — it's locked.");
                     if (backPack.Pack.Contains("the ring of keys") || backPack.Pack.Contains("the rusted set of tools"))
                         EnterRoom(cat, backPack, "second floor room 1");
                     else
-                        Console.WriteLine(
+                        Screen.Print(
                             "You check your pack, hoping for something useful, but you don’t have any keys. " +
                             "nor do you have the lock pick kit." +
                             "\n\nWith no way inside, you step back into the hall.");
                     break;
                 case "2": //can't get in here
-                    Console.WriteLine("You approach another door and test the handle—it doesn't budge. Locked." +
+                    Screen.Print("You approach another door and test the handle—it doesn't budge. Locked." +
                                       "\n\nReaching into your pack, you retrieve the rusted set of tools and " +
                                       "attempt to pick the lock. The metal clicks and shifts, but no matter " +
                                       "how carefully you work, the mechanism refuses to give. This door isn't " +
@@ -58,54 +58,54 @@ public class SecondFloor
                                       $"{(backPack.Pack.Contains("the ring of keys") ? "You try the keys you got from " +
                                           "the guard but none work" : "")}" +
                                       "\n\nWith no other choice, you step back into the hallway. What will you do next?");
-                    Console.WriteLine("\nPress 'enter' to continue...");
+                    Screen.Print("\nPress 'enter' to continue...");
                     Console.ReadLine();
                     Console.Clear();
                     break;
                 case "3": //need keys
-                    Console.WriteLine("You stand in the hall, eyeing Door 3. Testing the handle—locked.");
+                    Screen.Print("You stand in the hall, eyeing Door 3. Testing the handle—locked.");
                     if (backPack.Pack.Contains("the ring of keys"))
                         EnterRoom(cat, backPack, "second floor room 3");
                     else
-                        Console.WriteLine(
+                        Screen.Print(
                             "You check your pack, hoping for something useful, but you don’t have any keys. " +
                             "Your lock pick kit is of no use here, the mechanism refusing to budge." +
                             "\n\nWith no way inside, you step back into the hall.");
                     break;
                 case "4": //guard dog
                     Room4(cat, backPack, guardDog);
-                    if (cat.Location == MainCharacter.Place.PassedOut)
+                    if (cat.Location == Hero.Place.PassedOut)
                         return;
                     break;
                 case "5": // go downstairs
-                    Console.WriteLine("Standing in the hallway, you glance at the doors. " +
+                    Screen.Print("Standing in the hallway, you glance at the doors. " +
                                       "You feel you’ve explored enough for now. The stairway at the end of the " +
                                       "hall beckons, offering the chance to move closer to freedom." +
                                       "\n\nWith a flick of your tail, you head toward the stairs, leaving this" +
                                       " floor behind as you descend into the unknown.");
-                    Console.WriteLine("Press 'enter' to continue...");
+                    Screen.Print("Press 'enter' to continue...");
                     Console.ReadLine();
                     cat.SuccessfulBribed = false;
-                    cat.Location = MainCharacter.Place.FirstFloor;
+                    cat.Location = Hero.Place.FirstFloor;
                     Console.Clear();
                     return;
                 case "6":
-                    Console.WriteLine("You turn and head back toward the stairs, making your way up. You feel there" +
+                    Screen.Print("You turn and head back toward the stairs, making your way up. You feel there" +
                                       "must be something you missed and are eager to retrace your steps.");
                     cat.SuccessfulBribed = false;
-                    cat.Location = MainCharacter.Place.ThirdFloor;
-                    Console.WriteLine("Press 'enter' to continue...");
+                    cat.Location = Hero.Place.ThirdFloor;
+                    Screen.Print("Press 'enter' to continue...");
                     Console.ReadLine();
                     Console.Clear();
                     return;
                 case "7":
                     backPack.ListContentsOfPack();
-                    Console.WriteLine("Would you like to use or remove any items?" +
+                    Screen.Print("Would you like to use or remove any items?" +
                                       "\nPlease press '1' to use or remove an item and '2' to continue exploring the room");
                     if (_userInput.UserChoice() == "1")
                         backPack.RemoveItemsFromPack(cat);
 
-                    Console.WriteLine(
+                    Screen.Print(
                         "After a quick assessment, you tuck your things back into your pack. The choices" +
                         "once again lay before you.");
                     break;
@@ -114,14 +114,14 @@ public class SecondFloor
     }
 
 
-    public void EnterRoom(MainCharacter cat, BackPack backPack, string room)
+    public void EnterRoom(Hero cat, BackPack backPack, string room)
     {
         DescriptionOfItems(room, backPack);
-        Console.WriteLine("\nDo you want to take any of these items with you? Press '1' to take items and '2' " +
+        Screen.Print("\nDo you want to take any of these items with you? Press '1' to take items and '2' " +
                           "to leave the room");
         if (_userInput.UserChoice() == "1")
             backPack.TakeItems(cat, room);
-        Console.WriteLine("Feeling finished with this room, you step back into the hallway.");
+        Screen.Print("Feeling finished with this room, you step back into the hallway.");
     }
 
 
@@ -130,7 +130,7 @@ public class SecondFloor
         switch (room)
         {
             case "second floor room 1":
-                Console.WriteLine($"\nFortunately, you remember the {(backPack.Pack.Contains("the ring of keys") ?
+                Screen.Print($"\nFortunately, you remember the {(backPack.Pack.Contains("the ring of keys") ?
                     "keys you took from the guard" : "rusty set of tools in your pack")}. You fish them out of " +
                                   $"your pack and try one after another until—click. The door swings open." +
                                   $"\n\nInside, the room is dim and sparse, but a few items catch your eye:" +
@@ -141,7 +141,7 @@ public class SecondFloor
 
                 break;
             case "second floor room 3": //need keys
-                Console.WriteLine("Fortunately, you remember the keys you took from the guard. " +
+                Screen.Print("Fortunately, you remember the keys you took from the guard. " +
                                   "You fish them out of your pack and try one after another until—click. " +
                                   "The door swings open." +
                                   "\n\nInside, the space is sparse, likely unused for some time. Dust clings to the " +
@@ -160,9 +160,9 @@ public class SecondFloor
     }
 
 
-    void LootBody(MainCharacter cat, BackPack backPack, Character guardDog)
+    void LootBody(Hero cat, BackPack backPack, Character guardDog)
     {
-        Console.WriteLine("\nYou see the body of the guard you dispatched and take a moment to search it, uncovering:");
+        Screen.Print("\nYou see the body of the guard you dispatched and take a moment to search it, uncovering:");
 
 
         backPack.AssignItemsBasedOnLocation("guard two", guardDog);
@@ -170,22 +170,22 @@ public class SecondFloor
         {
             if (backPack.ListOfAllItemsPickedUp.Contains(backPack.Options[i]))
                 backPack.Descriptions[i] = backPack.emptySpot;
-            Console.WriteLine($"- {backPack.Descriptions[i]}");
+            Screen.Print($"- {backPack.Descriptions[i]}");
         }
 
 
-        Console.WriteLine("Press '1' to loot and '2' to move on.");
+        Screen.Print("Press '1' to loot and '2' to move on.");
         if (_userInput.UserChoice() == "1")
         {
             backPack.TakeItems(cat, "guard two", guardDog);
         }
 
 
-        Console.WriteLine("You leave the corpse\n\n.");
+        Screen.Print("You leave the corpse\n\n.");
     }
 
 
-    void Room4(MainCharacter cat, BackPack backPack, Character guardDog)
+    void Room4(Hero cat, BackPack backPack, Character guardDog)
     {
         if (!guardDog.IsDead && !cat.SuccessfulBribed)
             //if you haven't defeated or bribed the guard yet
@@ -193,12 +193,12 @@ public class SecondFloor
             fight.GuardDogEncounter(cat, backPack, guardDog, 1);
             if ((!guardDog.IsDead && !cat.SuccessfulBribed) ||
                 cat.Location ==
-                MainCharacter.Place.PassedOut) // if you successfully run away or get knocked out leave this room
+                Hero.Place.PassedOut) // if you successfully run away or get knocked out leave this room
                 return;
         }
 
 
-        Console.WriteLine("The room is dimly lit by a flickering candle mounted on a crumbling wall. " +
+        Screen.Print("The room is dimly lit by a flickering candle mounted on a crumbling wall. " +
                           "Amidst scattered debris and a few signs of hurried movement, you spot several " +
                           "items that seem to have been left behind in the chaos:" +
                           "\n\nA 20-foot length of rope, coiled neatly in one corner, its fibers " +
@@ -208,20 +208,20 @@ public class SecondFloor
                           "\nA short sword, its blade modest but sharp, glinting in the low light — " +
                           "a weapon that could serve you well.");
         if (guardDog.IsDead)
-            Console.WriteLine("The guard’s fallen form lies nearby, a silent testament to the battle " +
+            Screen.Print("The guard’s fallen form lies nearby, a silent testament to the battle " +
                               "you just fought.");
 
         var stayInRoom = true;
         do
         {
-            Console.WriteLine(
+            Screen.Print(
                 "The items in room 4 lie around you, you sense that they might be the keys to " +
                 "surviving what lies ahead...");
             Console.Write("\nPlease make a choice:" +
                           "\nPress '1' if you'd like to take some items from this room with you." +
                           "Press '2' if you'd like to return to the hall.");
             if (guardDog.IsDead)
-                Console.WriteLine(
+                Screen.Print(
                     "Press '3' if you'd like to return to the guard's body to see if you missed " +
                     "anything");
 
@@ -229,7 +229,7 @@ public class SecondFloor
             {
                 case "1":
                     backPack.TakeItems(cat, "second floor room 4");
-                    Console.WriteLine("You've taken what you like from this room for now. You head towards the door " +
+                    Screen.Print("You've taken what you like from this room for now. You head towards the door " +
                                       "but take another look around.");
                     break;
                 case "2":
@@ -239,11 +239,11 @@ public class SecondFloor
                     if (guardDog.IsDead)
                         LootBody(cat, backPack, guardDog);
                     else
-                        Console.WriteLine("That is not a valid selection.");
+                        Screen.Print("That is not a valid selection.");
                     break;
             }
         } while (stayInRoom);
 
-        Console.WriteLine("Feeling done with this room you return to the hall");
+        Screen.Print("Feeling done with this room you return to the hall");
     }
 }

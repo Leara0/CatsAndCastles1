@@ -36,20 +36,20 @@ public class BackPack
 
     public void ListContentsOfPack()
     {
-        Console.WriteLine("The contents of your pack are as follows:");
+        Screen.Print("The contents of your pack are as follows:");
         for (int i = 0; i < Pack.Length; i++)
-            Console.WriteLine($"  {i + 1} - {Pack[i]}");
+            Screen.Print($"  {i + 1} - {Pack[i]}");
     }
 
     public void PickUpItemsFromDiscarded(Character cat)
     {
-        Console.WriteLine("Your discarded stash contains the following item/s:");
+        Screen.Print("Your discarded stash contains the following item/s:");
         for (int i = 0; i < DiscardedItems.Count; i++)
         {
-            Console.WriteLine($"{i + 1} - {DiscardedItems[i]}");
+            Screen.Print($"{i + 1} - {DiscardedItems[i]}");
         }
 
-        Console.WriteLine($"\nPlease type the number of the item you would like to pick up. " +
+        Screen.Print($"\nPlease type the number of the item you would like to pick up. " +
                           $"Or press {DiscardedItems.Count + 1} to return to exploring the room");
 
         int response = Convert.ToInt32(_userInput.UserChoice(DiscardedItems.Count + 1));
@@ -66,14 +66,14 @@ public class BackPack
         int numToRemove = 0;
 
         ListContentsOfPack();
-        Console.WriteLine("Press '6' if you've changed your mind and don't want to remove anything");
+        Screen.Print("Press '6' if you've changed your mind and don't want to remove anything");
 
-        Console.WriteLine("\nPlease enter the number of the item you would like to use or remove or press '6'.");
+        Screen.Print("\nPlease enter the number of the item you would like to use or remove or press '6'.");
         numToRemove = int.Parse(_userInput.UserChoice(6));
 
         if (numToRemove == 6)
         {
-            Console.WriteLine("You have chosen not to remove anything at this time. Nothing new can be added " +
+            Screen.Print("You have chosen not to remove anything at this time. Nothing new can be added " +
                               "to the pack");
             _userInput.DramaticPause();
             return false;
@@ -83,7 +83,7 @@ public class BackPack
 
         if (item.Contains("glass vial"))
         {
-            Console.WriteLine("You have chosen to drink an elixir. It has restored your health by 10");
+            Screen.Print("You have chosen to drink an elixir. It has restored your health by 10");
             cat.Health += 10;
             Pack[numToRemove - 1] = "empty";
         }
@@ -91,7 +91,7 @@ public class BackPack
         {
             if (item.Contains("shield"))
                 cat.HasShield = false;
-            Console.WriteLine(
+            Screen.Print(
                 $"You have removed {item} from your pack. It can now be found in your discard stash.");
             if (item.Contains("gold"))
                 RemoveMoneyFromWallet(item);
@@ -109,7 +109,7 @@ public class BackPack
     {
         if (NumberOfItemsInPack() == 0)
         {
-            Console.WriteLine("There are no items in your pack.");
+            Screen.Print("There are no items in your pack.");
             _userInput.DramaticPauseClrScreen();
             return;
         }
@@ -118,14 +118,14 @@ public class BackPack
         do
         {
             ListContentsOfPack();
-            Console.WriteLine("Press '6' if you've changed your mind and don't want to remove anything");
+            Screen.Print("Press '6' if you've changed your mind and don't want to remove anything");
 
-            Console.WriteLine("\nPlease enter the number of the item you would like to use or remove or press '6'.");
+            Screen.Print("\nPlease enter the number of the item you would like to use or remove or press '6'.");
             numToRemove = int.Parse(_userInput.UserChoice(6));
 
             if (numToRemove == 6)
             {
-                Console.WriteLine("You have chosen not to remove anything at this time.");
+                Screen.Print("You have chosen not to remove anything at this time.");
                 _userInput.DramaticPause();
             }
 
@@ -134,7 +134,7 @@ public class BackPack
             {
                 if (item.Contains("glass vial"))
                 {
-                    Console.WriteLine("You have chosen to drink an elixir. It has restored your health by 10");
+                    Screen.Print("You have chosen to drink an elixir. It has restored your health by 10");
                     cat.Health += 10;
                     Pack[numToRemove - 1] = "empty";
                 }
@@ -142,7 +142,7 @@ public class BackPack
                 {
                     if (item.Contains("shield"))
                         cat.HasShield = false;
-                    Console.WriteLine(
+                    Screen.Print(
                         $"You have removed {item} from your pack. It can now be found in your discard stash.");
                     if (item.Contains("gold"))
                         RemoveMoneyFromWallet(item);
@@ -156,7 +156,7 @@ public class BackPack
             }
             else
             {
-                Console.WriteLine("There is nothing in this spot so nothing has been removed.");
+                Screen.Print("There is nothing in this spot so nothing has been removed.");
                 _userInput.DramaticPauseClrScreen();
             }
         } while (numToRemove != 6);
@@ -230,9 +230,9 @@ public class BackPack
         }
         else if (NumberOfItemsInPack() == 5)
         {
-            Console.WriteLine("Your pack is too burdened to add any more items. You must remove" +
+            Screen.Print("Your pack is too burdened to add any more items. You must remove" +
                               $" something to make space for {item}.");
-            Console.WriteLine("Please press '1' to remove items and '2' to make no changes to your pack.");
+            Screen.Print("Please press '1' to remove items and '2' to make no changes to your pack.");
             if (_userInput.UserChoice() == "1")
             {
                 bool somethingWasRemoved = RemoveToReplaceItem(cat);
@@ -246,8 +246,8 @@ public class BackPack
 
         if (item == emptySpot)
         {
-            Console.WriteLine("Nothing remains in this spot. Please make an alternate selection");
-            Console.WriteLine("Press 'enter' to continue");
+            Screen.Print("Nothing remains in this spot. Please make an alternate selection");
+            Screen.Print("Press 'enter' to continue");
             Console.ReadLine();
             return false;
         }
@@ -294,10 +294,10 @@ public class BackPack
         }
 
 
-        Console.WriteLine($"You pack now contains {item}");
+        Screen.Print($"You pack now contains {item}");
         ListOfAllItemsPickedUp
             .Add(item); //and add the item to the list of all items that have been picked up
-        Console.WriteLine("Press 'enter' to continue");
+        Screen.Print("Press 'enter' to continue");
         Console.ReadLine();
         return true;
     }
@@ -469,16 +469,16 @@ public class BackPack
             }
 
 
-            Console.WriteLine(
+            Screen.Print(
                 "\nPlease choose which items you would like to add to your pack. Please enter the number " +
                 "for one item then press enter:");
 
 
             for (int i = 0; i < Options.Length; i++)
-                Console.WriteLine($"  {i + 1} - {Options[i]}");
+                Screen.Print($"  {i + 1} - {Options[i]}");
 
 
-            Console.WriteLine($"\n Or press '4' to leave the {location}. " +
+            Screen.Print($"\n Or press '4' to leave the {location}. " +
                               $"Items that you have removed from your inventory can be found in the discard " +
                               $"stash in the main room.");
 

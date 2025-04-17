@@ -32,13 +32,13 @@ public class UIInventory
         if (inventory.Pack.Count > 4)
         {
             Console.Clear();
-            Console.WriteLine("Your pack is too burdened to add any more items. You must remove" +
+            Screen.Print("Your pack is too burdened to add any more items. You must remove" +
                               $" something to make space for {item}.");
             _selectionNumber = _userInteractiveMenu.GiveChoices(inventory.Pack, Text.RemoveNothing);
             if (_selectionNumber < inventory.Pack.Count)
             {   
                 inventory.DiscardedItems.Add(inventory.Pack[_selectionNumber]);
-                Console.WriteLine($"You have removed {inventory.Pack[_selectionNumber]} from your pack");
+                Screen.Print($"You have removed {inventory.Pack[_selectionNumber]} from your pack");
                 inventory.Pack.RemoveAt(_selectionNumber);
                 
                 _userInput.DramaticPauseClrScreen();
@@ -46,7 +46,7 @@ public class UIInventory
             }
             else
             {
-                Console.WriteLine("You've chosen not to remove any items. Nothing has been added to your pack");
+                Screen.Print("You've chosen not to remove any items. Nothing has been added to your pack");
                 _userInput.DramaticPauseClrScreen();
                 return false;
             }
@@ -74,7 +74,7 @@ public class UIInventory
             else if (SpaceInPack(item, inventory))
             {
                 inventory.Pack.Add(item);
-                Console.WriteLine($"You pack now contains {item}");
+                Screen.Print($"You pack now contains {item}");
                 specificLocation.ItemHasBeenPickedUp(itemNumber);
                 _userInput.DramaticPauseClrScreen();
             }
@@ -84,7 +84,7 @@ public class UIInventory
 
     public void AddGold(string item, Inventory inventory)
     {
-        Console.WriteLine($"Your coin purse now contains {inventory.AddGoldToPurse(item)} gold coins");
+        Screen.Print($"Your coin purse now contains {inventory.AddGoldToPurse(item)} gold coins");
     }
 
     public void AddItemToInventoryFromDiscard(Inventory inventory)
@@ -100,7 +100,7 @@ public class UIInventory
             if (SpaceInPack(item, inventory))
             {
                 inventory.Pack.Add(item);
-                Console.WriteLine($"You pack now contains {item}");
+                Screen.Print($"You pack now contains {item}");
                 inventory.DiscardedItems.RemoveAt(itemNumber);
                 _userInput.DramaticPauseClrScreen();
             }
@@ -115,12 +115,12 @@ public class UIInventory
         if (specificLocation.InventoryItemsAtLocation.Count == 0)
         {
             // if all the items have been taken display that info and pause
-            Console.WriteLine(Text.NothingLeft);
+            Screen.Print(Text.NothingLeft);
             _userInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Console.WriteLine(Text.ChoiceToTakeItems + "\n");
+        Screen.Print(Text.ChoiceToTakeItems + "\n");
         _selectionNumber =
             _userInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, Text.LeaveLocation);
 
@@ -132,12 +132,12 @@ public class UIInventory
         Console.Clear();
         if (inventory.DiscardedItems.Count == 0)
         {
-            Console.WriteLine(Text.EmptyStash);
+            Screen.Print(Text.EmptyStash);
             _userInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Console.WriteLine(Text.PickUpFromStash + "\n");
+        Screen.Print(Text.PickUpFromStash + "\n");
         _selectionNumber =
             _userInteractiveMenu.GiveChoices(inventory.DiscardedItems, Text.PickUpNothing);
 
@@ -147,12 +147,12 @@ public class UIInventory
     {
         if (inventory.Pack.Count == 0)
         {
-            Console.WriteLine(Text.EmptyInventory);
+            Screen.Print(Text.EmptyInventory);
             _userInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Console.WriteLine(Text.ThinkAboutInventory + "\n");
+        Screen.Print(Text.ThinkAboutInventory + "\n");
         _selectionNumber =
             _userInteractiveMenu.GiveChoices(inventory.Pack, Text.PickUpNothing);
 
@@ -171,7 +171,7 @@ public class UIInventory
             string item = inventory.Pack[itemNumber];
 
             inventory.DiscardedItems.Add(item);
-            Console.WriteLine($"You have removed {item} from your pack");
+            Screen.Print($"You have removed {item} from your pack");
             inventory.Pack.RemoveAt(itemNumber);
             _userInput.DramaticPauseClrScreen();
         } while (true); // this ends if they choose to leave this area
@@ -185,11 +185,11 @@ public class UIInventory
         int total = inventory.SpendGold(amount);
         if (total == -1)
         {
-            Console.WriteLine(Text.InsufficientFunds);
+            Screen.Print(Text.InsufficientFunds);
         }
         else
         {
-            Console.WriteLine($"Your purse now contains {total} gold coins");
+            Screen.Print($"Your purse now contains {total} gold coins");
         }
     }
 }

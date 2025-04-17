@@ -34,14 +34,14 @@ public class ItemsLocation : Location
 
     private void DisplayLocationInfo()
     {
-        Console.WriteLine(description);
+        Console.WriteLine(description); //@TODO why can't I make this one Screen.Print'
         if (LongDescriptionOfItemsAtLocation.Count == 0)
-            Console.WriteLine("\n" + Text.NothingLeft);
+            Screen.Print("\n" + Text.NothingLeft);
         else
         {
-            Console.WriteLine(Text.PrepToListItems);
+            Screen.Print(Text.PrepToListItems);
             foreach (string item in LongDescriptionOfItemsAtLocation)
-                Console.WriteLine(item);
+                Screen.Print(item);
         }
 
         _userInput.DramaticPauseClrScreen();

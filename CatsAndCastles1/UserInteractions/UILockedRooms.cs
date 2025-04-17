@@ -16,45 +16,45 @@ public class UILockedRooms
 
     public bool UseStoneOnDoor(Character cat)
     {
-        Console.WriteLine(Text.UseStoneOnDoor);
+        Screen.Print(Text.UseStoneOnDoor);
         _userInput.DramaticPause();
         int roll = _rnd.Next(1, 21);
-        Console.WriteLine(Text.YourRoll + roll +"\n");
+        Screen.Print(Text.YourRoll + roll +"\n");
         if (roll > 16)
         {
-            Console.WriteLine(Text.StoneOrShieldWorked);
+            Screen.Print(Text.StoneOrShieldWorked);
             return true;
         }
 
         roll = _rnd.Next(1, 7) + 1;
         cat.Health -= roll;
-        Console.WriteLine(Text.StoneDidntWork + roll + Text.StoneEndOfDamage + Text.YourHealth + cat.Health);
+        Screen.Print(Text.StoneDidntWork + roll + Text.StoneEndOfDamage + Text.YourHealth + cat.Health);
         
         return false;
     }
 
     public bool UseShieldOnDoor(Character cat, string item, Inventory inventory)
     {
-        Console.WriteLine(Text.UseShieldOnDoor);
+        Screen.Print(Text.UseShieldOnDoor);
         _userInput.DramaticPause();
         int roll = _rnd.Next(1, 21);
-        Console.WriteLine(Text.YourRoll + roll +"\n");
+        Screen.Print(Text.YourRoll + roll +"\n");
         if (roll > 16)
         {
-            Console.WriteLine(Text.StoneOrShieldWorked);
+            Screen.Print(Text.StoneOrShieldWorked);
             return true;
         }
 
         if (roll < 6)
         {
-            Console.WriteLine(Text.ShieldBreaks);
+            Screen.Print(Text.ShieldBreaks);
             inventory.Pack.Remove(item);
             return false;
         }
 
         roll = _rnd.Next(1, 7) + 1;
         cat.Health -= roll;
-        Console.WriteLine(Text.ShieldDidntWork + roll + Text.StoneEndOfDamage +
+        Screen.Print(Text.ShieldDidntWork + roll + Text.StoneEndOfDamage +
                           Text.YourHealth + cat.Health);
         return false;
         }

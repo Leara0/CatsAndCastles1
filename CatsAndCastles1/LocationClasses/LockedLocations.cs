@@ -68,16 +68,16 @@ public class LockedLocations : ItemsLocation
     public void ApproachLockedDoor()
     {
         Console.Clear();
-        Console.WriteLine(DoorDescription); //@TODO change this to the description in the parameters
+        Screen.Print(DoorDescription); //@TODO change this to the description in the parameters
         _userInput.DramaticPauseClrScreen();
     }
 
     public virtual string InteractWithLockedDoor(Inventory inventory)
     {
-        Console.WriteLine(Text.AtDoorCheckInventory);
+        Screen.Print(Text.AtDoorCheckInventory);
         if (MakeListForInteractiveMenu(inventory).Count == 0)
         {
-            Console.WriteLine(Text.AtDoorCheckInventoryFindNothing);
+            Screen.Print(Text.AtDoorCheckInventoryFindNothing);
             _userInput.DramaticPauseClrScreen();
             return "leave"; //explain you found nothing and return empty string to indicate leave this location
         }
@@ -92,9 +92,9 @@ public class LockedLocations : ItemsLocation
         if (ItemsThatWontHelp.Contains(item))
         {
             if (item == Text.RingOfKeys)
-                Console.WriteLine(Text.KeysWontWork);
+                Screen.Print(Text.KeysWontWork);
             if (item == Text.LockPickSet)
-                Console.WriteLine(Text.LockPickWontWork);
+                Screen.Print(Text.LockPickWontWork);
             _userInput.DramaticPauseClrScreen();
             return ""; // if you tried a tool that doesn't work you need to loop again
         }
@@ -104,7 +104,7 @@ public class LockedLocations : ItemsLocation
 
     public void ApproachOpenDoor()
     {
-        Console.WriteLine(Text.OpenDoor); //approach door
+        Screen.Print(Text.OpenDoor); //approach door
         _userInput.DramaticPauseClrScreen();
     }
 

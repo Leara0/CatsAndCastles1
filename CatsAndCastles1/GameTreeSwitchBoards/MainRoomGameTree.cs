@@ -9,13 +9,13 @@ public class MainRoomGameTree()
     //how to weave in fluff intro scenes about the earlier cut scenes?
     private readonly UserInput _userInput = new UserInput();
 
-    public void MainRoomSwitchboard(Inventory inventory, MainCharacter cat, Location mainRoom,
+    public void MainRoomSwitchboard(Inventory inventory, Hero cat, Location mainRoom,
         ItemsLocation closet,
         ItemsLocation nightstand, ItemsLocation bookshelf, ItemsLocation hearth,
         LockedLocations mainDoor, WindowLocation window)
     {
         Console.Clear();
-        cat.Location = MainCharacter.Place.MainRoom;
+        cat.Location = Hero.Place.MainRoom;
         cat.EndGame = false;
         UIInventory uiInventory = new UIInventory();
         
@@ -31,7 +31,7 @@ public class MainRoomGameTree()
                 case 0: // this is the only exit!!!
                     lockedDoorTree.DoorsSwitchboard(inventory, cat, mainDoor);
                     if (mainDoor.DoorIsOpen())
-                        cat.Location = MainCharacter.Place.ThirdFloor;
+                        cat.Location = Hero.Place.ThirdFloor;
                     break;
                 case 1: //closet
                     closet.LocationMethod(inventory);
@@ -55,7 +55,7 @@ public class MainRoomGameTree()
                     uiInventory.RemoveItemFromInventory(inventory);
                     break;
             }
-        } while (cat.Location == MainCharacter.Place.MainRoom);
+        } while (cat.Location == Hero.Place.MainRoom);
     }
 
     

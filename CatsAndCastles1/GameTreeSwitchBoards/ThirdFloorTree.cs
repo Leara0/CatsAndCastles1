@@ -8,11 +8,11 @@ public class ThirdFloorTree
 {
     private readonly UserInput _userInput = new UserInput();
 
-    public void ThirdFloorSwitchboard(Inventory inventory, MainCharacter cat, Location thirdFloor,
+    public void ThirdFloorSwitchboard(Inventory inventory, Hero cat, Location thirdFloor,
         LockedLocations studyF3D2, LockedLocations bedroomF3D3, LockedLocations closetF3D4)
     {
         Console.Clear();
-        cat.Location = MainCharacter.Place.ThirdFloor;
+        cat.Location = Hero.Place.ThirdFloor;
         cat.EndGame = false;
         UIInventory uiInventory = new UIInventory();
 
@@ -27,7 +27,7 @@ public class ThirdFloorTree
             {
                 // this was stolen from the main room, change it all!!!
                 case 0: // return to main room
-                    cat.Location = MainCharacter.Place.MainRoom;
+                    cat.Location = Hero.Place.MainRoom;
                     return; //check that this works. It should fall out of this class completely back to the previous tree
                     break;
                 case 1: //study
@@ -46,14 +46,14 @@ public class ThirdFloorTree
                         closetF3D4.LocationMethod(inventory);
                     break;
                 case 4: //go downstairs
-                    Console.WriteLine(Text.HeadDownStairs);
-                    cat.Location = MainCharacter.Place.SecondFloor;
+                    Screen.Print(Text.HeadDownStairs);
+                    cat.Location = Hero.Place.SecondFloor;
                     break;
                 case 5: //inventory
                     uiInventory.RemoveItemFromInventory(inventory);
                     break;
             }
-        } while (cat.Location == MainCharacter.Place.ThirdFloor);
+        } while (cat.Location == Hero.Place.ThirdFloor);
     }
 }
 

@@ -33,14 +33,14 @@ public class Location
     public int RoomMethod() // this is the method to call all the stuff for this location
     {
         Console.Clear();
-        Console.WriteLine(_menuHeader);
+        Screen.Print(_menuHeader);
         int choice =  _userInput.GetChoice(OptionsAtLocation, Text.PackOption);
         return choice;
     }
 
     public void PrintIntro()
     {
-        Console.WriteLine(LocationIntro);
+        Screen.Print(LocationIntro);
         _userInput.DramaticPauseClrScreen();
     }
 

@@ -1,6 +1,6 @@
 namespace CatsAndCastles1.Characters;
 
-public class MainCharacter:Character
+public class Hero:Character
 {
     public enum Place
     {
