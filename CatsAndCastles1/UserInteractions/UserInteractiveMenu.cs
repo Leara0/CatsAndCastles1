@@ -4,7 +4,7 @@ public class UserInteractiveMenu
 {
     public int GiveChoices(List<string> options, string leave = "")
     {
-        Console.WriteLine(Text.HowToPickAnItem+ "\n");
+        Screen.Print(Text.HowToPickAnItem+ "\n");
         
         int optionSelected = 0;
         ConsoleKeyInfo key;
@@ -53,6 +53,6 @@ public class UserInteractiveMenu
 
         return optionSelected;
         Console.Clear();
-        Console.WriteLine($"(You selected: {options[optionSelected]}");
+        Screen.Print($"(You selected: {options[optionSelected]}");
     }
 }

@@ -6,7 +6,7 @@ public class ItemsLocation : Location
 {
     private readonly UserInput _userInput = new UserInput();
     private readonly UIInventory _uiInventory = new UIInventory();
-    public string description;
+    public string Description;
 
     public List<string> LongDescriptionOfItemsAtLocation { get; set; }
     public List<string> InventoryItemsAtLocation { get; set; }
@@ -20,7 +20,7 @@ public class ItemsLocation : Location
     {
         LongDescriptionOfItemsAtLocation = locationsDescription;
         InventoryItemsAtLocation = itemsAtLocation;
-        description = description;
+        Description = description;
     }
 
     #endregion
@@ -34,7 +34,7 @@ public class ItemsLocation : Location
 
     private void DisplayLocationInfo()
     {
-        Console.WriteLine(description); //@TODO why can't I make this one Screen.Print'
+        Screen.Print(Description); 
         if (LongDescriptionOfItemsAtLocation.Count == 0)
             Screen.Print("\n" + Text.NothingLeft);
         else

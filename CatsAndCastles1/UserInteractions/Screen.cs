@@ -8,7 +8,7 @@ public class Screen
         List<string> listOfStrings = new List<string>();
         int nextEscapeReturn = text.IndexOf('\n');
 
-        if (text.Length < targetScreenWidth)
+        if (text.Length < targetScreenWidth && nextEscapeReturn == -1)
         {
             return [text];
         }
@@ -38,6 +38,8 @@ public class Screen
             nextEscapeReturn = text.IndexOf('\n');
         } while (text.Length > targetScreenWidth || nextEscapeReturn != -1);
 
+        listOfStrings.Add(text);
+
         return listOfStrings;
     }
 
@@ -52,9 +54,18 @@ public class Screen
     public static void CenterLineOfText(string text)
     {
         int screenWidth = Console.WindowWidth;
+
+        if (text.StartsWith("\n"))
+        {
+            Console.WriteLine();
+            text = text.TrimStart('\n');
+        }
+
         int textLength = text.Length;
+
         int padding = (screenWidth + textLength) / 2;
+
+
         Console.WriteLine(text.PadLeft(padding));
     }
-    
 }

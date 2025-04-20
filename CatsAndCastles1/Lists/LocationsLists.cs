@@ -120,6 +120,17 @@ public class LocationsLists
         Text.GlassVial,
         Text.RustedLantern
     };
+    
+    public List<string> SecondFloorChoices = new List<string>()
+    {
+        Text.SecondFloorDoor1Option,
+        Text.SecondFloorDoor2Option,
+        Text.SecondFloorDoor3Option,
+        Text.SecondFloorDoor4Option,
+        Text.HeadUpStairsOption,
+        Text.HeadDownStairsOption, 
+        
+    };
 
     public List<string> MeetingRoomF2R1Description = new List<string>()
     {

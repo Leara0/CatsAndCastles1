@@ -24,7 +24,7 @@ public class SecondFloor
 
         do
         {
-            Screen.Print("Your tail flicks as you consider your options.?");
+            Screen.Print("Your tail flicks as you consider your options.");
             Screen.Print("\nPlease make a selection:" +
                               "\n'1' - A sturdy and solid door, its frame slightly warped with age" +
                               "\n'2' - A heavy, reinforced, with deep scratches marring the bottom edge. " +

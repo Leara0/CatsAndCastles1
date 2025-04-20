@@ -78,11 +78,26 @@ public class MainStory
             LockedPlacesLists.UnHelpfulNothing, _locationsLists.ClosetF3D4Items, _locationsLists.ClosetF3D4Description);
 
         #endregion
+        
+        # region SecondFloor Location Class Instantiation
+        Location secondFloor = new Location(Text.SecondFloorEntrance,
+            Text.SecondFloorTreeHeading, _locationsLists.SecondFloorChoices);
+        LockedLocations meetingRoomF2D1 = new LockedLocations(Text.ApproachDoor, Text.ExploreMeetingRoomF2R1,
+            LockedPlacesLists.UnHelpfulLockPick, _locationsLists.MeetingRoomF2R1Items, _locationsLists.MeetingRoomF2R1Description);
+        LockedLocations guardQuartersF2D2 = new LockedLocations(Text.ApproachDoor, Text.ExploreGuardRoomF2R2,
+            LockedPlacesLists.UnHelpfulNothing, _locationsLists.GuardRoomF2R2Items, _locationsLists.GuardRoomF2R2Description);
+        guardQuartersF2D2.ChangeDoorLockStatus(true);
+        LockedLocations closetF2R3 = new LockedLocations(Text.ApproachDoor, Text.ExploreClosetF2R3,
+            LockedPlacesLists.UnHelpfulNothing, _locationsLists.ClosetF2R3Items, _locationsLists.ClosetF2R3Description);
+        LockedLocations libraryF2R4 = new LockedLocations(Text.ApproachDoor, Text.ExploreLibraryF2R4,
+            LockedPlacesLists.UnHelpfulLockPick, _locationsLists.LibraryF2R4Items, _locationsLists.LibraryF2R4Description);
+        #endregion
 
         #region Decision Trees
 
         MainRoomGameTree mainRoomGameTree = new MainRoomGameTree();
         ThirdFloorTree thirdFloorTree = new ThirdFloorTree();
+        SecondFloorTree secondFloorTree = new SecondFloorTree();
 
         #endregion
 
@@ -92,7 +107,7 @@ public class MainStory
         IntroFluff introFluff = new IntroFluff();
         introFluff.IntroCutScene();
         mainRoom.PrintIntro();
-        //put the tree for the castle here!
+        //TODO put the tree for the castle here!
         do
         {
             switch (cat.Location)
@@ -106,9 +121,12 @@ public class MainStory
                         closetF3D4);
                     break;
                 case Hero.Place.SecondFloor:
-                    Screen.Print(
-                        "Congrats you made it as far as you can go at this point. Since you can never escape I'm sending you back to the main room.");
-                    _userInput.DramaticPauseClrScreen();
+                    secondFloorTree.SecondFloorSwitchboard(backPackMethod, cat, secondFloor, meetingRoomF2D1, 
+                        guardQuartersF2D2, closetF2R3, libraryF2R4);
+                    break;
+                case Hero.Place.FirstFloor:
+                    Screen.Print("Congrats on making it to the first floor. It's not built yet so you get to start over!");
+                    Console.ReadLine();
                     cat.Location = Hero.Place.MainRoom;
                     break;
             }

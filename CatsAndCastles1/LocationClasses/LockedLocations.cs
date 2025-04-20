@@ -26,7 +26,7 @@ public class LockedLocations : ItemsLocation
         List<string> longDescOfItemsAtLocation)
     {
         DoorDescription = doorDescription;
-        description = descriptionInsideRoom;
+        Description = descriptionInsideRoom;
         ItemsThatWontHelp = itemsThatWontHelp;
         LongDescriptionOfItemsAtLocation = longDescOfItemsAtLocation;
         InventoryItemsAtLocation = itemsAtLocation;

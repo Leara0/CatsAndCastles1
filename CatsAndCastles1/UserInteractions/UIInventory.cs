@@ -74,7 +74,7 @@ public class UIInventory
             else if (SpaceInPack(item, inventory))
             {
                 inventory.Pack.Add(item);
-                Screen.Print($"You pack now contains {item}");
+               Screen.Print($"\nYour pack now contains {item}");
                 specificLocation.ItemHasBeenPickedUp(itemNumber);
                 _userInput.DramaticPauseClrScreen();
             }
