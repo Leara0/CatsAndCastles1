@@ -10,7 +10,8 @@ namespace CatsAndCastles1;
 public class MainStory
 {
     private readonly UserInput _userInput = new UserInput();
-    LocationsLists _locationsLists = new LocationsLists();
+
+    //LocationsLists LocationsLists = new LocationsLists();
     UIInventory userInteractBK = new UIInventory();
 
     public void RunGame()
@@ -22,6 +23,7 @@ public class MainStory
         var cat = new Hero();
         {
             cat.Health = 60;
+            cat.MaxHealth = cat.Health;
             cat.Location = Hero.Place.MainRoom;
         }
 
@@ -31,66 +33,163 @@ public class MainStory
             backPackMethod.DiscardedItems = new List<string>(); // create a record of all items that have been discarded
         }
 
-        var guardDog1 = new BadGuy();
+        var guardDog1 = new BadGuy
+        (
+            GuardSpecificWording.Guard1Wording,
+            ItemsAtLocationsList.Guard1Items,
+            ItemsAtLocationsList.Guard1Description
+        );
         {
             guardDog1.Health = guardDog1.SetHealth(25, 35);
+            guardDog1.MaxHealth = guardDog1.Health;
         }
-        var guardDog2 = new BadGuy();
+        var guardDog2 = new BadGuy
+        (
+            GuardSpecificWording.Guard2Wording,
+            ItemsAtLocationsList.Guard2Items,
+            ItemsAtLocationsList.Guard2Description
+        );
         {
             guardDog2.Health = guardDog2.SetHealth(25, 35);
+            guardDog2.MaxHealth = guardDog2.Health;
         }
-        var warden = new BadGuy();
+        var warden = new BadGuy
+        (
+            GuardSpecificWording.WardenWording,
+            ItemsAtLocationsList.WardenItems,
+            ItemsAtLocationsList.WardenDescription
+        );
         {
             warden.Health = warden.SetHealth(60, 75);
+            warden.MaxHealth = warden.Health;
         }
 
         #endregion
 
         #region MainRoom Location Class Instantiation
 
-        Location mainRoom = new Location(Text.StartInRoom, Text.FirstRoomChoices,
-            _locationsLists.MainRoomChoices);
+        Location mainRoom = new Location
+        (
+            Text.StartInRoom,
+            Text.FirstRoomChoices,
+            OptionsAtLocationsList.MainRoomChoices
+        );
         ItemsLocation closet = new ItemsLocation
-            (Text.ExploreCloset, _locationsLists.ClosetItems, _locationsLists.ClosetDescription);
+        (
+            Text.ExploreCloset,
+            ItemsAtLocationsList.ClosetItems,
+            ItemsAtLocationsList.ClosetDescription
+        );
         ItemsLocation nightstand = new ItemsLocation
-            (Text.ExploreNightStand, _locationsLists.NightStandItems, _locationsLists.NightStandDescription);
+        (
+            Text.ExploreNightStand,
+            ItemsAtLocationsList.NightStandItems,
+            ItemsAtLocationsList.NightStandDescription
+        );
         ItemsLocation bookshelf = new ItemsLocation
-            (Text.ExploreBookshelf, _locationsLists.BookshelfItems, _locationsLists.BookshelfDescription);
+        (
+            Text.ExploreBookshelf,
+            ItemsAtLocationsList.BookshelfItems,
+            ItemsAtLocationsList.BookshelfDescription
+        );
         ItemsLocation hearth = new ItemsLocation
-            (Text.ExploreHearth, _locationsLists.HearthItems, _locationsLists.HearthDescription);
+        (
+            Text.ExploreHearth,
+            ItemsAtLocationsList.HearthItems,
+            ItemsAtLocationsList.HearthDescription
+        );
         LockedLocations mainDoor =
-            new LockedLocations(Text.ApproachDoor, LockedPlacesLists.UnHelpfulKeys);
-        WindowLocation window = new WindowLocation(Text.ExploreWindow,
-            LockedPlacesLists.AllPossibleOptions, LockedPlacesLists.WindowNeedsRope);
+            new LockedLocations
+            (
+                Text.ApproachDoor,
+                LockPickingToolsList.UnHelpfulKeys
+            );
+        WindowLocation window = new WindowLocation
+        (
+            Text.ExploreWindow,
+            LockPickingToolsList.AllPossibleOptions,
+            LockPickingToolsList.WindowNeedsRope
+        );
 
         #endregion
 
         #region ThirdFloor Location Class Instantiation
 
-        Location thirdFloor = new Location(Text.ThirdFloorEntrance,
-            Text.ThirdFloorTreeHeading, _locationsLists.ThirdFloorChoices);
-        LockedLocations studyF3D2 = new LockedLocations(Text.ApproachDoor, Text.ExploreStudyF3D2,
-            LockedPlacesLists.UnHelpfulLockPick, _locationsLists.StudyF3D2Items, _locationsLists.StudyF3D2Description);
-        LockedLocations bedroomF3D3 = new LockedLocations(Text.ApproachDoor, Text.ExploreBedroomF3D3,
-            LockedPlacesLists.UnHelpfulKeys, _locationsLists.BedroomF3D3Items, _locationsLists.BedroomF3D3Description);
+        Location thirdFloor = new Location
+        (
+            Text.ThirdFloorEntrance,
+            Text.ThirdFloorTreeHeading,
+            OptionsAtLocationsList.ThirdFloorChoices
+        );
+        LockedLocations studyF3D2 = new LockedLocations
+        (
+            Text.ApproachDoor,
+            Text.ExploreStudyF3D2,
+            LockPickingToolsList.UnHelpfulLockPick,
+            ItemsAtLocationsList.StudyF3D2Items,
+            ItemsAtLocationsList.StudyF3D2Description
+        );
+        LockedLocations bedroomF3D3 = new LockedLocations
+        (
+            Text.ApproachDoor,
+            Text.ExploreBedroomF3D3,
+            LockPickingToolsList.UnHelpfulKeys,
+            ItemsAtLocationsList.BedroomF3D3Items,
+            ItemsAtLocationsList.BedroomF3D3Description
+        );
         bedroomF3D3.ChangeDoorLockStatus(true);
-        LockedLocations closetF3D4 = new LockedLocations(Text.ApproachDoor, Text.ExploreClosetF3D4,
-            LockedPlacesLists.UnHelpfulNothing, _locationsLists.ClosetF3D4Items, _locationsLists.ClosetF3D4Description);
+        LockedLocations closetF3D4 = new LockedLocations
+        (
+            Text.ApproachDoor,
+            Text.ExploreClosetF3D4,
+            LockPickingToolsList.UnHelpfulNothing,
+            ItemsAtLocationsList.ClosetF3D4Items,
+            ItemsAtLocationsList.ClosetF3D4Description
+        );
 
         #endregion
-        
+
         # region SecondFloor Location Class Instantiation
-        Location secondFloor = new Location(Text.SecondFloorEntrance,
-            Text.SecondFloorTreeHeading, _locationsLists.SecondFloorChoices);
-        LockedLocations meetingRoomF2D1 = new LockedLocations(Text.ApproachDoor, Text.ExploreMeetingRoomF2R1,
-            LockedPlacesLists.UnHelpfulLockPick, _locationsLists.MeetingRoomF2R1Items, _locationsLists.MeetingRoomF2R1Description);
-        LockedLocations guardQuartersF2D2 = new LockedLocations(Text.ApproachDoor, Text.ExploreGuardRoomF2R2,
-            LockedPlacesLists.UnHelpfulNothing, _locationsLists.GuardRoomF2R2Items, _locationsLists.GuardRoomF2R2Description);
+
+        Location secondFloor = new Location
+        (
+            Text.SecondFloorEntrance,
+            Text.SecondFloorTreeHeading,
+            OptionsAtLocationsList.SecondFloorChoices 
+            );
+        LockedLocations meetingRoomF2D1 = new LockedLocations
+        (
+            Text.ApproachDoor, Text.ExploreMeetingRoomF2R1,
+            LockPickingToolsList.UnHelpfulLockPick, 
+            ItemsAtLocationsList.MeetingRoomF2R1Items,
+            ItemsAtLocationsList.MeetingRoomF2R1Description
+            );
+        LockedLocations guardQuartersF2D2 = new LockedLocations
+        (
+            Text.ApproachDoor, 
+            Text.ExploreGuardRoomF2R2,
+            LockPickingToolsList.UnHelpfulNothing, 
+            ItemsAtLocationsList.GuardRoomF2R2Items,
+            ItemsAtLocationsList.GuardRoomF2R2Description
+            );
         guardQuartersF2D2.ChangeDoorLockStatus(true);
-        LockedLocations closetF2R3 = new LockedLocations(Text.ApproachDoor, Text.ExploreClosetF2R3,
-            LockedPlacesLists.UnHelpfulNothing, _locationsLists.ClosetF2R3Items, _locationsLists.ClosetF2R3Description);
-        LockedLocations libraryF2R4 = new LockedLocations(Text.ApproachDoor, Text.ExploreLibraryF2R4,
-            LockedPlacesLists.UnHelpfulLockPick, _locationsLists.LibraryF2R4Items, _locationsLists.LibraryF2R4Description);
+        LockedLocations closetF2R3 = new LockedLocations
+        (
+            Text.ApproachDoor, 
+            Text.ExploreClosetF2R3,
+            LockPickingToolsList.UnHelpfulNothing, 
+            ItemsAtLocationsList.ClosetF2R3Items,
+            ItemsAtLocationsList.ClosetF2R3Description
+            );
+        LockedLocations libraryF2R4 = new LockedLocations
+        (
+            Text.ApproachDoor, 
+            Text.ExploreLibraryF2R4,
+            LockPickingToolsList.UnHelpfulLockPick, 
+            ItemsAtLocationsList.LibraryF2R4Items,
+            ItemsAtLocationsList.LibraryF2R4Description
+            );
+
         #endregion
 
         #region Decision Trees
@@ -121,16 +220,19 @@ public class MainStory
                         closetF3D4);
                     break;
                 case Hero.Place.SecondFloor:
-                    secondFloorTree.SecondFloorSwitchboard(backPackMethod, cat, secondFloor, meetingRoomF2D1, 
+                    secondFloorTree.SecondFloorSwitchboard(backPackMethod, cat, secondFloor, meetingRoomF2D1,
                         guardQuartersF2D2, closetF2R3, libraryF2R4);
                     break;
                 case Hero.Place.FirstFloor:
-                    Screen.Print("Congrats on making it to the first floor. It's not built yet so you get to start over!");
+                    Screen.Print(
+                        "Congrats on making it to the first floor. It's not built yet so you get to start over!");
                     Console.ReadLine();
                     cat.Location = Hero.Place.MainRoom;
                     break;
+                case Hero.Place.OutsideCastle:
+                    break;
             }
-        } while (true); //CHange this!!
+        } while (true); //@TODO CHange this!! Or maybe not and just end game with Environment.Exit(0);
 
 
         //CastleWithExitStrategies(cat, backPackMethod, mainRoom, guardDog1, guardDog2, warden);
@@ -144,17 +246,17 @@ public class MainStory
     {
         if (cat.Location == Hero.Place.Dead)
             Screen.Print("\nAs the darkness takes hold, a strange sense of peace washes over you. " +
-                              "The struggle, the fear, the desperate clawing for survival — it all fades into " +
-                              "nothingness.\n\nThe castle will remain, its cold stone walls holding secrets " +
-                              "you will never uncover. The paths you might have taken, the dangers you might " +
-                              "have bested, all slip away like mist in the morning sun." +
-                              "\n\nPerhaps you were never meant to escape." +
-                              "\n\nAnd so, the little explorer’s journey comes to an end." +
-                              "\n\nGame Over.");
+                         "The struggle, the fear, the desperate clawing for survival — it all fades into " +
+                         "nothingness.\n\nThe castle will remain, its cold stone walls holding secrets " +
+                         "you will never uncover. The paths you might have taken, the dangers you might " +
+                         "have bested, all slip away like mist in the morning sun." +
+                         "\n\nPerhaps you were never meant to escape." +
+                         "\n\nAnd so, the little explorer’s journey comes to an end." +
+                         "\n\nGame Over.");
     }
 
 
-    private void CastleWithExitStrategies(Hero cat, BackPack backPack, Character guardDog1,
+    /*private void CastleWithExitStrategies(Hero cat, BackPack backPack, Character guardDog1,
         Character guardDog2, Character warden)
     {
         do // you get here after you come to the end of one of the main room story lines
@@ -183,7 +285,7 @@ public class MainStory
             }
         } while
             (!cat.EndGame); //@fix change to while(cat.Status != Characters.State.Dead && cat.BonusStatus != Characters.BonusState.EscapedCastle)
-    }
+    }*/
 
 
     private void PassOut(Hero cat, BackPack backPack)
@@ -199,7 +301,7 @@ public class MainStory
         if (cat.Lives < 1)
         {
             Screen.Print("Nine lives, and you’ve spent them all. Shadows close in once more — but this time, " +
-                              "there is no return.");
+                         "there is no return.");
             cat.Location = Hero.Place.Dead;
             cat.EndGame = true;
             return;
@@ -212,13 +314,13 @@ public class MainStory
         if (cat.LostToGuard)
         {
             Screen.Print("\nIf you choose to return, the guard will still bear the wounds you inflicted. " +
-                              "They will not regain his strength.");
+                         "They will not regain his strength.");
         }
 
         Screen.Print($"\nA choice stands before you:" +
-                          $"\n\n1. Revive in the room you first woke in and try again to escape." +
-                          $"\n2. Accept defeat and let the darkness claim you. (End Game.)" +
-                          $"\n\nWhat will you do?... \n");
+                     $"\n\n1. Revive in the room you first woke in and try again to escape." +
+                     $"\n2. Accept defeat and let the darkness claim you. (End Game.)" +
+                     $"\n\nWhat will you do?... \n");
         if (_userInput.UserChoice() == "1")
         {
             //mainRoom.SubsequentWakeUp();

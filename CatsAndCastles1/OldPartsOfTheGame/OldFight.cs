@@ -1,11 +1,13 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.GuardInteractions;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.OldPartsOfTheGame;
 
 
-public class Fight
+public class OldFight
 {
+    
     private readonly UserInput _userInput = new UserInput();
    public void GuardDogEncounter(Hero cat, BackPack backPack, Character guardDog, int guardNumber)
    {
@@ -252,7 +254,7 @@ public class Fight
 
 
 
-       void Combat()
+       void Combat()//@TODO started copying from here
        {
            var guardMaxHealth = guardDog.Health;
            string[] weaponAndShield = ChooseWeapon();
@@ -367,7 +369,7 @@ public class Fight
 
 
 
-       void LocationTextBody()
+       void LocationTextBody()//@TODO havent copied this one yet
        {
            Screen.Print("\nYou stand over the fallen guard, the echoes of battle slowly fading. His motionless " +
                              "body lies before you, and you notice several items that might aid you on your journey:");

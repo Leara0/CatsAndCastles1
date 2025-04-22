@@ -96,6 +96,9 @@ public class Text
     public const string PickUpFromStash = "You study your discard stash, taking in all the items you've left behind. " +
                                           "Some might still be useful on your journey.";
 
+    public const string AmountInCoinPurse = "Your coin purse currently contains: ";
+    public const string GoldCoins = " gold coins.\n";
+
     public const string ThinkAboutInventory =
         "You take a moment to review the contents " +
         "of your pack, weighing the value of each item. Some may no longer serve your journey " +
@@ -192,10 +195,12 @@ public class Text
         "You heft a the heavy stone in your paw, determined to smash the stubborn lock with brute force. " +
         "With a fierce swing, you bring the stone down upon the door. But the lock proves resilient — it " +
         "deflects the stone with a sharp, unexpected bounce. In a split second, the stone ricochets off " +
-        "the door and strikes you squarely on the head." +
-        "\n\nThe stone does ";
+        "the door and strikes you squarely on the head.";
 
     public const string StoneEndOfDamage = " damage (D6 +1). ";
+
+    public const string DetBluntObjectDamage =
+        "\n\nTo determine the damage the stone inflicts roll a D6 (damage will be 1D6+1)";
 
 
     public const string UseShieldOnDoor =
@@ -210,8 +215,7 @@ public class Text
         "You heft a the heavy shield in your paw, determined to smash the stubborn lock with brute force. " +
         "With a fierce swing, you bring the shield down upon the door. But the lock proves resilient — it " +
         "deflects the shield with a sharp, unexpected bounce. In a split second, the shield ricochets off " +
-        "the door and strikes you squarely on the head." +
-        "\n\nThe shield does ";
+        "the door and strikes you squarely on the head.";
 
     public const string ShieldBreaks =
         "Lady luck did not favor you. The force of the impact reverberates through the " +
@@ -239,6 +243,7 @@ public class Text
     #endregion
 
     public const string YourRoll = "You rolled: ";
+    public const string Damage = "The damage is ";
 
     public const string YourHealth = "Your current health is ";
     public const string OutOfTotalHealth = " out of ";
@@ -246,8 +251,8 @@ public class Text
     #region Third Floor
 
     public const string ThirdFloorEntrance =
-        "You slip into a dimly lit hallway. It's short and narrow, with three doors to your right, " +
-        "one slightly ajar. The stairway to your left leads downward, offering a potential escape — but " +
+        "You slip into the dimly lit hallway. It's short and narrow, with four doors (including the door to the room you awoke in), " +
+        "One door stands slightly ajar. There is a stairway that leads downward, offering a potential escape — but " +
         "the air is thick with uncertainty.";
 
     public const string ThirdFloorTreeHeading = "Do you approach one of the other doors to uncover what lies " +
@@ -255,7 +260,7 @@ public class Text
                                                 "Or do you return to the room you first escaped from?";
 
     public const string ReturnToMainRoomOption =
-        "Return to the room from whence you came. You now see the door is marked 1";
+        "Return to the room where you awoke. The door is marked with the number 1.";
 
     public const string ThirdFloorDoor2Option = "Approach the large worn door, marked with the number 2.";
     public const string ThirdFloorDoor3Option = "Approach the door that is standing ajar, marked with a 3.";
@@ -312,8 +317,10 @@ public class Text
     public const string SecondFloorDoor2Option =
         "A heavy, reinforced, door with deep scratches marring the bottom edge. The door is marked with the number 2.";
 
-    public const string SecondFloorDoor3Option = "A plain wooden door, unremarkable but intact. The number appears to " +
-                                                 "have fallen off but the un-agedwood shows it was a 3";
+    public const string SecondFloorDoor3Option =
+        "A plain wooden door, unremarkable but intact. The number appears to " +
+        "have fallen off but the un-agedwood shows it was a 3.";
+
     public const string SecondFloorDoor4Option = " A large and somewhat ornate door, marked 4.";
     public const string HeadUpStairsOption = "Head up the spiral staircase.";
 
@@ -333,19 +340,21 @@ public class Text
     public const string ExploreLibraryF2R4 = //library
         "You step across the threshold, careful to stay unnoticed. The scent of old parchment and dried ink fills the air. " +
         "Towering bookshelves line the walls, many of them missing books or sagging under the weight of their forgotten knowledge.";
-    public const string HeadUpStairs ="You turn and head back toward the stairs, making your way up. You feel there" +
-                                         "must be something you missed and are eager to retrace your steps.";
+
+    public const string HeadUpStairs = "You turn and head back toward the stairs, making your way up. You feel there" +
+                                       "must be something you missed and are eager to retrace your steps.";
 
     #endregion
 
     public const string ExploreFirstFloor = "";
-
 
     #region Dealing With Guard
 
     public const string DealtWithGuard = "You have dealt with the guard and now must choose you're next move.";
 
     #endregion
+    
+
 
     #region Inventory Items
 
@@ -356,6 +365,7 @@ public class Text
                                               "what seems like years.";
 
     public const string BroomAndDustPan = "the broom and dustpan";
+
 
     public const string ManaclesDesc = "A set of manacles, their chains coiled and rusted, almost blending into " +
                                        "the shadowy corner.";
@@ -486,6 +496,6 @@ public class Text
     public const string DustyBook = "the dusty book";
     public const string CandleStubDesc = "A candle stub - melted wax clings to the base.";
     public const string CandleStub = "the candle stub";
-
+    public const string Paws = "your bare paws";
     #endregion
 }

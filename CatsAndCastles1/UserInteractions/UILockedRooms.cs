@@ -5,7 +5,7 @@ namespace CatsAndCastles1.UserInteractions;
 public class UILockedRooms
 {
     UserInput _userInput = new UserInput();
-    Random _rnd = new Random();
+
 
     public int GetChoiceForLockedRoom(List<string> listOfItems)
     {
@@ -18,18 +18,20 @@ public class UILockedRooms
     {
         Screen.Print(Text.UseStoneOnDoor);
         _userInput.DramaticPause();
-        int roll = _rnd.Next(1, 21);
-        Screen.Print(Text.YourRoll + roll +"\n");
+        int roll = Screen.DiceRoller(20);
+        Screen.Print(Text.YourRoll + roll + "\n");
         if (roll > 16)
         {
             Screen.Print(Text.StoneOrShieldWorked);
             return true;
         }
 
-        roll = _rnd.Next(1, 7) + 1;
+        Screen.Print(Text.StoneDidntWork + Text.DetBluntObjectDamage);
+        _userInput.DramaticPause();
+        roll = Screen.DiceRoller(6) + 1;
         cat.Health -= roll;
-        Screen.Print(Text.StoneDidntWork + roll + Text.StoneEndOfDamage + Text.YourHealth + cat.Health);
-        
+        Screen.Print(Text.Damage + roll + "\n");
+        Screen.Print(Text.YourHealth + cat.Health + Text.OutOfTotalHealth + cat.MaxHealth);
         return false;
     }
 
@@ -37,8 +39,8 @@ public class UILockedRooms
     {
         Screen.Print(Text.UseShieldOnDoor);
         _userInput.DramaticPause();
-        int roll = _rnd.Next(1, 21);
-        Screen.Print(Text.YourRoll + roll +"\n");
+        int roll = Screen.DiceRoller(20);
+        Screen.Print(Text.YourRoll + roll + "\n");
         if (roll > 16)
         {
             Screen.Print(Text.StoneOrShieldWorked);
@@ -52,10 +54,13 @@ public class UILockedRooms
             return false;
         }
 
-        roll = _rnd.Next(1, 7) + 1;
+
+        Screen.Print(Text.ShieldDidntWork + Text.DetBluntObjectDamage);
+        _userInput.DramaticPause();
+        roll = Screen.DiceRoller(6) + 1;
         cat.Health -= roll;
-        Screen.Print(Text.ShieldDidntWork + roll + Text.StoneEndOfDamage +
-                          Text.YourHealth + cat.Health);
+        Screen.Print(Text.Damage + roll + "\n");
+        Screen.Print(Text.YourHealth + cat.Health + Text.OutOfTotalHealth + cat.MaxHealth);
         return false;
-        }
+    }
 }

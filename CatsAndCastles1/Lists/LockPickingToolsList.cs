@@ -1,6 +1,6 @@
 namespace CatsAndCastles1.Lists;
 
-public class LockedPlacesLists
+public class LockPickingToolsList
 {
     public static List<string> AllPossibleOptions = new List<string>()
     {

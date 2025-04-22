@@ -7,7 +7,7 @@ namespace CatsAndCastles1.OldPartsOfTheGame;
 public class FirstFloor
 {
     private readonly UserInput _userInput = new UserInput();
-    private readonly Fight fight = new Fight();
+    private readonly OldFight _oldFight = new OldFight();
    public void FirstFloorStory(Hero cat, BackPack backPack, Character warden)
    {
        cat.SuccessfulBribed = false;
@@ -21,7 +21,7 @@ public class FirstFloor
                              "the atmosphere shifts—heavy, charged, dangerous. The room before you is vast, its purpose " +
                              "unclear, but there is no time to dwell on the details." +
                              "\n\nBecause you are not alone.");
-           fight.GuardDogEncounter(cat, backPack, warden, 2);
+           _oldFight.GuardDogEncounter(cat, backPack, warden, 2);
        }
 
 

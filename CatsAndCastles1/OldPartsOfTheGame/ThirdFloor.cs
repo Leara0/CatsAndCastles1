@@ -6,7 +6,7 @@ namespace CatsAndCastles1.OldPartsOfTheGame;
 public class ThirdFloor()
 {
     private readonly UserInput _userInput = new UserInput();
-    private readonly Fight fight = new Fight();
+    private readonly OldFight _oldFight = new OldFight();
    public void ThirdFloorStory(Hero cat, BackPack backPack, Character guardDog1)
    {
        //MainRoom mainRoom = new MainRoom(cat, backPack);
@@ -19,7 +19,7 @@ public class ThirdFloor()
        if (!guardDog1.IsDead && !cat.SuccessfulBribed)
        {
            // if the guard is not dead & not bribed you must deal with him
-           fight.GuardDogEncounter(cat, backPack, guardDog1, 0);
+           _oldFight.GuardDogEncounter(cat, backPack, guardDog1, 0);
            if (cat.Location == Hero.Place.SecondFloor || cat.Location == Hero.Place.PassedOut)
                //// if you successfully run away (to floor 2) or get knocked out
                return;

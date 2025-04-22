@@ -9,7 +9,7 @@ public class LockedLocations : ItemsLocation
     private readonly UserInput _userInput = new UserInput();
     UILockedRooms _uiLockedRoom = new UILockedRooms();
     
-    private List<string> _allPossibleUsefulItems = LockedPlacesLists.AllPossibleOptions;
+    private List<string> _allPossibleUsefulItems = LockPickingToolsList.AllPossibleOptions;
     public List<string> ItemsThatWontHelp { get; set; }
     
     public string DoorDescription = "";

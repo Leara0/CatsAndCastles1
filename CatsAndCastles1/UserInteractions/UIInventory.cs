@@ -19,7 +19,7 @@ public class UIInventory
     {
     }
 
-    public UIInventory(LocationsLists location, Inventory inventory)
+    public UIInventory( Inventory inventory)
     {
     }
 
@@ -145,6 +145,8 @@ public class UIInventory
     }
     private int PickFromInventory(Inventory inventory)
     {
+        Screen.Print(Text.AmountInCoinPurse + inventory.CheckPurseInventory() + Text.GoldCoins);
+        
         if (inventory.Pack.Count == 0)
         {
             Screen.Print(Text.EmptyInventory);

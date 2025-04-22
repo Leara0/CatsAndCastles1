@@ -60,6 +60,6 @@ public class SecondFloorTree
                     uiInventory.RemoveItemFromInventory(inventory);
                     break;
             }
-        } while (cat.Location == Hero.Place.ThirdFloor);
+        } while (cat.Location == Hero.Place.SecondFloor);
     }
 }
