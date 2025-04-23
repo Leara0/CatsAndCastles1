@@ -1,10 +1,32 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.Lists;
+using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GuardInteractions;
 
 public class Combat
 {
-    
+    public void AssignBadGuyWeaponAndShield(BadGuy badGuy)
+    {
+        var rnd = new Random();
+        var pick = rnd.Next(1, 7);
+        badGuy.Weapon = WeaponsInfoList.BadGuyWeapons[pick];
+        badGuy.WeaponDie = WeaponsInfoList.DieForBGWeapon[pick];
+        badGuy.WeaponMod = WeaponsInfoList.ModForBGWeapon[pick];
+        Screen.Print(WeaponText.BadGuyWeapon + badGuy.Weapon);
+        
+        pick = rnd.Next(1, 3);
+        if (pick == 1)
+        {
+            Screen.Print(WeaponText.YesBGShield);
+            badGuy.HasShield = true;
+        }
+        else
+        {
+            Screen.Print(WeaponText.NoBGShield);
+            badGuy.HasShield = false;
+        }
+    }
     //I still need to get a weapon to the guard....
     /*void Combat(Hero cat, BadGuy guardDog)
     {
