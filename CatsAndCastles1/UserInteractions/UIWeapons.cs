@@ -6,62 +6,75 @@ namespace CatsAndCastles1.GuardInteractions;
 
 public class UIWeapons
 {
-    public void GetWeaponChoice(Hero cat, Inventory inventory)
+    UserInteractiveMenu userInteractiveMenu = new UserInteractiveMenu();
+    public void GetHeroWeaponChoice(Hero cat, List<string> inventoryPack)//pass in inventory.Pack
     {
-        var weaponModList = new WeaponModsList();
-        var userInteractiveMenu = new UserInteractiveMenu();
-        //add some text about picking the weapon
+        var weaponModList = new WeaponsInfoList();
         
-        if (inventory.Pack.Count == 0) //if inventory is empty
+        Screen.Print(WeaponText.CheckInventory);
+        
+        if (inventoryPack.Count == 0) //if inventory is empty
         {
-            //put text here to tell you you will be fighting with paws because inventory is empty
+            Screen.Print(WeaponText.FightWithPaws);
+            cat.WeaponDie = 4;
+            cat.WeaponMod = 0;
         }
         else
         {
+            Screen.Print(WeaponText.ChooseYourWeapon);
             //create a list for the weapon version of the pack
-            var weaponOptionsList = weaponModList.CreateWeaponsOptionList(inventory);
+            var (weaponOptionsList, weaponsIndex) = weaponModList.CreateWeaponsOptionList(inventoryPack);
             
             //call the interactive menu to get the user's weapon choice
             var choice = userInteractiveMenu.GiveChoices(weaponOptionsList);
             
             //assign the weapon to the cat (assign the weapon die and weapon mod to the cat)
-            cat.WeaponDie = weaponModList.DieForWeapon[choice];
-            cat.WeaponMod = weaponModList.ModForWeapon[choice];
-            
-            //no need to return the number since I'm assigning the weapon to the cat instance
+            cat.WeaponDie = weaponModList.DieForHeroWeapon[weaponsIndex[choice]];
+            cat.WeaponMod = weaponModList.ModForHeroWeapon[weaponsIndex[choice]];
+            cat.Weapon = WeaponsInfoList.HeroWeaponsAndDamage[0, weaponsIndex[choice]];
+            Screen.Print(WeaponText.ChosenWeapon + WeaponsInfoList.HeroWeaponsAndDamage[0,weaponsIndex[choice]]);
+            UserInput.DramaticPauseClrScreen();
         }
     }
 
-    
-
-    //@TODO Move this out of here when ready
-
-    /*
-     * The plan...
-     * Use InteractiveMenu to display items in inventory to choose from
-     * How to inform user of strength of each item???
-     * Maybe add it to the end of the Interactive Menu???
-     * foreach(string weapon in pack)
-     * {
-     *
-     *
-     * Or maybe make multidimensional array with [0,i] being weapon name and [1,i] being the modifier
-     * then go through the inventory in outter loop and go through the multidim array in an inner loop and
-     * print if you get a match
-     */
-
-
-    public int DefenseChoice(string defense)
+    public void AssignBadGuyWeaponAndShield(BadGuy badGuy)
     {
-        switch (defense)
+        var rnd = new Random();
+        var pick = rnd.Next(1, 7);
+        badGuy.Weapon = WeaponsInfoList.BadGuyWeapons[pick];
+        badGuy.WeaponDie = WeaponsInfoList.DieForBGWeapon[pick];
+        badGuy.WeaponMod = WeaponsInfoList.ModForBGWeapon[pick];
+        Screen.Print(WeaponText.BadGuyWeapon + badGuy.Weapon);
+        
+        pick = rnd.Next(1, 3);
+        if (pick == 1)
         {
-            case "the shield":
-            case "the crude shield":
-            case "the worn shield":
-            case "the sturdy shield":
-                return 2;
-            default:
-                return 0;
+            Screen.Print(WeaponText.YesBGShield);
+            badGuy.HasShield = true;
+        }
+        else
+        {
+            Screen.Print(WeaponText.NoBGShield);
+            badGuy.HasShield = false;
+        }
+    }
+
+    public void GetShieldChoice(Hero cat, List<string> inventoryPack)
+    {
+        if (inventoryPack.Any(item => WeaponsInfoList.ShieldOptions.Contains(item)))
+        {
+            Screen.Print(WeaponText.ChooseShield);
+            var choice = userInteractiveMenu.GiveChoices(new List<string> { "yes", "no" });
+            if (choice == 0)
+            {
+                Screen.Print(WeaponText.YesShield);
+                cat.HasShield = true;
+            }
+            else
+            {
+                Screen.Print(WeaponText.NoShield);
+                cat.HasShield = false;
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ namespace CatsAndCastles1.LocationClasses;
 public class Location
 {
     
-    UserInput _userInput = new UserInput();
+    UserInput UserInput = new UserInput();
     
    public string LocationIntro;
     private bool DoorOpen { get; set; }
@@ -34,14 +34,14 @@ public class Location
     {
         Console.Clear();
         Screen.Print(_menuHeader);
-        int choice =  _userInput.GetChoice(OptionsAtLocation, Text.PackOption);
+        int choice =  UserInput.GetChoice(OptionsAtLocation, Text.PackOption);
         return choice;
     }
 
     public void PrintIntro()
     {
         Screen.Print(LocationIntro);
-        _userInput.DramaticPauseClrScreen();
+        UserInput.DramaticPauseClrScreen();
     }
 
     public void ChangeDoorLockStatus(bool isUnlocked)

@@ -39,13 +39,13 @@ public class UserInput()
         } while (true);
     }
 
-    public void DramaticPause()
+    public static void DramaticPause()
     {
         Screen.Print("Please press 'Enter' to continue...");
         Console.ReadLine();
     }
 
-    public void DramaticPauseClrScreen()
+    public static void DramaticPauseClrScreen()
     {
         Console.WriteLine();
         Screen.Print("Please press 'Enter' to continue...");

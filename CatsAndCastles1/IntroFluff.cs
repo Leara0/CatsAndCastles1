@@ -5,14 +5,13 @@ namespace CatsAndCastles1;
 
 public class IntroFluff
 {
-    private readonly UserInput _userInput = new UserInput();
     public void IntroCutScene()
     {
         Console.Clear();
         Screen.Print(Text.CatBorder1);
         Screen.Print(Text.IntroCutScene);
         Screen.Print(Text.StartInRoom);
-        _userInput.DramaticPauseClrScreen();
+        UserInput.DramaticPauseClrScreen();
         }
 
     public void SubsequentWakeUp(Character cat)
@@ -20,7 +19,7 @@ public class IntroFluff
         cat.Health = 60;
         Screen.Print(Text.SubsequentWakeUp);
         Screen.Print(Text.StartInRoom);
-        _userInput.DramaticPauseClrScreen();
+        UserInput.DramaticPauseClrScreen();
         }
 
     

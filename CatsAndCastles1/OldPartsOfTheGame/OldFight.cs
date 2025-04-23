@@ -8,7 +8,7 @@ namespace CatsAndCastles1.OldPartsOfTheGame;
 public class OldFight
 {
     
-    private readonly UserInput _userInput = new UserInput();
+    private readonly UserInput UserInput = new UserInput();
    public void GuardDogEncounter(Hero cat, BackPack backPack, Character guardDog, int guardNumber)
    {
        cat.LostToGuard = false;
@@ -98,7 +98,7 @@ public class OldFight
            }
 
 
-           switch (_userInput.UserChoice(3))
+           switch (UserInput.UserChoice(3))
            {
                case "1":
                    Combat();
@@ -112,7 +112,7 @@ public class OldFight
                    Screen.Print(
                        $"\nRoll a D20 for luck. You must get higher than {(guardNumber == 1 ? "5" : "10")} " +
                        $"to successfully sneak away");
-                   _userInput.DramaticPause();
+                   UserInput.DramaticPause();
                    Screen.Print($"You roll a {roll}.\n");
 
 
@@ -120,7 +120,7 @@ public class OldFight
                        (guardNumber != 1 && roll > 10))
                    {
                        Screen.Print(floorSpecificWording[guardNumber, 2]);
-                       _userInput.DramaticPause();
+                       UserInput.DramaticPause();
                        Console.Clear();
                        if (guardNumber != 1)
                            cat.Location = Hero.Place.SecondFloor;
@@ -192,7 +192,7 @@ public class OldFight
            Screen.Print(
                $"\nRoll a D20. You must roll higher than {(guardNumber == 2 ? "17" : "5")} for the " +
                $"guard to be open to taking a bribe.");
-           _userInput.DramaticPause();
+           UserInput.DramaticPause();
            
            Screen.Print($"You roll a {bribable}");
            if ((guardNumber != 2 && bribable > 5) || (guardNumber == 2 && bribable > 17))
@@ -211,7 +211,7 @@ public class OldFight
                        $"gold presses against your claws — {backPack.Wallet} coins. You have what the " +
                        $"dog is asking for." +
                        $"\n\nPress '1' to pay the guard and '2' to choose to fight instead.");
-                   if (_userInput.UserChoice() == "1")
+                   if (UserInput.UserChoice() == "1")
                    {
                        Screen.Print("\nWithout hesitation, you drop the gold coins into the waiting paw." +
                                          "\n\nIt eyes the payment, then smirks. \"Pleasure doing business with you.\"" +
@@ -239,7 +239,7 @@ public class OldFight
                                  $"hackles raised. \"Guess we’re doing this " +
                                  "the hard way.\"" +
                                  "\n\nYou have no choice now — you must fight.");
-               _userInput.DramaticPause();
+               UserInput.DramaticPause();
                return false;
            }
 
@@ -285,7 +285,7 @@ public class OldFight
 
            WeaponsReminder(cat, "cat");
            WeaponsReminder(guardDog, "guardDog");
-           _userInput.DramaticPause();
+           UserInput.DramaticPause();
 
 
            int attack;
@@ -309,7 +309,7 @@ public class OldFight
                if (cat.Health > 0)
                {
                    Screen.Print(Text.CatBorder1);
-                   _userInput.DramaticPause();
+                   UserInput.DramaticPause();
                    
                    
                }
@@ -353,7 +353,7 @@ public class OldFight
                if (cat.Health > 0)
                {
                    Screen.Print(Text.CatBorder1);
-                   _userInput.DramaticPause();
+                   UserInput.DramaticPause();
                    
                }
            } while (cat.Health > 0);
@@ -401,7 +401,7 @@ public class OldFight
                              "or leave the guard's remains undisturbed for the moment. Remember, if you choose not to " +
                              "take anything right now, you can always return later to search his body again.. " +
                              "\n\nPress '1' to LocationText and '2' to move on. ");
-           if (_userInput.UserChoice() == "1")
+           if (UserInput.UserChoice() == "1")
            {
                backPack.TakeItems(cat, guardLocation, guardDog);
            }
@@ -473,7 +473,7 @@ public class OldFight
                "\nChoose your weapon wisely. Enter the number of the item you wish to wield in this fight.");
 
 
-           int response = int.Parse(_userInput.UserChoice(backPack.Pack.Length));
+           int response = int.Parse(UserInput.UserChoice(backPack.Pack.Length));
            string choice = backPack.Pack[response - 1];
 
 
@@ -508,7 +508,7 @@ public class OldFight
                Screen.Print("\nYour pack holds a shield — it would offer +1 protection in this fight, but its " +
                                  "weight might slow you down, making you less agile. Do you want to use it in this fight?");
                Screen.Print("\nPlease press '1' if you'd like to use the shield and '2' to fight without it");
-               if (_userInput.UserChoice() == "1")
+               if (UserInput.UserChoice() == "1")
                    hasShield = "1";
            }
 

@@ -497,5 +497,7 @@ public class Text
     public const string CandleStubDesc = "A candle stub - melted wax clings to the base.";
     public const string CandleStub = "the candle stub";
     public const string Paws = "your bare paws";
+    public const string GuardPaws = "their bare paws";
+
     #endregion
 }

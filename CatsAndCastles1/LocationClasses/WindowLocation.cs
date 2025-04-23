@@ -7,9 +7,7 @@ public class WindowLocation(string description, List<string> itemsThatWontHelp, 
 {
     private List<string> _allPossibleUsefulItems = needRope;
     UILockedRooms _uiLockedRoom = new UILockedRooms();
-    private readonly UserInput _userInput = new UserInput();
-
-
+    
     public override string GetObjectChoice(Inventory inventory)
     {
         List<string> listForIMenu = MakeListForInteractiveMenu(inventory);
@@ -39,7 +37,7 @@ public class WindowLocation(string description, List<string> itemsThatWontHelp, 
         string item = GetObjectChoice(inventory);
         if (item == "")
         {
-            _userInput.DramaticPauseClrScreen();
+            UserInput.DramaticPauseClrScreen();
             return "leave"; //leave this area if they choose to
         }
 

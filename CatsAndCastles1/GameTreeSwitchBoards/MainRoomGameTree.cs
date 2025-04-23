@@ -52,7 +52,7 @@ public class MainRoomGameTree()
                     uiInventory.AddItemToInventoryFromDiscard(inventory);
                     break;
                 case 7: //inventory
-                    uiInventory.RemoveItemFromInventory(inventory);
+                    uiInventory.RemoveItemFromInventory(cat, inventory);
                     break;
             }
         } while (cat.Location == Hero.Place.MainRoom);

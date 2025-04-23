@@ -4,9 +4,6 @@ namespace CatsAndCastles1.UserInteractions;
 
 public class UILockedRooms
 {
-    UserInput _userInput = new UserInput();
-
-
     public int GetChoiceForLockedRoom(List<string> listOfItems)
     {
         UserInteractiveMenu userInteractiveMenu = new UserInteractiveMenu();
@@ -17,7 +14,7 @@ public class UILockedRooms
     public bool UseStoneOnDoor(Character cat)
     {
         Screen.Print(Text.UseStoneOnDoor);
-        _userInput.DramaticPause();
+        UserInput.DramaticPause();
         int roll = Screen.DiceRoller(20);
         Screen.Print(Text.YourRoll + roll + "\n");
         if (roll > 16)
@@ -27,7 +24,7 @@ public class UILockedRooms
         }
 
         Screen.Print(Text.StoneDidntWork + Text.DetBluntObjectDamage);
-        _userInput.DramaticPause();
+        UserInput.DramaticPause();
         roll = Screen.DiceRoller(6) + 1;
         cat.Health -= roll;
         Screen.Print(Text.Damage + roll + "\n");
@@ -38,7 +35,7 @@ public class UILockedRooms
     public bool UseShieldOnDoor(Character cat, string item, Inventory inventory)
     {
         Screen.Print(Text.UseShieldOnDoor);
-        _userInput.DramaticPause();
+        UserInput.DramaticPause();
         int roll = Screen.DiceRoller(20);
         Screen.Print(Text.YourRoll + roll + "\n");
         if (roll > 16)
@@ -51,12 +48,13 @@ public class UILockedRooms
         {
             Screen.Print(Text.ShieldBreaks);
             inventory.Pack.Remove(item);
+            cat.HasShield = false;
             return false;
         }
 
 
         Screen.Print(Text.ShieldDidntWork + Text.DetBluntObjectDamage);
-        _userInput.DramaticPause();
+        UserInput.DramaticPause();
         roll = Screen.DiceRoller(6) + 1;
         cat.Health -= roll;
         Screen.Print(Text.Damage + roll + "\n");

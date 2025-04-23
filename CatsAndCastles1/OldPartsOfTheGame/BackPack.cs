@@ -5,7 +5,7 @@ namespace CatsAndCastles1.OldPartsOfTheGame;
 
 public class BackPack
 {
-    private readonly UserInput _userInput = new UserInput();
+    private readonly UserInput UserInput = new UserInput();
     public string[] Options = new string[3];
     public string[] Descriptions = new string[3];
     
@@ -52,7 +52,7 @@ public class BackPack
         Screen.Print($"\nPlease type the number of the item you would like to pick up. " +
                           $"Or press {DiscardedItems.Count + 1} to return to exploring the room");
 
-        int response = Convert.ToInt32(_userInput.UserChoice(DiscardedItems.Count + 1));
+        int response = Convert.ToInt32(UserInput.UserChoice(DiscardedItems.Count + 1));
 
         if (response < DiscardedItems.Count + 1)
         {
@@ -69,13 +69,13 @@ public class BackPack
         Screen.Print("Press '6' if you've changed your mind and don't want to remove anything");
 
         Screen.Print("\nPlease enter the number of the item you would like to use or remove or press '6'.");
-        numToRemove = int.Parse(_userInput.UserChoice(6));
+        numToRemove = int.Parse(UserInput.UserChoice(6));
 
         if (numToRemove == 6)
         {
             Screen.Print("You have chosen not to remove anything at this time. Nothing new can be added " +
                               "to the pack");
-            _userInput.DramaticPause();
+            UserInput.DramaticPause();
             return false;
         }
 
@@ -101,7 +101,7 @@ public class BackPack
             Pack[numToRemove - 1] = "empty"; //erases that item by replacing with "empty"
         }
 
-        _userInput.DramaticPauseClrScreen();
+        UserInput.DramaticPauseClrScreen();
         return true;
     }
 
@@ -110,7 +110,7 @@ public class BackPack
         if (NumberOfItemsInPack() == 0)
         {
             Screen.Print("There are no items in your pack.");
-            _userInput.DramaticPauseClrScreen();
+            UserInput.DramaticPauseClrScreen();
             return;
         }
 
@@ -121,12 +121,12 @@ public class BackPack
             Screen.Print("Press '6' if you've changed your mind and don't want to remove anything");
 
             Screen.Print("\nPlease enter the number of the item you would like to use or remove or press '6'.");
-            numToRemove = int.Parse(_userInput.UserChoice(6));
+            numToRemove = int.Parse(UserInput.UserChoice(6));
 
             if (numToRemove == 6)
             {
                 Screen.Print("You have chosen not to remove anything at this time.");
-                _userInput.DramaticPause();
+                UserInput.DramaticPause();
             }
 
             var item = Pack[numToRemove - 1];
@@ -152,16 +152,16 @@ public class BackPack
                     Pack[numToRemove - 1] = "empty"; //erases that item by replacing with "empty"
                 }
 
-                _userInput.DramaticPauseClrScreen();
+                UserInput.DramaticPauseClrScreen();
             }
             else
             {
                 Screen.Print("There is nothing in this spot so nothing has been removed.");
-                _userInput.DramaticPauseClrScreen();
+                UserInput.DramaticPauseClrScreen();
             }
         } while (numToRemove != 6);
 
-        _userInput.DramaticPause();
+        UserInput.DramaticPause();
     }
 
     public void RemoveMoneyFromWallet(string item)
@@ -233,7 +233,7 @@ public class BackPack
             Screen.Print("Your pack is too burdened to add any more items. You must remove" +
                               $" something to make space for {item}.");
             Screen.Print("Please press '1' to remove items and '2' to make no changes to your pack.");
-            if (_userInput.UserChoice() == "1")
+            if (UserInput.UserChoice() == "1")
             {
                 bool somethingWasRemoved = RemoveToReplaceItem(cat);
                 if (!somethingWasRemoved)
@@ -483,7 +483,7 @@ public class BackPack
                               $"stash in the main room.");
 
 
-            switch (_userInput.UserChoice(4))
+            switch (UserInput.UserChoice(4))
             {
                 case "1":
                     AddItemToPack(cat, Options[0]);

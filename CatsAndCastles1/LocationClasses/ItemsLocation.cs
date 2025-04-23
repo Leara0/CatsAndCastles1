@@ -4,7 +4,7 @@ namespace CatsAndCastles1.LocationClasses;
 
 public class ItemsLocation : Location
 {
-    private readonly UserInput _userInput = new UserInput();
+    private readonly UserInput UserInput = new UserInput();
     private readonly UIInventory _uiInventory = new UIInventory();
     public string Description;
 
@@ -44,7 +44,7 @@ public class ItemsLocation : Location
                 Screen.Print(item);
         }
 
-        _userInput.DramaticPauseClrScreen();
+        UserInput.DramaticPauseClrScreen();
     } //List items with no call to take items then clear screen and ask 'which to take' then have interactive menu with choice to leave location
 
     private void AddItemsToInventory(Inventory inventory)

@@ -4,6 +4,8 @@ namespace CatsAndCastles1.GuardInteractions;
 
 public class Combat
 {
+    
+    //I still need to get a weapon to the guard....
     /*void Combat(Hero cat, BadGuy guardDog)
     {
         

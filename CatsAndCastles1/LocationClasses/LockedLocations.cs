@@ -6,7 +6,7 @@ namespace CatsAndCastles1.LocationClasses;
 
 public class LockedLocations : ItemsLocation
 {
-    private readonly UserInput _userInput = new UserInput();
+    private readonly UserInput UserInput = new UserInput();
     UILockedRooms _uiLockedRoom = new UILockedRooms();
     
     private List<string> _allPossibleUsefulItems = LockPickingToolsList.AllPossibleOptions;
@@ -69,7 +69,7 @@ public class LockedLocations : ItemsLocation
     {
         Console.Clear();
         Screen.Print(DoorDescription); //@TODO change this to the description in the parameters
-        _userInput.DramaticPauseClrScreen();
+        UserInput.DramaticPauseClrScreen();
     }
 
     public virtual string InteractWithLockedDoor(Inventory inventory)
@@ -78,14 +78,14 @@ public class LockedLocations : ItemsLocation
         if (MakeListForInteractiveMenu(inventory).Count == 0)
         {
             Screen.Print(Text.AtDoorCheckInventoryFindNothing);
-            _userInput.DramaticPauseClrScreen();
+            UserInput.DramaticPauseClrScreen();
             return "leave"; //explain you found nothing and return empty string to indicate leave this location
         }
 
         string item = GetObjectChoice(inventory);
         if (item == "")
         {
-            _userInput.DramaticPauseClrScreen();
+            UserInput.DramaticPauseClrScreen();
             return "leave"; //leave this area if they choose to
         }
 
@@ -95,7 +95,7 @@ public class LockedLocations : ItemsLocation
                 Screen.Print(Text.KeysWontWork);
             if (item == Text.LockPickSet)
                 Screen.Print(Text.LockPickWontWork);
-            _userInput.DramaticPauseClrScreen();
+            UserInput.DramaticPauseClrScreen();
             return ""; // if you tried a tool that doesn't work you need to loop again
         }
 
@@ -105,7 +105,7 @@ public class LockedLocations : ItemsLocation
     public void ApproachOpenDoor()
     {
         Screen.Print(Text.OpenDoor); //approach door
-        _userInput.DramaticPauseClrScreen();
+        UserInput.DramaticPauseClrScreen();
     }
 
     public bool AttemptStoneOnDoor(Character cat)

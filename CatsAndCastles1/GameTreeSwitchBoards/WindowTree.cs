@@ -6,7 +6,7 @@ namespace CatsAndCastles1.GameTreeSwitchBoards;
 
 public class WindowTree
 {
-    private readonly UserInput _userInput = new UserInput();
+    private readonly UserInput UserInput = new UserInput();
     public void WindowSwitchboard(Inventory inventory, Hero cat, WindowLocation place)
     {
         place.ApproachLockedDoor();
@@ -27,6 +27,6 @@ public class WindowTree
                 break;
         }
 
-        _userInput.DramaticPauseClrScreen();
+        UserInput.DramaticPauseClrScreen();
     }
 }

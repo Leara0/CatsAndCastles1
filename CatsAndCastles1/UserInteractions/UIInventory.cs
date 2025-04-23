@@ -1,3 +1,4 @@
+using CatsAndCastles1.Characters;
 using CatsAndCastles1.Lists;
 using CatsAndCastles1.LocationClasses;
 
@@ -9,7 +10,7 @@ public class UIInventory
 
     UserInteractiveMenu _userInteractiveMenu = new UserInteractiveMenu();
     private int _selectionNumber;
-    private readonly UserInput _userInput = new UserInput();
+    private readonly UserInput UserInput = new UserInput();
 
     #endregion
 
@@ -41,13 +42,13 @@ public class UIInventory
                 Screen.Print($"You have removed {inventory.Pack[_selectionNumber]} from your pack");
                 inventory.Pack.RemoveAt(_selectionNumber);
                 
-                _userInput.DramaticPauseClrScreen();
+                UserInput.DramaticPauseClrScreen();
                 return true;
             }
             else
             {
                 Screen.Print("You've chosen not to remove any items. Nothing has been added to your pack");
-                _userInput.DramaticPauseClrScreen();
+                UserInput.DramaticPauseClrScreen();
                 return false;
             }
         }
@@ -69,14 +70,14 @@ public class UIInventory
             {
                 AddGold(item, inventory);
                 specificLocation.ItemHasBeenPickedUp(itemNumber);
-                _userInput.DramaticPauseClrScreen();
+                UserInput.DramaticPauseClrScreen();
             }
             else if (SpaceInPack(item, inventory))
             {
                 inventory.Pack.Add(item);
                Screen.Print($"\nYour pack now contains {item}");
                 specificLocation.ItemHasBeenPickedUp(itemNumber);
-                _userInput.DramaticPauseClrScreen();
+                UserInput.DramaticPauseClrScreen();
             }
             
         } while (true); // this ends if they choose to leave this area
@@ -102,7 +103,7 @@ public class UIInventory
                 inventory.Pack.Add(item);
                 Screen.Print($"You pack now contains {item}");
                 inventory.DiscardedItems.RemoveAt(itemNumber);
-                _userInput.DramaticPauseClrScreen();
+                UserInput.DramaticPauseClrScreen();
             }
         } while (true); // this ends if they choose to leave this area
     }
@@ -116,7 +117,7 @@ public class UIInventory
         {
             // if all the items have been taken display that info and pause
             Screen.Print(Text.NothingLeft);
-            _userInput.DramaticPauseClrScreen();
+            UserInput.DramaticPauseClrScreen();
             return -1;
         }
 
@@ -133,7 +134,7 @@ public class UIInventory
         if (inventory.DiscardedItems.Count == 0)
         {
             Screen.Print(Text.EmptyStash);
-            _userInput.DramaticPauseClrScreen();
+            UserInput.DramaticPauseClrScreen();
             return -1;
         }
 
@@ -150,7 +151,7 @@ public class UIInventory
         if (inventory.Pack.Count == 0)
         {
             Screen.Print(Text.EmptyInventory);
-            _userInput.DramaticPauseClrScreen();
+            UserInput.DramaticPauseClrScreen();
             return -1;
         }
 
@@ -161,7 +162,7 @@ public class UIInventory
         return _selectionNumber;
     }
 
-    public void RemoveItemFromInventory(Inventory inventory)
+    public void RemoveItemFromInventory(Hero cat, Inventory inventory)
     {
         Console.Clear();
         do
@@ -174,8 +175,10 @@ public class UIInventory
 
             inventory.DiscardedItems.Add(item);
             Screen.Print($"You have removed {item} from your pack");
+            if (WeaponsInfoList.ShieldOptions.Contains(item))
+                cat.HasShield = false;
             inventory.Pack.RemoveAt(itemNumber);
-            _userInput.DramaticPauseClrScreen();
+            UserInput.DramaticPauseClrScreen();
         } while (true); // this ends if they choose to leave this area
     }
 

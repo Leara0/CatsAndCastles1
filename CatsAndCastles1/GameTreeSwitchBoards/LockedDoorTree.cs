@@ -43,7 +43,7 @@ public class LockedDoorTree
                             break;
                     }
     
-                    _userInput.DramaticPauseClrScreen();
+                    UserInput.DramaticPauseClrScreen();
                 } while (!catEscaped);
     
                 place.ChangeDoorLockStatus(true);

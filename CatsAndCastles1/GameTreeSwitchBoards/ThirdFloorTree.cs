@@ -50,7 +50,7 @@ public class ThirdFloorTree
                     cat.Location = Hero.Place.SecondFloor;
                     break;
                 case 5: //inventory
-                    uiInventory.RemoveItemFromInventory(inventory);
+                    uiInventory.RemoveItemFromInventory(cat, inventory);
                     break;
             }
         } while (cat.Location == Hero.Place.ThirdFloor);
