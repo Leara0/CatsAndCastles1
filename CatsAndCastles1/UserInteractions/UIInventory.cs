@@ -1,22 +1,26 @@
-namespace CatsAndCastles1;
+using CatsAndCastles1.Characters;
+using CatsAndCastles1.Lists;
+using CatsAndCastles1.LocationClasses;
 
-public class UserInteractionsBackpack
+namespace CatsAndCastles1.UserInteractions;
+
+public class UIInventory
 {
     #region Fields and Class Instances
 
     UserInteractiveMenu _userInteractiveMenu = new UserInteractiveMenu();
-    public int selectionNumber;
-    private readonly UserInput _userInput = new UserInput();
+    private int _selectionNumber;
+    private readonly UserInput UserInput = new UserInput();
 
     #endregion
 
     #region Constructor
 
-    public UserInteractionsBackpack()
+    public UIInventory()
     {
     }
 
-    public UserInteractionsBackpack(ListsForLocations location, Inventory inventory)
+    public UIInventory( Inventory inventory)
     {
     }
 
@@ -29,22 +33,22 @@ public class UserInteractionsBackpack
         if (inventory.Pack.Count > 4)
         {
             Console.Clear();
-            Console.WriteLine("Your pack is too burdened to add any more items. You must remove" +
+            Screen.Print("Your pack is too burdened to add any more items. You must remove" +
                               $" something to make space for {item}.");
-            selectionNumber = _userInteractiveMenu.GiveChoices(inventory.Pack, TextLocation.RemoveNothing);
-            if (selectionNumber < inventory.Pack.Count)
+            _selectionNumber = _userInteractiveMenu.GiveChoices(inventory.Pack, Text.RemoveNothing);
+            if (_selectionNumber < inventory.Pack.Count)
             {   
-                inventory.DiscardedItems.Add(inventory.Pack[selectionNumber]);
-                Console.WriteLine($"You have removed {inventory.Pack[selectionNumber]} from your pack");
-                inventory.Pack.RemoveAt(selectionNumber);
+                inventory.DiscardedItems.Add(inventory.Pack[_selectionNumber]);
+                Screen.Print($"You have removed {inventory.Pack[_selectionNumber]} from your pack");
+                inventory.Pack.RemoveAt(_selectionNumber);
                 
-                _userInput.DramaticPauseClrScreen();
+                UserInput.DramaticPauseClrScreen();
                 return true;
             }
             else
             {
-                Console.WriteLine("You've chosen not to remove any items. Nothing has been added to your pack");
-                _userInput.DramaticPauseClrScreen();
+                Screen.Print("You've chosen not to remove any items. Nothing has been added to your pack");
+                UserInput.DramaticPauseClrScreen();
                 return false;
             }
         }
@@ -52,7 +56,7 @@ public class UserInteractionsBackpack
         return true; //if there are fewer than 5 items then there is space
     }
 
-    public void AddItemToInventoryFromLocation(DerivedItemsLocation specificLocation, Inventory inventory)
+    public void AddItemToInventoryFromLocation(ItemsLocation specificLocation, Inventory inventory)
     {
         do
         {
@@ -66,14 +70,14 @@ public class UserInteractionsBackpack
             {
                 AddGold(item, inventory);
                 specificLocation.ItemHasBeenPickedUp(itemNumber);
-                _userInput.DramaticPauseClrScreen();
+                UserInput.DramaticPauseClrScreen();
             }
             else if (SpaceInPack(item, inventory))
             {
                 inventory.Pack.Add(item);
-                Console.WriteLine($"You pack now contains {item}");
+               Screen.Print($"\nYour pack now contains {item}");
                 specificLocation.ItemHasBeenPickedUp(itemNumber);
-                _userInput.DramaticPauseClrScreen();
+                UserInput.DramaticPauseClrScreen();
             }
             
         } while (true); // this ends if they choose to leave this area
@@ -81,7 +85,7 @@ public class UserInteractionsBackpack
 
     public void AddGold(string item, Inventory inventory)
     {
-        Console.WriteLine($"Your coin purse now contains {inventory.AddGoldToPurse(item)} gold coins");
+        Screen.Print($"Your coin purse now contains {inventory.AddGoldToPurse(item)} gold coins");
     }
 
     public void AddItemToInventoryFromDiscard(Inventory inventory)
@@ -97,9 +101,9 @@ public class UserInteractionsBackpack
             if (SpaceInPack(item, inventory))
             {
                 inventory.Pack.Add(item);
-                Console.WriteLine($"You pack now contains {item}");
+                Screen.Print($"You pack now contains {item}");
                 inventory.DiscardedItems.RemoveAt(itemNumber);
-                _userInput.DramaticPauseClrScreen();
+                UserInput.DramaticPauseClrScreen();
             }
         } while (true); // this ends if they choose to leave this area
     }
@@ -107,41 +111,58 @@ public class UserInteractionsBackpack
     #endregion
 
 
-    public int GetItemSelection(DerivedItemsLocation specificLocation)
+    private int GetItemSelection(ItemsLocation specificLocation)
     {
         if (specificLocation.InventoryItemsAtLocation.Count == 0)
         {
             // if all the items have been taken display that info and pause
-            Console.WriteLine(TextLocation.NothingLeft);
-            _userInput.DramaticPauseClrScreen();
+            Screen.Print(Text.NothingLeft);
+            UserInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Console.WriteLine(TextLocation.ChoiceToTakeItems + "\n");
-        selectionNumber =
-            _userInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, TextLocation.LeaveLocation);
+        Screen.Print(Text.ChoiceToTakeItems + "\n");
+        _selectionNumber =
+            _userInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, Text.LeaveLocation);
 
-        return selectionNumber;
+        return _selectionNumber;
     }
 
-    public int PickFromDiscard(Inventory inventory)
+    private int PickFromDiscard(Inventory inventory)
     {
         Console.Clear();
         if (inventory.DiscardedItems.Count == 0)
         {
-            Console.WriteLine(TextLocation.EmptyStash);
-            _userInput.DramaticPauseClrScreen();
+            Screen.Print(Text.EmptyStash);
+            UserInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Console.WriteLine(TextLocation.PickUpFromStash + "\n");
-        selectionNumber =
-            _userInteractiveMenu.GiveChoices(inventory.DiscardedItems, TextLocation.PickUpNothing);
+        Screen.Print(Text.PickUpFromStash + "\n");
+        _selectionNumber =
+            _userInteractiveMenu.GiveChoices(inventory.DiscardedItems, Text.PickUpNothing);
 
-        return selectionNumber;
+        return _selectionNumber;
+    }
+    private int PickFromInventory(Inventory inventory)
+    {
+        Screen.Print(Text.AmountInCoinPurse + inventory.CheckPurseInventory() + Text.GoldCoins);
+        
+        if (inventory.Pack.Count == 0)
+        {
+            Screen.Print(Text.EmptyInventory);
+            UserInput.DramaticPauseClrScreen();
+            return -1;
+        }
+
+        Screen.Print(Text.ThinkAboutInventory + "\n");
+        _selectionNumber =
+            _userInteractiveMenu.GiveChoices(inventory.Pack, Text.PickUpNothing);
+
+        return _selectionNumber;
     }
 
-    public void RemoveItemFromInventory(Inventory inventory)
+    public void RemoveItemFromInventory(Hero cat, Inventory inventory)
     {
         Console.Clear();
         do
@@ -153,27 +174,15 @@ public class UserInteractionsBackpack
             string item = inventory.Pack[itemNumber];
 
             inventory.DiscardedItems.Add(item);
-            Console.WriteLine($"You have removed {item} from your pack");
+            Screen.Print($"You have removed {item} from your pack");
+            if (WeaponsInfoList.ShieldOptions.Contains(item))
+                cat.HasShield = false;
             inventory.Pack.RemoveAt(itemNumber);
-            _userInput.DramaticPauseClrScreen();
+            UserInput.DramaticPauseClrScreen();
         } while (true); // this ends if they choose to leave this area
     }
 
-    public int PickFromInventory(Inventory inventory)
-    {
-        if (inventory.Pack.Count == 0)
-        {
-            Console.WriteLine(TextLocation.EmptyInventory);
-            _userInput.DramaticPauseClrScreen();
-            return -1;
-        }
-
-        Console.WriteLine(TextLocation.ThinkAboutInventory + "\n");
-        selectionNumber =
-            _userInteractiveMenu.GiveChoices(inventory.Pack, TextLocation.PickUpNothing);
-
-        return selectionNumber;
-    }
+    
 
 
     public void SpendGold(int amount, Inventory inventory)
@@ -181,11 +190,11 @@ public class UserInteractionsBackpack
         int total = inventory.SpendGold(amount);
         if (total == -1)
         {
-            Console.WriteLine(TextLocation.InsufficientFunds);
+            Screen.Print(Text.InsufficientFunds);
         }
         else
         {
-            Console.WriteLine($"Your purse now contains {total} gold coins");
+            Screen.Print($"Your purse now contains {total} gold coins");
         }
     }
 }

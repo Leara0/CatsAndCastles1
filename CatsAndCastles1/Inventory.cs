@@ -1,4 +1,5 @@
 using System.Net.Mime;
+using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1;
 
@@ -6,14 +7,13 @@ public class Inventory //I got rid of the chance to use sheets to climb down. No
 {
     private readonly UserInput _userInput = new UserInput();
 
-    public string emptySpot = "a faint outline marking the spot where something once rested";
     private int _purse = 0;
-
 
     #region Properties
 
     public List<string> Pack { get; set; }
     public List<string> DiscardedItems { get; set; }
+    public List<string> ModifiedWeaponPack { get; set; }
 
     #endregion
 
@@ -32,7 +32,11 @@ public class Inventory //I got rid of the chance to use sheets to climb down. No
             _purse -= amount;
             return _purse;
         }
-        else
-            return -1;
+        return -1;
+    }
+
+    public int  CheckPurseInventory()
+    {
+        return _purse;
     }
 }

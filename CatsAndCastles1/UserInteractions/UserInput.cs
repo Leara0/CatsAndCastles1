@@ -1,4 +1,4 @@
-namespace CatsAndCastles1;
+namespace CatsAndCastles1.UserInteractions;
 
 public class UserInput()
 {
@@ -19,14 +19,14 @@ public class UserInput()
             }
 
 
-            Console.WriteLine("I'm sorry, but that isn't a valid choice. ");
-            Console.WriteLine("Please enter a number that corresponds with options above.");
+            Screen.Print("I'm sorry, but that isn't a valid choice. ");
+            Screen.Print("Please enter a number that corresponds with options above.");
         } while (true);
     }
 
     public string GetName()
     {
-        Console.WriteLine("What is your name (or a name you like)?");
+        Screen.Print("What is your name (or a name you like)?");
         do
         {
             var name = Console.ReadLine() ?? string.Empty;
@@ -34,20 +34,21 @@ public class UserInput()
                 return char.ToUpper(name[0]) + name.Substring(1);
             else
             {
-                Console.WriteLine("I'm sorry, that's not a valid input. Please try again");
+                Screen.Print("I'm sorry, that's not a valid input. Please try again");
             }
         } while (true);
     }
 
-    public void DramaticPause()
+    public static void DramaticPause()
     {
-        Console.WriteLine("Please press 'Enter' to continue...");
+        Screen.Print("Please press 'Enter' to continue...");
         Console.ReadLine();
     }
 
-    public void DramaticPauseClrScreen()
+    public static void DramaticPauseClrScreen()
     {
-        Console.WriteLine("\nPlease press 'Enter' to continue...");
+        Console.WriteLine();
+        Screen.Print("Please press 'Enter' to continue...");
         Console.ReadLine();
         Console.Clear();
     }

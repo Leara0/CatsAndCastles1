@@ -1,23 +1,25 @@
+using CatsAndCastles1.Characters;
+using CatsAndCastles1.UserInteractions;
+
 namespace CatsAndCastles1;
 
 public class IntroFluff
 {
-    private readonly UserInput _userInput = new UserInput();
     public void IntroCutScene()
     {
         Console.Clear();
-        Console.WriteLine(TextLocation.CatBorder1);
-        Console.WriteLine(TextLocation.IntroCutScene);
-        Console.WriteLine(TextLocation.StartInRoom);
-        _userInput.DramaticPauseClrScreen();
+        Screen.Print(Text.CatBorder1);
+        Screen.Print(Text.IntroCutScene);
+        Screen.Print(Text.StartInRoom);
+        UserInput.DramaticPauseClrScreen();
         }
 
-    public void SubsequentWakeUp(Characters cat)
+    public void SubsequentWakeUp(Character cat)
     {
         cat.Health = 60;
-        Console.WriteLine(TextLocation.SubsequentWakeUp);
-        Console.WriteLine(TextLocation.StartInRoom);
-        _userInput.DramaticPauseClrScreen();
+        Screen.Print(Text.SubsequentWakeUp);
+        Screen.Print(Text.StartInRoom);
+        UserInput.DramaticPauseClrScreen();
         }
 
     

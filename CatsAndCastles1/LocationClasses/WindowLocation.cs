@@ -1,20 +1,20 @@
-namespace CatsAndCastles1;
+using CatsAndCastles1.UserInteractions;
 
-public class DerivedWindowLocation(string description, List<string> itemsThatWontHelp, List<string> needRope) :
-    DerivedLockedLocations(description, itemsThatWontHelp)
+namespace CatsAndCastles1.LocationClasses;
+
+public class WindowLocation(string description, List<string> itemsThatWontHelp, List<string> needRope) :
+    LockedLocations(description, itemsThatWontHelp)
 {
     private List<string> _allPossibleUsefulItems = needRope;
-    UserInteractionLockedRooms _userInteractionLockedRoom = new UserInteractionLockedRooms();
-    private readonly UserInput _userInput = new UserInput();
-
-
+    UILockedRooms _uiLockedRoom = new UILockedRooms();
+    
     public override string GetObjectChoice(Inventory inventory)
     {
         List<string> listForIMenu = MakeListForInteractiveMenu(inventory);
         listForIMenu.Add("jump down");
 
 
-        int choiceNumber = _userInteractionLockedRoom.GetChoiceForLockedRoom(listForIMenu);
+        int choiceNumber = _uiLockedRoom.GetChoiceForLockedRoom(listForIMenu);
         if (choiceNumber == listForIMenu.Count)
             return ""; //if they choose to do nothing return ""
 
@@ -24,20 +24,20 @@ public class DerivedWindowLocation(string description, List<string> itemsThatWon
 
     public string InteractWithlockedWindow(Inventory inventory)
     {
-        Console.WriteLine(TextLocation.AtWindowCheckInventory);
-        if (!MakeListForInteractiveMenu(inventory).Contains(TextItemDescription.Rope)) //you don't have the rope
+        Screen.Print(Text.AtWindowCheckInventory);
+        if (!MakeListForInteractiveMenu(inventory).Contains(Text.Rope)) //you don't have the rope
         {
-            Console.WriteLine(TextLocation.AtWindowCheckInventoryFindNothing);
+            Screen.Print(Text.AtWindowCheckInventoryFindNothing);
         }
         else
         {
-            Console.WriteLine(TextLocation.WindowOptions);
+            Screen.Print(Text.WindowOptions);
         }
 
         string item = GetObjectChoice(inventory);
         if (item == "")
         {
-            _userInput.DramaticPauseClrScreen();
+            UserInput.DramaticPauseClrScreen();
             return "leave"; //leave this area if they choose to
         }
 
@@ -59,12 +59,12 @@ public class DerivedWindowLocation(string description, List<string> itemsThatWon
 
     public void ClimbDownWithRope()
     {
-        Console.WriteLine(TextLocation.ClimbDownRope);
+        Screen.Print(Text.ClimbDownRope);
     }
 
     public void JumpDown()
     {
-        Console.WriteLine(TextLocation.LeapDown);
+        Screen.Print(Text.LeapDown);
     }
 }
 

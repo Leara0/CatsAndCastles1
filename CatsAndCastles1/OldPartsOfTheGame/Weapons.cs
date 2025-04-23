@@ -1,5 +1,4 @@
-namespace CatsAndCastles1;
-
+namespace CatsAndCastles1.OldPartsOfTheGame;
 
 public class Weapons
 {
@@ -47,7 +46,7 @@ public class Weapons
                 die = 4;
                 break;
             case "the short sword":
-                modifier = 1;
+                modifier = 2;
                 die = 10;
                 break;
         }
@@ -55,6 +54,8 @@ public class Weapons
 
         return [die, modifier];
     }
+    
+   
 
 
     public int DefenseChoice(string defense)
