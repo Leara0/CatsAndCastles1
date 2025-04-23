@@ -35,9 +35,10 @@ public class MainStory
 
         var guardDog1 = new BadGuy
         (
-            GuardSpecificWording.Guard1Wording,
+            GuardLists.Guard1Wording,
             ItemsAtLocationsList.Guard1Items,
-            ItemsAtLocationsList.Guard1Description
+            ItemsAtLocationsList.Guard1Description,
+            "guard dog"
         );
         {
             guardDog1.Health = guardDog1.SetHealth(25, 35);
@@ -45,9 +46,10 @@ public class MainStory
         }
         var guardDog2 = new BadGuy
         (
-            GuardSpecificWording.Guard2Wording,
+            GuardLists.Guard2Wording,
             ItemsAtLocationsList.Guard2Items,
-            ItemsAtLocationsList.Guard2Description
+            ItemsAtLocationsList.Guard2Description,
+            "guard dog"
         );
         {
             guardDog2.Health = guardDog2.SetHealth(25, 35);
@@ -55,9 +57,10 @@ public class MainStory
         }
         var warden = new BadGuy
         (
-            GuardSpecificWording.WardenWording,
+            GuardLists.WardenWording,
             ItemsAtLocationsList.WardenItems,
-            ItemsAtLocationsList.WardenDescription
+            ItemsAtLocationsList.WardenDescription,
+            "warden"
         );
         {
             warden.Health = warden.SetHealth(60, 75);
@@ -216,11 +219,11 @@ public class MainStory
                         hearth, mainDoor, window);
                     break;
                 case Hero.Place.ThirdFloor:
-                    thirdFloorTree.ThirdFloorSwitchboard(backPackMethod, cat, thirdFloor, studyF3D2, bedroomF3D3,
+                    thirdFloorTree.ThirdFloorSwitchboard(backPackMethod, cat, guardDog1, thirdFloor, studyF3D2, bedroomF3D3,
                         closetF3D4);
                     break;
                 case Hero.Place.SecondFloor:
-                    secondFloorTree.SecondFloorSwitchboard(backPackMethod, cat, secondFloor, meetingRoomF2D1,
+                    secondFloorTree.SecondFloorSwitchboard(backPackMethod, cat, guardDog2, secondFloor, meetingRoomF2D1,
                         guardQuartersF2D2, closetF2R3, libraryF2R4);
                     break;
                 case Hero.Place.FirstFloor:

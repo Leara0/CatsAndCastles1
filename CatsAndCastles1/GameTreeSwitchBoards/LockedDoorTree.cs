@@ -11,7 +11,7 @@ public class LockedDoorTree
             if (!place.DoorIsOpen())
             {
                 place.ApproachLockedDoor();
-                bool catEscaped = false;
+                bool catEscaped = false;//this is here to track if the cat got the door open
                 do
                 {
                     string item = place.InteractWithLockedDoor(inventory);

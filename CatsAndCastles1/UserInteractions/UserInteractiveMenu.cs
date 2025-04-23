@@ -2,7 +2,7 @@ namespace CatsAndCastles1.UserInteractions;
 
 public class UserInteractiveMenu
 {
-    public int GiveChoices(List<string> options, string leave = "")
+    public static int GiveChoices(List<string> options, string leave = "")
     {
         Screen.Print(Text.HowToPickAnItem+ "\n");
         

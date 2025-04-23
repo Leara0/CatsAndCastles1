@@ -6,8 +6,7 @@ public class UILockedRooms
 {
     public int GetChoiceForLockedRoom(List<string> listOfItems)
     {
-        UserInteractiveMenu userInteractiveMenu = new UserInteractiveMenu();
-        int choiceNumber = userInteractiveMenu.GiveChoices(listOfItems, Text.LeaveLockedDoor);
+        int choiceNumber = UserInteractiveMenu.GiveChoices(listOfItems, Text.LeaveLockedDoor);
         return choiceNumber;
     }
 

@@ -1,6 +1,6 @@
 namespace CatsAndCastles1;
 
-public class WeaponText
+public class TextWeapons
 {
     # region Weapon Choice
 
@@ -41,12 +41,13 @@ public class WeaponText
         "\nYour pack holds a shield — it would offer +1 protection in this fight, but its " +
         "weight might slow you down, making you less agile. Do you want to use it in this fight?";
 
-    public const string YesShield = "\nYou've chosen to use a shield in this fight";
-    public const string NoShield = "\nYou've chosen not to use a shield in this fight";
+    public const string YesShield = "\nYou've chosen to use a shield in this fight.";
+    public const string NoShield = "\nYou've chosen not to use a shield in this fight.";
+    public const string HaveNoShield = "You will not be using a shield in this fight.";
 
     public const string BadGuyWeapon = "Your opponent will be fighting with ";
-    public const string YesBGShield = "Your opponent will be using a shield in this fight";
-    public const string NoBGShield = "Your opponent does not have a shield";
+    public const string YesBGShield = "Your opponent will be using a shield in this fight.";
+    public const string NoBGShield = "Your opponent does not have a shield.";
 
     # endregion
 }

@@ -243,7 +243,7 @@ public class Text
     #endregion
 
     public const string YourRoll = "You rolled: ";
-    public const string Damage = "The damage is ";
+    public const string Damage = "The total damage is ";
 
     public const string YourHealth = "Your current health is ";
     public const string OutOfTotalHealth = " out of ";

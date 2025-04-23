@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.Marshalling;
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.LocationClasses;
 using CatsAndCastles1.UserInteractions;
@@ -8,17 +9,21 @@ public class ThirdFloorTree
 {
     private readonly UserInput _userInput = new UserInput();
 
-    public void ThirdFloorSwitchboard(Inventory inventory, Hero cat, Location thirdFloor,
+    public void ThirdFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard1, Location thirdFloor,
         LockedLocations studyF3D2, LockedLocations bedroomF3D3, LockedLocations closetF3D4)
     {
         Console.Clear();
         cat.Location = Hero.Place.ThirdFloor;
         cat.EndGame = false;
         UIInventory uiInventory = new UIInventory();
+        cat.SuccessfulBribed = false;
 
         thirdFloor.PrintIntro();
         LockedDoorTree lockedDoorTree = new LockedDoorTree();
-
+        //GuardEncounterTree.GuardEncounterSwitchboard(cat, guard1, inventory);
+        //@TODO not sure if this is the right spot for the guard
+        //@TODO add an option to loot the guard's body if the guard is dead
+        //maybe a method that creates the list to switch on and if guard is dead then it adds the guard's body
         do
         {
             int whereToExplore = thirdFloor.RoomMethod();

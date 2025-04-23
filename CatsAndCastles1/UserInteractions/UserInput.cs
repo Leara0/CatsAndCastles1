@@ -2,7 +2,6 @@ namespace CatsAndCastles1.UserInteractions;
 
 public class UserInput()
 {
-    UserInteractiveMenu _userInteractiveMenu = new UserInteractiveMenu();
     public string UserChoice(int numberOfOptions = 2)
     {
         do
@@ -55,6 +54,6 @@ public class UserInput()
 
     public int GetChoice(List<string> choiceOptions, string extra)
     {
-        return _userInteractiveMenu.GiveChoices(choiceOptions, extra);
+        return UserInteractiveMenu.GiveChoices(choiceOptions, extra);
     }
 }

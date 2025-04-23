@@ -8,7 +8,6 @@ public class UIInventory
 {
     #region Fields and Class Instances
 
-    UserInteractiveMenu _userInteractiveMenu = new UserInteractiveMenu();
     private int _selectionNumber;
     private readonly UserInput UserInput = new UserInput();
 
@@ -35,7 +34,7 @@ public class UIInventory
             Console.Clear();
             Screen.Print("Your pack is too burdened to add any more items. You must remove" +
                               $" something to make space for {item}.");
-            _selectionNumber = _userInteractiveMenu.GiveChoices(inventory.Pack, Text.RemoveNothing);
+            _selectionNumber = UserInteractiveMenu.GiveChoices(inventory.Pack, Text.RemoveNothing);
             if (_selectionNumber < inventory.Pack.Count)
             {   
                 inventory.DiscardedItems.Add(inventory.Pack[_selectionNumber]);
@@ -123,7 +122,7 @@ public class UIInventory
 
         Screen.Print(Text.ChoiceToTakeItems + "\n");
         _selectionNumber =
-            _userInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, Text.LeaveLocation);
+            UserInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, Text.LeaveLocation);
 
         return _selectionNumber;
     }
@@ -140,7 +139,7 @@ public class UIInventory
 
         Screen.Print(Text.PickUpFromStash + "\n");
         _selectionNumber =
-            _userInteractiveMenu.GiveChoices(inventory.DiscardedItems, Text.PickUpNothing);
+            UserInteractiveMenu.GiveChoices(inventory.DiscardedItems, Text.PickUpNothing);
 
         return _selectionNumber;
     }
@@ -157,7 +156,7 @@ public class UIInventory
 
         Screen.Print(Text.ThinkAboutInventory + "\n");
         _selectionNumber =
-            _userInteractiveMenu.GiveChoices(inventory.Pack, Text.PickUpNothing);
+            UserInteractiveMenu.GiveChoices(inventory.Pack, Text.PickUpNothing);
 
         return _selectionNumber;
     }

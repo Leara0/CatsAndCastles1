@@ -8,17 +8,18 @@ public class SecondFloorTree
 {
     private readonly UserInput _userInput = new UserInput();
 
-    public void SecondFloorSwitchboard(Inventory inventory, Hero cat, Location secondFloor,
+    public void SecondFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard2, Location secondFloor,
         LockedLocations meetingRoomF2D1, LockedLocations guardQuartersF2D2, LockedLocations closetF2R3,
         LockedLocations libraryF2R4)
     {
         Console.Clear();
-        cat.Location = Hero.Place.ThirdFloor;
         cat.EndGame = false;
         UIInventory uiInventory = new UIInventory();
+        cat.SuccessfulBribed = false;
 
         secondFloor.PrintIntro();
         LockedDoorTree lockedDoorTree = new LockedDoorTree();
+        
 
         do
         {
@@ -33,6 +34,7 @@ public class SecondFloorTree
                         meetingRoomF2D1.LocationMethod(inventory);
                     break;
                 case 1: //guard's quarters (//@TODO put guard to fight in here!)
+                    GuardEncounterTree.GuardEncounterSwitchboard(cat, guard2, inventory);
                     //door is not locked
                     guardQuartersF2D2.LocationMethod(inventory);
                     break;

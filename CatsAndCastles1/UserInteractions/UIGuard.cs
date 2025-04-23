@@ -1,7 +1,16 @@
+using CatsAndCastles1.Lists;
+
 namespace CatsAndCastles1.UserInteractions;
 
 public class UIGuard
 {
+    // this will be a method to get the user's choice for what action to do
+    public static int GetActionChoice(Inventory inventory)
+    {
+        var listOfOptions = GuardLists.CreateBribeOptionsList(inventory);
+        int choice = UserInteractiveMenu.GiveChoices(listOfOptions);
+        return choice;
+    }
     /*string ChooseGuardDogWeapon()
     {
         var dogWeapon = rnd.Next(1, 5);

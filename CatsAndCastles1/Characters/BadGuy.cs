@@ -5,13 +5,17 @@ public class BadGuy: Character
     public List<string> SpecificWording { get; set; } 
     public List<string> GuardItems { get; set; }
     public List<string> GuardItemDescriptions { get; set; }
+    public bool AttemptedBribeFailed { get; set; } = false;
+    public bool CaughtCat { get; set; } = false;
 
-    public BadGuy(List<string> encounterSpecificWording, List<string> itemsGuardHas, List<string> descriptionOfGuardItems)
+    public BadGuy(List<string> encounterSpecificWording, List<string> itemsGuardHas, List<string> descriptionOfGuardItems, string name)
     {
         SpecificWording = encounterSpecificWording;
         GuardItems = itemsGuardHas;
         GuardItemDescriptions = descriptionOfGuardItems;
+        Name = name;
     }
+    
 
     
 }

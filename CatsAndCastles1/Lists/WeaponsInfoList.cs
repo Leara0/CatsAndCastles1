@@ -20,19 +20,19 @@ public class WeaponsInfoList
             Text.Paws
         },
         {
-            WeaponText.BroomAndDustPanMod,
-            WeaponText.ManaclesMod,
-            WeaponText.DaggerMod,
-            WeaponText.CatFigurineMod,
-            WeaponText.FirePokerMod,
-            WeaponText.LargeStoneMod,
-            WeaponText.LongDaggerMod,
-            WeaponText.DogStatueMod,
-            WeaponText.ShortSwordMod,
-            WeaponText.RustedLanternMod,
-            WeaponText.DustyBookMod,
-            WeaponText.CandleStubMod,
-            WeaponText.PawsMod
+            TextWeapons.BroomAndDustPanMod,
+            TextWeapons.ManaclesMod,
+            TextWeapons.DaggerMod,
+            TextWeapons.CatFigurineMod,
+            TextWeapons.FirePokerMod,
+            TextWeapons.LargeStoneMod,
+            TextWeapons.LongDaggerMod,
+            TextWeapons.DogStatueMod,
+            TextWeapons.ShortSwordMod,
+            TextWeapons.RustedLanternMod,
+            TextWeapons.DustyBookMod,
+            TextWeapons.CandleStubMod,
+            TextWeapons.PawsMod
         }
     };
 
