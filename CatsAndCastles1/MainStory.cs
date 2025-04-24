@@ -1,8 +1,13 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.ClassInstantiation;
 using CatsAndCastles1.GameTreeSwitchBoards;
 using CatsAndCastles1.Lists;
+using CatsAndCastles1.Lists.ItemsAtLocations;
 using CatsAndCastles1.LocationClasses;
 using CatsAndCastles1.OldPartsOfTheGame;
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.GuardEncounter;
+using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1;
@@ -13,6 +18,7 @@ public class MainStory
 
     //LocationsLists LocationsLists = new LocationsLists();
     UIInventory userInteractBK = new UIInventory();
+    private readonly InstancesMainRoom _location;
 
     public void RunGame()
     {
@@ -35,9 +41,9 @@ public class MainStory
 
         var guardDog1 = new BadGuy
         (
-            GuardLists.Guard1Wording,
-            ItemsAtLocationsList.Guard1Items,
-            ItemsAtLocationsList.Guard1Description,
+            GuardSpecificTextLists.Guard1Wording,
+            ListItemGuard.Guard1Items,
+            ListItemGuard.Guard1Description,
             "guard dog"
         );
         {
@@ -46,9 +52,9 @@ public class MainStory
         }
         var guardDog2 = new BadGuy
         (
-            GuardLists.Guard2Wording,
-            ItemsAtLocationsList.Guard2Items,
-            ItemsAtLocationsList.Guard2Description,
+            GuardSpecificTextLists.Guard2Wording,
+            ListItemGuard.Guard2Items,
+            ListItemGuard.Guard2Description,
             "guard dog"
         );
         {
@@ -57,9 +63,9 @@ public class MainStory
         }
         var warden = new BadGuy
         (
-            GuardLists.WardenWording,
-            ItemsAtLocationsList.WardenItems,
-            ItemsAtLocationsList.WardenDescription,
+            GuardSpecificTextLists.WardenWording,
+            ListItemGuard.WardenItems,
+            ListItemGuard.WardenDescription,
             "warden"
         );
         {
@@ -68,48 +74,50 @@ public class MainStory
         }
 
         #endregion
+        
+        
 
         #region MainRoom Location Class Instantiation
 
         Location mainRoom = new Location
         (
-            Text.StartInRoom,
-            Text.FirstRoomChoices,
+            TextMainRoom.StartInRoom,
+            TextMainRoom.FirstRoomChoices,
             OptionsAtLocationsList.MainRoomChoices
         );
         ItemsLocation closet = new ItemsLocation
         (
-            Text.ExploreCloset,
-            ItemsAtLocationsList.ClosetItems,
-            ItemsAtLocationsList.ClosetDescription
+            TextMainRoom.ExploreCloset,
+            ListItemsMainRoom.ClosetItems,
+            ListItemsMainRoom.ClosetDescription
         );
         ItemsLocation nightstand = new ItemsLocation
         (
-            Text.ExploreNightStand,
-            ItemsAtLocationsList.NightStandItems,
-            ItemsAtLocationsList.NightStandDescription
+            TextMainRoom.ExploreNightStand,
+            ListItemsMainRoom.NightStandItems,
+            ListItemsMainRoom.NightStandDescription
         );
         ItemsLocation bookshelf = new ItemsLocation
         (
-            Text.ExploreBookshelf,
-            ItemsAtLocationsList.BookshelfItems,
-            ItemsAtLocationsList.BookshelfDescription
+            TextMainRoom.ExploreBookshelf,
+            ListItemsMainRoom.BookshelfItems,
+            ListItemsMainRoom.BookshelfDescription
         );
         ItemsLocation hearth = new ItemsLocation
         (
-            Text.ExploreHearth,
-            ItemsAtLocationsList.HearthItems,
-            ItemsAtLocationsList.HearthDescription
+            TextMainRoom.ExploreHearth,
+            ListItemsMainRoom.HearthItems,
+            ListItemsMainRoom.HearthDescription
         );
         LockedLocations mainDoor =
             new LockedLocations
             (
-                Text.ApproachDoor,
+                TextDoorAndWindow.ApproachDoor,
                 LockPickingToolsList.UnHelpfulKeys
             );
         WindowLocation window = new WindowLocation
         (
-            Text.ExploreWindow,
+            TextDoorAndWindow.ExploreWindow,
             LockPickingToolsList.AllPossibleOptions,
             LockPickingToolsList.WindowNeedsRope
         );
@@ -120,34 +128,40 @@ public class MainStory
 
         Location thirdFloor = new Location
         (
-            Text.ThirdFloorEntrance,
-            Text.ThirdFloorTreeHeading,
+            TextThirdFloor.ThirdFloorEntrance,
+            TextThirdFloor.ThirdFloorTreeHeading,
             OptionsAtLocationsList.ThirdFloorChoices
+        );
+        ItemsLocation guard1Body = new ItemsLocation
+        (
+            TextGuard.DeadBodyIntro,
+            ListItemGuard.Guard1Items,
+            ListItemGuard.Guard1Description
         );
         LockedLocations studyF3D2 = new LockedLocations
         (
-            Text.ApproachDoor,
-            Text.ExploreStudyF3D2,
+            TextDoorAndWindow.ApproachDoor,
+            TextThirdFloor.ExploreStudyF3D2,
             LockPickingToolsList.UnHelpfulLockPick,
-            ItemsAtLocationsList.StudyF3D2Items,
-            ItemsAtLocationsList.StudyF3D2Description
+            ListItemThirdFloor.StudyF3D2Items,
+            ListItemThirdFloor.StudyF3D2Description
         );
         LockedLocations bedroomF3D3 = new LockedLocations
         (
-            Text.ApproachDoor,
-            Text.ExploreBedroomF3D3,
+            TextDoorAndWindow.ApproachDoor,
+            TextThirdFloor.ExploreBedroomF3D3,
             LockPickingToolsList.UnHelpfulKeys,
-            ItemsAtLocationsList.BedroomF3D3Items,
-            ItemsAtLocationsList.BedroomF3D3Description
+            ListItemThirdFloor.BedroomF3D3Items,
+            ListItemThirdFloor.BedroomF3D3Description
         );
         bedroomF3D3.ChangeDoorLockStatus(true);
         LockedLocations closetF3D4 = new LockedLocations
         (
-            Text.ApproachDoor,
-            Text.ExploreClosetF3D4,
+            TextDoorAndWindow.ApproachDoor,
+            TextThirdFloor.ExploreClosetF3D4,
             LockPickingToolsList.UnHelpfulNothing,
-            ItemsAtLocationsList.ClosetF3D4Items,
-            ItemsAtLocationsList.ClosetF3D4Description
+            ListItemThirdFloor.ClosetF3D4Items,
+            ListItemThirdFloor.ClosetF3D4Description
         );
 
         #endregion
@@ -156,43 +170,58 @@ public class MainStory
 
         Location secondFloor = new Location
         (
-            Text.SecondFloorEntrance,
-            Text.SecondFloorTreeHeading,
-            OptionsAtLocationsList.SecondFloorChoices 
-            );
+            TextSecondFloor.SecondFloorEntrance,
+            TextSecondFloor.SecondFloorTreeHeading,
+            OptionsAtLocationsList.SecondFloorChoices
+        );
+        ItemsLocation guard2Body = new ItemsLocation
+        (
+            TextGuard.DeadBodyIntro,
+            ListItemGuard.Guard2Items,
+            ListItemGuard.Guard2Description
+        );
         LockedLocations meetingRoomF2D1 = new LockedLocations
         (
-            Text.ApproachDoor, Text.ExploreMeetingRoomF2R1,
-            LockPickingToolsList.UnHelpfulLockPick, 
-            ItemsAtLocationsList.MeetingRoomF2R1Items,
-            ItemsAtLocationsList.MeetingRoomF2R1Description
-            );
+            TextDoorAndWindow.ApproachDoor, TextSecondFloor.ExploreMeetingRoomF2R1,
+            LockPickingToolsList.UnHelpfulLockPick,
+            ListItemsSecondFloor.MeetingRoomF2R1Items,
+            ListItemsSecondFloor.MeetingRoomF2R1Description
+        );
         LockedLocations guardQuartersF2D2 = new LockedLocations
         (
-            Text.ApproachDoor, 
-            Text.ExploreGuardRoomF2R2,
-            LockPickingToolsList.UnHelpfulNothing, 
-            ItemsAtLocationsList.GuardRoomF2R2Items,
-            ItemsAtLocationsList.GuardRoomF2R2Description
-            );
+            TextDoorAndWindow.ApproachDoor,
+            TextSecondFloor.ExploreGuardRoomF2R2,
+            LockPickingToolsList.UnHelpfulNothing,
+            ListItemsSecondFloor.GuardRoomF2R2Items,
+            ListItemsSecondFloor.GuardRoomF2R2Description
+        );
         guardQuartersF2D2.ChangeDoorLockStatus(true);
         LockedLocations closetF2R3 = new LockedLocations
         (
-            Text.ApproachDoor, 
-            Text.ExploreClosetF2R3,
-            LockPickingToolsList.UnHelpfulNothing, 
-            ItemsAtLocationsList.ClosetF2R3Items,
-            ItemsAtLocationsList.ClosetF2R3Description
-            );
+            TextDoorAndWindow.ApproachDoor,
+            TextSecondFloor.ExploreClosetF2R3,
+            LockPickingToolsList.UnHelpfulNothing,
+            ListItemsSecondFloor.ClosetF2R3Items,
+            ListItemsSecondFloor.ClosetF2R3Description
+        );
         LockedLocations libraryF2R4 = new LockedLocations
         (
-            Text.ApproachDoor, 
-            Text.ExploreLibraryF2R4,
-            LockPickingToolsList.UnHelpfulLockPick, 
-            ItemsAtLocationsList.LibraryF2R4Items,
-            ItemsAtLocationsList.LibraryF2R4Description
-            );
+            TextDoorAndWindow.ApproachDoor,
+            TextSecondFloor.ExploreLibraryF2R4,
+            LockPickingToolsList.UnHelpfulLockPick,
+            ListItemsSecondFloor.LibraryF2R4Items,
+            ListItemsSecondFloor.LibraryF2R4Description
+        );
 
+        #endregion
+        
+        #region FirstFloor Class Instantiation
+        ItemsLocation wardenBody = new ItemsLocation//not sure I need this??
+        (
+            TextGuard.DeadBodyIntro,//@TODO change for warden?
+            ListItemGuard.WardenItems,
+            ListItemGuard.WardenDescription
+        );
         #endregion
 
         #region Decision Trees
@@ -200,6 +229,7 @@ public class MainStory
         MainRoomGameTree mainRoomGameTree = new MainRoomGameTree();
         ThirdFloorTree thirdFloorTree = new ThirdFloorTree();
         SecondFloorTree secondFloorTree = new SecondFloorTree();
+        FirstFloorTree firstFloorTree = new FirstFloorTree();//not sure if I need this
 
         #endregion
 
@@ -219,7 +249,8 @@ public class MainStory
                         hearth, mainDoor, window);
                     break;
                 case Hero.Place.ThirdFloor:
-                    thirdFloorTree.ThirdFloorSwitchboard(backPackMethod, cat, guardDog1, thirdFloor, studyF3D2, bedroomF3D3,
+                    thirdFloorTree.ThirdFloorSwitchboard(backPackMethod, cat, guardDog1, thirdFloor, studyF3D2,
+                        bedroomF3D3,
                         closetF3D4);
                     break;
                 case Hero.Place.SecondFloor:

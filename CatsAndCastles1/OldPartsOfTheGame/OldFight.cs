@@ -1,5 +1,6 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.GuardInteractions;
+using CatsAndCastles1.Text;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.OldPartsOfTheGame;
@@ -308,7 +309,7 @@ public class OldFight
 
                if (cat.Health > 0)
                {
-                   Screen.Print(Text.CatBorder1);
+                   Screen.Print(TextGeneral.CatBorder1);
                    UserInput.DramaticPause();
                    
                    
@@ -352,7 +353,7 @@ public class OldFight
                Screen.Print($"\nYour remaining health is {(cat.Health >= 0 ? cat.Health : "0")} out of 60");
                if (cat.Health > 0)
                {
-                   Screen.Print(Text.CatBorder1);
+                   Screen.Print(TextGeneral.CatBorder1);
                    UserInput.DramaticPause();
                    
                }

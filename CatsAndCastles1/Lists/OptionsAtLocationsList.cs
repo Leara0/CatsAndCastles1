@@ -1,34 +1,38 @@
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.Inventory;
+using CatsAndCastles1.Text.Locations;
+
 namespace CatsAndCastles1.Lists;
 
 public static class OptionsAtLocationsList
 {
     public static readonly List<string> MainRoomChoices =
     [
-        Text.ExitDoor,
-        Text.ClosetDoor,
-        Text.WindowOption,
-        Text.NightStandOption,
-        Text.BookshelfOption,
-        Text.HearthOption,
-        Text.DiscardRevisitOption
+        TextMainRoom.ExitDoor,
+        TextMainRoom.ClosetDoor,
+        TextMainRoom.WindowOption,
+        TextMainRoom.NightStandOption,
+        TextMainRoom.BookshelfOption,
+        TextMainRoom.HearthOption,
+        TextWorkInventory.DiscardRevisitOption
     ];
 
     public static readonly List<string> ThirdFloorChoices =
     [
-        Text.ReturnToMainRoomOption,
-        Text.ThirdFloorDoor2Option,
-        Text.ThirdFloorDoor3Option,
-        Text.ThirdFloorDoor4Option,
-        Text.HeadDownStairsOption
+        TextThirdFloor.ReturnToMainRoomOption,
+        TextThirdFloor.ThirdFloorDoor2Option,
+        TextThirdFloor.ThirdFloorDoor3Option,
+        TextThirdFloor.ThirdFloorDoor4Option,
+        TextThirdFloor.HeadDownStairsOption
     ];
 
     public static readonly List<string> SecondFloorChoices =
     [
-        Text.SecondFloorDoor1Option,
-        Text.SecondFloorDoor2Option,
-        Text.SecondFloorDoor3Option,
-        Text.SecondFloorDoor4Option,
-        Text.HeadUpStairsOption,
-        Text.HeadDownStairsOption,
+        TextSecondFloor.SecondFloorDoor1Option,
+        TextSecondFloor.SecondFloorDoor2Option,
+        TextSecondFloor.SecondFloorDoor3Option,
+        TextSecondFloor.SecondFloorDoor4Option,
+        TextSecondFloor.HeadUpStairsOption,
+        TextThirdFloor.HeadDownStairsOption,
     ];
 }

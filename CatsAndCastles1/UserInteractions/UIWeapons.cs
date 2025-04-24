@@ -1,8 +1,10 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.Lists;
-using CatsAndCastles1.UserInteractions;
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.GuardEncounter;
+using CatsAndCastles1.Text.Inventory;
 
-namespace CatsAndCastles1.GuardInteractions;
+namespace CatsAndCastles1.UserInteractions;
 
 public class UIWeapons
 {
@@ -10,18 +12,18 @@ public class UIWeapons
     {
         var weaponModList = new WeaponsInfoList();
 
-        Screen.Print(TextWeapons.CheckInventory);
+        Screen.Print(TextCombat.CheckInventory);
 
         if (inventoryPack.Count == 0) //if inventory is empty
         {
-            Screen.Print(TextWeapons.FightWithPaws);
-            cat.Weapon = Text.Paws;
+            Screen.Print(TextCombat.FightWithPaws);
+            cat.Weapon = TextInventoryItems.Paws;
             cat.WeaponDie = 4;
             cat.WeaponMod = 0;
         }
         else
         {
-            Screen.Print(TextWeapons.ChooseYourWeapon);
+            Screen.Print(TextCombat.ChooseYourWeapon);
             //create a list for the weapon version of the pack
             var (weaponOptionsList, weaponsIndex) = weaponModList.CreateWeaponsOptionList(inventoryPack);
 
@@ -32,7 +34,7 @@ public class UIWeapons
             cat.WeaponDie = weaponModList.DieForHeroWeapon[weaponsIndex[choice]];
             cat.WeaponMod = weaponModList.ModForHeroWeapon[weaponsIndex[choice]];
             cat.Weapon = WeaponsInfoList.HeroWeaponsAndDamage[0, weaponsIndex[choice]];
-            Screen.Print(TextWeapons.ChosenWeapon + WeaponsInfoList.HeroWeaponsAndDamage[0, weaponsIndex[choice]]);
+            Screen.Print(TextCombat.ChosenWeapon + WeaponsInfoList.HeroWeaponsAndDamage[0, weaponsIndex[choice]]);
             UserInput.DramaticPauseClrScreen();
         }
     }
@@ -41,10 +43,9 @@ public class UIWeapons
     {
         if (inventoryPack.Any(item => WeaponsInfoList.ShieldOptions.Contains(item)))
         {
-            Screen.Print(TextWeapons.ChooseShield);
+            Screen.Print(TextCombat.ChooseShield);
             var choice = UserInteractiveMenu.GiveChoices(new List<string> { "yes", "no" });
-            if (choice == 0) cat.HasShield = true;
-            else cat.HasShield = false;
+            cat.HasShield = choice == 0; 
         }
     }
 }

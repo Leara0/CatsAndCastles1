@@ -7,7 +7,7 @@ public class UIGuard
     // this will be a method to get the user's choice for what action to do
     public static int GetActionChoice(Inventory inventory)
     {
-        var listOfOptions = GuardLists.CreateBribeOptionsList(inventory);
+        var listOfOptions = GuardSpecificTextLists.CreateBribeOptionsList(inventory);
         int choice = UserInteractiveMenu.GiveChoices(listOfOptions);
         return choice;
     }

@@ -1,3 +1,5 @@
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.Inventory;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.LocationClasses;
@@ -34,7 +36,7 @@ public class Location
     {
         Console.Clear();
         Screen.Print(_menuHeader);
-        int choice =  UserInput.GetChoice(OptionsAtLocation, Text.PackOption);
+        int choice =  UserInput.GetChoice(OptionsAtLocation, TextWorkInventory.PackOption);
         return choice;
     }
 

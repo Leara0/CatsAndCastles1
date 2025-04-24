@@ -1,37 +1,40 @@
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.Inventory;
+
 namespace CatsAndCastles1.Lists;
 
 public class LockPickingToolsList
 {
     public static List<string> AllPossibleOptions = new List<string>()
     {
-        Text.LockPickSet,
-        Text.BatteredShield,
-        Text.RingOfKeys,
-        Text.CrudeShield,
-        Text.Shield,
-        Text.LargeStone,
+        TextInventoryItems.LockPickSet,
+        TextInventoryItems.BatteredShield,
+        TextInventoryItems.RingOfKeys,
+        TextInventoryItems.CrudeShield,
+        TextInventoryItems.Shield,
+        TextInventoryItems.LargeStone,
 
     };
 
     public static List<string> UnHelpfulKeys = new List<string>()
     {
-        Text.RingOfKeys,
+        TextInventoryItems.RingOfKeys,
     };
 
     public static List<string> UnHelpfulLockPick = new List<string>()
     {
-        Text.LockPickSet,
+        TextInventoryItems.LockPickSet,
     };
     
     public static List<string> UnHelpfulPickAndKeys = new List<string>()
     {
-        Text.LockPickSet,
-        Text.RingOfKeys,
+        TextInventoryItems.LockPickSet,
+        TextInventoryItems.RingOfKeys,
     };
 
     public static List<string> WindowNeedsRope = new List<string>()
     {
-        Text.Rope
+        TextInventoryItems.Rope
     };
 
     public static List<string> UnHelpfulNothing = new List<string>()

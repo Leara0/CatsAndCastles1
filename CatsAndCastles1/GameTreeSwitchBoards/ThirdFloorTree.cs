@@ -1,6 +1,8 @@
 using System.Runtime.InteropServices.Marshalling;
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.LocationClasses;
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
@@ -15,6 +17,7 @@ public class ThirdFloorTree
         Console.Clear();
         cat.Location = Hero.Place.ThirdFloor;
         cat.EndGame = false;
+        cat.SuccessfulBribed = false;
         UIInventory uiInventory = new UIInventory();
         cat.SuccessfulBribed = false;
 
@@ -51,7 +54,7 @@ public class ThirdFloorTree
                         closetF3D4.LocationMethod(inventory);
                     break;
                 case 4: //go downstairs
-                    Screen.Print(Text.HeadDownStairs);
+                    Screen.Print(TextGeneral.HeadDownStairs);
                     cat.Location = Hero.Place.SecondFloor;
                     break;
                 case 5: //inventory

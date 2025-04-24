@@ -1,5 +1,8 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.Lists;
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.Inventory;
+using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.LocationClasses;
@@ -74,10 +77,10 @@ public class LockedLocations : ItemsLocation
 
     public virtual string InteractWithLockedDoor(Inventory inventory)
     {
-        Screen.Print(Text.AtDoorCheckInventory);
+        Screen.Print(TextDoorAndWindow.AtDoorCheckInventory);
         if (MakeListForInteractiveMenu(inventory).Count == 0)
         {
-            Screen.Print(Text.AtDoorCheckInventoryFindNothing);
+            Screen.Print(TextDoorAndWindow.AtDoorCheckInventoryFindNothing);
             UserInput.DramaticPauseClrScreen();
             return "leave"; //explain you found nothing and return empty string to indicate leave this location
         }
@@ -91,10 +94,10 @@ public class LockedLocations : ItemsLocation
 
         if (ItemsThatWontHelp.Contains(item))
         {
-            if (item == Text.RingOfKeys)
-                Screen.Print(Text.KeysWontWork);
-            if (item == Text.LockPickSet)
-                Screen.Print(Text.LockPickWontWork);
+            if (item == TextInventoryItems.RingOfKeys)
+                Screen.Print(TextDoorAndWindow.KeysWontWork);
+            if (item == TextInventoryItems.LockPickSet)
+                Screen.Print(TextDoorAndWindow.LockPickWontWork);
             UserInput.DramaticPauseClrScreen();
             return ""; // if you tried a tool that doesn't work you need to loop again
         }
@@ -104,7 +107,7 @@ public class LockedLocations : ItemsLocation
 
     public void ApproachOpenDoor()
     {
-        Screen.Print(Text.OpenDoor); //approach door
+        Screen.Print(TextDoorAndWindow.OpenDoor); //approach door
         UserInput.DramaticPauseClrScreen();
     }
 

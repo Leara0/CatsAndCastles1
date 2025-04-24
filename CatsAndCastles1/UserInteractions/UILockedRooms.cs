@@ -1,4 +1,6 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.Locations;
 
 namespace CatsAndCastles1.UserInteractions;
 
@@ -6,58 +8,58 @@ public class UILockedRooms
 {
     public int GetChoiceForLockedRoom(List<string> listOfItems)
     {
-        int choiceNumber = UserInteractiveMenu.GiveChoices(listOfItems, Text.LeaveLockedDoor);
+        int choiceNumber = UserInteractiveMenu.GiveChoices(listOfItems, TextGeneral.LeaveLockedDoor);
         return choiceNumber;
     }
 
     public bool UseStoneOnDoor(Character cat)
     {
-        Screen.Print(Text.UseStoneOnDoor);
+        Screen.Print(TextDoorAndWindow.UseStoneOnDoor);
         UserInput.DramaticPause();
         int roll = Screen.DiceRoller(20);
-        Screen.Print(Text.YourRoll + roll + "\n");
+        Screen.Print(TextGeneral.YourRoll + roll + "\n");
         if (roll > 16)
         {
-            Screen.Print(Text.StoneOrShieldWorked);
+            Screen.Print(TextDoorAndWindow.StoneOrShieldWorked);
             return true;
         }
 
-        Screen.Print(Text.StoneDidntWork + Text.DetBluntObjectDamage);
+        Screen.Print(TextDoorAndWindow.StoneDidntWork + TextDoorAndWindow.DetBluntObjectDamage);
         UserInput.DramaticPause();
         roll = Screen.DiceRoller(6) + 1;
         cat.Health -= roll;
-        Screen.Print(Text.Damage + roll + "\n");
-        Screen.Print(Text.YourHealth + cat.Health + Text.OutOfTotalHealth + cat.MaxHealth);
+        Screen.Print(TextGeneral.Damage + roll + "\n");
+        Screen.Print(TextGeneral.YourHealth + cat.Health + TextGeneral.OutOfTotalHealth + cat.MaxHealth);
         return false;
     }
 
     public bool UseShieldOnDoor(Character cat, string item, Inventory inventory)
     {
-        Screen.Print(Text.UseShieldOnDoor);
+        Screen.Print(TextDoorAndWindow.UseShieldOnDoor);
         UserInput.DramaticPause();
         int roll = Screen.DiceRoller(20);
-        Screen.Print(Text.YourRoll + roll + "\n");
+        Screen.Print(TextGeneral.YourRoll + roll + "\n");
         if (roll > 16)
         {
-            Screen.Print(Text.StoneOrShieldWorked);
+            Screen.Print(TextDoorAndWindow.StoneOrShieldWorked);
             return true;
         }
 
         if (roll < 6)
         {
-            Screen.Print(Text.ShieldBreaks);
+            Screen.Print(TextDoorAndWindow.ShieldBreaks);
             inventory.Pack.Remove(item);
             cat.HasShield = false;
             return false;
         }
 
 
-        Screen.Print(Text.ShieldDidntWork + Text.DetBluntObjectDamage);
+        Screen.Print(TextDoorAndWindow.ShieldDidntWork + TextDoorAndWindow.DetBluntObjectDamage);
         UserInput.DramaticPause();
         roll = Screen.DiceRoller(6) + 1;
         cat.Health -= roll;
-        Screen.Print(Text.Damage + roll + "\n");
-        Screen.Print(Text.YourHealth + cat.Health + Text.OutOfTotalHealth + cat.MaxHealth);
+        Screen.Print(TextGeneral.Damage + roll + "\n");
+        Screen.Print(TextGeneral.YourHealth + cat.Health + TextGeneral.OutOfTotalHealth + cat.MaxHealth);
         return false;
     }
 }

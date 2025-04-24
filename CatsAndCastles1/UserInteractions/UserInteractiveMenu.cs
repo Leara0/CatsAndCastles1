@@ -1,10 +1,12 @@
+using CatsAndCastles1.Text;
+
 namespace CatsAndCastles1.UserInteractions;
 
 public class UserInteractiveMenu
 {
     public static int GiveChoices(List<string> options, string leave = "")
     {
-        Screen.Print(Text.HowToPickAnItem+ "\n");
+        Screen.Print(TextGeneral.HowToPickAnItem+ "\n");
         
         int optionSelected = 0;
         ConsoleKeyInfo key;

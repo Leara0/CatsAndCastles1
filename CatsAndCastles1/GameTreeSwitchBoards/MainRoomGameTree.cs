@@ -1,4 +1,5 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.ClassInstantiation;
 using CatsAndCastles1.LocationClasses;
 using CatsAndCastles1.UserInteractions;
 
@@ -6,6 +7,8 @@ namespace CatsAndCastles1.GameTreeSwitchBoards;
 
 public class MainRoomGameTree()
 {
+    //private readonly InstancesMainRoom _location;
+    
     //how to weave in fluff intro scenes about the earlier cut scenes?
     private readonly UserInput _userInput = new UserInput();
 

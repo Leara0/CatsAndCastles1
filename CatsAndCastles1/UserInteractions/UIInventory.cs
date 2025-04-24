@@ -1,6 +1,8 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.Lists;
 using CatsAndCastles1.LocationClasses;
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.Inventory;
 
 namespace CatsAndCastles1.UserInteractions;
 
@@ -34,7 +36,7 @@ public class UIInventory
             Console.Clear();
             Screen.Print("Your pack is too burdened to add any more items. You must remove" +
                               $" something to make space for {item}.");
-            _selectionNumber = UserInteractiveMenu.GiveChoices(inventory.Pack, Text.RemoveNothing);
+            _selectionNumber = UserInteractiveMenu.GiveChoices(inventory.Pack, TextWorkInventory.RemoveNothing);
             if (_selectionNumber < inventory.Pack.Count)
             {   
                 inventory.DiscardedItems.Add(inventory.Pack[_selectionNumber]);
@@ -115,14 +117,14 @@ public class UIInventory
         if (specificLocation.InventoryItemsAtLocation.Count == 0)
         {
             // if all the items have been taken display that info and pause
-            Screen.Print(Text.NothingLeft);
+            Screen.Print(TextWorkInventory.NothingLeft);
             UserInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Screen.Print(Text.ChoiceToTakeItems + "\n");
+        Screen.Print(TextWorkInventory.ChoiceToTakeItems + "\n");
         _selectionNumber =
-            UserInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, Text.LeaveLocation);
+            UserInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, TextGeneral.LeaveLocation);
 
         return _selectionNumber;
     }
@@ -132,31 +134,31 @@ public class UIInventory
         Console.Clear();
         if (inventory.DiscardedItems.Count == 0)
         {
-            Screen.Print(Text.EmptyStash);
+            Screen.Print(TextWorkInventory.EmptyStash);
             UserInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Screen.Print(Text.PickUpFromStash + "\n");
+        Screen.Print(TextWorkInventory.PickUpFromStash + "\n");
         _selectionNumber =
-            UserInteractiveMenu.GiveChoices(inventory.DiscardedItems, Text.PickUpNothing);
+            UserInteractiveMenu.GiveChoices(inventory.DiscardedItems, TextWorkInventory.PickUpNothing);
 
         return _selectionNumber;
     }
     private int PickFromInventory(Inventory inventory)
     {
-        Screen.Print(Text.AmountInCoinPurse + inventory.CheckPurseInventory() + Text.GoldCoins);
+        Screen.Print(TextWorkInventory.AmountInCoinPurse + inventory.CheckPurseInventory() + TextWorkInventory.GoldCoins);
         
         if (inventory.Pack.Count == 0)
         {
-            Screen.Print(Text.EmptyInventory);
+            Screen.Print(TextWorkInventory.EmptyInventory);
             UserInput.DramaticPauseClrScreen();
             return -1;
         }
 
-        Screen.Print(Text.ThinkAboutInventory + "\n");
+        Screen.Print(TextWorkInventory.ThinkAboutInventory + "\n");
         _selectionNumber =
-            UserInteractiveMenu.GiveChoices(inventory.Pack, Text.PickUpNothing);
+            UserInteractiveMenu.GiveChoices(inventory.Pack, TextWorkInventory.PickUpNothing);
 
         return _selectionNumber;
     }
@@ -189,7 +191,7 @@ public class UIInventory
         int total = inventory.SpendGold(amount);
         if (total == -1)
         {
-            Screen.Print(Text.InsufficientFunds);
+            Screen.Print(TextWorkInventory.InsufficientFunds);
         }
         else
         {

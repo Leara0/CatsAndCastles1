@@ -1,5 +1,7 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.Lists;
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.GuardEncounter;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GuardInteractions;
@@ -9,29 +11,28 @@ public class Combat
     public void EngageInCombat(Hero cat, BadGuy badGuy, Inventory inventory)
     {
         Console.Clear();
-        Screen.Print(TextGuard.CombatIntro);
+        Screen.Print(TextCombat.CombatIntro);
         UserInput.DramaticPauseClrScreen();
 
         UIWeapons.GetHeroWeaponChoice(cat, inventory.Pack); //this includes words about picking a weapon
         UIWeapons.GetShieldChoice(cat, inventory.Pack);
-        if(cat.HasShield) Screen.Print(TextWeapons.YesShield);
-        else Screen.Print(TextWeapons.HaveNoShield);
+        Screen.Print(cat.HasShield? TextCombat.WithAShield : TextCombat.WithoutAShield);
+        
         
         
         UserInput.DramaticPause();
         AssignBadGuyWeaponAndShield(badGuy);
 
         //review weapons choices
-        Screen.Print(TextGuard.HeroWeaponReminder + cat.Weapon);
-        if (cat.HasShield) Screen.Print(TextGuard.WithAShield);
+        Screen.Print(TextCombat.HeroWeaponReminder + cat.Weapon);
+        if (cat.HasShield) Screen.Print(TextCombat.WithAShield);
         //Screen.Print(TextGuard.GuardWeaponReminder + badGuy.Weapon);
         //if (badGuy.HasShield) Screen.Print(TextGuard.WithAShield);
-        UserInput.DramaticPause();
-        Console.WriteLine();
-
+        UserInput.DramaticPauseClrScreen();
+        
         if (badGuy.AttemptedBribeFailed || badGuy.CaughtCat) //TODO make sure this code is right
         {
-            Screen.Print(TextGuard.GuardAttacksFirst);
+            Screen.Print(TextCombat.GuardAttacksFirst);
             GuardAttacks(badGuy, cat);
         }
 
@@ -46,7 +47,7 @@ public class Combat
 
         if (badGuy.Health == 0)
         {
-            Screen.Print(TextGuard.YouKilledGuard);
+            Screen.Print(TextCombat.YouKilledGuard);
             badGuy.IsDead = true;
             //@TODO looting
             return; //get out of this combat method
@@ -54,7 +55,7 @@ public class Combat
 
         if (cat.Health == 0)
         {
-            Screen.Print(TextGuard.GuardWins);
+            Screen.Print(TextCombat.GuardWins);
             cat.Location = Hero.Place.PassedOut; //@TODO finish this part so it works!
         }
             
@@ -65,7 +66,7 @@ public class Combat
 
     void HeroAttacks(Hero cat, BadGuy guard)
     {
-        Screen.Print(TextGuard.YouAttack + cat.WeaponDie);
+        Screen.Print(TextCombat.YouAttack + cat.WeaponDie);
         Attack(cat, guard);
         Console.WriteLine();
         HealthMessage(guard);
@@ -75,7 +76,7 @@ public class Combat
 
     void GuardAttacks(BadGuy guard, Hero cat)
     {
-        Screen.Print(TextGuard.OpponentAttack + guard.WeaponDie);
+        Screen.Print(TextCombat.OpponentAttack + guard.WeaponDie);
         Attack(guard, cat);
         HealthMessage(cat);
         Thread.Sleep(200);
@@ -84,11 +85,11 @@ public class Combat
     void Attack(Character attacker, Character defender)
     {
         int damage = Screen.DiceRoller(attacker.WeaponDie) + attacker.WeaponMod;
-        Screen.Print(Text.Damage + damage);
+        Screen.Print(TextGeneral.Damage + damage);
         defender.Health -= damage;
         if (defender.HasShield)
         {
-            Screen.Print(TextGuard.ShieldDeflects);
+            Screen.Print(TextCombat.ShieldDeflects);
             defender.Health++;
         }
     }
@@ -100,17 +101,17 @@ public class Combat
         badGuy.Weapon = WeaponsInfoList.BadGuyWeapons[pick];
         badGuy.WeaponDie = WeaponsInfoList.DieForBGWeapon[pick];
         badGuy.WeaponMod = WeaponsInfoList.ModForBGWeapon[pick];
-        Screen.Print(TextWeapons.BadGuyWeapon + badGuy.Weapon);
+        Screen.Print(TextCombat.BadGuyWeapon + badGuy.Weapon);
 
         pick = rnd.Next(1, 3);
         if (pick == 1)
         {
-            Screen.Print(TextWeapons.YesBGShield);
+            Screen.Print(TextCombat.WithAShield);
             badGuy.HasShield = true;
         }
         else
         {
-            Screen.Print(TextWeapons.NoBGShield);
+            Screen.Print(TextCombat.WithoutAShield);
             badGuy.HasShield = false;
         }
     }
@@ -119,8 +120,8 @@ public class Combat
     {
         character.Health = int.Max(character.Health, 0);
         if (character is Hero)
-            Screen.Print(TextGuard.HeroHealthCheck + character.Health + TextGuard.OutOf + character.MaxHealth);
+            Screen.Print(TextCombat.HeroHealthCheck + character.Health + TextCombat.OutOf + character.MaxHealth);
         else
-            Screen.Print(TextGuard.GuardsHealthCheck + character.Health + TextGuard.OutOf + character.MaxHealth);
+            Screen.Print(TextCombat.GuardsHealthCheck + character.Health + TextCombat.OutOf + character.MaxHealth);
     }
 }

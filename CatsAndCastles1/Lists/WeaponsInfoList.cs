@@ -1,3 +1,7 @@
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.GuardEncounter;
+using CatsAndCastles1.Text.Inventory;
+
 namespace CatsAndCastles1.Lists;
 
 public class WeaponsInfoList
@@ -5,34 +9,34 @@ public class WeaponsInfoList
     public static string[,] HeroWeaponsAndDamage =
     {
         {
-            Text.BroomAndDustPan,
-            Text.Manacles,
-            Text.Dagger,
-            Text.CatFigurine,
-            Text.FirePoker,
-            Text.LargeStone,
-            Text.LongDagger,
-            Text.DogStatue,
-            Text.ShortSword,
-            Text.RustedLantern,
-            Text.DustyBook,
-            Text.CandleStub,
-            Text.Paws
+            TextInventoryItems.BroomAndDustPan,
+            TextInventoryItems.Manacles,
+            TextInventoryItems.Dagger,
+            TextInventoryItems.CatFigurine,
+            TextInventoryItems.FirePoker,
+            TextInventoryItems.LargeStone,
+            TextInventoryItems.LongDagger,
+            TextInventoryItems.DogStatue,
+            TextInventoryItems.ShortSword,
+            TextInventoryItems.RustedLantern,
+            TextInventoryItems.DustyBook,
+            TextInventoryItems.CandleStub,
+            TextInventoryItems.Paws
         },
         {
-            TextWeapons.BroomAndDustPanMod,
-            TextWeapons.ManaclesMod,
-            TextWeapons.DaggerMod,
-            TextWeapons.CatFigurineMod,
-            TextWeapons.FirePokerMod,
-            TextWeapons.LargeStoneMod,
-            TextWeapons.LongDaggerMod,
-            TextWeapons.DogStatueMod,
-            TextWeapons.ShortSwordMod,
-            TextWeapons.RustedLanternMod,
-            TextWeapons.DustyBookMod,
-            TextWeapons.CandleStubMod,
-            TextWeapons.PawsMod
+            TextCombat.BroomAndDustPanMod,
+            TextCombat.ManaclesMod,
+            TextCombat.DaggerMod,
+            TextCombat.CatFigurineMod,
+            TextCombat.FirePokerMod,
+            TextCombat.LargeStoneMod,
+            TextCombat.LongDaggerMod,
+            TextCombat.DogStatueMod,
+            TextCombat.ShortSwordMod,
+            TextCombat.RustedLanternMod,
+            TextCombat.DustyBookMod,
+            TextCombat.CandleStubMod,
+            TextCombat.PawsMod
         }
     };
 
@@ -41,12 +45,12 @@ public class WeaponsInfoList
 
     public static List<string> BadGuyWeapons =
     [
-        Text.Manacles,
-        Text.Dagger,
-        Text.Dagger,
-        Text.Dagger,
-        Text.LongDagger,
-        Text.GuardPaws
+        TextInventoryItems.Manacles,
+        TextInventoryItems.Dagger,
+        TextInventoryItems.Dagger,
+        TextInventoryItems.Dagger,
+        TextInventoryItems.LongDagger,
+        TextInventoryItems.GuardPaws
     ];
 
     public static List<int>  DieForBGWeapon = [6, 8, 8, 8, 8, 4];
@@ -54,9 +58,9 @@ public class WeaponsInfoList
 
     public static List<string> ShieldOptions =
     [
-        Text.BatteredShield,
-        Text.CrudeShield,
-        Text.Shield,
+        TextInventoryItems.BatteredShield,
+        TextInventoryItems.CrudeShield,
+        TextInventoryItems.Shield,
     ];
 
     public (List<string> WeaponList, List<int> PositionInList) CreateWeaponsOptionList(List<string> inventoryPack)

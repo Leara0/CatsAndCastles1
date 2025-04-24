@@ -1,4 +1,7 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.GuardEncounter;
+using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.OldPartsOfTheGame;
@@ -13,7 +16,7 @@ public class ThirdFloor()
        cat.SuccessfulBribed = false;
 
        Console.Clear();
-       Screen.Print(Text.ThirdFloorEntrance);
+       Screen.Print(TextThirdFloor.ThirdFloorEntrance);
 
 
        if (!guardDog1.IsDead && !cat.SuccessfulBribed)
@@ -24,14 +27,14 @@ public class ThirdFloor()
                //// if you successfully run away (to floor 2) or get knocked out
                return;
           
-           Screen.Print(Text.DealtWithGuard);
+           Screen.Print(TextGuard.DealtWithGuard);
           
        }
 
 
        do
        {
-           Screen.Print(Text.ThirdFloorTreeHeading);
+           Screen.Print(TextThirdFloor.ThirdFloorTreeHeading);
            Screen.Print("\nPlease make a selection:" +
                              "\n'1' - " +
                              "\n'2' - " +
@@ -44,7 +47,7 @@ public class ThirdFloor()
            switch (_userInput.UserChoice(7))
            {
                case "1":
-                   Screen.Print(Text.ReEnterMainRoom);
+                   Screen.Print(TextThirdFloor.ReEnterMainRoom);
                    //mainRoom.MainRoomMethod();
                    return;
                case "2":
@@ -67,7 +70,7 @@ public class ThirdFloor()
 
 
                case "5":
-                   Screen.Print(Text.HeadDownStairs);
+                   Screen.Print(TextGeneral.HeadDownStairs);
                    Screen.Print("\nPress 'enter' to continue...");
                    Console.ReadLine();
                    Console.Clear();

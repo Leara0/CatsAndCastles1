@@ -1,18 +1,19 @@
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.Inventory;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.LocationClasses;
 
 public class ItemsLocation : Location
 {
-    private readonly UserInput UserInput = new UserInput();
     private readonly UIInventory _uiInventory = new UIInventory();
-    public string Description;
+    public string Description = "";
 
-    public List<string> LongDescriptionOfItemsAtLocation { get; set; }
-    public List<string> InventoryItemsAtLocation { get; set; }
+    public List<string> LongDescriptionOfItemsAtLocation { get; set; } = new List<string>();
+    public List<string> InventoryItemsAtLocation { get; set; }= new List<string>();
 
     #region Constructors
-    public ItemsLocation()
+    protected ItemsLocation()
     {
     }
 
@@ -36,10 +37,10 @@ public class ItemsLocation : Location
     {
         Screen.Print(Description); 
         if (LongDescriptionOfItemsAtLocation.Count == 0)
-            Screen.Print("\n" + Text.NothingLeft);
+            Screen.Print("\n" + TextWorkInventory.NothingLeft);
         else
         {
-            Screen.Print(Text.PrepToListItems);
+            Screen.Print(TextWorkInventory.PrepToListItems);
             foreach (string item in LongDescriptionOfItemsAtLocation)
                 Screen.Print(item);
         }

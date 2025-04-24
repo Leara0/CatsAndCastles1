@@ -9,6 +9,9 @@ public class GuardEncounterTree
 {
     public static void  GuardEncounterSwitchboard(Hero cat, BadGuy guard, Inventory inventory)
     {
+        Screen.Print("Started guard encounter");
+        if (guard.Health == 0 || cat.SuccessfulBribed)
+            return;
         Console.Clear();
         var rnd = new Random();
         cat.LostToGuard = false; //do I still need this?
@@ -31,7 +34,7 @@ public class GuardEncounterTree
                 case 2: // flee
                     break;
             }
-        } while (guard.Health != 0 && !cat.SuccessfulBribed);
+        } while (guard.Health >0 && !cat.SuccessfulBribed);
     }
 
     /*notice guard wording

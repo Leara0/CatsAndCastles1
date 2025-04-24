@@ -1,3 +1,6 @@
+using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.Inventory;
+using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.LocationClasses;
@@ -24,14 +27,14 @@ public class WindowLocation(string description, List<string> itemsThatWontHelp, 
 
     public string InteractWithlockedWindow(Inventory inventory)
     {
-        Screen.Print(Text.AtWindowCheckInventory);
-        if (!MakeListForInteractiveMenu(inventory).Contains(Text.Rope)) //you don't have the rope
+        Screen.Print(TextDoorAndWindow.AtWindowCheckInventory);
+        if (!MakeListForInteractiveMenu(inventory).Contains(TextInventoryItems.Rope)) //you don't have the rope
         {
-            Screen.Print(Text.AtWindowCheckInventoryFindNothing);
+            Screen.Print(TextDoorAndWindow.AtWindowCheckInventoryFindNothing);
         }
         else
         {
-            Screen.Print(Text.WindowOptions);
+            Screen.Print(TextDoorAndWindow.WindowOptions);
         }
 
         string item = GetObjectChoice(inventory);
@@ -59,12 +62,12 @@ public class WindowLocation(string description, List<string> itemsThatWontHelp, 
 
     public void ClimbDownWithRope()
     {
-        Screen.Print(Text.ClimbDownRope);
+        Screen.Print(TextDoorAndWindow.ClimbDownRope);
     }
 
     public void JumpDown()
     {
-        Screen.Print(Text.LeapDown);
+        Screen.Print(TextDoorAndWindow.LeapDown);
     }
 }
 
