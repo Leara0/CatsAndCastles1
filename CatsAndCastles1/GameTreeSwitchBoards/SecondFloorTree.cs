@@ -1,4 +1,5 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.ClassInstantiation;
 using CatsAndCastles1.LocationClasses;
 using CatsAndCastles1.Text;
 using CatsAndCastles1.Text.Locations;
@@ -10,9 +11,7 @@ public class SecondFloorTree
 {
     private readonly UserInput _userInput = new UserInput();
 
-    public void SecondFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard2, Location secondFloor,
-        LockedLocations meetingRoomF2D1, LockedLocations guardQuartersF2D2, LockedLocations closetF2R3,
-        LockedLocations libraryF2R4)
+    public void SecondFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard2, InstancesSecondFloor instancesSF)
     {
         Console.Clear();
         cat.EndGame = false;
@@ -20,38 +19,38 @@ public class SecondFloorTree
         UIInventory uiInventory = new UIInventory();
         cat.SuccessfulBribed = false;
 
-        secondFloor.PrintIntro();
+        instancesSF.SecondFloor.PrintIntro();
         LockedDoorTree lockedDoorTree = new LockedDoorTree();
         
 
         do
         {
-            int whereToExplore = secondFloor.RoomMethod();
+            int whereToExplore = instancesSF.SecondFloor.RoomMethod();
             Console.Clear();
             switch (whereToExplore) //this is a call on the BaseLocation class
             {
                 case 0: // meeting room
-                    if (!meetingRoomF2D1.DoorIsOpen())
-                        lockedDoorTree.DoorsSwitchboard(inventory, cat, meetingRoomF2D1);
-                    if (meetingRoomF2D1.DoorIsOpen())
-                        meetingRoomF2D1.LocationMethod(inventory);
+                    if (!instancesSF.MeetingRoomF2D1.DoorIsOpen())
+                        lockedDoorTree.DoorsSwitchboard(inventory, cat, instancesSF.MeetingRoomF2D1);
+                    if (instancesSF.MeetingRoomF2D1.DoorIsOpen())
+                        instancesSF.MeetingRoomF2D1.LocationMethod(inventory);
                     break;
                 case 1: //guard's quarters (//@TODO put guard to fight in here!)
                     GuardEncounterTree.GuardEncounterSwitchboard(cat, guard2, inventory);
                     //door is not locked
-                    guardQuartersF2D2.LocationMethod(inventory);
+                    instancesSF.GuardQuartersF2D2.LocationMethod(inventory);
                     break;
                 case 2: //closet
-                    if (!closetF2R3.DoorIsOpen())
-                        lockedDoorTree.DoorsSwitchboard(inventory, cat, closetF2R3);
-                    if (closetF2R3.DoorIsOpen())
-                        closetF2R3.LocationMethod(inventory);
+                    if (!instancesSF.ClosetF2R3.DoorIsOpen())
+                        lockedDoorTree.DoorsSwitchboard(inventory, cat, instancesSF.ClosetF2R3);
+                    if (instancesSF.ClosetF2R3.DoorIsOpen())
+                        instancesSF.ClosetF2R3.LocationMethod(inventory);
                     break;
                 case 3: //library
-                    if (!libraryF2R4.DoorIsOpen())
-                        lockedDoorTree.DoorsSwitchboard(inventory, cat, libraryF2R4);
-                    if (libraryF2R4.DoorIsOpen())
-                        libraryF2R4.LocationMethod(inventory);
+                    if (!instancesSF.LibraryF2R4.DoorIsOpen())
+                        lockedDoorTree.DoorsSwitchboard(inventory, cat, instancesSF.LibraryF2R4);
+                    if (instancesSF.LibraryF2R4.DoorIsOpen())
+                        instancesSF.LibraryF2R4.LocationMethod(inventory);
                     break;
                 case 4: //go upstairs
                     Screen.Print(TextGeneral.HeadUpStairs);

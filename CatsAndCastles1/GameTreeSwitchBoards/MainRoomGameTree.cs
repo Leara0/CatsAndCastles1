@@ -12,10 +12,7 @@ public class MainRoomGameTree()
     //how to weave in fluff intro scenes about the earlier cut scenes?
     private readonly UserInput _userInput = new UserInput();
 
-    public void MainRoomSwitchboard(Inventory inventory, Hero cat, Location mainRoom,
-        ItemsLocation closet,
-        ItemsLocation nightstand, ItemsLocation bookshelf, ItemsLocation hearth,
-        LockedLocations mainDoor, WindowLocation window)
+    public void MainRoomSwitchboard(Inventory inventory, Hero cat, InstancesMainRoom instanceMR)
     {
         Console.Clear();
         cat.Location = Hero.Place.MainRoom;
@@ -27,30 +24,30 @@ public class MainRoomGameTree()
 
         do
         {
-            int item = mainRoom.RoomMethod();
+            int item = instanceMR.MainRoom.RoomMethod();
             Console.Clear();
             switch (item) //this is a call on the BaseLocation class
             {
                 case 0: // this is the only exit!!!
-                    mainDoor.ChangeDoorLockStatus(true); //@TODO remove this when doing game for real
-                    lockedDoorTree.DoorsSwitchboard(inventory, cat, mainDoor);
-                    if (mainDoor.DoorIsOpen())
+                    instanceMR.MainDoor.ChangeDoorLockStatus(true); //@TODO remove this when doing game for real
+                    lockedDoorTree.DoorsSwitchboard(inventory, cat, instanceMR.MainDoor);
+                    if (instanceMR.MainDoor.DoorIsOpen())
                         cat.Location = Hero.Place.ThirdFloor;
                     break;
                 case 1: //closet
-                    closet.LocationMethod(inventory);
+                    instanceMR.Closet.LocationMethod(inventory);
                     break;
                 case 2: //window
-                    windowTree.WindowSwitchboard(inventory, cat, window);
+                    windowTree.WindowSwitchboard(inventory, cat, instanceMR.Window);
                     break;
                 case 3: //nightstand
-                    nightstand.LocationMethod(inventory);
+                    instanceMR.Nightstand.LocationMethod(inventory);
                     break;
                 case 4: //bookshelf
-                    bookshelf.LocationMethod(inventory);
+                    instanceMR.Bookshelf.LocationMethod(inventory);
                     break;
                 case 5: //Hearth
-                    hearth.LocationMethod(inventory);
+                    instanceMR.Hearth.LocationMethod(inventory);
                     break;
                 case 6: //check discard
                     uiInventory.AddItemToInventoryFromDiscard(inventory);

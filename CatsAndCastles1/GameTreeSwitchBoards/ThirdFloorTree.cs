@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices.Marshalling;
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.ClassInstantiation;
 using CatsAndCastles1.LocationClasses;
 using CatsAndCastles1.Text;
 using CatsAndCastles1.Text.Locations;
@@ -11,8 +12,7 @@ public class ThirdFloorTree
 {
     private readonly UserInput _userInput = new UserInput();
 
-    public void ThirdFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard1, Location thirdFloor,
-        LockedLocations studyF3D2, LockedLocations bedroomF3D3, LockedLocations closetF3D4)
+    public void ThirdFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard1, InstancesThirdFloor instancesTF)
     {
         Console.Clear();
         cat.Location = Hero.Place.ThirdFloor;
@@ -21,7 +21,7 @@ public class ThirdFloorTree
         UIInventory uiInventory = new UIInventory();
         cat.SuccessfulBribed = false;
 
-        thirdFloor.PrintIntro();
+        instancesTF.ThirdFloor.PrintIntro();
         LockedDoorTree lockedDoorTree = new LockedDoorTree();
         //GuardEncounterTree.GuardEncounterSwitchboard(cat, guard1, inventory);
         //@TODO not sure if this is the right spot for the guard
@@ -29,7 +29,7 @@ public class ThirdFloorTree
         //maybe a method that creates the list to switch on and if guard is dead then it adds the guard's body
         do
         {
-            int whereToExplore = thirdFloor.RoomMethod();
+            int whereToExplore = instancesTF.ThirdFloor.RoomMethod();
             Console.Clear();
             switch (whereToExplore) //this is a call on the BaseLocation class
             {
@@ -39,19 +39,19 @@ public class ThirdFloorTree
                     return; //check that this works. It should fall out of this class completely back to the previous tree
                     break;
                 case 1: //study
-                    if (!studyF3D2.DoorIsOpen())
-                        lockedDoorTree.DoorsSwitchboard(inventory, cat, studyF3D2);
-                    if (studyF3D2.DoorIsOpen())
-                        studyF3D2.LocationMethod(inventory);
+                    if (!instancesTF.StudyF3D2.DoorIsOpen())
+                        lockedDoorTree.DoorsSwitchboard(inventory, cat, instancesTF.StudyF3D2);
+                    if (instancesTF.StudyF3D2.DoorIsOpen())
+                        instancesTF.StudyF3D2.LocationMethod(inventory);
                     break;
                 case 2: //bedroom
-                    bedroomF3D3.LocationMethod(inventory);
+                    instancesTF.BedroomF3D3.LocationMethod(inventory);
                     break;
                 case 3: //closet
-                    if (!closetF3D4.DoorIsOpen())
-                        lockedDoorTree.DoorsSwitchboard(inventory, cat, closetF3D4);
-                    if (closetF3D4.DoorIsOpen())
-                        closetF3D4.LocationMethod(inventory);
+                    if (!instancesTF.ClosetF3D4.DoorIsOpen())
+                        lockedDoorTree.DoorsSwitchboard(inventory, cat, instancesTF.ClosetF3D4);
+                    if (instancesTF.ClosetF3D4.DoorIsOpen())
+                        instancesTF.ClosetF3D4.LocationMethod(inventory);
                     break;
                 case 4: //go downstairs
                     Screen.Print(TextGeneral.HeadDownStairs);

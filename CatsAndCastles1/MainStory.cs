@@ -18,202 +18,25 @@ public class MainStory
 
     //LocationsLists LocationsLists = new LocationsLists();
     UIInventory userInteractBK = new UIInventory();
-    private readonly InstancesMainRoom _location;
+    
 
     public void RunGame()
     {
         #region instantiating Classes
-
-        #region Character Class Instantiation
-
-        var cat = new Hero();
-        {
-            cat.Health = 60;
-            cat.MaxHealth = cat.Health;
-            cat.Location = Hero.Place.MainRoom;
-        }
-
+        var instancesMR = new InstancesMainRoom();
+        var instancesTF = new InstancesThirdFloor();
+        var instancesSF = new InstancesSecondFloor();
+        var instancesFF = new InstancesFirstFloor();
+        var instancesC = new InstancesCharacters();
+        
+        
         var backPackMethod = new Inventory();
         {
             backPackMethod.Pack = new List<string>(); // creates a new pack 
             backPackMethod.DiscardedItems = new List<string>(); // create a record of all items that have been discarded
         }
-
-        var guardDog1 = new BadGuy
-        (
-            GuardSpecificTextLists.Guard1Wording,
-            ListItemGuard.Guard1Items,
-            ListItemGuard.Guard1Description,
-            "guard dog"
-        );
-        {
-            guardDog1.Health = guardDog1.SetHealth(25, 35);
-            guardDog1.MaxHealth = guardDog1.Health;
-        }
-        var guardDog2 = new BadGuy
-        (
-            GuardSpecificTextLists.Guard2Wording,
-            ListItemGuard.Guard2Items,
-            ListItemGuard.Guard2Description,
-            "guard dog"
-        );
-        {
-            guardDog2.Health = guardDog2.SetHealth(25, 35);
-            guardDog2.MaxHealth = guardDog2.Health;
-        }
-        var warden = new BadGuy
-        (
-            GuardSpecificTextLists.WardenWording,
-            ListItemGuard.WardenItems,
-            ListItemGuard.WardenDescription,
-            "warden"
-        );
-        {
-            warden.Health = warden.SetHealth(60, 75);
-            warden.MaxHealth = warden.Health;
-        }
-
-        #endregion
+       
         
-        
-
-        #region MainRoom Location Class Instantiation
-
-        Location mainRoom = new Location
-        (
-            TextMainRoom.StartInRoom,
-            TextMainRoom.FirstRoomChoices,
-            OptionsAtLocationsList.MainRoomChoices
-        );
-        ItemsLocation closet = new ItemsLocation
-        (
-            TextMainRoom.ExploreCloset,
-            ListItemsMainRoom.ClosetItems,
-            ListItemsMainRoom.ClosetDescription
-        );
-        ItemsLocation nightstand = new ItemsLocation
-        (
-            TextMainRoom.ExploreNightStand,
-            ListItemsMainRoom.NightStandItems,
-            ListItemsMainRoom.NightStandDescription
-        );
-        ItemsLocation bookshelf = new ItemsLocation
-        (
-            TextMainRoom.ExploreBookshelf,
-            ListItemsMainRoom.BookshelfItems,
-            ListItemsMainRoom.BookshelfDescription
-        );
-        ItemsLocation hearth = new ItemsLocation
-        (
-            TextMainRoom.ExploreHearth,
-            ListItemsMainRoom.HearthItems,
-            ListItemsMainRoom.HearthDescription
-        );
-        LockedLocations mainDoor =
-            new LockedLocations
-            (
-                TextDoorAndWindow.ApproachDoor,
-                LockPickingToolsList.UnHelpfulKeys
-            );
-        WindowLocation window = new WindowLocation
-        (
-            TextDoorAndWindow.ExploreWindow,
-            LockPickingToolsList.AllPossibleOptions,
-            LockPickingToolsList.WindowNeedsRope
-        );
-
-        #endregion
-
-        #region ThirdFloor Location Class Instantiation
-
-        Location thirdFloor = new Location
-        (
-            TextThirdFloor.ThirdFloorEntrance,
-            TextThirdFloor.ThirdFloorTreeHeading,
-            OptionsAtLocationsList.ThirdFloorChoices
-        );
-        ItemsLocation guard1Body = new ItemsLocation
-        (
-            TextGuard.DeadBodyIntro,
-            ListItemGuard.Guard1Items,
-            ListItemGuard.Guard1Description
-        );
-        LockedLocations studyF3D2 = new LockedLocations
-        (
-            TextDoorAndWindow.ApproachDoor,
-            TextThirdFloor.ExploreStudyF3D2,
-            LockPickingToolsList.UnHelpfulLockPick,
-            ListItemThirdFloor.StudyF3D2Items,
-            ListItemThirdFloor.StudyF3D2Description
-        );
-        LockedLocations bedroomF3D3 = new LockedLocations
-        (
-            TextDoorAndWindow.ApproachDoor,
-            TextThirdFloor.ExploreBedroomF3D3,
-            LockPickingToolsList.UnHelpfulKeys,
-            ListItemThirdFloor.BedroomF3D3Items,
-            ListItemThirdFloor.BedroomF3D3Description
-        );
-        bedroomF3D3.ChangeDoorLockStatus(true);
-        LockedLocations closetF3D4 = new LockedLocations
-        (
-            TextDoorAndWindow.ApproachDoor,
-            TextThirdFloor.ExploreClosetF3D4,
-            LockPickingToolsList.UnHelpfulNothing,
-            ListItemThirdFloor.ClosetF3D4Items,
-            ListItemThirdFloor.ClosetF3D4Description
-        );
-
-        #endregion
-
-        # region SecondFloor Location Class Instantiation
-
-        Location secondFloor = new Location
-        (
-            TextSecondFloor.SecondFloorEntrance,
-            TextSecondFloor.SecondFloorTreeHeading,
-            OptionsAtLocationsList.SecondFloorChoices
-        );
-        ItemsLocation guard2Body = new ItemsLocation
-        (
-            TextGuard.DeadBodyIntro,
-            ListItemGuard.Guard2Items,
-            ListItemGuard.Guard2Description
-        );
-        LockedLocations meetingRoomF2D1 = new LockedLocations
-        (
-            TextDoorAndWindow.ApproachDoor, TextSecondFloor.ExploreMeetingRoomF2R1,
-            LockPickingToolsList.UnHelpfulLockPick,
-            ListItemsSecondFloor.MeetingRoomF2R1Items,
-            ListItemsSecondFloor.MeetingRoomF2R1Description
-        );
-        LockedLocations guardQuartersF2D2 = new LockedLocations
-        (
-            TextDoorAndWindow.ApproachDoor,
-            TextSecondFloor.ExploreGuardRoomF2R2,
-            LockPickingToolsList.UnHelpfulNothing,
-            ListItemsSecondFloor.GuardRoomF2R2Items,
-            ListItemsSecondFloor.GuardRoomF2R2Description
-        );
-        guardQuartersF2D2.ChangeDoorLockStatus(true);
-        LockedLocations closetF2R3 = new LockedLocations
-        (
-            TextDoorAndWindow.ApproachDoor,
-            TextSecondFloor.ExploreClosetF2R3,
-            LockPickingToolsList.UnHelpfulNothing,
-            ListItemsSecondFloor.ClosetF2R3Items,
-            ListItemsSecondFloor.ClosetF2R3Description
-        );
-        LockedLocations libraryF2R4 = new LockedLocations
-        (
-            TextDoorAndWindow.ApproachDoor,
-            TextSecondFloor.ExploreLibraryF2R4,
-            LockPickingToolsList.UnHelpfulLockPick,
-            ListItemsSecondFloor.LibraryF2R4Items,
-            ListItemsSecondFloor.LibraryF2R4Description
-        );
-
-        #endregion
         
         #region FirstFloor Class Instantiation
         ItemsLocation wardenBody = new ItemsLocation//not sure I need this??
@@ -230,6 +53,7 @@ public class MainStory
         ThirdFloorTree thirdFloorTree = new ThirdFloorTree();
         SecondFloorTree secondFloorTree = new SecondFloorTree();
         FirstFloorTree firstFloorTree = new FirstFloorTree();//not sure if I need this
+             
 
         #endregion
 
@@ -238,30 +62,26 @@ public class MainStory
 
         IntroFluff introFluff = new IntroFluff();
         introFluff.IntroCutScene();
-        mainRoom.PrintIntro();
+        instancesMR.MainRoom.PrintIntro();
         //TODO put the tree for the castle here!
         do
         {
-            switch (cat.Location)
+            switch (instancesC.Cat.Location)
             {
                 case Hero.Place.MainRoom:
-                    mainRoomGameTree.MainRoomSwitchboard(backPackMethod, cat, mainRoom, closet, nightstand, bookshelf,
-                        hearth, mainDoor, window);
+                    mainRoomGameTree.MainRoomSwitchboard(backPackMethod, instancesC.Cat, instancesMR);
                     break;
                 case Hero.Place.ThirdFloor:
-                    thirdFloorTree.ThirdFloorSwitchboard(backPackMethod, cat, guardDog1, thirdFloor, studyF3D2,
-                        bedroomF3D3,
-                        closetF3D4);
+                    thirdFloorTree.ThirdFloorSwitchboard(backPackMethod, instancesC.Cat, instancesC.GuardDog1, instancesTF);
                     break;
                 case Hero.Place.SecondFloor:
-                    secondFloorTree.SecondFloorSwitchboard(backPackMethod, cat, guardDog2, secondFloor, meetingRoomF2D1,
-                        guardQuartersF2D2, closetF2R3, libraryF2R4);
+                    secondFloorTree.SecondFloorSwitchboard(backPackMethod, instancesC.Cat, instancesC.GuardDog2, instancesSF);
                     break;
                 case Hero.Place.FirstFloor:
                     Screen.Print(
                         "Congrats on making it to the first floor. It's not built yet so you get to start over!");
                     Console.ReadLine();
-                    cat.Location = Hero.Place.MainRoom;
+                    instancesC.Cat.Location = Hero.Place.MainRoom;
                     break;
                 case Hero.Place.OutsideCastle:
                     break;
@@ -271,7 +91,7 @@ public class MainStory
 
         //CastleWithExitStrategies(cat, backPackMethod, mainRoom, guardDog1, guardDog2, warden);
 
-        DeadEnding(cat);
+        DeadEnding(instancesC.Cat);
         // you end up here if you fall out of the exit strategies loop - ie if you
         // die and choose not to escape
     }

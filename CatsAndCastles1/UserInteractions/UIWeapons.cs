@@ -35,8 +35,8 @@ public class UIWeapons
             cat.WeaponMod = weaponModList.ModForHeroWeapon[weaponsIndex[choice]];
             cat.Weapon = WeaponsInfoList.HeroWeaponsAndDamage[0, weaponsIndex[choice]];
             Screen.Print(TextCombat.ChosenWeapon + WeaponsInfoList.HeroWeaponsAndDamage[0, weaponsIndex[choice]]);
-            UserInput.DramaticPauseClrScreen();
-        }
+            }
+        UserInput.DramaticPauseClrScreen();
     }
 
     public static void GetShieldChoice(Hero cat, List<string> inventoryPack)
@@ -46,6 +46,8 @@ public class UIWeapons
             Screen.Print(TextCombat.ChooseShield);
             var choice = UserInteractiveMenu.GiveChoices(new List<string> { "yes", "no" });
             cat.HasShield = choice == 0; 
+            UserInput.DramaticPauseClrScreen();
         }
+        
     }
 }

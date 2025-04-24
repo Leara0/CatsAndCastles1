@@ -16,16 +16,14 @@ public class Combat
 
         UIWeapons.GetHeroWeaponChoice(cat, inventory.Pack); //this includes words about picking a weapon
         UIWeapons.GetShieldChoice(cat, inventory.Pack);
-        Screen.Print(cat.HasShield? TextCombat.WithAShield : TextCombat.WithoutAShield);
-        
-        
-        
-        UserInput.DramaticPause();
+
+        //earlier this was a problem when I removed the dramatic pause (chatGPT suggested a sleep to synchronize things 
+        //but after I added and removed the sleep it started working again
         AssignBadGuyWeaponAndShield(badGuy);
 
         //review weapons choices
         Screen.Print(TextCombat.HeroWeaponReminder + cat.Weapon);
-        if (cat.HasShield) Screen.Print(TextCombat.WithAShield);
+        Screen.Print(cat.HasShield? TextCombat.WithAShield : TextCombat.WithoutAShield);
         //Screen.Print(TextGuard.GuardWeaponReminder + badGuy.Weapon);
         //if (badGuy.HasShield) Screen.Print(TextGuard.WithAShield);
         UserInput.DramaticPauseClrScreen();

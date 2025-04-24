@@ -19,7 +19,12 @@ public class Hero:Character
     public bool SuccessfulBribed { get; set; }
     public bool EndGame { get; set; }
     public bool LeftFirstFloor { get; set; }
-    
     public bool LostToGuard { get; set; }
+
+    public Hero(int health, int maxHealth)
+    {
+        Health = health;
+        MaxHealth = maxHealth;
+    }
     
 }
