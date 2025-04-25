@@ -29,7 +29,7 @@ public class MainRoomGameTree()
             switch (item) //this is a call on the BaseLocation class
             {
                 case 0: // this is the only exit!!!
-                    instanceMR.MainDoor.ChangeDoorLockStatus(true); //@TODO remove this when doing game for real
+                    
                     lockedDoorTree.DoorsSwitchboard(inventory, cat, instanceMR.MainDoor);
                     if (instanceMR.MainDoor.DoorIsOpen())
                         cat.Location = Hero.Place.ThirdFloor;
