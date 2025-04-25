@@ -6,7 +6,7 @@ using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
-public class LockedDoorTree
+public class SwitchTreeLockedDoor
 {
     public void DoorsSwitchboard(Inventory inventory, Hero cat, LocationsLocked place)
         {

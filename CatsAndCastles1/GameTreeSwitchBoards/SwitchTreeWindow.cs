@@ -6,7 +6,7 @@ using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
 
-public class WindowTree
+public class SwitchTreeWindow
 {
     private readonly UserInput UserInput = new UserInput();
     public void WindowSwitchboard(Inventory inventory, Hero cat, LocationsWindow place)

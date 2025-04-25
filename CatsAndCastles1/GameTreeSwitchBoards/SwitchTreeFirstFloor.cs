@@ -5,10 +5,11 @@ using CatsAndCastles1.UserInteractions;
 namespace CatsAndCastles1.GameTreeSwitchBoards;
 
 
-public class FirstFloorTree
+public class SwitchTreeFirstFloor
 {
     public void FirstFloorSwitchBoard(Hero cat, BadGuy warden)
     {
         warden.SuccessfullyBribed = false;
+        cat.SuccessfulFlee = false;
     }
 }

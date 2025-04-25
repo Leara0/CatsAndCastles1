@@ -5,7 +5,7 @@ using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
 
-public static class ThirdFloorTree
+public static class SwitchTreeThirdFloor
 {
     public static void ThirdFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard1, InstancesThirdFloor instancesTF)
     {
@@ -13,10 +13,11 @@ public static class ThirdFloorTree
         cat.Location = Hero.Place.ThirdFloor;
         cat.EndGame = false;
         guard1.SuccessfullyBribed = false;
+        cat.SuccessfulFlee = false;
         UIInventory uiInventory = new UIInventory();
         
         instancesTF.ThirdFloor.PrintIntro();
-        LockedDoorTree lockedDoorTree = new LockedDoorTree();
+        SwitchTreeLockedDoor switchTreeLockedDoor = new SwitchTreeLockedDoor();
         //GuardEncounterTree.GuardEncounterSwitchboard(cat, guard1, inventory);
         //@TODO not sure if this is the right spot for the guard
         //@TODO add an option to loot the guard's body if the guard is dead
@@ -33,7 +34,7 @@ public static class ThirdFloorTree
                     return; //check that this works. It should fall out of this class completely back to the previous tree
                 case 1: //study
                     if (!instancesTF.StudyF3D2.DoorIsOpen())
-                        lockedDoorTree.DoorsSwitchboard(inventory, cat, instancesTF.StudyF3D2);
+                        switchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesTF.StudyF3D2);
                     if (instancesTF.StudyF3D2.DoorIsOpen())
                         instancesTF.StudyF3D2.LocationMethod(inventory);
                     break;
@@ -42,7 +43,7 @@ public static class ThirdFloorTree
                     break;
                 case 3: //closet
                     if (!instancesTF.ClosetF3D4.DoorIsOpen())
-                        lockedDoorTree.DoorsSwitchboard(inventory, cat, instancesTF.ClosetF3D4);
+                        switchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesTF.ClosetF3D4);
                     if (instancesTF.ClosetF3D4.DoorIsOpen())
                         instancesTF.ClosetF3D4.LocationMethod(inventory);
                     break;

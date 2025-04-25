@@ -35,13 +35,13 @@ public class MainStory
         instancesMainRoom.MainRoom.PrintIntro();
         
         //@TODO get rid of this to make game not skip ahead
-        /*inventory.AddGoldToPurse("50");
+        inventory.AddGoldToPurse("50");
         inventory.Pack.Add(TextInventoryItems.Dagger);
         inventory.Pack.Add(TextInventoryItems.Shield);
         inventory.Pack.Add(TextInventoryItems.LockPickSet);
         inventory.Pack.Add(TextInventoryItems.RingOfKeys);
         inventory.Pack.Add(TextInventoryItems.ShortSword);
-        instancesMainRoom.MainDoor.ChangeDoorLockStatus(true);*/
+        instancesMainRoom.MainDoor.ChangeDoorLockStatus(true);
         
         
 
@@ -50,14 +50,14 @@ public class MainStory
             switch (instancesCharacters.Cat.Location)
             {
                 case Hero.Place.MainRoom:
-                    MainRoomGameTree.MainRoomSwitchboard(inventory, instancesCharacters.Cat, instancesMainRoom);
+                    SwitchTreeMainRoomGame.MainRoomSwitchboard(inventory, instancesCharacters.Cat, instancesMainRoom);
                     break;
                 case Hero.Place.ThirdFloor:
-                    ThirdFloorTree.ThirdFloorSwitchboard(inventory, instancesCharacters.Cat, instancesCharacters.GuardDog1,
+                    SwitchTreeThirdFloor.ThirdFloorSwitchboard(inventory, instancesCharacters.Cat, instancesCharacters.GuardDog1,
                         instancesThirdFloor);
                     break;
                 case Hero.Place.SecondFloor:
-                    SecondFloorTree.SecondFloorSwitchboard(inventory, instancesCharacters.Cat, instancesCharacters.GuardDog2,
+                    SwitchTreeSecondFloor.SecondFloorSwitchboard(inventory, instancesCharacters.Cat, instancesCharacters.GuardDog2,
                         instancesSecondFloor);
                     break;
                 case Hero.Place.FirstFloor:

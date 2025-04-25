@@ -2,7 +2,7 @@ namespace CatsAndCastles1.UserInteractions;
 
 public class Screen
 {
-    public static List<string> CreateListOfStrings(string text)
+    public static List<string> CreateListOfStrings(string text, int extraPadding =0)
     {
         int targetScreenWidth = Console.WindowWidth - Console.WindowWidth / 4;
         List<string> listOfStrings = new List<string>();
@@ -39,15 +39,15 @@ public class Screen
         return listOfStrings;
     }
 
-    public static void Print(string text)
+    public static void Print(string text, int extraPadding =0)
     {
-        TextBlockToList(CreateListOfStrings(text));
+        TextBlockToList(CreateListOfStrings(text, extraPadding), extraPadding);
     }
 
-    public static void TextBlockToList(List<string> textList) => textList.ForEach(x => CenterLineOfText(x));
+    public static void TextBlockToList(List<string> textList, int extraPadding) => textList.ForEach(x => CenterLineOfText(x, extraPadding));
 
 
-    public static void CenterLineOfText(string text)
+    public static void CenterLineOfText(string text, int extraPadding = 0)
     {
         int screenWidth = Console.WindowWidth;
 
@@ -62,8 +62,10 @@ public class Screen
         int padding = (screenWidth + textLength) / 2;
 
 
-        Console.WriteLine(text.PadLeft(padding));
+        Console.WriteLine(text.PadLeft(padding+extraPadding));
     }
+    
+    
 
     public static int DiceRoller(int maxRoll)
     {

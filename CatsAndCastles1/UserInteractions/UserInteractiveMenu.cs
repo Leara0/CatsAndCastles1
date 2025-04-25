@@ -6,7 +6,7 @@ public class UserInteractiveMenu
 {
     public static int GiveChoices(List<string> options, string leave = "")
     {
-        Screen.Print(TextGeneral.HowToPickAnItem+ "\n");
+        Screen.Print(TextGeneral.HowToPickAnItem+ "\n", 6);//add padding to offset color change code
         
         int optionSelected = 0;
         ConsoleKeyInfo key;

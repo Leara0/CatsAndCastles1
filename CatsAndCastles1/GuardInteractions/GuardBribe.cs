@@ -90,7 +90,7 @@ public static class GuardBribe
 
     static int BribeAmount(Random rnd, BadGuy badGuy)
     {
-        var bribe = badGuy.Type == BadGuy.GuardType.Warden ? rnd.Next(50, 60) : rnd.Next(20, 35);
+        var bribe = badGuy.Type == BadGuy.GuardType.Warden ? rnd.Next(50, 60) : rnd.Next(5, 12); //@TODO change this back to 20,35
         Screen.Print(TextBribe.GuardSuggestsBribeAmount1 + bribe.ToString() + TextBribe.GuardSuggestsBribeAmount2);
         return bribe;
     }

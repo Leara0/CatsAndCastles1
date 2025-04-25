@@ -5,7 +5,7 @@ using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
 
-public static class MainRoomGameTree
+public static class SwitchTreeMainRoomGame
 {
     
     public static void MainRoomSwitchboard(Inventory inventory, Hero cat, InstancesMainRoom instanceMR)
@@ -15,8 +15,8 @@ public static class MainRoomGameTree
         cat.EndGame = false;
         UIInventory uiInventory = new UIInventory();
         
-        WindowTree windowTree = new WindowTree();
-        LockedDoorTree lockedDoorTree = new LockedDoorTree();
+        SwitchTreeWindow switchTreeWindow = new SwitchTreeWindow();
+        SwitchTreeLockedDoor switchTreeLockedDoor = new SwitchTreeLockedDoor();
 
         do
         {
@@ -26,7 +26,7 @@ public static class MainRoomGameTree
             {
                 case 0: // this is the only exit!!!
                     
-                    lockedDoorTree.DoorsSwitchboard(inventory, cat, instanceMR.MainDoor);
+                    switchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instanceMR.MainDoor);
                     if (instanceMR.MainDoor.DoorIsOpen())
                         cat.Location = Hero.Place.ThirdFloor;
                     break;
@@ -34,7 +34,7 @@ public static class MainRoomGameTree
                     instanceMR.Closet.LocationMethod(inventory);
                     break;
                 case 2: //window
-                    windowTree.WindowSwitchboard(inventory, cat, instanceMR.LocationsWindow);
+                    switchTreeWindow.WindowSwitchboard(inventory, cat, instanceMR.LocationsWindow);
                     break;
                 case 3: //nightstand
                     instanceMR.Nightstand.LocationMethod(inventory);
