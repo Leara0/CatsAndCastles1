@@ -5,14 +5,10 @@ using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
 
-public class MainRoomGameTree()
+public static class MainRoomGameTree
 {
-    //private readonly InstancesMainRoom _location;
     
-    //how to weave in fluff intro scenes about the earlier cut scenes?
-    private readonly UserInput _userInput = new UserInput();
-
-    public void MainRoomSwitchboard(Inventory inventory, Hero cat, InstancesMainRoom instanceMR)
+    public static void MainRoomSwitchboard(Inventory inventory, Hero cat, InstancesMainRoom instanceMR)
     {
         Console.Clear();
         cat.Location = Hero.Place.MainRoom;
@@ -38,7 +34,7 @@ public class MainRoomGameTree()
                     instanceMR.Closet.LocationMethod(inventory);
                     break;
                 case 2: //window
-                    windowTree.WindowSwitchboard(inventory, cat, instanceMR.Window);
+                    windowTree.WindowSwitchboard(inventory, cat, instanceMR.LocationsWindow);
                     break;
                 case 3: //nightstand
                     instanceMR.Nightstand.LocationMethod(inventory);
@@ -58,8 +54,4 @@ public class MainRoomGameTree()
             }
         } while (cat.Location == Hero.Place.MainRoom);
     }
-
-    
-
-    
 }

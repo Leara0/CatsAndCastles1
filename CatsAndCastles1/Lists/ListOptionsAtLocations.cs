@@ -4,7 +4,7 @@ using CatsAndCastles1.Text.Locations;
 
 namespace CatsAndCastles1.Lists;
 
-public static class OptionsAtLocationsList
+public static class ListOptionsAtLocations
 {
     public static readonly List<string> MainRoomChoices =
     [

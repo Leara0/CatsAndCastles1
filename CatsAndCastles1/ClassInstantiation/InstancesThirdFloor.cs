@@ -12,36 +12,36 @@ public class InstancesThirdFloor
     (
         TextThirdFloor.ThirdFloorEntrance,
         TextThirdFloor.ThirdFloorTreeHeading,
-        OptionsAtLocationsList.ThirdFloorChoices
+        ListOptionsAtLocations.ThirdFloorChoices
     );
-    public ItemsLocation Guard1Body { get; }= new ItemsLocation
+    public LocationsItems Guard1Body { get; }= new LocationsItems
     (
         TextGuard.DeadBodyIntro,
         ListItemGuard.Guard1Items,
         ListItemGuard.Guard1Description
     );
-    public LockedLocations StudyF3D2 { get; }= new LockedLocations
+    public LocationsLocked StudyF3D2 { get; }= new LocationsLocked
     (
         TextDoorAndWindow.ApproachDoor,
         TextThirdFloor.ExploreStudyF3D2,
-        LockPickingToolsList.UnHelpfulLockPick,
+        ListLockPickingTools.UnHelpfulLockPick,
         ListItemThirdFloor.StudyF3D2Items,
         ListItemThirdFloor.StudyF3D2Description
     );
-    public LockedLocations BedroomF3D3 { get; }= new LockedLocations
+    public LocationsLocked BedroomF3D3 { get; }= new LocationsLocked
     (
         TextDoorAndWindow.ApproachDoor,
         TextThirdFloor.ExploreBedroomF3D3,
-        LockPickingToolsList.UnHelpfulKeys,
+        ListLockPickingTools.UnHelpfulKeys,
         ListItemThirdFloor.BedroomF3D3Items,
         ListItemThirdFloor.BedroomF3D3Description
     );
     
-    public LockedLocations ClosetF3D4 { get; }= new LockedLocations
+    public LocationsLocked ClosetF3D4 { get; }= new LocationsLocked
     (
         TextDoorAndWindow.ApproachDoor,
         TextThirdFloor.ExploreClosetF3D4,
-        LockPickingToolsList.UnHelpfulNothing,
+        ListLockPickingTools.UnHelpfulNothing,
         ListItemThirdFloor.ClosetF3D4Items,
         ListItemThirdFloor.ClosetF3D4Description
     );

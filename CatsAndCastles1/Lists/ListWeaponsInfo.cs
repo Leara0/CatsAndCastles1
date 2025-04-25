@@ -4,7 +4,7 @@ using CatsAndCastles1.Text.Inventory;
 
 namespace CatsAndCastles1.Lists;
 
-public class WeaponsInfoList
+public class ListWeaponsInfo
 {
     public static string[,] HeroWeaponsAndDamage =
     {

@@ -1,26 +1,20 @@
-using System.Runtime.InteropServices.Marshalling;
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.ClassInstantiation;
-using CatsAndCastles1.LocationClasses;
 using CatsAndCastles1.Text;
-using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
 
-public class ThirdFloorTree
+public static class ThirdFloorTree
 {
-    private readonly UserInput _userInput = new UserInput();
-
-    public void ThirdFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard1, InstancesThirdFloor instancesTF)
+    public static void ThirdFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard1, InstancesThirdFloor instancesTF)
     {
         Console.Clear();
         cat.Location = Hero.Place.ThirdFloor;
         cat.EndGame = false;
-        cat.SuccessfulBribed = false;
+        guard1.SuccessfullyBribed = false;
         UIInventory uiInventory = new UIInventory();
-        cat.SuccessfulBribed = false;
-
+        
         instancesTF.ThirdFloor.PrintIntro();
         LockedDoorTree lockedDoorTree = new LockedDoorTree();
         //GuardEncounterTree.GuardEncounterSwitchboard(cat, guard1, inventory);
@@ -37,7 +31,6 @@ public class ThirdFloorTree
                 case 0: // return to main room
                     cat.Location = Hero.Place.MainRoom;
                     return; //check that this works. It should fall out of this class completely back to the previous tree
-                    break;
                 case 1: //study
                     if (!instancesTF.StudyF3D2.DoorIsOpen())
                         lockedDoorTree.DoorsSwitchboard(inventory, cat, instancesTF.StudyF3D2);
@@ -64,4 +57,3 @@ public class ThirdFloorTree
         } while (cat.Location == Hero.Place.ThirdFloor);
     }
 }
-

@@ -3,7 +3,7 @@ using CatsAndCastles1.Text.Inventory;
 
 namespace CatsAndCastles1.Lists;
 
-public class LockPickingToolsList
+public class ListLockPickingTools
 {
     public static List<string> AllPossibleOptions = new List<string>()
     {

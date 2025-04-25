@@ -5,8 +5,8 @@ using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.LocationClasses;
 
-public class WindowLocation(string description, List<string> itemsThatWontHelp, List<string> needRope) :
-    LockedLocations(description, itemsThatWontHelp)
+public class LocationsWindow(string description, List<string> itemsThatWontHelp, List<string> needRope) :
+    LocationsLocked(description, itemsThatWontHelp)
 {
     private List<string> _allPossibleUsefulItems = needRope;
     UILockedRooms _uiLockedRoom = new UILockedRooms();

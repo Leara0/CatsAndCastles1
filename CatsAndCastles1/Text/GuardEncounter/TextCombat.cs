@@ -61,7 +61,7 @@ public static class TextCombat
     
 
     public const string GuardAttacksFirst =
-        "The guard attacks first, having caught on to your attempt to avoid confrontation.";
+        "You have lost the element of surprise due to your attempt to avoid confrontation. The guard will attack first.";
 
     public const string YouAttack = "You attack. You roll a D";
     public const string OpponentAttack = "Your opponent attacks. They roll a D";

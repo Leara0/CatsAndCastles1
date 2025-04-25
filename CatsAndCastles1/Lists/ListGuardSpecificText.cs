@@ -3,7 +3,7 @@ using CatsAndCastles1.Text.GuardEncounter;
 
 namespace CatsAndCastles1.Lists;
 
-public static class GuardSpecificTextLists
+public static class ListGuardSpecificText
 {
     public static readonly List<string> Guard1Wording =
     [

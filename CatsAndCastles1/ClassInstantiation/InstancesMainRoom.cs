@@ -11,44 +11,44 @@ public class InstancesMainRoom
     (
         TextMainRoom.StartInRoom,
         TextMainRoom.FirstRoomChoices,
-        OptionsAtLocationsList.MainRoomChoices
+        ListOptionsAtLocations.MainRoomChoices
     );
-    public ItemsLocation Closet { get; }= new ItemsLocation
+    public LocationsItems Closet { get; }= new LocationsItems
     (
         TextMainRoom.ExploreCloset,
         ListItemsMainRoom.ClosetItems,
         ListItemsMainRoom.ClosetDescription
     );
 
-    public ItemsLocation Nightstand { get; } = new ItemsLocation
+    public LocationsItems Nightstand { get; } = new LocationsItems
     (
         TextMainRoom.ExploreNightStand,
         ListItemsMainRoom.NightStandItems,
         ListItemsMainRoom.NightStandDescription
     );
-    public ItemsLocation Bookshelf { get; } = new ItemsLocation
+    public LocationsItems Bookshelf { get; } = new LocationsItems
     (
         TextMainRoom.ExploreBookshelf,
         ListItemsMainRoom.BookshelfItems,
         ListItemsMainRoom.BookshelfDescription
     );
-    public ItemsLocation Hearth { get; } =new ItemsLocation
+    public LocationsItems Hearth { get; } =new LocationsItems
     (
         TextMainRoom.ExploreHearth,
         ListItemsMainRoom.HearthItems,
         ListItemsMainRoom.HearthDescription
     );
-    public LockedLocations MainDoor { get; }=
-        new LockedLocations
+    public LocationsLocked MainDoor { get; }=
+        new LocationsLocked
         (
             TextDoorAndWindow.ApproachDoor,
-            LockPickingToolsList.UnHelpfulKeys
+            ListLockPickingTools.UnHelpfulKeys
         );
-    public WindowLocation Window { get; } = new WindowLocation
+    public LocationsWindow LocationsWindow { get; } = new LocationsWindow
     (
         TextDoorAndWindow.ExploreWindow,
-        LockPickingToolsList.AllPossibleOptions,
-        LockPickingToolsList.WindowNeedsRope
+        ListLockPickingTools.AllPossibleOptions,
+        ListLockPickingTools.WindowNeedsRope
     );
     
     }

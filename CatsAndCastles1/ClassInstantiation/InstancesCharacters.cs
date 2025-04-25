@@ -16,30 +16,30 @@ public class InstancesCharacters
     {
         GuardDog1 = new BadGuy
         (
-            GuardSpecificTextLists.Guard1Wording,
+            ListGuardSpecificText.Guard1Wording,
             ListItemGuard.Guard1Items,
             ListItemGuard.Guard1Description,
-            "guard dog"
+            BadGuy.GuardType.Guard
         );
         GuardDog1.Health = GuardDog1.SetHealth(25, 35);
         GuardDog1.MaxHealth = GuardDog1.Health;
 
         GuardDog2 = new BadGuy
         (
-            GuardSpecificTextLists.Guard2Wording,
+            ListGuardSpecificText.Guard2Wording,
             ListItemGuard.Guard2Items,
             ListItemGuard.Guard2Description,
-            "guard dog"
+            BadGuy.GuardType.Guard
         );
         GuardDog2.Health = GuardDog2.SetHealth(25, 35);
         GuardDog2.MaxHealth = GuardDog2.Health;
 
         Warden = new BadGuy
         (
-            GuardSpecificTextLists.WardenWording,
+            ListGuardSpecificText.WardenWording,
             ListItemGuard.WardenItems,
             ListItemGuard.WardenDescription,
-            "warden"
+            BadGuy.GuardType.Warden
         );
         Warden.Health = Warden.SetHealth(60, 75);
         Warden.MaxHealth = Warden.Health;

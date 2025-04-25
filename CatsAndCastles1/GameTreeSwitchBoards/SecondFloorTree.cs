@@ -1,28 +1,22 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.ClassInstantiation;
-using CatsAndCastles1.LocationClasses;
 using CatsAndCastles1.Text;
-using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
 
-public class SecondFloorTree
+public static class SecondFloorTree
 {
-    private readonly UserInput _userInput = new UserInput();
-
-    public void SecondFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard2, InstancesSecondFloor instancesSF)
+    public static void SecondFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard2, InstancesSecondFloor instancesSF)
     {
         Console.Clear();
         cat.EndGame = false;
-        cat.SuccessfulBribed = false;
+        guard2.SuccessfullyBribed = false;
         UIInventory uiInventory = new UIInventory();
-        cat.SuccessfulBribed = false;
-
+        
         instancesSF.SecondFloor.PrintIntro();
         LockedDoorTree lockedDoorTree = new LockedDoorTree();
         
-
         do
         {
             int whereToExplore = instancesSF.SecondFloor.RoomMethod();

@@ -1,188 +1,80 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.ClassInstantiation;
 using CatsAndCastles1.GameTreeSwitchBoards;
-using CatsAndCastles1.Lists;
-using CatsAndCastles1.Lists.ItemsAtLocations;
-using CatsAndCastles1.LocationClasses;
-using CatsAndCastles1.OldPartsOfTheGame;
-using CatsAndCastles1.Text;
-using CatsAndCastles1.Text.GuardEncounter;
-using CatsAndCastles1.Text.Locations;
+using CatsAndCastles1.Text.Inventory;
 using CatsAndCastles1.UserInteractions;
+
+// ReSharper disable InconsistentNaming
+// Using consistent acronyms like SF/TF/FF for location groupings.
 
 namespace CatsAndCastles1;
 
 public class MainStory
 {
-    private readonly UserInput _userInput = new UserInput();
-
-    //LocationsLists LocationsLists = new LocationsLists();
-    UIInventory userInteractBK = new UIInventory();
-    
-
     public void RunGame()
     {
         #region instantiating Classes
-        var instancesMR = new InstancesMainRoom();
-        var instancesTF = new InstancesThirdFloor();
-        var instancesSF = new InstancesSecondFloor();
-        var instancesFF = new InstancesFirstFloor();
-        var instancesC = new InstancesCharacters();
-        
-        
-        var backPackMethod = new Inventory();
+
+        var instancesMainRoom = new InstancesMainRoom();
+        var instancesThirdFloor = new InstancesThirdFloor();
+        var instancesSecondFloor = new InstancesSecondFloor();
+        var instancesFirstFloor = new InstancesFirstFloor();
+        var instancesCharacters = new InstancesCharacters();
+        // ReSharper restore InconsistentNaming
+
+        var inventory = new Inventory();
         {
-            backPackMethod.Pack = new List<string>(); // creates a new pack 
-            backPackMethod.DiscardedItems = new List<string>(); // create a record of all items that have been discarded
+            inventory.Pack = new List<string>(); // creates a new pack 
+            inventory.DiscardedItems = new List<string>(); // discard record
         }
-       
-        
-        
-        #region FirstFloor Class Instantiation
-        ItemsLocation wardenBody = new ItemsLocation//not sure I need this??
-        (
-            TextGuard.DeadBodyIntro,//@TODO change for warden?
-            ListItemGuard.WardenItems,
-            ListItemGuard.WardenDescription
-        );
-        #endregion
-
-        #region Decision Trees
-
-        MainRoomGameTree mainRoomGameTree = new MainRoomGameTree();
-        ThirdFloorTree thirdFloorTree = new ThirdFloorTree();
-        SecondFloorTree secondFloorTree = new SecondFloorTree();
-        FirstFloorTree firstFloorTree = new FirstFloorTree();//not sure if I need this
-             
 
         #endregion
-
-        #endregion
-
 
         IntroFluff introFluff = new IntroFluff();
         introFluff.IntroCutScene();
-        instancesMR.MainRoom.PrintIntro();
-        //TODO put the tree for the castle here!
+        instancesMainRoom.MainRoom.PrintIntro();
+        
+        //@TODO get rid of this to make game not skip ahead
+        /*inventory.AddGoldToPurse("50");
+        inventory.Pack.Add(TextInventoryItems.Dagger);
+        inventory.Pack.Add(TextInventoryItems.Shield);
+        inventory.Pack.Add(TextInventoryItems.LockPickSet);
+        inventory.Pack.Add(TextInventoryItems.RingOfKeys);
+        inventory.Pack.Add(TextInventoryItems.ShortSword);
+        instancesMainRoom.MainDoor.ChangeDoorLockStatus(true);*/
+        
+        
+
         do
         {
-            switch (instancesC.Cat.Location)
+            switch (instancesCharacters.Cat.Location)
             {
                 case Hero.Place.MainRoom:
-                    mainRoomGameTree.MainRoomSwitchboard(backPackMethod, instancesC.Cat, instancesMR);
+                    MainRoomGameTree.MainRoomSwitchboard(inventory, instancesCharacters.Cat, instancesMainRoom);
                     break;
                 case Hero.Place.ThirdFloor:
-                    thirdFloorTree.ThirdFloorSwitchboard(backPackMethod, instancesC.Cat, instancesC.GuardDog1, instancesTF);
+                    ThirdFloorTree.ThirdFloorSwitchboard(inventory, instancesCharacters.Cat, instancesCharacters.GuardDog1,
+                        instancesThirdFloor);
                     break;
                 case Hero.Place.SecondFloor:
-                    secondFloorTree.SecondFloorSwitchboard(backPackMethod, instancesC.Cat, instancesC.GuardDog2, instancesSF);
+                    SecondFloorTree.SecondFloorSwitchboard(inventory, instancesCharacters.Cat, instancesCharacters.GuardDog2,
+                        instancesSecondFloor);
                     break;
                 case Hero.Place.FirstFloor:
                     Screen.Print(
                         "Congrats on making it to the first floor. It's not built yet so you get to start over!");
-                    Console.ReadLine();
-                    instancesC.Cat.Location = Hero.Place.MainRoom;
+                    UserInput.DramaticPauseClrScreen();
+                    instancesCharacters.Cat.Location = Hero.Place.MainRoom;
                     break;
                 case Hero.Place.OutsideCastle:
                     break;
-            }
-        } while (true); //@TODO CHange this!! Or maybe not and just end game with Environment.Exit(0);
-
-
-        //CastleWithExitStrategies(cat, backPackMethod, mainRoom, guardDog1, guardDog2, warden);
-
-        DeadEnding(instancesC.Cat);
-        // you end up here if you fall out of the exit strategies loop - ie if you
-        // die and choose not to escape
-    }
-
-    private void DeadEnding(Hero cat)
-    {
-        if (cat.Location == Hero.Place.Dead)
-            Screen.Print("\nAs the darkness takes hold, a strange sense of peace washes over you. " +
-                         "The struggle, the fear, the desperate clawing for survival — it all fades into " +
-                         "nothingness.\n\nThe castle will remain, its cold stone walls holding secrets " +
-                         "you will never uncover. The paths you might have taken, the dangers you might " +
-                         "have bested, all slip away like mist in the morning sun." +
-                         "\n\nPerhaps you were never meant to escape." +
-                         "\n\nAnd so, the little explorer’s journey comes to an end." +
-                         "\n\nGame Over.");
-    }
-
-
-    /*private void CastleWithExitStrategies(Hero cat, BackPack backPack, Character guardDog1,
-        Character guardDog2, Character warden)
-    {
-        do // you get here after you come to the end of one of the main room story lines
-        {
-            switch (cat.Location)
-            {
-                case Hero.Place.PassedOut: //@add something about taking health in main room
-                    PassOut(cat, backPack);
+                case Hero.Place.PassedOut:
                     break;
-                case Hero.Place.ThirdFloor:
-                    ThirdFloor thirdFloor = new ThirdFloor();
-                    thirdFloor.ThirdFloorStory(cat, backPack, guardDog1);
-                    break; //I put this in here so it just stops after you defeat the guard so the loop stops for ho
-                case Hero.Place.SecondFloor:
-                    SecondFloor secondFloor = new SecondFloor();
-                    secondFloor.SecondFloorStory(cat, backPack, guardDog2);
-                    break;
-                case Hero.Place.FirstFloor:
-                    FirstFloor firstFloor = new FirstFloor();
-                    firstFloor.FirstFloorStory(cat, backPack, warden);
-                    break;
-                case Hero.Place.OutsideCastle:
-                    OutsideCastle outside = new OutsideCastle();
-                    outside.OutsideTheCastle(cat, backPack);
+                case Hero.Place.Dead:
+                    //code that ties things up
+                    Environment.Exit(0);
                     break;
             }
-        } while
-            (!cat.EndGame); //@fix change to while(cat.Status != Characters.State.Dead && cat.BonusStatus != Characters.BonusState.EscapedCastle)
-    }*/
-
-
-    private void PassOut(Hero cat, BackPack backPack)
-    {
-        //MainRoom mainRoom = new MainRoom(cat, backPack);
-        cat.Lives--;
-
-        Screen.Print(
-            "\nThe pain is immediate and blinding, the world tilts around you, and darkness swallows you whole. " +
-            "For a moment, there is nothing—no pain, no sound, no sense of time. " +
-            "Then, a strange awareness creeps in. A feeling both familiar and deeply unsettling." +
-            "\n\nCats have nine lives... but you suddenly realize this isn’t your first brush with death.");
-        if (cat.Lives < 1)
-        {
-            Screen.Print("Nine lives, and you’ve spent them all. Shadows close in once more — but this time, " +
-                         "there is no return.");
-            cat.Location = Hero.Place.Dead;
-            cat.EndGame = true;
-            return;
-        }
-
-
-        Screen.Print(
-            $"You’ve already lost {9 - cat.Lives}. That leaves only {cat.Lives} more chances. {cat.Lives} more lives " +
-            $"to escape this cursed castle before the darkness takes you for good.");
-        if (cat.LostToGuard)
-        {
-            Screen.Print("\nIf you choose to return, the guard will still bear the wounds you inflicted. " +
-                         "They will not regain his strength.");
-        }
-
-        Screen.Print($"\nA choice stands before you:" +
-                     $"\n\n1. Revive in the room you first woke in and try again to escape." +
-                     $"\n2. Accept defeat and let the darkness claim you. (End Game.)" +
-                     $"\n\nWhat will you do?... \n");
-        if (_userInput.UserChoice() == "1")
-        {
-            //mainRoom.SubsequentWakeUp();
-        }
-        else
-        {
-            cat.Location = Hero.Place.Dead;
-            cat.EndGame = true;
-        }
+        } while (true); //@TODO Change this!! Or maybe not and just end game with Environment.Exit(0);
     }
 }

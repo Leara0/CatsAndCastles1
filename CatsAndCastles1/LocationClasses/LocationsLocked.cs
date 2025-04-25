@@ -7,25 +7,25 @@ using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.LocationClasses;
 
-public class LockedLocations : ItemsLocation
+public class LocationsLocked : LocationsItems
 {
     private readonly UserInput UserInput = new UserInput();
     UILockedRooms _uiLockedRoom = new UILockedRooms();
     
-    private List<string> _allPossibleUsefulItems = LockPickingToolsList.AllPossibleOptions;
+    private List<string> _allPossibleUsefulItems = ListLockPickingTools.AllPossibleOptions;
     public List<string> ItemsThatWontHelp { get; set; }
     
     public string DoorDescription = "";
 
     #region Constructors
 
-    public LockedLocations(string description, List<string> itemsThatWontHelp)
+    public LocationsLocked(string description, List<string> itemsThatWontHelp)
     {
         DoorDescription = description;
         ItemsThatWontHelp = itemsThatWontHelp;
     }//use this one for the door in the main room
 
-    public LockedLocations(string doorDescription, string descriptionInsideRoom, List<string> itemsThatWontHelp, List<string> itemsAtLocation,
+    public LocationsLocked(string doorDescription, string descriptionInsideRoom, List<string> itemsThatWontHelp, List<string> itemsAtLocation,
         List<string> longDescOfItemsAtLocation)
     {
         DoorDescription = doorDescription;

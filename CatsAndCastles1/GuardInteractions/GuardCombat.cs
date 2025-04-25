@@ -6,9 +6,9 @@ using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GuardInteractions;
 
-public class Combat
+public static class GuardCombat
 {
-    public void EngageInCombat(Hero cat, BadGuy badGuy, Inventory inventory)
+    public static void EngageInCombat(Hero cat, BadGuy badGuy, Inventory inventory)
     {
         Console.Clear();
         Screen.Print(TextCombat.CombatIntro);
@@ -24,8 +24,7 @@ public class Combat
         //review weapons choices
         Screen.Print(TextCombat.HeroWeaponReminder + cat.Weapon);
         Screen.Print(cat.HasShield? TextCombat.WithAShield : TextCombat.WithoutAShield);
-        //Screen.Print(TextGuard.GuardWeaponReminder + badGuy.Weapon);
-        //if (badGuy.HasShield) Screen.Print(TextGuard.WithAShield);
+        
         UserInput.DramaticPauseClrScreen();
         
         if (badGuy.AttemptedBribeFailed || badGuy.CaughtCat) //TODO make sure this code is right
@@ -62,7 +61,7 @@ public class Combat
         //or if your attempted bribe failed because you fought it out
     }
 
-    void HeroAttacks(Hero cat, BadGuy guard)
+    static void  HeroAttacks(Hero cat, BadGuy guard)
     {
         Screen.Print(TextCombat.YouAttack + cat.WeaponDie);
         Attack(cat, guard);
@@ -72,7 +71,7 @@ public class Combat
         Thread.Sleep(200);
     }
 
-    void GuardAttacks(BadGuy guard, Hero cat)
+    static void  GuardAttacks(BadGuy guard, Hero cat)
     {
         Screen.Print(TextCombat.OpponentAttack + guard.WeaponDie);
         Attack(guard, cat);
@@ -80,7 +79,7 @@ public class Combat
         Thread.Sleep(200);
     }
 
-    void Attack(Character attacker, Character defender)
+    static void Attack(Character attacker, Character defender)
     {
         int damage = Screen.DiceRoller(attacker.WeaponDie) + attacker.WeaponMod;
         Screen.Print(TextGeneral.Damage + damage);
@@ -92,13 +91,13 @@ public class Combat
         }
     }
 
-    void AssignBadGuyWeaponAndShield(BadGuy badGuy)
+    static void  AssignBadGuyWeaponAndShield(BadGuy badGuy)
     {
         var rnd = new Random();
         var pick = rnd.Next(1, 7);
-        badGuy.Weapon = WeaponsInfoList.BadGuyWeapons[pick];
-        badGuy.WeaponDie = WeaponsInfoList.DieForBGWeapon[pick];
-        badGuy.WeaponMod = WeaponsInfoList.ModForBGWeapon[pick];
+        badGuy.Weapon = ListWeaponsInfo.BadGuyWeapons[pick];
+        badGuy.WeaponDie = ListWeaponsInfo.DieForBGWeapon[pick];
+        badGuy.WeaponMod = ListWeaponsInfo.ModForBGWeapon[pick];
         Screen.Print(TextCombat.BadGuyWeapon + badGuy.Weapon);
 
         pick = rnd.Next(1, 3);
@@ -114,7 +113,7 @@ public class Combat
         }
     }
 
-    void HealthMessage(Character character)
+    static  void HealthMessage(Character character)
     {
         character.Health = int.Max(character.Health, 0);
         if (character is Hero)

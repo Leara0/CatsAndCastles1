@@ -9,7 +9,7 @@ namespace CatsAndCastles1.GameTreeSwitchBoards;
 public class WindowTree
 {
     private readonly UserInput UserInput = new UserInput();
-    public void WindowSwitchboard(Inventory inventory, Hero cat, WindowLocation place)
+    public void WindowSwitchboard(Inventory inventory, Hero cat, LocationsWindow place)
     {
         place.ApproachLockedDoor();
         string item = place.InteractWithlockedWindow(inventory);

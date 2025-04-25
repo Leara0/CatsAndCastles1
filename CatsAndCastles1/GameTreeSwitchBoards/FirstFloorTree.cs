@@ -7,8 +7,8 @@ namespace CatsAndCastles1.GameTreeSwitchBoards;
 
 public class FirstFloorTree
 {
-    public void FirstFloorSwitchBoard(Hero cat)
+    public void FirstFloorSwitchBoard(Hero cat, BadGuy warden)
     {
-        cat.SuccessfulBribed = false;
+        warden.SuccessfullyBribed = false;
     }
 }

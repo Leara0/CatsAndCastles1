@@ -10,7 +10,7 @@ public class UIWeapons
 {
     public static void GetHeroWeaponChoice(Hero cat, List<string> inventoryPack) //pass in inventory.Pack
     {
-        var weaponModList = new WeaponsInfoList();
+        var weaponModList = new ListWeaponsInfo();
 
         Screen.Print(TextCombat.CheckInventory);
 
@@ -33,15 +33,15 @@ public class UIWeapons
             //assign the weapon to the cat (assign the weapon die and weapon mod to the cat)
             cat.WeaponDie = weaponModList.DieForHeroWeapon[weaponsIndex[choice]];
             cat.WeaponMod = weaponModList.ModForHeroWeapon[weaponsIndex[choice]];
-            cat.Weapon = WeaponsInfoList.HeroWeaponsAndDamage[0, weaponsIndex[choice]];
-            Screen.Print(TextCombat.ChosenWeapon + WeaponsInfoList.HeroWeaponsAndDamage[0, weaponsIndex[choice]]);
+            cat.Weapon = ListWeaponsInfo.HeroWeaponsAndDamage[0, weaponsIndex[choice]];
+            Screen.Print(TextCombat.ChosenWeapon + ListWeaponsInfo.HeroWeaponsAndDamage[0, weaponsIndex[choice]]);
             }
         UserInput.DramaticPauseClrScreen();
     }
 
     public static void GetShieldChoice(Hero cat, List<string> inventoryPack)
     {
-        if (inventoryPack.Any(item => WeaponsInfoList.ShieldOptions.Contains(item)))
+        if (inventoryPack.Any(item => ListWeaponsInfo.ShieldOptions.Contains(item)))
         {
             Screen.Print(TextCombat.ChooseShield);
             var choice = UserInteractiveMenu.GiveChoices(new List<string> { "yes", "no" });

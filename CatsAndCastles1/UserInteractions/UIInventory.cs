@@ -57,27 +57,27 @@ public class UIInventory
         return true; //if there are fewer than 5 items then there is space
     }
 
-    public void AddItemToInventoryFromLocation(ItemsLocation specificLocation, Inventory inventory)
+    public void AddItemToInventoryFromLocation(LocationsItems specific, Inventory inventory)
     {
         do
         {
-            int itemNumber = GetItemSelection(specificLocation);
-            if (itemNumber == -1 || itemNumber == specificLocation.InventoryItemsAtLocation.Count)
+            int itemNumber = GetItemSelection(specific);
+            if (itemNumber == -1 || itemNumber == specific.InventoryItemsAtLocation.Count)
                 return; //return if all the items are gone or they chose to leave this area
 
-            string item = specificLocation.InventoryItemsAtLocation[itemNumber];
+            string item = specific.InventoryItemsAtLocation[itemNumber];
 
             if (item.Contains("gold"))
             {
                 AddGold(item, inventory);
-                specificLocation.ItemHasBeenPickedUp(itemNumber);
+                specific.ItemHasBeenPickedUp(itemNumber);
                 UserInput.DramaticPauseClrScreen();
             }
             else if (SpaceInPack(item, inventory))
             {
                 inventory.Pack.Add(item);
                Screen.Print($"\nYour pack now contains {item}");
-                specificLocation.ItemHasBeenPickedUp(itemNumber);
+                specific.ItemHasBeenPickedUp(itemNumber);
                 UserInput.DramaticPauseClrScreen();
             }
             
@@ -112,9 +112,9 @@ public class UIInventory
     #endregion
 
 
-    private int GetItemSelection(ItemsLocation specificLocation)
+    private int GetItemSelection(LocationsItems specific)
     {
-        if (specificLocation.InventoryItemsAtLocation.Count == 0)
+        if (specific.InventoryItemsAtLocation.Count == 0)
         {
             // if all the items have been taken display that info and pause
             Screen.Print(TextWorkInventory.NothingLeft);
@@ -124,7 +124,7 @@ public class UIInventory
 
         Screen.Print(TextWorkInventory.ChoiceToTakeItems + "\n");
         _selectionNumber =
-            UserInteractiveMenu.GiveChoices(specificLocation.InventoryItemsAtLocation, TextGeneral.LeaveLocation);
+            UserInteractiveMenu.GiveChoices(specific.InventoryItemsAtLocation, TextGeneral.LeaveLocation);
 
         return _selectionNumber;
     }
@@ -176,7 +176,7 @@ public class UIInventory
 
             inventory.DiscardedItems.Add(item);
             Screen.Print($"You have removed {item} from your pack");
-            if (WeaponsInfoList.ShieldOptions.Contains(item))
+            if (ListWeaponsInfo.ShieldOptions.Contains(item))
                 cat.HasShield = false;
             inventory.Pack.RemoveAt(itemNumber);
             UserInput.DramaticPauseClrScreen();

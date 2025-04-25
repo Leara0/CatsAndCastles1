@@ -12,47 +12,47 @@ public class InstancesSecondFloor
     (
         TextSecondFloor.SecondFloorEntrance,
         TextSecondFloor.SecondFloorTreeHeading,
-        OptionsAtLocationsList.SecondFloorChoices
+        ListOptionsAtLocations.SecondFloorChoices
     );
 
-    public ItemsLocation Guard2Body { get; }  = new ItemsLocation
+    public LocationsItems Guard2Body { get; }  = new LocationsItems
     (
         TextGuard.DeadBodyIntro,
         ListItemGuard.Guard2Items,
         ListItemGuard.Guard2Description
     );
 
-    public LockedLocations MeetingRoomF2D1 { get; } = new LockedLocations
+    public LocationsLocked MeetingRoomF2D1 { get; } = new LocationsLocked
     (
         TextDoorAndWindow.ApproachDoor, TextSecondFloor.ExploreMeetingRoomF2R1,
-        LockPickingToolsList.UnHelpfulLockPick,
+        ListLockPickingTools.UnHelpfulLockPick,
         ListItemsSecondFloor.MeetingRoomF2R1Items,
         ListItemsSecondFloor.MeetingRoomF2R1Description
     );
 
-    public LockedLocations GuardQuartersF2D2 { get; } = new LockedLocations
+    public LocationsLocked GuardQuartersF2D2 { get; } = new LocationsLocked
     (
         TextDoorAndWindow.ApproachDoor,
         TextSecondFloor.ExploreGuardRoomF2R2,
-        LockPickingToolsList.UnHelpfulNothing,
+        ListLockPickingTools.UnHelpfulNothing,
         ListItemsSecondFloor.GuardRoomF2R2Items,
         ListItemsSecondFloor.GuardRoomF2R2Description
     );
 
-    public LockedLocations ClosetF2R3 { get; } = new LockedLocations
+    public LocationsLocked ClosetF2R3 { get; } = new LocationsLocked
     (
         TextDoorAndWindow.ApproachDoor,
         TextSecondFloor.ExploreClosetF2R3,
-        LockPickingToolsList.UnHelpfulNothing,
+        ListLockPickingTools.UnHelpfulNothing,
         ListItemsSecondFloor.ClosetF2R3Items,
         ListItemsSecondFloor.ClosetF2R3Description
     );
 
-    public LockedLocations LibraryF2R4 { get; } = new LockedLocations
+    public LocationsLocked LibraryF2R4 { get; } = new LocationsLocked
     (
         TextDoorAndWindow.ApproachDoor,
         TextSecondFloor.ExploreLibraryF2R4,
-        LockPickingToolsList.UnHelpfulLockPick,
+        ListLockPickingTools.UnHelpfulLockPick,
         ListItemsSecondFloor.LibraryF2R4Items,
         ListItemsSecondFloor.LibraryF2R4Description
     );

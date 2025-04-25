@@ -8,7 +8,7 @@ using CatsAndCastles1.UserInteractions;
 namespace CatsAndCastles1.GameTreeSwitchBoards;
 public class LockedDoorTree
 {
-    public void DoorsSwitchboard(Inventory inventory, Hero cat, LockedLocations place)
+    public void DoorsSwitchboard(Inventory inventory, Hero cat, LocationsLocked place)
         {
             if (!place.DoorIsOpen())
             {

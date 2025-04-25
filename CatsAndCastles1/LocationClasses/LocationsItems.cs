@@ -4,7 +4,7 @@ using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.LocationClasses;
 
-public class ItemsLocation : Location
+public class LocationsItems : Location
 {
     private readonly UIInventory _uiInventory = new UIInventory();
     public string Description = "";
@@ -13,11 +13,11 @@ public class ItemsLocation : Location
     public List<string> InventoryItemsAtLocation { get; set; }= new List<string>();
 
     #region Constructors
-    protected ItemsLocation()
+    protected LocationsItems()
     {
     }
 
-    public ItemsLocation(string description, List<string> itemsAtLocation, List<string> locationsDescription)
+    public LocationsItems(string description, List<string> itemsAtLocation, List<string> locationsDescription)
     {
         LongDescriptionOfItemsAtLocation = locationsDescription;
         InventoryItemsAtLocation = itemsAtLocation;
