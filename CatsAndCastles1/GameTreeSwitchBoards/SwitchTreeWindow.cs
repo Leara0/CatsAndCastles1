@@ -1,15 +1,13 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.LocationClasses;
-using CatsAndCastles1.Text;
 using CatsAndCastles1.Text.Inventory;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
 
-public class SwitchTreeWindow
+public static class SwitchTreeWindow
 {
-    private readonly UserInput UserInput = new UserInput();
-    public void WindowSwitchboard(Inventory inventory, Hero cat, LocationsWindow place)
+    public static void WindowSwitchboard(Inventory inventory, Hero cat, LocationsWindow place)
     {
         place.ApproachLockedDoor();
         string item = place.InteractWithlockedWindow(inventory);

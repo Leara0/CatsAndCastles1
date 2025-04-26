@@ -36,7 +36,7 @@ public class Location
     {
         Console.Clear();
         Screen.Print(_menuHeader);
-        int choice =  UserInput.GetChoice(OptionsAtLocation, TextWorkInventory.PackOption);
+        int choice =  UserInput.GetChoice(OptionsAtLocation);
         return choice;
     }
 

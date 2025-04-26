@@ -1,6 +1,11 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.ClassInstantiation;
+using CatsAndCastles1.Lists;
+using CatsAndCastles1.OldPartsOfTheGame;
 using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.GuardEncounter;
+using CatsAndCastles1.Text.Inventory;
+using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
@@ -10,51 +15,55 @@ public static class SwitchTreeThirdFloor
     public static void ThirdFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard1, InstancesThirdFloor instancesTF)
     {
         Console.Clear();
-        cat.Location = Hero.Place.ThirdFloor;
-        cat.EndGame = false;
-        guard1.SuccessfullyBribed = false;
-        cat.SuccessfulFlee = false;
+        cat.EndGame = false;//@TODO why do I need this??
+        
         UIInventory uiInventory = new UIInventory();
         
         instancesTF.ThirdFloor.PrintIntro();
-        SwitchTreeLockedDoor switchTreeLockedDoor = new SwitchTreeLockedDoor();
-        //GuardEncounterTree.GuardEncounterSwitchboard(cat, guard1, inventory);
-        //@TODO not sure if this is the right spot for the guard
-        //@TODO add an option to loot the guard's body if the guard is dead
-        //maybe a method that creates the list to switch on and if guard is dead then it adds the guard's body
+
+        if (guard1.Health != 0)
+        {
+            SwitchTreeGuardEncounter.GuardEncounterSwitchboard(cat, guard1, inventory);
+            if(guard1.Health ==0) instancesTF.ThirdFloor.OptionsAtLocation.Insert(4, TextGuard.GuardsDeadBody);
+            if (cat.Location == Hero.Place.SecondFloor) return;
+        }
+        
         do
         {
-            int whereToExplore = instancesTF.ThirdFloor.RoomMethod();
+            int choice = instancesTF.ThirdFloor.RoomMethod();
+            var whereToExplore = ListOptionsAtLocations.ThirdFloorChoices[choice];
             Console.Clear();
             switch (whereToExplore) //this is a call on the BaseLocation class
             {
-                // this was stolen from the main room, change it all!!!
-                case 0: // return to main room
+                case TextThirdFloor.ReturnToMainRoomOption:
                     cat.Location = Hero.Place.MainRoom;
-                    return; //check that this works. It should fall out of this class completely back to the previous tree
-                case 1: //study
+                    return; 
+                case TextThirdFloor.ThirdFloorDoor2Option: //study
                     if (!instancesTF.StudyF3D2.DoorIsOpen())
-                        switchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesTF.StudyF3D2);
+                        SwitchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesTF.StudyF3D2);
                     if (instancesTF.StudyF3D2.DoorIsOpen())
                         instancesTF.StudyF3D2.LocationMethod(inventory);
                     break;
-                case 2: //bedroom
+                case TextThirdFloor.ThirdFloorDoor3Option: //bedroom
                     instancesTF.BedroomF3D3.LocationMethod(inventory);
                     break;
-                case 3: //closet
+                case  TextThirdFloor.ThirdFloorDoor4Option: //closet
                     if (!instancesTF.ClosetF3D4.DoorIsOpen())
-                        switchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesTF.ClosetF3D4);
+                        SwitchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesTF.ClosetF3D4);
                     if (instancesTF.ClosetF3D4.DoorIsOpen())
                         instancesTF.ClosetF3D4.LocationMethod(inventory);
                     break;
-                case 4: //go downstairs
+                case TextThirdFloor.HeadDownStairsOption: //go downstairs
                     Screen.Print(TextGeneral.HeadDownStairs);
                     cat.Location = Hero.Place.SecondFloor;
                     break;
-                case 5: //inventory
+                case TextWorkInventory.PackOption: //inventory
                     uiInventory.RemoveItemFromInventory(cat, inventory);
                     break;
             }
         } while (cat.Location == Hero.Place.ThirdFloor);
+        
+        guard1.Flee = BadGuy.Outcome.Default;
+        guard1.Bribe = BadGuy.Outcome.Default;
     }
 }

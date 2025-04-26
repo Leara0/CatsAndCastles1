@@ -15,21 +15,20 @@ public static class GuardFlee
         if (!RollSuccessfulForFlee(roll, badGuy))
         {
             Screen.Print(TextFlee.GuardNoticesFleeAttempt);
-            badGuy.CaughtCat = true;
+            badGuy.Flee = BadGuy.Outcome.Failure;
             UserInput.DramaticPauseClrScreen();
             return;
         }
 
         Screen.Print(badGuy.SpecificWording[3]);
+        badGuy.Flee = BadGuy.Outcome.Success;
         UserInput.DramaticPauseClrScreen();
-        cat.SuccessfulFlee = true;
-        
     }
 
     static int GuardSpecificRollForBribable(BadGuy badGuy)
     {
-        if (badGuy.Type == BadGuy.GuardType.Warden) Screen.Print(TextFlee.NecessaryRollToSneakAwayFromWarden);
-        else Screen.Print(TextFlee.NecessaryRollToSneakAwayFromGuard);
+        Screen.Print(badGuy.Type == BadGuy.GuardType.Warden? TextFlee.NecessaryRollToSneakAwayFromWarden :
+            TextFlee.NecessaryRollToSneakAwayFromGuard);
         UserInput.DramaticPause();
         int roll = Screen.DiceRoller(20);
         Screen.Print(TextBribe.GuardRoll + roll.ToString());

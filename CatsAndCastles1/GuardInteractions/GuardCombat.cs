@@ -22,15 +22,16 @@ public static class GuardCombat
         AssignBadGuyWeaponAndShield(badGuy);
 
         //review weapons choices
-        Screen.Print(TextCombat.HeroWeaponReminder + cat.Weapon);
-        Screen.Print(cat.HasShield? TextCombat.WithAShield : TextCombat.WithoutAShield);
+        Screen.PrintHeroAttack(TextCombat.HeroWeaponReminder + cat.Weapon);
+        Screen.PrintHeroAttack(cat.HasShield? TextCombat.WithAShield : TextCombat.WithoutAShield);
         
         UserInput.DramaticPauseClrScreen();
         
-        if (badGuy.AttemptedBribeFailed || badGuy.CaughtCat) //TODO make sure this code is right
+        if (badGuy.Bribe == BadGuy.Outcome.Failure || badGuy.Flee == BadGuy.Outcome.Failure) //TODO make sure this code is right
         {
             Screen.Print(TextCombat.GuardAttacksFirst);
             GuardAttacks(badGuy, cat);
+            UserInput.DramaticPauseClrScreen();
         }
 
         while (cat.Health > 0) //don't include badGuy because of break in code
@@ -47,6 +48,7 @@ public static class GuardCombat
             Screen.Print(TextCombat.YouKilledGuard);
             badGuy.IsDead = true;
             //@TODO looting
+            UserInput.DramaticPauseClrScreen();
             return; //get out of this combat method
         }
 
@@ -55,15 +57,12 @@ public static class GuardCombat
             Screen.Print(TextCombat.GuardWins);
             cat.Location = Hero.Place.PassedOut; //@TODO finish this part so it works!
         }
-            
-        badGuy.CaughtCat = false;
-        badGuy.AttemptedBribeFailed = false; //at the end of combat it doesn't matter if you got caught running away
-        //or if your attempted bribe failed because you fought it out
+
     }
 
     static void  HeroAttacks(Hero cat, BadGuy guard)
     {
-        Screen.Print(TextCombat.YouAttack + cat.WeaponDie);
+        Screen.PrintHeroAttack(TextCombat.YouAttack + cat.WeaponDie);
         Attack(cat, guard);
         Console.WriteLine();
         HealthMessage(guard);
@@ -73,7 +72,7 @@ public static class GuardCombat
 
     static void  GuardAttacks(BadGuy guard, Hero cat)
     {
-        Screen.Print(TextCombat.OpponentAttack + guard.WeaponDie);
+        Screen.PrintBadGuyAttack(TextCombat.OpponentAttack + guard.WeaponDie);
         Attack(guard, cat);
         HealthMessage(cat);
         Thread.Sleep(200);
@@ -98,17 +97,17 @@ public static class GuardCombat
         badGuy.Weapon = ListWeaponsInfo.BadGuyWeapons[pick];
         badGuy.WeaponDie = ListWeaponsInfo.DieForBGWeapon[pick];
         badGuy.WeaponMod = ListWeaponsInfo.ModForBGWeapon[pick];
-        Screen.Print(TextCombat.BadGuyWeapon + badGuy.Weapon);
+        Screen.PrintBadGuyAttack(TextCombat.BadGuyWeapon + badGuy.Weapon);
 
         pick = rnd.Next(1, 3);
         if (pick == 1)
         {
-            Screen.Print(TextCombat.WithAShield);
+            Screen.PrintBadGuyAttack(TextCombat.WithAShield);
             badGuy.HasShield = true;
         }
         else
         {
-            Screen.Print(TextCombat.WithoutAShield);
+            Screen.PrintBadGuyAttack(TextCombat.WithoutAShield);
             badGuy.HasShield = false;
         }
     }
@@ -121,4 +120,5 @@ public static class GuardCombat
         else
             Screen.Print(TextCombat.GuardsHealthCheck + character.Health + TextCombat.OutOf + character.MaxHealth);
     }
+    
 }

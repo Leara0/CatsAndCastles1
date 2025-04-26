@@ -5,9 +5,17 @@ public class BadGuy : Character
     public List<string> SpecificWording { get; set; }
     public List<string> GuardItems { get; set; }
     public List<string> GuardItemDescriptions { get; set; }
-    public bool AttemptedBribeFailed { get; set; }
-    public bool SuccessfullyBribed { get; set; }
-    public bool CaughtCat { get; set; }
+
+    public enum Outcome
+    {
+        Success,
+        Failure,
+        Default
+    }
+
+    public Outcome Bribe { get; set; } = Outcome.Default;
+    public Outcome Flee { get; set; } = Outcome.Default;
+    
 
     public enum GuardType
     {

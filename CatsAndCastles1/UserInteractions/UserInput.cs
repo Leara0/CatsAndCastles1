@@ -52,8 +52,8 @@ public class UserInput()
         Console.Clear();
     }
 
-    public int GetChoice(List<string> choiceOptions, string extra)
+    public int GetChoice(List<string> choiceOptions)
     {
-        return UserInteractiveMenu.GiveChoices(choiceOptions, extra);
+        return UserInteractiveMenu.GiveChoices(choiceOptions);
     }
 }

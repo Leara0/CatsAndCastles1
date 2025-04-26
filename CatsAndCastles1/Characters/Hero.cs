@@ -21,8 +21,6 @@ public class Hero:Character
     public bool LeftFirstFloor { get; set; }
     public bool LostToGuard { get; set; }
     
-    public bool SuccessfulFlee { get; set; }
-
     public Hero(int health, int maxHealth)
     {
         Health = health;

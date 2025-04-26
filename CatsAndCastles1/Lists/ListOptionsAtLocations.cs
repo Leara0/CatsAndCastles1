@@ -14,6 +14,7 @@ public static class ListOptionsAtLocations
         TextMainRoom.NightStandOption,
         TextMainRoom.BookshelfOption,
         TextMainRoom.HearthOption,
+        TextWorkInventory.PackOption,
         TextWorkInventory.DiscardRevisitOption
     ];
 
@@ -23,6 +24,7 @@ public static class ListOptionsAtLocations
         TextThirdFloor.ThirdFloorDoor2Option,
         TextThirdFloor.ThirdFloorDoor3Option,
         TextThirdFloor.ThirdFloorDoor4Option,
+        TextWorkInventory.PackOption,
         TextThirdFloor.HeadDownStairsOption
     ];
 
@@ -32,7 +34,9 @@ public static class ListOptionsAtLocations
         TextSecondFloor.SecondFloorDoor2Option,
         TextSecondFloor.SecondFloorDoor3Option,
         TextSecondFloor.SecondFloorDoor4Option,
+        TextWorkInventory.PackOption,
         TextSecondFloor.HeadUpStairsOption,
         TextThirdFloor.HeadDownStairsOption,
     ];
+
 }

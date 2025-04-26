@@ -66,4 +66,6 @@ public class TextGuard
         "\nYou stand over the fallen guard, the echoes of battle slowly fading. His motionless " +
         "body lies before you, and you notice several items that might aid you on your journey:";
 
+    public const string GuardsDeadBody = "The corpse of the fallen guard.";
+
 }

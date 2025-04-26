@@ -1,6 +1,6 @@
 namespace CatsAndCastles1.UserInteractions;
 
-public class Screen
+public static class Screen
 {
     public static List<string> CreateListOfStrings(string text, int extraPadding =0)
     {
@@ -41,10 +41,23 @@ public class Screen
 
     public static void Print(string text, int extraPadding =0)
     {
+        Console.ForegroundColor = ConsoleColor.White;
         TextBlockToList(CreateListOfStrings(text, extraPadding), extraPadding);
     }
 
-    public static void TextBlockToList(List<string> textList, int extraPadding) => textList.ForEach(x => CenterLineOfText(x, extraPadding));
+    public static void PrintHeroAttack(string text)
+    {
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        TextBlockToList(CreateListOfStrings(text));
+    }
+    public static void PrintBadGuyAttack(string text)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        TextBlockToList(CreateListOfStrings(text));
+    }
+    
+
+    public static void TextBlockToList(List<string> textList, int extraPadding =0) => textList.ForEach(x => CenterLineOfText(x, extraPadding));
 
 
     public static void CenterLineOfText(string text, int extraPadding = 0)
@@ -72,7 +85,7 @@ public class Screen
         var rnd = new Random();
         int X = 0;
         (int, int Y) cursorPosition = Console.GetCursorPosition();
-        var roll = 0;
+        int roll;
         for (int i = 0; i < 20; i++)
         {
             roll = rnd.Next(1, maxRoll + 1);

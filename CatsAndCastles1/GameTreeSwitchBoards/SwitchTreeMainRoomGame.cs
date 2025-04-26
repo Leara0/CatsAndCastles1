@@ -1,6 +1,8 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.ClassInstantiation;
-using CatsAndCastles1.LocationClasses;
+using CatsAndCastles1.Lists;
+using CatsAndCastles1.Text.Inventory;
+using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
@@ -14,41 +16,39 @@ public static class SwitchTreeMainRoomGame
         cat.Location = Hero.Place.MainRoom;
         cat.EndGame = false;
         UIInventory uiInventory = new UIInventory();
-        
-        SwitchTreeWindow switchTreeWindow = new SwitchTreeWindow();
-        SwitchTreeLockedDoor switchTreeLockedDoor = new SwitchTreeLockedDoor();
-
+      
         do
         {
-            int item = instanceMR.MainRoom.RoomMethod();
+            int number = instanceMR.MainRoom.RoomMethod();
+            var whereToExplore = ListOptionsAtLocations.MainRoomChoices[number];
             Console.Clear();
-            switch (item) //this is a call on the BaseLocation class
+            switch (whereToExplore) //this is a call on the BaseLocation class
             {
-                case 0: // this is the only exit!!!
+                case TextMainRoom.ExitDoor: // this is the only exit!!!
                     
-                    switchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instanceMR.MainDoor);
+                    SwitchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instanceMR.MainDoor);
                     if (instanceMR.MainDoor.DoorIsOpen())
                         cat.Location = Hero.Place.ThirdFloor;
                     break;
-                case 1: //closet
+                case TextMainRoom.ClosetDoor: 
                     instanceMR.Closet.LocationMethod(inventory);
                     break;
-                case 2: //window
-                    switchTreeWindow.WindowSwitchboard(inventory, cat, instanceMR.LocationsWindow);
+                case TextMainRoom.WindowOption: 
+                    SwitchTreeWindow.WindowSwitchboard(inventory, cat, instanceMR.LocationsWindow);
                     break;
-                case 3: //nightstand
+                case TextMainRoom.NightStandOption: 
                     instanceMR.Nightstand.LocationMethod(inventory);
                     break;
-                case 4: //bookshelf
+                case TextMainRoom.BookshelfOption: 
                     instanceMR.Bookshelf.LocationMethod(inventory);
                     break;
-                case 5: //Hearth
+                case TextMainRoom.HearthOption: 
                     instanceMR.Hearth.LocationMethod(inventory);
                     break;
-                case 6: //check discard
+                case TextWorkInventory.DiscardRevisitOption: 
                     uiInventory.AddItemToInventoryFromDiscard(inventory);
                     break;
-                case 7: //inventory
+                case TextWorkInventory.PackOption: 
                     uiInventory.RemoveItemFromInventory(cat, inventory);
                     break;
             }

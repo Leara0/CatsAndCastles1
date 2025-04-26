@@ -47,8 +47,7 @@ public static class GuardBribe
         if (choice == 0) //if you choose to pay the bribe
         {
             Screen.Print(TextBribe.PayTheGuardBribe);
-            badGuy.AttemptedBribeFailed = false;
-            badGuy.SuccessfullyBribed = true;
+            badGuy.Bribe = BadGuy.Outcome.Success;
             inventory.SpendGold(bribeAmount);
             UserInput.DramaticPauseClrScreen();
         }
@@ -74,7 +73,7 @@ public static class GuardBribe
 
     static void HandleBribeFailure(Inventory inventory, Hero cat, BadGuy badGuy)
     {
-        badGuy.AttemptedBribeFailed = true;
+        badGuy.Bribe = BadGuy.Outcome.Failure;
         UserInput.DramaticPauseClrScreen();
     }
 

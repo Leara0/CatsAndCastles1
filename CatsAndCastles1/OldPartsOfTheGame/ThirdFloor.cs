@@ -6,7 +6,7 @@ using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.OldPartsOfTheGame;
 
-public class ThirdFloor()
+public class ThirdFloor
 {
     private readonly UserInput _userInput = new UserInput();
     private readonly OldFight _oldFight = new OldFight();

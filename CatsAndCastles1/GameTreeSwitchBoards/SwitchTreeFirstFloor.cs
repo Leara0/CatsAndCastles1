@@ -9,7 +9,7 @@ public class SwitchTreeFirstFloor
 {
     public void FirstFloorSwitchBoard(Hero cat, BadGuy warden)
     {
-        warden.SuccessfullyBribed = false;
-        cat.SuccessfulFlee = false;
+        warden.Flee = BadGuy.Outcome.Default;
+        warden.Bribe = BadGuy.Outcome.Default;
     }
 }

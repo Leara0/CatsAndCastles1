@@ -1,6 +1,9 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.ClassInstantiation;
+using CatsAndCastles1.Lists;
 using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.Inventory;
+using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
@@ -11,56 +14,56 @@ public static class SwitchTreeSecondFloor
         InstancesSecondFloor instancesSF)
     {
         Console.Clear();
-        cat.EndGame = false; //@TODO what is this abaut?
-        guard2.SuccessfullyBribed = false;
-        cat.SuccessfulFlee = false;
+        cat.EndGame = false; //@TODO what is this about?
         UIInventory uiInventory = new UIInventory();
-
         instancesSF.SecondFloor.PrintIntro();
-        SwitchTreeLockedDoor switchTreeLockedDoor = new SwitchTreeLockedDoor();
-
+        
         do
         {
-            int whereToExplore = instancesSF.SecondFloor.RoomMethod();
+            int choice = instancesSF.SecondFloor.RoomMethod();
+            var whereToExplore = ListOptionsAtLocations.SecondFloorChoices[choice];
             Console.Clear();
             switch (whereToExplore) //this is a call on the BaseLocation class
             {
-                case 0: // meeting room
+                case TextSecondFloor.SecondFloorDoor1Option: // meeting room
                     if (!instancesSF.MeetingRoomF2D1.DoorIsOpen())
-                        switchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesSF.MeetingRoomF2D1);
+                        SwitchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesSF.MeetingRoomF2D1);
                     if (instancesSF.MeetingRoomF2D1.DoorIsOpen())
                         instancesSF.MeetingRoomF2D1.LocationMethod(inventory);
                     break;
-                case 1: //guard's quarters (//@TODO put guard to fight in here!)
+                case TextSecondFloor.SecondFloorDoor2Option: //guard's quarters (//@TODO put guard to fight in here!)
                     SwitchTreeGuardEncounter.GuardEncounterSwitchboard(cat, guard2, inventory);
                     //door is not locked
-                    if (!cat.SuccessfulFlee)
+                    if (guard2.Flee != BadGuy.Outcome.Success)//if you fled from the guard you can't explore this room
                         instancesSF.GuardQuartersF2D2.LocationMethod(inventory);
                     break;
-                case 2: //closet
+                case TextSecondFloor.SecondFloorDoor3Option: //closet
                     if (!instancesSF.ClosetF2R3.DoorIsOpen())
-                        switchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesSF.ClosetF2R3);
+                        SwitchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesSF.ClosetF2R3);
                     if (instancesSF.ClosetF2R3.DoorIsOpen())
                         instancesSF.ClosetF2R3.LocationMethod(inventory);
                     break;
-                case 3: //library
+                case TextSecondFloor.SecondFloorDoor4Option: //library
                     if (!instancesSF.LibraryF2R4.DoorIsOpen())
-                        switchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesSF.LibraryF2R4);
+                        SwitchTreeLockedDoor.DoorsSwitchboard(inventory, cat, instancesSF.LibraryF2R4);
                     if (instancesSF.LibraryF2R4.DoorIsOpen())
                         instancesSF.LibraryF2R4.LocationMethod(inventory);
                     break;
-                case 4: //go upstairs
+                case TextSecondFloor.HeadUpStairsOption: 
                     Screen.Print(TextGeneral.HeadUpStairs);
                     cat.Location = Hero.Place.ThirdFloor;
                     break;
-                case 5: //go downstairs
+                case TextThirdFloor.HeadDownStairsOption: //go downstairs
                     Screen.Print(TextGeneral.HeadDownStairs);
                     cat.Location = Hero.Place.FirstFloor;
                     break;
-                case 6: //inventory
+                case TextWorkInventory.PackOption: 
                     uiInventory.RemoveItemFromInventory(cat, inventory);
                     break;
             }
         } while (cat.Location == Hero.Place.SecondFloor);
+        
+        guard2.Flee = BadGuy.Outcome.Default;
+        guard2.Bribe = BadGuy.Outcome.Default;
     }
 }
