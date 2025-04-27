@@ -3,9 +3,7 @@ namespace CatsAndCastles1.Characters;
 public class BadGuy : Character
 {
     public List<string> SpecificWording { get; set; }
-    public List<string> GuardItems { get; set; }
-    public List<string> GuardItemDescriptions { get; set; }
-
+    
     public enum Outcome
     {
         Success,
@@ -25,12 +23,9 @@ public class BadGuy : Character
 
     public GuardType Type { get; set; }
 
-    public BadGuy(List<string> encounterSpecificWording, List<string> itemsGuardHas,
-        List<string> descriptionOfGuardItems, GuardType guardType)
+    public BadGuy(List<string> encounterSpecificWording, GuardType guardType)
     {
         SpecificWording = encounterSpecificWording;
-        GuardItems = itemsGuardHas;
-        GuardItemDescriptions = descriptionOfGuardItems;
         Type = guardType;
     }
 }

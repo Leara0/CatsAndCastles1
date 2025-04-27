@@ -20,23 +20,23 @@ public static class ListOptionsAtLocations
 
     public static readonly List<string> ThirdFloorChoices =
     [
-        TextThirdFloor.ReturnToMainRoomOption,
-        TextThirdFloor.ThirdFloorDoor2Option,
-        TextThirdFloor.ThirdFloorDoor3Option,
-        TextThirdFloor.ThirdFloorDoor4Option,
+        Text3F.ReturnToMainRoomOption,
+        Text3F.StudyF3D2Option,
+        Text3F.BedroomF3D3Option,
+        Text3F.ClosetF3D4Option,
         TextWorkInventory.PackOption,
-        TextThirdFloor.HeadDownStairsOption
+        Text3F.HeadDownStairsOption
     ];
 
     public static readonly List<string> SecondFloorChoices =
     [
-        TextSecondFloor.SecondFloorDoor1Option,
-        TextSecondFloor.SecondFloorDoor2Option,
-        TextSecondFloor.SecondFloorDoor3Option,
-        TextSecondFloor.SecondFloorDoor4Option,
+        Text2F.MeetingRoomF2D1Option,
+        Text2F.GuardQuartersF2D2Option,
+        Text2F.ClosetF2R3Option,
+        Text2F.LibraryF2R4Option,
         TextWorkInventory.PackOption,
-        TextSecondFloor.HeadUpStairsOption,
-        TextThirdFloor.HeadDownStairsOption,
+        Text2F.HeadUpStairsOption,
+        Text3F.HeadDownStairsOption,
     ];
 
 }

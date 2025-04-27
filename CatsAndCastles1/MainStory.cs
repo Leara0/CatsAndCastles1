@@ -15,10 +15,10 @@ public class MainStory
     {
         #region instantiating Classes
 
-        var instancesMainRoom = new InstancesMainRoom();
-        var instancesThirdFloor = new InstancesThirdFloor();
-        var instancesSecondFloor = new InstancesSecondFloor();
-        var instancesFirstFloor = new InstancesFirstFloor();
+        var instancesMainRoom = new InstancesMainR();
+        var instances3F = new Instances3F();
+        var instances2F = new Instances2F();
+        var instances1F = new Instances1F();
         var instancesCharacters = new InstancesCharacters();
         // ReSharper restore InconsistentNaming
 
@@ -35,30 +35,29 @@ public class MainStory
         instancesMainRoom.MainRoom.PrintIntro();
         
         //@TODO get rid of this to make game not skip ahead
-        /*inventory.AddGoldToPurse("50");
+        inventory.AddGoldToPurse("50");
         inventory.Pack.Add(TextInventoryItems.Dagger);
         inventory.Pack.Add(TextInventoryItems.Shield);
         inventory.Pack.Add(TextInventoryItems.LockPickSet);
         inventory.Pack.Add(TextInventoryItems.RingOfKeys);
         inventory.Pack.Add(TextInventoryItems.ShortSword);
-        instancesMainRoom.MainDoor.ChangeDoorLockStatus(true);*/
+        instancesMainRoom.MainDoor.ChangeDoorLockStatus(true);
         
         
-
         do
         {
             switch (instancesCharacters.Cat.Location)
             {
                 case Hero.Place.MainRoom:
-                    SwitchTreeMainRoomGame.MainRoomSwitchboard(inventory, instancesCharacters.Cat, instancesMainRoom);
+                    SwitchTreeMainR.MainRoomSwitchboard(inventory, instancesCharacters.Cat, instancesMainRoom);
                     break;
                 case Hero.Place.ThirdFloor:
-                    SwitchTreeThirdFloor.ThirdFloorSwitchboard(inventory, instancesCharacters.Cat, instancesCharacters.GuardDog1,
-                        instancesThirdFloor);
+                    SwitchTree3F.ThirdFloorSwitchboard(inventory, instancesCharacters.Cat, instancesCharacters.GuardDog1,
+                        instances3F);
                     break;
                 case Hero.Place.SecondFloor:
-                    SwitchTreeSecondFloor.SecondFloorSwitchboard(inventory, instancesCharacters.Cat, instancesCharacters.GuardDog2,
-                        instancesSecondFloor);
+                    SwitchTree2F.SecondFloorSwitchboard(inventory, instancesCharacters.Cat, instancesCharacters.GuardDog2,
+                        instances2F);
                     break;
                 case Hero.Place.FirstFloor:
                     Screen.Print(

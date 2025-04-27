@@ -16,7 +16,7 @@ public class ThirdFloor
        cat.SuccessfulBribed = false;
 
        Console.Clear();
-       Screen.Print(TextThirdFloor.ThirdFloorEntrance);
+       Screen.Print(Text3F.ThirdFloorEntrance);
 
 
        if (!guardDog1.IsDead && !cat.SuccessfulBribed)
@@ -34,7 +34,7 @@ public class ThirdFloor
 
        do
        {
-           Screen.Print(TextThirdFloor.ThirdFloorTreeHeading);
+           Screen.Print(Text3F.ThirdFloorTreeHeading);
            Screen.Print("\nPlease make a selection:" +
                              "\n'1' - " +
                              "\n'2' - " +
@@ -47,7 +47,7 @@ public class ThirdFloor
            switch (_userInput.UserChoice(7))
            {
                case "1":
-                   Screen.Print(TextThirdFloor.ReEnterMainRoom);
+                   Screen.Print(Text3F.ReEnterMainRoom);
                    //mainRoom.MainRoomMethod();
                    return;
                case "2":

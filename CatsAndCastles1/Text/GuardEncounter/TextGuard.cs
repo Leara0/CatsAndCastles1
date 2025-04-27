@@ -63,9 +63,10 @@ public class TextGuard
     public const string DealtWithGuard = "You have dealt with the guard and now must choose you're next move.";
 
     public const string DeadBodyIntro =
-        "\nYou stand over the fallen guard, the echoes of battle slowly fading. His motionless " +
+        "\nYou stand over the fallen guard. His motionless " +
         "body lies before you, and you notice several items that might aid you on your journey:";
 
     public const string GuardsDeadBody = "The corpse of the fallen guard.";
+    public const string OrExploreTheRoom = "explore the room";
 
 }

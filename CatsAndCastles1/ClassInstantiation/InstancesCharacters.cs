@@ -17,8 +17,6 @@ public class InstancesCharacters
         GuardDog1 = new BadGuy
         (
             ListGuardSpecificText.Guard1Wording,
-            ListItemGuard.Guard1Items,
-            ListItemGuard.Guard1Description,
             BadGuy.GuardType.Guard
         );
         GuardDog1.Health = GuardDog1.SetHealth(25, 35);
@@ -27,8 +25,6 @@ public class InstancesCharacters
         GuardDog2 = new BadGuy
         (
             ListGuardSpecificText.Guard2Wording,
-            ListItemGuard.Guard2Items,
-            ListItemGuard.Guard2Description,
             BadGuy.GuardType.Guard
         );
         GuardDog2.Health = GuardDog2.SetHealth(25, 35);
@@ -37,8 +33,6 @@ public class InstancesCharacters
         Warden = new BadGuy
         (
             ListGuardSpecificText.WardenWording,
-            ListItemGuard.WardenItems,
-            ListItemGuard.WardenDescription,
             BadGuy.GuardType.Warden
         );
         Warden.Health = Warden.SetHealth(60, 75);

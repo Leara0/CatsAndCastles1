@@ -93,7 +93,7 @@ public static class GuardCombat
     static void  AssignBadGuyWeaponAndShield(BadGuy badGuy)
     {
         var rnd = new Random();
-        var pick = rnd.Next(1, 7);
+        var pick = rnd.Next(0, ListWeaponsInfo.BadGuyWeapons.Count);
         badGuy.Weapon = ListWeaponsInfo.BadGuyWeapons[pick];
         badGuy.WeaponDie = ListWeaponsInfo.DieForBGWeapon[pick];
         badGuy.WeaponMod = ListWeaponsInfo.ModForBGWeapon[pick];
