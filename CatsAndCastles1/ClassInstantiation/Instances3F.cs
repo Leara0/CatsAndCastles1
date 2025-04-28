@@ -19,16 +19,16 @@ public class Instances3F
         TextDoorAndWindow.ApproachDoor,
         Text3F.ExploreStudyF3D2,
         ListLockPickingTools.UnHelpfulLockPick,
-        ListItemThirdFloor.StudyF3D2Items,
-        ListItemThirdFloor.StudyF3D2Description
+        ListItem3F.StudyF3D2Items,
+        ListItem3F.StudyF3D2Description
     );
     public LocationsLocked BedroomF3D3 { get; }= new LocationsLocked
     (
         TextDoorAndWindow.ApproachDoor,
         Text3F.ExploreBedroomF3D3,
         ListLockPickingTools.UnHelpfulKeys,
-        ListItemThirdFloor.BedroomF3D3Items,
-        ListItemThirdFloor.BedroomF3D3Description
+        ListItem3F.BedroomF3D3Items,
+        ListItem3F.BedroomF3D3Description
     );
     
     public LocationsLocked ClosetF3D4 { get; }= new LocationsLocked
@@ -36,8 +36,8 @@ public class Instances3F
         TextDoorAndWindow.ApproachDoor,
         Text3F.ExploreClosetF3D4,
         ListLockPickingTools.UnHelpfulNothing,
-        ListItemThirdFloor.ClosetF3D4Items,
-        ListItemThirdFloor.ClosetF3D4Description
+        ListItem3F.ClosetF3D4Items,
+        ListItem3F.ClosetF3D4Description
     );
 
     public LocationsItems Guard1Corpse { get; } = new LocationsItems

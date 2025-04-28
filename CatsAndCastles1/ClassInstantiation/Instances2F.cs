@@ -8,55 +8,48 @@ namespace CatsAndCastles1.ClassInstantiation;
 
 public class Instances2F
 {
-    public Location SecondFloor { get; } = new Location
+    public Location SecondFloor { get; } = new 
     (
         Text2F.SecondFloorEntrance,
         Text2F.SecondFloorTreeHeading,
         ListOptionsAtLocations.SecondFloorChoices
     );
 
-    public LocationsItems Guard2Body { get; }  = new LocationsItems
-    (
-        TextGuard.DeadBodyIntro,
-        ListItemGuard.Guard2Items,
-        ListItemGuard.Guard2Description
-    );
-
-    public LocationsLocked MeetingRoomF2D1 { get; } = new LocationsLocked
+    public LocationsLocked MeetingRoomF2D1 { get; } = new 
     (
         TextDoorAndWindow.ApproachDoor, Text2F.ExploreMeetingRoomF2R1,
         ListLockPickingTools.UnHelpfulLockPick,
-        ListItemsSecondFloor.MeetingRoomF2R1Items,
-        ListItemsSecondFloor.MeetingRoomF2R1Description
+        ListItems2F.MeetingRoomF2R1Items,
+        ListItems2F.MeetingRoomF2R1Description
     );
 
-    public LocationsLocked GuardQuartersF2D2 { get; } = new LocationsLocked
+    public LocationsLocked GuardQuartersF2D2 { get; } = new 
     (
         TextDoorAndWindow.ApproachDoor,
         Text2F.ExploreGuardRoomF2R2,
         ListLockPickingTools.UnHelpfulNothing,
-        ListItemsSecondFloor.GuardRoomF2R2Items,
-        ListItemsSecondFloor.GuardRoomF2R2Description
+        ListItems2F.GuardRoomF2R2Items,
+        ListItems2F.GuardRoomF2R2Description
     );
 
-    public LocationsLocked ClosetF2R3 { get; } = new LocationsLocked
+    public LocationsLocked ClosetF2R3 { get; } = new 
     (
         TextDoorAndWindow.ApproachDoor,
         Text2F.ExploreClosetF2R3,
         ListLockPickingTools.UnHelpfulNothing,
-        ListItemsSecondFloor.ClosetF2R3Items,
-        ListItemsSecondFloor.ClosetF2R3Description
+        ListItems2F.ClosetF2R3Items,
+        ListItems2F.ClosetF2R3Description
     );
 
-    public LocationsLocked LibraryF2R4 { get; } = new LocationsLocked
+    public LocationsLocked LibraryF2R4 { get; } = new 
     (
         TextDoorAndWindow.ApproachDoor,
         Text2F.ExploreLibraryF2R4,
         ListLockPickingTools.UnHelpfulLockPick,
-        ListItemsSecondFloor.LibraryF2R4Items,
-        ListItemsSecondFloor.LibraryF2R4Description
+        ListItems2F.LibraryF2R4Items,
+        ListItems2F.LibraryF2R4Description
     );
-    public LocationsItems Guard2Corpse { get; } = new LocationsItems
+    public LocationsItems Guard2Corpse { get; } = new 
     (TextGuard.DeadBodyIntro,
         ListItemGuard.Guard2Items,
         ListItemGuard.Guard2Description

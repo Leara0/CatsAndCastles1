@@ -3,7 +3,7 @@ using CatsAndCastles1.Text.Inventory;
 
 namespace CatsAndCastles1.Lists.ItemsAtLocations;
 
-public class ListItemsMainRoom
+public class ListItemsMainR
 {
     public static readonly List<string> ClosetDescription =
     [

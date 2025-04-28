@@ -26,7 +26,7 @@ public class LocationsItems : Location
 
     #endregion
 
-    public void LocationMethod(Inventory inventory) // this is the method to call all the stuff for one location!!
+    public void VisitLocation(Inventory inventory) // this is the method to call all the stuff for one location!!
     {
         DisplayLocationInfo();
         if (InventoryItemsAtLocation.Count > 0)

@@ -15,7 +15,7 @@ public static class SwitchTree3F
     public static void ThirdFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard1, Instances3F instances3F)
     {
         Console.Clear();
-        cat.EndGame = false;//@TODO why do I need this??
+        cat.EndGame = false;
         UIInventory uiInventory = new UIInventory();
         instances3F.ThirdFloor.PrintIntro();
 
@@ -25,14 +25,14 @@ public static class SwitchTree3F
             if (guard1.Health == 0)
             {
                 instances3F.ThirdFloor.OptionsAtLocation.Insert(4, TextGuard.GuardsDeadBody);
-                instances3F.Guard1Corpse.LocationMethod(inventory);
+                instances3F.Guard1Corpse.VisitLocation(inventory);
             }
             if (cat.Location == Hero.Place.SecondFloor) return;
         }
         
         do
         {
-            int choice = instances3F.ThirdFloor.RoomMethod();
+            int choice = instances3F.ThirdFloor.DecideWhereToExplore();
             var whereToExplore = ListOptionsAtLocations.ThirdFloorChoices[choice];
             Console.Clear();
             switch (whereToExplore) //this is a call on the Base Location class
@@ -44,7 +44,7 @@ public static class SwitchTree3F
                     SwitchHelpMethod.TryToUnlockDoorAndVisitRoom(inventory, cat, instances3F.StudyF3D2);
                     break;
                 case Text3F.BedroomF3D3Option: 
-                    instances3F.BedroomF3D3.LocationMethod(inventory);
+                    instances3F.BedroomF3D3.VisitLocation(inventory);
                     break;
                 case  Text3F.ClosetF3D4Option: 
                     SwitchHelpMethod.TryToUnlockDoorAndVisitRoom(inventory, cat, instances3F.ClosetF3D4);
@@ -56,7 +56,7 @@ public static class SwitchTree3F
                     uiInventory.RemoveItemFromInventory(cat, inventory);
                     break;
                 case TextGuard.GuardsDeadBody:
-                    instances3F.Guard1Corpse.LocationMethod(inventory);
+                    instances3F.Guard1Corpse.VisitLocation(inventory);
                     break;
             }
         } while (cat.Location == Hero.Place.ThirdFloor);

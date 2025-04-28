@@ -128,6 +128,15 @@ public class TextInventoryItems
 
     public const string LoafOfBread = "the loaf of bread";
 
+    public const string DriedMeatDesc =
+        "A strip of tough, salted meat, preserved well enough to last through many days of travel.";
+    public const string DriedMeat = "the dried meat";
+
+    public const string HardCheeseDesc =
+        "A small wedge of hard, crumbly cheese with a sharp smell, wrapped in waxed cloth to keep it fresh.";
+    public const string HardCheese = "the hard cheese";
+    
+
     public const string CatWantedPosterDesc =
         "A worn poster shows a rough sketch of a cat: \"WANTED – THEFT & MISCHIEF.\"";
 

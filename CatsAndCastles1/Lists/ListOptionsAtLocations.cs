@@ -39,4 +39,10 @@ public static class ListOptionsAtLocations
         Text3F.HeadDownStairsOption,
     ];
 
+    public static readonly List<string> FirstFloorChoices =
+    [
+        Text1F.HeadTowardsOutsideDoorOption,
+        Text1F.ExploreTheRoomOption,
+        Text2F.HeadUpStairsOption,
+    ];
 }

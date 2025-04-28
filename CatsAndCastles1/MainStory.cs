@@ -11,6 +11,11 @@ namespace CatsAndCastles1;
 
 public class MainStory
 {
+    //@TODO still:
+    //passout
+    //die (no more lives)
+    //end game (win or loose)
+    //elixirs
     public void RunGame()
     {
         #region instantiating Classes
@@ -20,7 +25,6 @@ public class MainStory
         var instances2F = new Instances2F();
         var instances1F = new Instances1F();
         var instancesCharacters = new InstancesCharacters();
-        // ReSharper restore InconsistentNaming
 
         var inventory = new Inventory();
         {
@@ -60,10 +64,9 @@ public class MainStory
                         instances2F);
                     break;
                 case Hero.Place.FirstFloor:
-                    Screen.Print(
-                        "Congrats on making it to the first floor. It's not built yet so you get to start over!");
-                    UserInput.DramaticPauseClrScreen();
-                    instancesCharacters.Cat.Location = Hero.Place.MainRoom;
+                    SwitchTree1F.FirstFloorSwitchBoard(inventory, instancesCharacters.Cat,
+                        instancesCharacters.Warden,
+                        instances1F);
                     break;
                 case Hero.Place.OutsideCastle:
                     break;

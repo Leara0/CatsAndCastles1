@@ -16,27 +16,27 @@ public class InstancesMainR
     public LocationsItems Closet { get; }= new LocationsItems
     (
         TextMainRoom.ExploreCloset,
-        ListItemsMainRoom.ClosetItems,
-        ListItemsMainRoom.ClosetDescription
+        ListItemsMainR.ClosetItems,
+        ListItemsMainR.ClosetDescription
     );
 
     public LocationsItems Nightstand { get; } = new LocationsItems
     (
         TextMainRoom.ExploreNightStand,
-        ListItemsMainRoom.NightStandItems,
-        ListItemsMainRoom.NightStandDescription
+        ListItemsMainR.NightStandItems,
+        ListItemsMainR.NightStandDescription
     );
     public LocationsItems Bookshelf { get; } = new LocationsItems
     (
         TextMainRoom.ExploreBookshelf,
-        ListItemsMainRoom.BookshelfItems,
-        ListItemsMainRoom.BookshelfDescription
+        ListItemsMainR.BookshelfItems,
+        ListItemsMainR.BookshelfDescription
     );
     public LocationsItems Hearth { get; } =new LocationsItems
     (
         TextMainRoom.ExploreHearth,
-        ListItemsMainRoom.HearthItems,
-        ListItemsMainRoom.HearthDescription
+        ListItemsMainR.HearthItems,
+        ListItemsMainR.HearthDescription
     );
     public LocationsLocked MainDoor { get; }=
         new LocationsLocked

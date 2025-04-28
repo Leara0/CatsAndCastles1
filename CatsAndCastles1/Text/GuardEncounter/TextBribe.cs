@@ -17,7 +17,7 @@ public class TextBribe
         "What if we just pretend you never saw me?\"";
 
     public const string GuardRollsForBribable =
-        "The guard will roll a D20 to determine their willingness to accept a bribe. If the result is " +
+        "The guard rolls a D20 to decide whether they are open to accepting a bribe. If the result is " +
         "greater than 5, the guard is open to negotiation.";
 
     public const string WardenRollsForBribable =

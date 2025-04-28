@@ -68,7 +68,7 @@ public static class GuardBribe
     static bool BribeIsAccepted(BadGuy badGuy, int roll)
     {
         return ((badGuy.Type == BadGuy.GuardType.Warden && roll > 17) || //if the guard is open to being bribed:
-                (badGuy.Type == BadGuy.GuardType.Guard && roll > 5));
+                (badGuy.Type != BadGuy.GuardType.Warden && roll > 5));
     }
 
     static void HandleBribeFailure(Inventory inventory, Hero cat, BadGuy badGuy)

@@ -25,7 +25,7 @@ public class FirstFloor
        }
 
 
-       // stuff here to wrap things up is you get past him
+       // stuff here to wrap things up if you get past him
        if (warden.IsDead || cat.SuccessfulBribed)
        {
            if (warden.IsDead && !cat.LeftFirstFloor)

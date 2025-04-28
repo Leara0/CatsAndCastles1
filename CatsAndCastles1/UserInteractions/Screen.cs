@@ -41,7 +41,7 @@ public static class Screen
 
     public static void Print(string text, int extraPadding =0)
     {
-        Console.ForegroundColor = ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.Gray;
         TextBlockToList(CreateListOfStrings(text, extraPadding), extraPadding);
     }
 

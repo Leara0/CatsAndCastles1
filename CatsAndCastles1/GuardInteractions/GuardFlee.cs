@@ -38,6 +38,6 @@ public static class GuardFlee
     static bool RollSuccessfulForFlee(int roll, BadGuy badGuy)
     {
         return (badGuy.Type == BadGuy.GuardType.Warden && roll > 10) ||
-               (badGuy.Type == BadGuy.GuardType.Guard && roll > 5);
+               (badGuy.Type != BadGuy.GuardType.Warden && roll > 5);
     }
 }

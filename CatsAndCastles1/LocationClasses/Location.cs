@@ -22,9 +22,9 @@ public class Location
 
     public Location(string locationIntro, string pickMenuHeader, List<string> optionsAtLocation)
     {
-        OptionsAtLocation = optionsAtLocation;
         LocationIntro = locationIntro;
         _menuHeader = pickMenuHeader;
+        OptionsAtLocation = optionsAtLocation;
     }
 
 
@@ -32,7 +32,7 @@ public class Location
     //print locationIntro
     //call interactiveMenu on the OptionsAtLocation
     //that feeds into... game tree??
-    public int RoomMethod() // this is the method to call all the stuff for this location
+    public int DecideWhereToExplore() // this is the method to call all the stuff for this location
     {
         Console.Clear();
         Screen.Print(_menuHeader);

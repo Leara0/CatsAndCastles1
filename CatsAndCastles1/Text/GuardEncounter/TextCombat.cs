@@ -67,6 +67,13 @@ public static class TextCombat
     public const string OpponentAttack = "Your opponent attacks. They roll a D";
     public const string ShieldDeflects = "The shield deflects 1 damage.";
     public const string YouKilledGuard = "\nYou are victorious in the fight against the guard";
+    public const string DefeatWarden =
+        "\nThe battle was brutal. The Warden was relentless. You dodged, clawed, bit, and fought " +
+        "with everything you had." +
+        "\n\nNow, the Warden lies motionless, its massive form still, its armor dented and " +
+        "bloodied. You stand victorious. Your body aches, your breath comes ragged, " +
+        "but you are alive." +
+        "\n\nAnd then — you see it.\n";
     public const string GuardWins = "\nThe guard has been victorious in this fight\n";
     # endregion
     

@@ -16,14 +16,14 @@ public static class SwitchTree2F
         Instances2F instances2F)
     {
         Console.Clear();
-        cat.EndGame = false; //@TODO what is this about?
+        cat.EndGame = false; 
         UIInventory uiInventory = new UIInventory();
         instances2F.SecondFloor.PrintIntro();
         //guard2.Health = 0;//@TODO remove this later!! 
 
         do
         {
-            int choice = instances2F.SecondFloor.RoomMethod();
+            int choice = instances2F.SecondFloor.DecideWhereToExplore();
             var whereToExplore = ListOptionsAtLocations.SecondFloorChoices[choice];
             Console.Clear();
             switch (whereToExplore) //this is a call on the Base Location class
@@ -73,10 +73,10 @@ public static class SwitchTree2F
                 switch (bodyChoice)
                 {
                     case 0: //explore corpse
-                        guardCorpse.LocationMethod(inventory);
+                        guardCorpse.VisitLocation(inventory);
                         break;
                     case 1: // explore room
-                        guardQuarter.LocationMethod(inventory);
+                        guardQuarter.VisitLocation(inventory);
                         break;
                     case 2: //leave
                         break;
@@ -90,6 +90,6 @@ public static class SwitchTree2F
     static void ExploreRoomIfBribed(Inventory inventory, BadGuy badGuy, LocationsLocked location)
     {
         if (badGuy.Bribe == BadGuy.Outcome.Success) //if you fled from the guard you can't explore this room
-            location.LocationMethod(inventory);
+            location.VisitLocation(inventory);
     }
 }

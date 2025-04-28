@@ -65,6 +65,10 @@ public class TextGuard
     public const string DeadBodyIntro =
         "\nYou stand over the fallen guard. His motionless " +
         "body lies before you, and you notice several items that might aid you on your journey:";
+    
+    public const string DeadWardenBodyIntro = 
+        "\nYou stand over the massive form of the fallen warden. His motionless " +
+        "body lies before you, and you notice several items that might aid you on your journey:";
 
     public const string GuardsDeadBody = "The corpse of the fallen guard.";
     public const string OrExploreTheRoom = "explore the room";

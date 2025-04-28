@@ -17,7 +17,8 @@ public class BadGuy : Character
 
     public enum GuardType
     {
-        Guard,
+        Guard1,
+        Guard2,
         Warden
     }
 

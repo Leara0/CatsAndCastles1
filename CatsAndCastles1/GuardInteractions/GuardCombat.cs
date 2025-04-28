@@ -45,7 +45,8 @@ public static class GuardCombat
 
         if (badGuy.Health == 0)
         {
-            Screen.Print(TextCombat.YouKilledGuard);
+            if (badGuy.Type != BadGuy.GuardType.Warden)Screen.Print(TextCombat.YouKilledGuard);
+            else Screen.Print(TextCombat.DefeatWarden);
             badGuy.IsDead = true;
             //@TODO looting
             UserInput.DramaticPauseClrScreen();

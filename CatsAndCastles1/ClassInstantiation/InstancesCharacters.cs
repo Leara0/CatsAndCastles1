@@ -17,7 +17,7 @@ public class InstancesCharacters
         GuardDog1 = new BadGuy
         (
             ListGuardSpecificText.Guard1Wording,
-            BadGuy.GuardType.Guard
+            BadGuy.GuardType.Guard1
         );
         GuardDog1.Health = GuardDog1.SetHealth(25, 35);
         GuardDog1.MaxHealth = GuardDog1.Health;
@@ -25,7 +25,7 @@ public class InstancesCharacters
         GuardDog2 = new BadGuy
         (
             ListGuardSpecificText.Guard2Wording,
-            BadGuy.GuardType.Guard
+            BadGuy.GuardType.Guard2
         );
         GuardDog2.Health = GuardDog2.SetHealth(25, 35);
         GuardDog2.MaxHealth = GuardDog2.Health;

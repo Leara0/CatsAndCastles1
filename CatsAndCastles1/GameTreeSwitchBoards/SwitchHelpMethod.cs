@@ -14,11 +14,12 @@ public class SwitchHelpMethod
             if (!location.DoorIsOpen()) return;
         }
 
-        location.LocationMethod(inventory);
+        location.VisitLocation(inventory);
     }
     public static void DoStairs(Hero cat, Hero.Place place, string text)
     {
         Screen.Print(text);
+        UserInput.DramaticPauseClrScreen();
         cat.Location = place;
     }
 }

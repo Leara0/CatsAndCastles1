@@ -19,7 +19,7 @@ public static class SwitchTreeMainR
       
         do
         {
-            int number = instanceMR.MainRoom.RoomMethod();
+            int number = instanceMR.MainRoom.DecideWhereToExplore();
             var whereToExplore = ListOptionsAtLocations.MainRoomChoices[number];
             Console.Clear();
             switch (whereToExplore) //this is a call on the BaseLocation class
@@ -31,19 +31,19 @@ public static class SwitchTreeMainR
                         cat.Location = Hero.Place.ThirdFloor;
                     break;
                 case TextMainRoom.ClosetDoor: 
-                    instanceMR.Closet.LocationMethod(inventory);
+                    instanceMR.Closet.VisitLocation(inventory);
                     break;
                 case TextMainRoom.WindowOption: 
                     SwitchTreeWindow.WindowSwitchboard(inventory, cat, instanceMR.LocationsWindow);
                     break;
                 case TextMainRoom.NightStandOption: 
-                    instanceMR.Nightstand.LocationMethod(inventory);
+                    instanceMR.Nightstand.VisitLocation(inventory);
                     break;
                 case TextMainRoom.BookshelfOption: 
-                    instanceMR.Bookshelf.LocationMethod(inventory);
+                    instanceMR.Bookshelf.VisitLocation(inventory);
                     break;
                 case TextMainRoom.HearthOption: 
-                    instanceMR.Hearth.LocationMethod(inventory);
+                    instanceMR.Hearth.VisitLocation(inventory);
                     break;
                 case TextWorkInventory.DiscardRevisitOption: 
                     uiInventory.AddItemToInventoryFromDiscard(inventory);
