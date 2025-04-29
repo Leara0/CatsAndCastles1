@@ -1,6 +1,7 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.ClassInstantiation;
 using CatsAndCastles1.GameTreeSwitchBoards;
+using CatsAndCastles1.PassOutDieEndGame;
 using CatsAndCastles1.Text.Inventory;
 using CatsAndCastles1.UserInteractions;
 
@@ -46,6 +47,7 @@ public class MainStory
         inventory.Pack.Add(TextInventoryItems.RingOfKeys);
         inventory.Pack.Add(TextInventoryItems.ShortSword);
         instancesMainRoom.MainDoor.ChangeDoorLockStatus(true);
+        instancesCharacters.Cat.Health = 5;
         
         
         do
@@ -71,8 +73,9 @@ public class MainStory
                 case Hero.Place.OutsideCastle:
                     break;
                 case Hero.Place.PassedOut:
+                    PassOut.LooseALife(instancesCharacters.Cat);
                     break;
-                case Hero.Place.Dead:
+                case Hero.Place.Escaped:
                     //code that ties things up
                     Environment.Exit(0);
                     break;

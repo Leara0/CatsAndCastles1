@@ -23,7 +23,7 @@ public static class SwitchTreeWindow
                 break;
             case "jump down":
                 place.JumpDown();
-                cat.Location = Hero.Place.Dead;
+                cat.Location = Hero.Place.PassedOut;
                 break;
         }
 

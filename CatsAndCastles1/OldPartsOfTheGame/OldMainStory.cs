@@ -12,7 +12,7 @@ public class OldMainStory
     // die and choose not to escape
     private void DeadEnding(Hero cat)
     {
-        if (cat.Location == Hero.Place.Dead)
+        //if (cat.Location == Hero.Place.Dead)
             Screen.Print("\nAs the darkness takes hold, a strange sense of peace washes over you. " +
                          "The struggle, the fear, the desperate clawing for survival — it all fades into " +
                          "nothingness.\n\nThe castle will remain, its cold stone walls holding secrets " +
@@ -70,7 +70,7 @@ public class OldMainStory
         {
             Screen.Print("Nine lives, and you’ve spent them all. Shadows close in once more — but this time, " +
                          "there is no return.");
-            cat.Location = Hero.Place.Dead;
+            //cat.Location = Hero.Place.Dead;
             cat.EndGame = true;
             return;
         }
@@ -96,7 +96,7 @@ public class OldMainStory
         }
         else
         {
-            cat.Location = Hero.Place.Dead;
+            //cat.Location = Hero.Place.Dead;
             cat.EndGame = true;
         }
     }

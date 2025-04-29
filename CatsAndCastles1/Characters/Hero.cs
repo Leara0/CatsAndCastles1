@@ -10,7 +10,7 @@ public class Hero:Character
         ThirdFloor,
         SecondFloor,
         FirstFloor,
-        Dead
+        Escaped
     }
     public Place Location { get; set; }
     // I'll use this to tell where the player is (passed out, third floor, second floor, first floor, outside castle)

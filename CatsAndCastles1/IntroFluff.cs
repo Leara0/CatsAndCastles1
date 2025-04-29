@@ -16,8 +16,9 @@ public class IntroFluff
         UserInput.DramaticPauseClrScreen();
         }
 
-    public void SubsequentWakeUp(Character cat)
+    public static void SubsequentWakeUp(Character cat)
     {
+        Console.Clear();
         cat.Health = 60;
         Screen.Print(TextMainRoom.SubsequentWakeUp);
         Screen.Print(TextMainRoom.StartInRoom);
