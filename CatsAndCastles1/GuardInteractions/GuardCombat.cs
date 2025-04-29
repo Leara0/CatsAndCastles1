@@ -10,58 +10,42 @@ public static class GuardCombat
 {
     public static void EngageInCombat(Hero cat, BadGuy badGuy, Inventory inventory)
     {
-        Console.Clear();
-        Screen.Print(TextCombat.CombatIntro);
-        UserInput.DramaticPauseClrScreen();
+        GuardCombatHelper.IntroStuff(cat);
 
-        UIWeapons.GetHeroWeaponChoice(cat, inventory.Pack); //this includes words about picking a weapon
-        UIWeapons.GetShieldChoice(cat, inventory.Pack);
+        GuardCombatHelper.WeaponAssignmentAndReview(inventory, cat, badGuy);
 
-        //earlier this was a problem when I removed the dramatic pause (chatGPT suggested a sleep to synchronize things 
-        //but after I added and removed the sleep it started working again
-        AssignBadGuyWeaponAndShield(badGuy);
-
-        //review weapons choices
-        Screen.PrintHeroAttack(TextCombat.HeroWeaponReminder + cat.Weapon);
-        Screen.PrintHeroAttack(cat.HasShield? TextCombat.WithAShield : TextCombat.WithoutAShield);
-        
-        UserInput.DramaticPauseClrScreen();
-        
-        if (badGuy.Bribe == BadGuy.Outcome.Failure || badGuy.Flee == BadGuy.Outcome.Failure) //TODO make sure this code is right
-        {
-            Screen.Print(TextCombat.GuardAttacksFirst);
-            GuardAttacks(badGuy, cat);
-            UserInput.DramaticPauseClrScreen();
-        }
+        GuardAttacksFirstIfEvasionFailed(cat, badGuy);
 
         while (cat.Health > 0) //don't include badGuy because of break in code
         {
             HeroAttacks(cat, badGuy);
             if (badGuy.Health == 0) break;
 
-            GuardAttacks(badGuy, cat);
+            GuardCombatHelper.GuardAttacks(badGuy, cat);
             UserInput.DramaticPauseClrScreen();
         }
 
         if (badGuy.Health == 0)
         {
-            if (badGuy.Type != BadGuy.GuardType.Warden)Screen.Print(TextCombat.YouKilledGuard);
-            else Screen.Print(TextCombat.DefeatWarden);
-            badGuy.IsDead = true;
-            //@TODO looting
-            UserInput.DramaticPauseClrScreen();
+            GuardCombatHelper.WrapUpGuardDeath(badGuy);
             return; //get out of this combat method
         }
 
-        if (cat.Health == 0)
-        {
-            Screen.Print(TextCombat.GuardWins);
-            cat.Location = Hero.Place.PassedOut; //@TODO finish this part so it works!
-        }
-
+        if (cat.Health == 0) GuardCombatHelper.WrapUpCatDeath(cat);
     }
 
-    static void  HeroAttacks(Hero cat, BadGuy guard)
+    static void GuardAttacksFirstIfEvasionFailed(Hero cat, BadGuy badGuy)
+    {
+        if (badGuy.Bribe == BadGuy.Outcome.Failure ||
+            badGuy.Flee == BadGuy.Outcome.Failure) //TODO make sure this code is right
+        {
+            Screen.Print(TextCombat.GuardAttacksFirst);
+            GuardCombatHelper.GuardAttacks(badGuy, cat);
+            UserInput.DramaticPauseClrScreen();
+        }
+    }
+
+    static void HeroAttacks(Hero cat, BadGuy guard)
     {
         Screen.PrintHeroAttack(TextCombat.YouAttack + cat.WeaponDie);
         Attack(cat, guard);
@@ -71,15 +55,7 @@ public static class GuardCombat
         Thread.Sleep(200);
     }
 
-    static void  GuardAttacks(BadGuy guard, Hero cat)
-    {
-        Screen.PrintBadGuyAttack(TextCombat.OpponentAttack + guard.WeaponDie);
-        Attack(guard, cat);
-        HealthMessage(cat);
-        Thread.Sleep(200);
-    }
-
-    static void Attack(Character attacker, Character defender)
+    public static void Attack(Character attacker, Character defender)
     {
         int damage = Screen.DiceRoller(attacker.WeaponDie) + attacker.WeaponMod;
         Screen.Print(TextGeneral.Damage + damage);
@@ -91,35 +67,12 @@ public static class GuardCombat
         }
     }
 
-    static void  AssignBadGuyWeaponAndShield(BadGuy badGuy)
+    public static void HealthMessage(Character character)
     {
-        var rnd = new Random();
-        var pick = rnd.Next(0, ListWeaponsInfo.BadGuyWeapons.Count);
-        badGuy.Weapon = ListWeaponsInfo.BadGuyWeapons[pick];
-        badGuy.WeaponDie = ListWeaponsInfo.DieForBGWeapon[pick];
-        badGuy.WeaponMod = ListWeaponsInfo.ModForBGWeapon[pick];
-        Screen.PrintBadGuyAttack(TextCombat.BadGuyWeapon + badGuy.Weapon);
-
-        pick = rnd.Next(1, 3);
-        if (pick == 1)
-        {
-            Screen.PrintBadGuyAttack(TextCombat.WithAShield);
-            badGuy.HasShield = true;
-        }
-        else
-        {
-            Screen.PrintBadGuyAttack(TextCombat.WithoutAShield);
-            badGuy.HasShield = false;
-        }
-    }
-
-    static  void HealthMessage(Character character)
-    {
-        character.Health = int.Max(character.Health, 0);
+        character.Health = Math.Max(character.Health, 0);
         if (character is Hero)
             Screen.Print(TextCombat.HeroHealthCheck + character.Health + TextCombat.OutOf + character.MaxHealth);
         else
             Screen.Print(TextCombat.GuardsHealthCheck + character.Health + TextCombat.OutOf + character.MaxHealth);
     }
-    
 }

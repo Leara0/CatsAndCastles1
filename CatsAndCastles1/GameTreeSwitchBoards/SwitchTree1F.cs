@@ -30,7 +30,7 @@ public class SwitchTree1F
                 instances1F.FirstFloor.OptionsAtLocation.Insert(2, TextGuard.GuardsDeadBody);
                 instances1F.WardenCorpse.VisitLocation(inventory);
             }
-            if (cat.Location == Hero.Place.SecondFloor) return;
+            if (cat.Location == Hero.Place.SecondFloor || cat.Health ==0) return;
         }
 
         instances1F.FirstFloor.PrintIntro();
@@ -53,7 +53,7 @@ public class SwitchTree1F
                     instances1F.WardenCorpse.VisitLocation(inventory);
                     break;
                 case Text2F.HeadUpStairsOption://@TODO fix this!!
-                    SwitchHelpMethod.DoStairs(cat, Hero.Place.SecondFloor, TextGeneral.HeadUpStairs);
+                    SwitchHelper.DoStairs(cat, Hero.Place.SecondFloor, TextGeneral.HeadUpStairs);
                     break;
             }
         } while (cat.Location == Hero.Place.FirstFloor);

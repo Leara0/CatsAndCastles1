@@ -20,8 +20,9 @@ public class Hero:Character
     public bool EndGame { get; set; }
     public bool LeftFirstFloor { get; set; }
     public bool LostToGuard { get; set; }
-    
-    public bool ReturningTo1F {get;set;}
+
+    public bool ReturningTo1F { get; set; }
+    public bool FirstCombatTriggered { get; set; } = false;
     
     
     

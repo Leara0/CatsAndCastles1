@@ -7,7 +7,8 @@ public class TextMainRoom
     public const string IntroCutScene = "Greetings, adventurer. The night has been long and unkind, and your " +
                                         "memories of it are little more than a haze. " +
                                         "\n\nYou wake, dazed and disoriented, your senses slow to return as you " +
-                                        "instinctively groom your soft coat. A quick glance reveals your trusty pack — a " +
+                                        "instinctively groom your soft coat. By all rights, you should not be breathing. " +
+                                        "Yet somehow, you are.A quick glance reveals your trusty pack — a " +
                                         "container meant to carry up to five treasures. Yet as you inspect it, your heart sinks: " +
                                         "it is empty.";
 

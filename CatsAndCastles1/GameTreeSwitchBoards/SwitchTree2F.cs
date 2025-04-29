@@ -29,24 +29,25 @@ public static class SwitchTree2F
             switch (whereToExplore) //this is a call on the Base Location class
             {
                 case Text2F.MeetingRoomF2D1Option:
-                    SwitchHelpMethod.TryToUnlockDoorAndVisitRoom(inventory, cat, instances2F.MeetingRoomF2D1);
+                    SwitchHelper.TryToUnlockDoorAndVisitRoom(inventory, cat, instances2F.MeetingRoomF2D1);
                     break;
                 case Text2F.GuardQuartersF2D2Option: //door is not locked
                     SwitchTreeGuard.GuardEncounterSwitchboard(cat, guard2, inventory);
+                    if (cat.Health == 0) return;
                     ChoicesWithDeadGuard(inventory, guard2, instances2F.Guard2Corpse, instances2F.GuardQuartersF2D2);
                     ExploreRoomIfBribed(inventory, guard2, instances2F.GuardQuartersF2D2);
                     break;
                 case Text2F.ClosetF2R3Option:
-                    SwitchHelpMethod.TryToUnlockDoorAndVisitRoom(inventory, cat, instances2F.ClosetF2R3);
+                    SwitchHelper.TryToUnlockDoorAndVisitRoom(inventory, cat, instances2F.ClosetF2R3);
                     break;
                 case Text2F.LibraryF2R4Option:
-                    SwitchHelpMethod.TryToUnlockDoorAndVisitRoom(inventory, cat, instances2F.LibraryF2R4);
+                    SwitchHelper.TryToUnlockDoorAndVisitRoom(inventory, cat, instances2F.LibraryF2R4);
                     break;
                 case Text2F.HeadUpStairsOption:
-                    SwitchHelpMethod.DoStairs(cat, Hero.Place.ThirdFloor, TextGeneral.HeadUpStairs);
+                    SwitchHelper.DoStairs(cat, Hero.Place.ThirdFloor, TextGeneral.HeadUpStairs);
                     break;
                 case Text3F.HeadDownStairsOption:
-                    SwitchHelpMethod.DoStairs(cat, Hero.Place.FirstFloor, TextGeneral.HeadDownStairs);
+                    SwitchHelper.DoStairs(cat, Hero.Place.FirstFloor, TextGeneral.HeadDownStairs);
                     break;
                 case TextWorkInventory.PackOption:
                     uiInventory.RemoveItemFromInventory(cat, inventory);

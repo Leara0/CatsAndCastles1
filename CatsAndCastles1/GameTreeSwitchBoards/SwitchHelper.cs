@@ -4,7 +4,7 @@ using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.GameTreeSwitchBoards;
 
-public class SwitchHelpMethod
+public class SwitchHelper
 {
     public static void TryToUnlockDoorAndVisitRoom(Inventory inventory, Hero cat, LocationsLocked location)
     {

@@ -27,7 +27,7 @@ public static class SwitchTree3F
                 instances3F.ThirdFloor.OptionsAtLocation.Insert(4, TextGuard.GuardsDeadBody);
                 instances3F.Guard1Corpse.VisitLocation(inventory);
             }
-            if (cat.Location == Hero.Place.SecondFloor) return;
+            if (cat.Location == Hero.Place.SecondFloor || cat.Health == 0) return;
         }
         
         do
@@ -41,16 +41,16 @@ public static class SwitchTree3F
                     cat.Location = Hero.Place.MainRoom;
                     return; 
                 case Text3F.StudyF3D2Option: 
-                    SwitchHelpMethod.TryToUnlockDoorAndVisitRoom(inventory, cat, instances3F.StudyF3D2);
+                    SwitchHelper.TryToUnlockDoorAndVisitRoom(inventory, cat, instances3F.StudyF3D2);
                     break;
                 case Text3F.BedroomF3D3Option: 
                     instances3F.BedroomF3D3.VisitLocation(inventory);
                     break;
                 case  Text3F.ClosetF3D4Option: 
-                    SwitchHelpMethod.TryToUnlockDoorAndVisitRoom(inventory, cat, instances3F.ClosetF3D4);
+                    SwitchHelper.TryToUnlockDoorAndVisitRoom(inventory, cat, instances3F.ClosetF3D4);
                     break;
                 case Text3F.HeadDownStairsOption: 
-                    SwitchHelpMethod.DoStairs(cat, Hero.Place.SecondFloor, TextGeneral.HeadDownStairs);
+                    SwitchHelper.DoStairs(cat, Hero.Place.SecondFloor, TextGeneral.HeadDownStairs);
                     break;
                 case TextWorkInventory.PackOption:
                     uiInventory.RemoveItemFromInventory(cat, inventory);
