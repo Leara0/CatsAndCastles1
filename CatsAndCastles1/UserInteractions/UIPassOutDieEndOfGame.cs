@@ -1,4 +1,5 @@
 using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.EndOfGame;
 
 namespace CatsAndCastles1.UserInteractions;
 

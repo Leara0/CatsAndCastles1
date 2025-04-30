@@ -25,14 +25,6 @@ public class Text1F
         "you with the promise of freedom. Behind you, the stairway rises, leading back into the castle’s shadowed " +
         "depths, where secrets and supplies may yet be uncovered. \n\nWhat will you choose?";
 
-    public const string BribeReminder =
-        "Bear in mind, if you leave this floor the guard will expect another bribe or a " +
-        "fight";//
-
-    public const string HeadTowardOutsideDoor =
-        "\nYou stagger forward, each step pulling you away from the gloom of the castle, " +
-        "away from the danger, away from death itself. One final push, and you're free.";
-
     public const string ChooseToReturnUpStairs =
         "Instead of stepping through to freedom, you turn away from the threshold and begin " +
         "to ascend the stairs." +
@@ -40,12 +32,8 @@ public class Text1F
         "to whisper in the silence. Your decision isn’t made out of fear, but of " +
         "resolve — there’s more to be gathered, more to be learned before you face the " +
         "unknown outside. As you reach the landing, you wonder what other tools or clues " +
-        "might lie waiting in the higher levels of this ancient fortress.";//
+        "might lie waiting in the higher levels of this ancient fortress.";
 
-
-    public const string WardensCorpseRemains =
-        "The Warden’s body remains where it fell, a grim reminder of the battle you fought." +
-        "\n\nThe way out stands ready — if you choose to take it.";//
 
     public const string HeadTowardsOutsideDoorOption = "head towards the door on the opposite side of the room.";
     public const string ExploreTheRoomOption = "explore the room";

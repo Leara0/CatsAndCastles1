@@ -43,8 +43,7 @@ public class SwitchTree1F
             switch (whereToExplore)
             {
                 case Text1F.HeadTowardsOutsideDoorOption:
-                    Screen.Print(Text1F.HeadTowardOutsideDoor);
-                    cat.Location = Hero.Place.OutsideCastle;
+                    cat.Location = Hero.Place.OutsideCastle;//@TODO add this after rope exit window
                     break;
                 case Text1F.ExploreTheRoomOption:
                     instances1F.Room1F.VisitLocation(inventory);
@@ -53,7 +52,7 @@ public class SwitchTree1F
                     instances1F.WardenCorpse.VisitLocation(inventory);
                     break;
                 case Text2F.HeadUpStairsOption://@TODO fix this!!
-                    SwitchHelper.DoStairs(cat, Hero.Place.SecondFloor, TextGeneral.HeadUpStairs);
+                    SwitchHelper.DoStairs(cat, Hero.Place.SecondFloor, Text1F.ChooseToReturnUpStairs);
                     break;
             }
         } while (cat.Location == Hero.Place.FirstFloor);

@@ -1,8 +1,9 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.EndOfGame;
 using CatsAndCastles1.UserInteractions;
 
-namespace CatsAndCastles1.PassOutDieEndGame;
+namespace CatsAndCastles1.EndOfGame.PassOutOrDie;
 
 public class PassOut
 {

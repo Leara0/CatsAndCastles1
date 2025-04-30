@@ -1,6 +1,6 @@
 using CatsAndCastles1.Text.Inventory;
 
-namespace CatsAndCastles1.Lists.ItemsAtLocations;
+namespace CatsAndCastles1.Lists.ListItemsAtLocations;
 
 public class ListItems1F
 {

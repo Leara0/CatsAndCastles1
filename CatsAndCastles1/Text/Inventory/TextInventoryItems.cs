@@ -151,4 +151,9 @@ public class TextInventoryItems
     public const string CandleStub = "the candle stub";
     public const string Paws = "your bare paws";
     public const string GuardPaws = "their bare paws";
+    
+   
+
+
+
 }

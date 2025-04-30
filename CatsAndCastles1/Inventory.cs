@@ -13,10 +13,7 @@ public class Inventory //I got rid of the chance to use sheets to climb down. No
 
     public List<string> Pack { get; set; }
     public List<string> DiscardedItems { get; set; }
-    public List<string> ModifiedWeaponPack { get; set; }
-
     #endregion
-
 
     public int AddGoldToPurse(string item)
     {
@@ -39,4 +36,6 @@ public class Inventory //I got rid of the chance to use sheets to climb down. No
     {
         return _purse;
     }
+    
+    
 }

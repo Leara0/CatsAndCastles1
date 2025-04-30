@@ -8,28 +8,11 @@ namespace CatsAndCastles1.UserInteractions;
 
 public class UIInventory
 {
-    #region Fields and Class Instances
-
     private int _selectionNumber;
-    private readonly UserInput UserInput = new UserInput();
-
-    #endregion
-
-    #region Constructor
-
-    public UIInventory()
-    {
-    }
-
-    public UIInventory( Inventory inventory)
-    {
-    }
-
-    #endregion
-
+    
     #region Public Methods
 
-    public bool SpaceInPack(string item, Inventory inventory) //this method will deal with a full pack
+    private bool SpaceInPack(string item, Inventory inventory) //this method will deal with a full pack
     {
         if (inventory.Pack.Count > 4)
         {
@@ -63,7 +46,7 @@ public class UIInventory
         {
             int itemNumber = GetItemSelection(specific);
             if (itemNumber == -1 || itemNumber == specific.InventoryItemsAtLocation.Count)
-                return; //return if all the items are gone or they chose to leave this area
+                return; //return if all the items are gone, or they chose to leave this area
 
             string item = specific.InventoryItemsAtLocation[itemNumber];
 
@@ -84,7 +67,7 @@ public class UIInventory
         } while (true); // this ends if they choose to leave this area
     }
 
-    public void AddGold(string item, Inventory inventory)
+    private void AddGold(string item, Inventory inventory)
     {
         Screen.Print($"Your coin purse now contains {inventory.AddGoldToPurse(item)} gold coins");
     }
@@ -95,7 +78,7 @@ public class UIInventory
         {
             int itemNumber = PickFromDiscard(inventory);
             if (itemNumber == -1 || itemNumber == inventory.DiscardedItems.Count)
-                return; //return if all the items are gone or they chose to leave the stash alone
+                return; //return if all the items are gone, or they chose to leave the stash alone
 
             string item = inventory.DiscardedItems[itemNumber];
 
@@ -170,32 +153,26 @@ public class UIInventory
         {
             int itemNumber = PickFromInventory(inventory);
             if (itemNumber == -1 || itemNumber == inventory.Pack.Count)
-                return; //return if all the items are gone or they chose to quit removing from inventory
+                return; //return if all the items are gone, or they chose to quit removing from inventory
 
             string item = inventory.Pack[itemNumber];
+            if (item.Contains("vial"))
+            {
+                Screen.Print(TextWorkInventory.DrinkElixir);
+                cat.Health += 10;
+                inventory.Pack.Remove(item);
+                UserInput.DramaticPauseClrScreen();
+                return;
+            }
 
             inventory.DiscardedItems.Add(item);
             Screen.Print($"You have removed {item} from your pack");
             if (ListWeaponsInfo.ShieldOptions.Contains(item))
                 cat.HasShield = false;
-            inventory.Pack.RemoveAt(itemNumber);
+            inventory.Pack.Remove(item);
             UserInput.DramaticPauseClrScreen();
         } while (true); // this ends if they choose to leave this area
     }
 
     
-
-
-    public void SpendGold(int amount, Inventory inventory)
-    {
-        int total = inventory.SpendGold(amount);
-        if (total == -1)
-        {
-            Screen.Print(TextWorkInventory.InsufficientFunds);
-        }
-        else
-        {
-            Screen.Print($"Your purse now contains {total} gold coins");
-        }
-    }
 }

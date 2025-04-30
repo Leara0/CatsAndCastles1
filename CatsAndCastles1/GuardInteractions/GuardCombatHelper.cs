@@ -1,6 +1,7 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.Lists;
 using CatsAndCastles1.Text;
+using CatsAndCastles1.Text.EndOfGame;
 using CatsAndCastles1.Text.GuardEncounter;
 using CatsAndCastles1.UserInteractions;
 

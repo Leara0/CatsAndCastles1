@@ -28,12 +28,17 @@ public class TextWorkInventory
     public const string GoldCoins = " gold coins.\n";
 
     public const string ThinkAboutInventory =
-        "You take a moment to review the contents " +
-        "of your pack, weighing the value of each item. Some may no longer serve your journey " +
-        "as well as others, and space is precious since you can only carry 5 items.";
+        "You take a moment to review the contents of your pack, weighing the value of each item. " +
+        "Some may no longer serve your journey as well as others, and space is precious since you can only carry 5 items. " +
+        "Be mindful—discarding a vial means using it, and that might just work in your favor.";
 
-    public const string InsufficientFunds = "You don't have enough funds for this transaction";
+
     public const string RemoveNothing = "do not remove any items";
     public const string PickUpNothing = "leave all the items as they are";
+    
+    public const string DrinkElixir =
+        "\nYou dig through your pack and find the elixir. One quick sip, and warmth spreads through your limbs. " +
+        "You feel a bit stronger. (+10 health)";
+
 
 }

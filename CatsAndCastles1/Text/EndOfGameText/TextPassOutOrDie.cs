@@ -1,4 +1,4 @@
-namespace CatsAndCastles1.Text;
+namespace CatsAndCastles1.Text.EndOfGame;
 
 public class TextPassOutOrDie
 {
