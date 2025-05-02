@@ -12,7 +12,7 @@ public class UserInteractiveMenu
         ConsoleKeyInfo key;
         bool isSelected = false;
         (int left, int top) = Console.GetCursorPosition();
-        string selected = "--> \u001b[32m";
+        string selected = "--> \u001b[36m";
         Console.CursorVisible = false;
 
 

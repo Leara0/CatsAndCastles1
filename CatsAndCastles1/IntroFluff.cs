@@ -10,7 +10,12 @@ public class IntroFluff
     public void IntroCutScene()
     {
         Console.Clear();
-        Screen.Print(TextGeneral.CatBorder1);
+        //put in welcome screen plus animation
+        Animation.PrintWelcome();
+        Thread.Sleep(1000);
+        Animation.CatIntroAnimation();
+        UserInput.DramaticPauseClrScreen();
+        
         Screen.Print(TextMainRoom.IntroCutScene);
         Screen.Print(TextMainRoom.StartInRoom);
         UserInput.DramaticPauseClrScreen();
@@ -19,7 +24,7 @@ public class IntroFluff
     public static void SubsequentWakeUp(Character cat)
     {
         Console.Clear();
-        cat.Health = 60;
+        cat.Health = 1;
         Screen.Print(TextMainRoom.SubsequentWakeUp);
         Screen.Print(TextMainRoom.StartInRoom);
         UserInput.DramaticPauseClrScreen();

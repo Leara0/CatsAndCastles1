@@ -72,8 +72,7 @@ public static class TextCombat
         "with everything you had." +
         "\n\nNow, the Warden lies motionless, its massive form still, its armor dented and " +
         "bloodied. You stand victorious. Your body aches, your breath comes ragged, " +
-        "but you are alive." +
-        "\n\nAnd then — you see it.\n";
+        "but you are alive.";
     public const string GuardWins = "\nThe guard has been victorious in this fight\n";
     # endregion
     

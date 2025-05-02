@@ -43,13 +43,18 @@ public class PassOut
 
     static string LivesLeftMessage(Hero cat)
     {
-        return TextPassOutOrDie.LivesLeft1 + (9 - cat.Lives) + TextPassOutOrDie.LivesLeft2 + cat.Lives +
-               TextPassOutOrDie.LivesLeft3;
+        return string.Format(TextPassOutOrDie.LivesLeft, (9 - cat.Lives), cat.Lives);
     }
 
     static void EndGameDead()
     {
+        Console.Clear();
         Screen.Print(TextPassOutOrDie.Death);
+        Screen.Print(TextPassOutOrDie.GameOver1);
+        Screen.Print(TextPassOutOrDie.GameOver2);
+        Screen.Print(TextPassOutOrDie.GameOver3);
+        Screen.Print(TextPassOutOrDie.GameOver4);
+        Screen.Print(TextPassOutOrDie.GameOver5);
         UserInput.DramaticPauseClrScreen();
         Environment.Exit(0);
     }

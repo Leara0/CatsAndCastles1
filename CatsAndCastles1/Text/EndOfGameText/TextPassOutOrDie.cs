@@ -13,11 +13,8 @@ public class TextPassOutOrDie
         "Nine lives, and you’ve spent them all. Shadows close in once more — but this time, " +
         "there is no return.";
 
-    public const string LivesLeft1 = "You’ve already lost";
-    public const string LivesLeft2 = "That leaves only";
-
-    public const string LivesLeft3 =
-        $"more lives to escape this cursed castle before the darkness takes you for good.";
+    public const string LivesLeft = "You’ve already lost {0}. That leaves only {1} more live/s to escape this cursed " +
+                                    "castle before the darkness takes you for good.";
 
     public const string RevealNineLives =
         "\nYou brace for battle. A forgotten memory stirs — you were gifted nine lives, but most are already gone. " +
@@ -40,5 +37,11 @@ public class TextPassOutOrDie
                                 "have bested, all slip away like mist in the morning sun." +
                                 "\n\nPerhaps you were never meant to escape." +
                                 "\n\nAnd so, the little explorer’s journey comes to an end." +
-                                "\n\nGame Over.";
+                                "\n\n";
+    
+    public const string GameOver1 = @"  ____                         ___                 ";
+    public const string GameOver2 = @" / ___| __ _ _ __ ___   ___   / _ \__   _____ _ __ ";
+    public const string GameOver3 = @"| |  _ / _` | '_ ` _ \ / _ \ | | | \ \ / / _ \ '__|";
+    public const string GameOver4 = @"| |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |   ";
+    public const string GameOver5 = @" \____|\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|   ";
 }

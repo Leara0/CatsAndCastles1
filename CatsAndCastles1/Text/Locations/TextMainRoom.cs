@@ -19,8 +19,7 @@ public class TextMainRoom
                                       "seem to shift and writhe. " +
                                       "\n\nThe hairs along your spine bristle. Something about this place feels wrong, " +
                                       "as though unseen eyes watch from the darkness, waiting. " +
-                                      "\n\nYou must escape but are unsure where to begin." +
-                                      "\n\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n";
+                                      "\n\nYou must escape but are unsure where to begin.";
 
     public const string SubsequentWakeUp = "You wake, dazed and disoriented, your senses slow to return. ";
 

@@ -1,3 +1,4 @@
+using CatsAndCastles1.Text;
 using CatsAndCastles1.Text.EndOfGame;
 using CatsAndCastles1.UserInteractions;
 
@@ -13,6 +14,12 @@ public class WinGameCutScene
         UserInput.DramaticPauseClrScreen();
         
         ScoreSummaryPrinter.PrintSummary(inventory);
+        Console.WriteLine();
+        Screen.Print(TextGeneral.GoodLuck1);
+        Screen.Print(TextGeneral.GoodLuck2);
+        Screen.Print(TextGeneral.GoodLuck3);
+        Screen.Print(TextGeneral.GoodLuck4);
+        Screen.Print(TextGeneral.GoodLuck5);
     }
     
 }

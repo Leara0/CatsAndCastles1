@@ -33,6 +33,7 @@ public class SwitchTree1F
             if (cat.Location == Hero.Place.SecondFloor || cat.Health ==0) return;
         }
 
+        Console.Clear();
         instances1F.FirstFloor.PrintIntro();
 
         do

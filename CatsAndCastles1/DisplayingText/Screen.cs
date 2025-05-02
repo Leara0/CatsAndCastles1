@@ -39,23 +39,11 @@ public static class Screen
         return listOfStrings;
     }
 
-    public static void Print(string text, int extraPadding =0)
+    public static void Print(string text, int extraPadding =0, ConsoleColor color = ConsoleColor.Gray)
     {
-        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.ForegroundColor = color;
         TextBlockToList(CreateListOfStrings(text, extraPadding), extraPadding);
     }
-
-    public static void PrintHeroAttack(string text)
-    {
-        Console.ForegroundColor = ConsoleColor.DarkBlue;
-        TextBlockToList(CreateListOfStrings(text));
-    }
-    public static void PrintBadGuyAttack(string text)
-    {
-        Console.ForegroundColor = ConsoleColor.Red;
-        TextBlockToList(CreateListOfStrings(text));
-    }
-    
 
     public static void TextBlockToList(List<string> textList, int extraPadding =0) => textList.ForEach(x => CenterLineOfText(x, extraPadding));
 

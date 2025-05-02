@@ -37,8 +37,8 @@ public static class GuardCombatHelper
         AssignBadGuyWeaponAndShield(badGuy);
 
         //review weapons choices
-        Screen.PrintHeroAttack(TextCombat.HeroWeaponReminder + cat.Weapon);
-        Screen.PrintHeroAttack(cat.HasShield ? TextCombat.WithAShield : TextCombat.WithoutAShield);
+        Screen.Print(TextCombat.HeroWeaponReminder + cat.Weapon, 0, ConsoleColor.DarkBlue);
+        Screen.Print(cat.HasShield ? TextCombat.WithAShield : TextCombat.WithoutAShield, 0, ConsoleColor.DarkBlue);
 
         UserInput.DramaticPauseClrScreen();
     }
@@ -50,24 +50,24 @@ public static class GuardCombatHelper
         badGuy.Weapon = ListWeaponsInfo.BadGuyWeapons[pick];
         badGuy.WeaponDie = ListWeaponsInfo.DieForBGWeapon[pick];
         badGuy.WeaponMod = ListWeaponsInfo.ModForBGWeapon[pick];
-        Screen.PrintBadGuyAttack(TextCombat.BadGuyWeapon + badGuy.Weapon);
+        Screen.Print(TextCombat.BadGuyWeapon + badGuy.Weapon, 0, ConsoleColor.Red);
 
         pick = rnd.Next(1, 3);
         if (pick == 1)
         {
-            Screen.PrintBadGuyAttack(TextCombat.WithAShield);
+            Screen.Print(TextCombat.WithAShield, 0, ConsoleColor.Red);
             badGuy.HasShield = true;
         }
         else
         {
-            Screen.PrintBadGuyAttack(TextCombat.WithoutAShield);
+            Screen.Print(TextCombat.WithoutAShield, 0, ConsoleColor.Red);
             badGuy.HasShield = false;
         }
     }
 
     public static void GuardAttacks(BadGuy guard, Hero cat)
     {
-        Screen.PrintBadGuyAttack(TextCombat.OpponentAttack + guard.WeaponDie);
+        Screen.Print(TextCombat.OpponentAttack + guard.WeaponDie, 0, ConsoleColor.Red);
         GuardCombat.Attack(guard, cat);
         GuardCombat.HealthMessage(cat);
         Thread.Sleep(200);
@@ -76,7 +76,7 @@ public static class GuardCombatHelper
     public static void WrapUpGuardDeath(BadGuy badGuy)
     {
         Screen.Print(badGuy.Type != BadGuy.GuardType.Warden ? TextCombat.YouKilledGuard : 
-            TextCombat.DefeatWarden);
+            TextCombat.DefeatWarden, 0, ConsoleColor.DarkBlue);
         badGuy.IsDead = true;
 
         UserInput.DramaticPauseClrScreen();
@@ -84,7 +84,7 @@ public static class GuardCombatHelper
 
     public static void WrapUpCatDeath(Hero cat)
     {
-        Screen.Print(TextCombat.GuardWins);
-        cat.Location = Hero.Place.PassedOut; //@TODO finish this part so it works!
+        Screen.Print(TextCombat.GuardWins, 0, ConsoleColor.Red);
+        cat.Location = Hero.Place.PassedOut;
     }
 }

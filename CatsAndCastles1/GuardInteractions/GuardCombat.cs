@@ -47,7 +47,7 @@ public static class GuardCombat
 
     static void HeroAttacks(Hero cat, BadGuy guard)
     {
-        Screen.PrintHeroAttack(TextCombat.YouAttack + cat.WeaponDie);
+        Screen.Print(TextCombat.YouAttack + cat.WeaponDie, 0,ConsoleColor.DarkBlue);
         Attack(cat, guard);
         Console.WriteLine();
         HealthMessage(guard);
