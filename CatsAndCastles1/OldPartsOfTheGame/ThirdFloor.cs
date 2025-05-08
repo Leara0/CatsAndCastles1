@@ -7,8 +7,8 @@ using CatsAndCastles1.UserInteractions;
 namespace CatsAndCastles1.OldPartsOfTheGame;
 
 public class ThirdFloor
-{
-    private readonly UserInput _userInput = new UserInput();
+{/*
+    private readonly UserInteractions _userInput = new UserInteractions();
     private readonly OldFight _oldFight = new OldFight();
    public void ThirdFloorStory(Hero cat, BackPack backPack, Character guardDog1)
    {
@@ -163,6 +163,6 @@ public class ThirdFloor
 
 
 
-   //** someday add in healing elixirs??
+   //** someday add in healing elixirs??*/
 }
 

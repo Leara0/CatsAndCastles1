@@ -4,8 +4,8 @@ using CatsAndCastles1.UserInteractions;
 namespace CatsAndCastles1.OldPartsOfTheGame;
 
 public class SecondFloor
-{
-    private readonly UserInput _userInput = new UserInput();
+{/*
+    private readonly UserInteractions _userInput = new UserInteractions();
     private readonly OldFight _oldFight = new OldFight();
 
 
@@ -245,5 +245,5 @@ public class SecondFloor
         } while (stayInRoom);
 
         Screen.Print("Feeling done with this room you return to the hall");
-    }
+    }*/
 }

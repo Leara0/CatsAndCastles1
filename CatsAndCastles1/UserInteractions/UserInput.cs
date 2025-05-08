@@ -2,41 +2,7 @@ namespace CatsAndCastles1.UserInteractions;
 
 public class UserInput()
 {
-    public string UserChoice(int numberOfOptions = 2)
-    {
-        do
-        {
-            string input = Console.ReadLine().Trim() ?? string.Empty;
-            for (int i = 1; i <= numberOfOptions; i++)
-            {
-                string iNumber = i.ToString();
-                if (iNumber == input)
-                {
-                    Console.Clear();
-                    return input;
-                }
-            }
-
-
-            Screen.Print("I'm sorry, but that isn't a valid choice. ");
-            Screen.Print("Please enter a number that corresponds with options above.");
-        } while (true);
-    }
-
-    public string GetName()
-    {
-        Screen.Print("What is your name (or a name you like)?");
-        do
-        {
-            var name = Console.ReadLine() ?? string.Empty;
-            if (!string.IsNullOrEmpty(name))
-                return char.ToUpper(name[0]) + name.Substring(1);
-            else
-            {
-                Screen.Print("I'm sorry, that's not a valid input. Please try again");
-            }
-        } while (true);
-    }
+  
 
     public static void DramaticPause()
     {

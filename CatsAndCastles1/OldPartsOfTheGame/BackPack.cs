@@ -4,8 +4,8 @@ using CatsAndCastles1.UserInteractions;
 namespace CatsAndCastles1.OldPartsOfTheGame;
 
 public class BackPack
-{
-    private readonly UserInput UserInput = new UserInput();
+{/*
+    private readonly UserInteractions _userInput = new UserInteractions();
     public string[] Options = new string[3];
     public string[] Descriptions = new string[3];
     
@@ -498,5 +498,5 @@ public class BackPack
                     return;
             }
         } while (NumberOfItemsInPack() <= 5);
-    }
+    }*/
 }

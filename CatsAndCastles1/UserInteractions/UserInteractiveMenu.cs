@@ -4,7 +4,7 @@ namespace CatsAndCastles1.UserInteractions;
 
 public class UserInteractiveMenu
 {
-    public static int GiveChoices(List<string> options, string leave = "")
+    public static int GiveChoices(List<string> options, string leave)
     {
         Screen.Print(TextGeneral.HowToPickAnItem+ "\n", 6);//add padding to offset color change code
         

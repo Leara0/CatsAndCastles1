@@ -5,8 +5,8 @@ namespace CatsAndCastles1.OldPartsOfTheGame;
 
 
 public class FirstFloor
-{
-    private readonly UserInput _userInput = new UserInput();
+{/*
+    private readonly UserInteractions _userInput = new UserInteractions();
     private readonly OldFight _oldFight = new OldFight();
    public void FirstFloorStory(Hero cat, BackPack backPack, Character warden)
    {
@@ -78,6 +78,6 @@ public class FirstFloor
            cat.LostToGuard = true;
            cat.Location = Hero.Place.PassedOut;
        }
-   }
+   }*/
 }
 

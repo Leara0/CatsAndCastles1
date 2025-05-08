@@ -13,14 +13,14 @@ public class OldMainStory
     private void DeadEnding(Hero cat)
     {
         //if (cat.Location == Hero.Place.Dead)
-            Screen.Print("\nAs the darkness takes hold, a strange sense of peace washes over you. " +
-                         "The struggle, the fear, the desperate clawing for survival — it all fades into " +
-                         "nothingness.\n\nThe castle will remain, its cold stone walls holding secrets " +
-                         "you will never uncover. The paths you might have taken, the dangers you might " +
-                         "have bested, all slip away like mist in the morning sun." +
-                         "\n\nPerhaps you were never meant to escape." +
-                         "\n\nAnd so, the little explorer’s journey comes to an end." +
-                         "\n\nGame Over.");
+        Screen.Print("\nAs the darkness takes hold, a strange sense of peace washes over you. " +
+                     "The struggle, the fear, the desperate clawing for survival — it all fades into " +
+                     "nothingness.\n\nThe castle will remain, its cold stone walls holding secrets " +
+                     "you will never uncover. The paths you might have taken, the dangers you might " +
+                     "have bested, all slip away like mist in the morning sun." +
+                     "\n\nPerhaps you were never meant to escape." +
+                     "\n\nAnd so, the little explorer’s journey comes to an end." +
+                     "\n\nGame Over.");
     }
 
 
@@ -89,7 +89,8 @@ public class OldMainStory
                      $"\n\n1. Revive in the room you first woke in and try again to escape." +
                      $"\n2. Accept defeat and let the darkness claim you. (End Game.)" +
                      $"\n\nWhat will you do?... \n");
-        var _userInput = new UserInput();
+
+        var _userInput = new UserInteractions();
         if (_userInput.UserChoice() == "1")
         {
             //mainRoom.SubsequentWakeUp();

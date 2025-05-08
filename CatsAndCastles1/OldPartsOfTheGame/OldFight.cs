@@ -9,7 +9,7 @@ namespace CatsAndCastles1.OldPartsOfTheGame;
 public class OldFight
 {
     
-    private readonly UserInput UserInput = new UserInput();
+    /*private readonly UserInput UserInput = new UserInput();
    public void GuardDogEncounter(Hero cat, BackPack backPack, Character guardDog, int guardNumber)
    {
        cat.LostToGuard = false;
@@ -518,6 +518,6 @@ public class OldFight
 
            return [choice, hasShield];
        }
-   }
+   }*/
 }
 
