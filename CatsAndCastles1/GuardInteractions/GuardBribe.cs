@@ -41,7 +41,7 @@ public static class GuardBribe
 
 
         Screen.Print(TextBribe.CheckCoinPurse1 + inventory.CheckPurseInventory() + TextBribe.CheckCoinPurse2);
-        int choice = UserInteractiveMenu.GiveChoices(new List<string> { "yes", "no" });
+        int choice = UserInteractiveMenu.GiveChoices(new List<string> { "yes"}, "no");
         Console.Clear();
 
         if (choice == 0) //if you choose to pay the bribe

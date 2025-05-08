@@ -21,8 +21,7 @@ public class ListWeaponsInfo
             TextInventoryItems.RustedLantern,
             TextInventoryItems.DustyBook,
             TextInventoryItems.CandleStub,
-            TextInventoryItems.Paws
-        },
+           },
         {
             TextCombat.BroomAndDustPanMod,
             TextCombat.ManaclesMod,
@@ -36,12 +35,11 @@ public class ListWeaponsInfo
             TextCombat.RustedLanternMod,
             TextCombat.DustyBookMod,
             TextCombat.CandleStubMod,
-            TextCombat.PawsMod
-        }
+           }
     };
 
-    public List<int> DieForHeroWeapon = [4, 6, 8, 4, 6, 6, 8, 4, 10, 4, 4, 4, 4];
-    public List<int> ModForHeroWeapon = [1, 1, 2, 1, 2, 1, 3, 1, 2, 1, 1, 0, 0];
+    public List<int> DieForHeroWeapon = [4, 6, 8, 4, 6, 6, 8, 4, 10, 4, 4, 4];
+    public List<int> ModForHeroWeapon = [1, 1, 2, 1, 2, 1, 3, 1, 2, 1, 1, 0];
 
     public static List<string> BadGuyWeapons =
     [
@@ -77,8 +75,8 @@ public class ListWeaponsInfo
                     positionInList.Add(j);
                 }
             }
+           
         }
-
         return (weaponsInPack, positionInList);
     }
 }

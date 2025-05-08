@@ -28,13 +28,28 @@ public class UIWeapons
             var (weaponOptionsList, weaponsIndex) = weaponModList.CreateWeaponsOptionList(inventoryPack);
 
             //call the interactive menu to get the user's weapon choice
-            var choice = UserInteractiveMenu.GiveChoices(weaponOptionsList);
+            var choice = UserInteractiveMenu.GiveChoices(weaponOptionsList,
+                TextInventoryItems.Paws + "- damage: " + TextCombat.PawsMod);
+            
 
             //assign the weapon to the cat (assign the weapon die and weapon mod to the cat)
-            cat.WeaponDie = weaponModList.DieForHeroWeapon[weaponsIndex[choice]];
-            cat.WeaponMod = weaponModList.ModForHeroWeapon[weaponsIndex[choice]];
-            cat.Weapon = ListWeaponsInfo.HeroWeaponsAndDamage[0, weaponsIndex[choice]];
-            Screen.Print(TextCombat.ChosenWeapon + ListWeaponsInfo.HeroWeaponsAndDamage[0, weaponsIndex[choice]]);
+            bool chosePaws = choice == weaponOptionsList.Count;
+
+            if (chosePaws)
+            {
+                cat.Weapon = TextInventoryItems.Paws;
+                cat.WeaponDie = 4;
+                cat.WeaponMod = 0;
+            }
+            else
+            {
+                int selectedIndex = weaponsIndex[choice];
+                cat.Weapon = ListWeaponsInfo.HeroWeaponsAndDamage[0, selectedIndex];
+                cat.WeaponDie = weaponModList.DieForHeroWeapon[selectedIndex];
+                cat.WeaponMod = weaponModList.ModForHeroWeapon[selectedIndex];
+            }
+
+            Screen.Print(TextCombat.ChosenWeapon + cat.Weapon);
         }
 
         UserInput.DramaticPauseClrScreen();
@@ -45,7 +60,7 @@ public class UIWeapons
         if (!inventoryPack.Any(item => ListWeaponsInfo.ShieldOptions.Contains(item)))
             return;
         Screen.Print(TextCombat.ChooseShield);
-        var choice = UserInteractiveMenu.GiveChoices(new List<string> { "yes", "no" });
+        var choice = UserInteractiveMenu.GiveChoices(new List<string> { "yes"},"no");
         cat.HasShield = choice == 0;
         UserInput.DramaticPauseClrScreen();
     }

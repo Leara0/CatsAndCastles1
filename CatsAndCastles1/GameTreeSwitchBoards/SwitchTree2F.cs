@@ -69,7 +69,7 @@ public static class SwitchTree2F
             {
                 Screen.Print(Text2F.EnterRoomAfterKillingGuard);
                 bodyChoice = UserInteractiveMenu.GiveChoices(new List<string>
-                    { TextGuard.GuardsDeadBody, TextGuard.OrExploreTheRoom, TextGeneral.LeaveLocation });
+                    { TextGuard.GuardsDeadBody, TextGuard.OrExploreTheRoom }, TextGeneral.LeaveLocation);
                 Console.Clear();
                 switch (bodyChoice)
                 {

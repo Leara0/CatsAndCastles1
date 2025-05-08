@@ -36,7 +36,7 @@ public class MainStory
         introFluff.IntroCutScene();
         instancesMainRoom.MainRoom.PrintIntro();
         
-        /*@TODO get rid of this to make game not skip ahead
+        //@TODO get rid of this to make game not skip ahead
         inventory.AddGoldToPurse("50");
         inventory.Pack.Add(TextInventoryItems.HardCheese);
         inventory.Pack.Add(TextInventoryItems.Shield);
@@ -44,10 +44,10 @@ public class MainStory
         inventory.Pack.Add(TextInventoryItems.RingOfKeys);
         inventory.Pack.Add(TextInventoryItems.ShortSword);
         instancesMainRoom.MainDoor.ChangeDoorLockStatus(true);
-        instancesCharacters.GuardDog1.Health = 0;
-        instancesCharacters.GuardDog2.Health = 0;
-        instancesCharacters.Warden.Health = 0;
-        instancesCharacters.Cat.Health = 5;*/
+        //instancesCharacters.GuardDog1.Health = 0;
+        //instancesCharacters.GuardDog2.Health = 0;
+        //instancesCharacters.Warden.Health = 0;
+        //instancesCharacters.Cat.Health = 5;
         
         do
         {
@@ -80,6 +80,6 @@ public class MainStory
                    
                     break;
             }
-        } while (true); //@TODO Change this!! Or maybe not and just end game with Environment.Exit(0);
+        } while (true); 
     }
 }

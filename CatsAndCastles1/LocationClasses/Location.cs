@@ -28,15 +28,11 @@ public class Location
     }
 
 
-    //order of events:
-    //print locationIntro
-    //call interactiveMenu on the OptionsAtLocation
-    //that feeds into... game tree??
     public int DecideWhereToExplore() // this is the method to call all the stuff for this location
     {
         Console.Clear();
         Screen.Print(_menuHeader);
-        int choice =  UserInput.GetChoice(OptionsAtLocation);
+        int choice =  UserInput.GetChoice(OptionsAtLocation,  TextWorkInventory.PackOption);
         return choice;
     }
 

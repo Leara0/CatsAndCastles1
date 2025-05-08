@@ -24,8 +24,7 @@ public static class ListOptionsAtLocations
         Text3F.StudyF3D2Option,
         Text3F.BedroomF3D3Option,
         Text3F.ClosetF3D4Option,
-        TextWorkInventory.PackOption,
-        Text3F.HeadDownStairsOption
+       Text3F.HeadDownStairsOption
     ];
 
     public static readonly List<string> SecondFloorChoices =
@@ -34,7 +33,6 @@ public static class ListOptionsAtLocations
         Text2F.GuardQuartersF2D2Option,
         Text2F.ClosetF2R3Option,
         Text2F.LibraryF2R4Option,
-        TextWorkInventory.PackOption,
         Text2F.HeadUpStairsOption,
         Text3F.HeadDownStairsOption,
     ];

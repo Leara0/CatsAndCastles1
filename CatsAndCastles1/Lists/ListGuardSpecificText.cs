@@ -36,7 +36,7 @@ public static class ListGuardSpecificText
         
         string bribeOption = TextGuard.BribeOption + inventory.CheckPurseInventory() + TextGuard.GoldCoins;
         bribeOptions.Add(bribeOption);
-        bribeOptions.Add(TextGuard.RunawayOption);
+       
         
         return bribeOptions;
     }
