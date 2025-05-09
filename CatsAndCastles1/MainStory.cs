@@ -37,13 +37,13 @@ public class MainStory
         instancesMainRoom.MainRoom.PrintIntro();
         
         //@TODO get rid of this to make game not skip ahead
-        inventory.AddGoldToPurse("50");
-        inventory.Pack.Add(TextInventoryItems.HardCheese);
-        inventory.Pack.Add(TextInventoryItems.Shield);
-        inventory.Pack.Add(TextInventoryItems.RustedLanternDesc);
-        inventory.Pack.Add(TextInventoryItems.RingOfKeys);
-        inventory.Pack.Add(TextInventoryItems.ShortSword);
-        instancesMainRoom.MainDoor.ChangeDoorLockStatus(true);
+        //inventory.AddGoldToPurse("50");
+        //inventory.Pack.Add(TextInventoryItems.HardCheese);
+        //inventory.Pack.Add(TextInventoryItems.Shield);
+        //inventory.Pack.Add(TextInventoryItems.RustedLanternDesc);
+        //inventory.Pack.Add(TextInventoryItems.RingOfKeys);
+        //inventory.Pack.Add(TextInventoryItems.ShortSword);
+        //instancesMainRoom.MainDoor.ChangeDoorLockStatus(true);
         //instancesCharacters.GuardDog1.Health = 0;
         //instancesCharacters.GuardDog2.Health = 0;
         //instancesCharacters.Warden.Health = 0;
