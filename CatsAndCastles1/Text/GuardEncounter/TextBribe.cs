@@ -1,6 +1,6 @@
 namespace CatsAndCastles1.Text.GuardEncounter;
 
-public class TextBribe
+public static class TextBribe
 {
     public const string BribeIntro =
         "The dog's ears flick, and then it turns. Eyes lock onto yours — wide at first, then narrowing. " +
@@ -57,7 +57,7 @@ public class TextBribe
         "It already knows. \n\nThe guard steps forward, teeth bared, hackles raised. \"Guess we’re doing this " +
         "the hard way.\" \n\nYou have no choice now — you must fight.";
 
-    public static string GuardInsultedByBribeAttempt =
+    public const string GuardInsultedByBribeAttempt =
         "The dog’s jaw drops. Then, with a sudden growl, it bares its teeth. \n\n\"You think I can be bought?\" it " +
         "snaps, stepping forward, claws scraping against the stone floor. \"That’s insulting! I have a duty, and I " +
         "take it seriously!\" \n\nIt appears this guard cannot be bribed. A fight is coming. ";

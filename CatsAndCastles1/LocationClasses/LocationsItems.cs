@@ -1,4 +1,4 @@
-using CatsAndCastles1.Text;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Text.Inventory;
 using CatsAndCastles1.UserInteractions;
 
@@ -7,10 +7,10 @@ namespace CatsAndCastles1.LocationClasses;
 public class LocationsItems : Location
 {
     private readonly UIInventory _uiInventory = new UIInventory();
-    public string Description = "";
+    protected string Description = "";
 
-    public List<string> LongDescriptionOfItemsAtLocation { get; set; } = new List<string>();
-    public List<string> InventoryItemsAtLocation { get; set; }= new List<string>();
+    protected List<string> LongDescriptionOfItemsAtLocation { get; init; } = new List<string>();
+    public List<string> InventoryItemsAtLocation { get; init; }= new List<string>();
 
     #region Constructors
     protected LocationsItems()

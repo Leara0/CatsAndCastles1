@@ -1,5 +1,6 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.ClassInstantiation;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Lists;
 using CatsAndCastles1.LocationClasses;
 using CatsAndCastles1.Text;
@@ -16,11 +17,9 @@ public static class SwitchTree2F
         Instances2F instances2F)
     {
         Console.Clear();
-        cat.EndGame = false; 
         UIInventory uiInventory = new UIInventory();
         instances2F.SecondFloor.PrintIntro();
-        //guard2.Health = 0;//@TODO remove this later!! 
-
+        
         do
         {
             int choice = instances2F.SecondFloor.DecideWhereToExplore();

@@ -1,4 +1,3 @@
-using CatsAndCastles1.Text;
 using CatsAndCastles1.Text.Inventory;
 using CatsAndCastles1.Text.Locations;
 

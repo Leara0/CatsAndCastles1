@@ -1,4 +1,5 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Lists;
 using CatsAndCastles1.LocationClasses;
 using CatsAndCastles1.Text;

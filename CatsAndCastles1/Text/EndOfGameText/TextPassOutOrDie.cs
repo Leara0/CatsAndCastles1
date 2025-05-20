@@ -1,6 +1,6 @@
-namespace CatsAndCastles1.Text.EndOfGame;
+namespace CatsAndCastles1.Text.EndOfGameText;
 
-public class TextPassOutOrDie
+public static class TextPassOutOrDie
 {
     public const string PassingOut =
         "\nThe pain is immediate and blinding. The world tilts, and darkness swallows you whole. " +

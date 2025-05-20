@@ -1,4 +1,4 @@
-namespace CatsAndCastles1.Text.EndOfGame
+namespace CatsAndCastles1.Text.EndOfGameText
 {
     public static class TextScoreTabulation
     {

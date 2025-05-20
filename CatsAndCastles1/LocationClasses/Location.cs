@@ -1,4 +1,4 @@
-using CatsAndCastles1.Text;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Text.Inventory;
 using CatsAndCastles1.UserInteractions;
 
@@ -7,11 +7,11 @@ namespace CatsAndCastles1.LocationClasses;
 public class Location
 {
     
-    UserInput UserInput = new UserInput();
+    private readonly UserInput _userInput = new UserInput();
     
-   public string LocationIntro;
+    private readonly string _locationIntro ="";
     private bool DoorOpen { get; set; }
-    public List<string> OptionsAtLocation { get; set; }
+    public List<string> OptionsAtLocation { get; set; } = new List<string>();
     private readonly string _menuHeader = "";
     
 
@@ -22,7 +22,7 @@ public class Location
 
     public Location(string locationIntro, string pickMenuHeader, List<string> optionsAtLocation)
     {
-        LocationIntro = locationIntro;
+        _locationIntro = locationIntro;
         _menuHeader = pickMenuHeader;
         OptionsAtLocation = optionsAtLocation;
     }
@@ -32,13 +32,13 @@ public class Location
     {
         Console.Clear();
         Screen.Print(_menuHeader);
-        int choice =  UserInput.GetChoice(OptionsAtLocation,  TextWorkInventory.PackOption);
+        int choice =  _userInput.GetChoice(OptionsAtLocation,  TextWorkInventory.PackOption);
         return choice;
     }
 
     public void PrintIntro()
     {
-        Screen.Print(LocationIntro);
+        Screen.Print(_locationIntro);
         UserInput.DramaticPauseClrScreen();
     }
 

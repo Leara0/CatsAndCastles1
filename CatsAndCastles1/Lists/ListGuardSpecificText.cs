@@ -1,4 +1,3 @@
-using CatsAndCastles1.Text;
 using CatsAndCastles1.Text.GuardEncounter;
 
 namespace CatsAndCastles1.Lists;
@@ -31,8 +30,7 @@ public static class ListGuardSpecificText
 
     public static List<string> CreateBribeOptionsList(Inventory inventory)
     {
-        var bribeOptions = new List<string>();
-        bribeOptions.Add(TextGuard.CombatOption);
+        List<string> bribeOptions = [TextGuard.CombatOption];
         
         string bribeOption = TextGuard.BribeOption + inventory.CheckPurseInventory() + TextGuard.GoldCoins;
         bribeOptions.Add(bribeOption);

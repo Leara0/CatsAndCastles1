@@ -14,7 +14,6 @@ public static class SwitchTreeMainR
     {
         Console.Clear();
         cat.Location = Hero.Place.MainRoom;
-        cat.EndGame = false;
         UIInventory uiInventory = new UIInventory();
       
         do

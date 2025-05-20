@@ -12,10 +12,9 @@ namespace CatsAndCastles1;
 
 public class MainStory
 {
-    //@TODO still:
-    //check window and rope
     public void RunGame()
     {
+        Console.CursorVisible = false;
         #region instantiating Classes
 
         var instancesMainRoom = new InstancesMainR();
@@ -36,6 +35,7 @@ public class MainStory
         introFluff.IntroCutScene();
         instancesMainRoom.MainRoom.PrintIntro();
         
+        # region gamecheats
         //@TODO get rid of this to make game not skip ahead
         //inventory.AddGoldToPurse("50");
         //inventory.Pack.Add(TextInventoryItems.HardCheese);
@@ -43,11 +43,13 @@ public class MainStory
         //inventory.Pack.Add(TextInventoryItems.RustedLanternDesc);
         //inventory.Pack.Add(TextInventoryItems.RingOfKeys);
         //inventory.Pack.Add(TextInventoryItems.ShortSword);
+        //inventory.Pack.Add(TextInventoryItems.Rope);
         //instancesMainRoom.MainDoor.ChangeDoorLockStatus(true);
         //instancesCharacters.GuardDog1.Health = 0;
         //instancesCharacters.GuardDog2.Health = 0;
         //instancesCharacters.Warden.Health = 0;
         //instancesCharacters.Cat.Health = 5;
+        #endregion
         
         do
         {

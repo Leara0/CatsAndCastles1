@@ -1,6 +1,6 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Lists;
-using CatsAndCastles1.Text;
 using CatsAndCastles1.Text.GuardEncounter;
 using CatsAndCastles1.Text.Inventory;
 
@@ -60,7 +60,7 @@ public class UIWeapons
         if (!inventoryPack.Any(item => ListWeaponsInfo.ShieldOptions.Contains(item)))
             return;
         Screen.Print(TextCombat.ChooseShield);
-        var choice = UserInteractiveMenu.GiveChoices(new List<string> { "yes"},"no");
+        var choice = UserInteractiveMenu.GiveChoices([ "yes"],"no");
         cat.HasShield = choice == 0;
         UserInput.DramaticPauseClrScreen();
     }

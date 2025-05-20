@@ -1,4 +1,5 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Text.GuardEncounter;
 using CatsAndCastles1.UserInteractions;
 
@@ -15,7 +16,7 @@ public static class GuardBribe
         if (ZeroCoinsInPurse(inventory))
         {
             Screen.Print(TextBribe.NoCoins);
-            HandleBribeFailure(inventory, cat, badGuy);
+            HandleBribeFailure(badGuy);
             return;
         }
 
@@ -25,7 +26,7 @@ public static class GuardBribe
         if (!BribeIsAccepted(badGuy, roll))
         {
             Screen.Print(TextBribe.GuardInsultedByBribeAttempt);
-            HandleBribeFailure(inventory, cat, badGuy);
+            HandleBribeFailure(badGuy);
             return;
         }
 
@@ -35,7 +36,7 @@ public static class GuardBribe
         if (playerGoldCoins < bribeAmount)
         {
             Screen.Print(TextBribe.NotEnoughGoldToPayBribe);
-            HandleBribeFailure(inventory, cat, badGuy);
+            HandleBribeFailure(badGuy);
             return;
         }
 
@@ -54,7 +55,7 @@ public static class GuardBribe
         else // if you choose not to pay the bribe
         {
             Screen.Print(TextBribe.RefuseToPayBribe);
-            HandleBribeFailure(inventory, cat, badGuy);
+            HandleBribeFailure(badGuy);
         }
     }
 
@@ -71,7 +72,7 @@ public static class GuardBribe
                 (badGuy.Type != BadGuy.GuardType.Warden && roll > 5));
     }
 
-    static void HandleBribeFailure(Inventory inventory, Hero cat, BadGuy badGuy)
+    static void HandleBribeFailure(BadGuy badGuy)
     {
         badGuy.Bribe = BadGuy.Outcome.Failure;
         UserInput.DramaticPauseClrScreen();

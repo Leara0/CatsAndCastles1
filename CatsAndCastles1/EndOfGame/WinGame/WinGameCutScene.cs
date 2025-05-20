@@ -1,5 +1,6 @@
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Text;
-using CatsAndCastles1.Text.EndOfGame;
+using CatsAndCastles1.Text.EndOfGameText;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.EndOfGame.WinGame;

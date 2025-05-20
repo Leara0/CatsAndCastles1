@@ -1,6 +1,6 @@
 namespace CatsAndCastles1.Text;
 
-public class TextGeneral
+public static class TextGeneral
 {
     #region Borders
 
@@ -15,12 +15,14 @@ public class TextGeneral
 
     #endregion
 
-
-    public const string Welcome1 = @"__        __   _                          ";
-    public const string Welcome2 = @"\ \      / /__| | ___ ___  _ __ ___   ___ ";
-    public const string Welcome3 = @" \ \ /\ / / _ \ |/ __/ _ \| '_ ` _ \ / _ \";
-    public const string Welcome4 = @"  \ V  V /  __/ | (_| (_) | | | | | |  __/";
-    public const string Welcome5 = @"   \_/\_/ \___|_|\___\___/|_| |_| |_|\___|";
+    public const string WelcomeTo = "Welcome to";
+    
+    public const string Welcome1 = @" _____  ____   ____     _     _____  _____ ";
+    public const string Welcome2 = @"| ____|/ ___| / ___|   / \   |  __ \| ____|";
+    public const string Welcome3 = @"|  _|  \___ \| |      / _ \  | |__) |  _|  ";
+    public const string Welcome4 = @"| |___ ____) | |___  / ___ \ |  ___/| |___ ";
+    public const string Welcome5 = @"|_____|_____/ \____|/_/   \_\|_|    |_____|";
+    public const string ByMe = "By: Arael Seher";
 
     public const string HowToPickAnItem =
         "Please use the \u001b[35mup\u001b[0m and \u001b[35mdown\u001b[0m arrow key to " +
@@ -39,6 +41,8 @@ public class TextGeneral
         "\n\nWith a soft sigh, you make your way to the stairs, each step taking you " +
         "closer to your goal. This floor fades into the shadows behind you as you " +
         "descend, the stairwell opens up to new, uncertain territory.";
+
+    public const string PressEnter = "Please press 'Enter' to continue...";
 
     public const string YourRoll = "You rolled: ";
     public const string Damage = "The total damage is ";

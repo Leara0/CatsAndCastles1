@@ -1,8 +1,7 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.ClassInstantiation;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Lists;
-using CatsAndCastles1.LocationClasses;
-using CatsAndCastles1.Text;
 using CatsAndCastles1.Text.GuardEncounter;
 using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
@@ -10,13 +9,11 @@ using CatsAndCastles1.UserInteractions;
 namespace CatsAndCastles1.GameTreeSwitchBoards;
 
 
-public class SwitchTree1F
+public static class SwitchTree1F
 {
     
     public static void FirstFloorSwitchBoard(Inventory inventory, Hero cat, BadGuy warden, Instances1F instances1F)
     {
-        cat.EndGame = false; 
-
         if (cat.ReturningTo1F) Screen.Print(Text1F.ReturnTo1F);
         else if (warden.Health != 0) Screen.Print(Text1F.Reach1FWardenIsAlive);
         cat.ReturningTo1F = true; //set this after you test for it for future visits

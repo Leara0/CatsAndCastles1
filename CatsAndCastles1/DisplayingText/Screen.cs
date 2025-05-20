@@ -1,4 +1,4 @@
-namespace CatsAndCastles1.UserInteractions;
+namespace CatsAndCastles1.DisplayingText;
 
 public static class Screen
 {
@@ -71,7 +71,7 @@ public static class Screen
     public static int DiceRoller(int maxRoll)
     {
         var rnd = new Random();
-        int X = 0;
+        int x = 0;
         (int, int Y) cursorPosition = Console.GetCursorPosition();
         int roll;
         for (int i = 0; i < 20; i++)
@@ -79,9 +79,9 @@ public static class Screen
             roll = rnd.Next(1, maxRoll + 1);
             Print(roll.ToString());
             Thread.Sleep(100);
-            Console.SetCursorPosition(X, cursorPosition.Y);
+            Console.SetCursorPosition(x, cursorPosition.Y);
             Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(X, cursorPosition.Y);
+            Console.SetCursorPosition(x, cursorPosition.Y);
             
         }
         roll = rnd.Next(1, maxRoll + 1);

@@ -1,6 +1,6 @@
 namespace CatsAndCastles1.Text;
 
-public class TextFlee
+public static class TextFlee
 {
     public const string NecessaryRollToSneakAwayFromGuard =
         "\nRoll a D20 for luck. You must get higher than 5 to successfully sneak away";

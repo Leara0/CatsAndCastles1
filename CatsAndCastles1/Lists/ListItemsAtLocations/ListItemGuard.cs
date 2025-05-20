@@ -2,7 +2,7 @@ using CatsAndCastles1.Text.Inventory;
 
 namespace CatsAndCastles1.Lists.ListItemsAtLocations;
 
-public class ListItemGuard
+public static class ListItemGuard
 {
     public static readonly List<string> Guard1Description =
     [

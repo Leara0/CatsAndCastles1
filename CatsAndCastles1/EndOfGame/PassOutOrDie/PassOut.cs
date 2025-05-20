@@ -1,11 +1,11 @@
 using CatsAndCastles1.Characters;
-using CatsAndCastles1.Text;
-using CatsAndCastles1.Text.EndOfGame;
+using CatsAndCastles1.DisplayingText;
+using CatsAndCastles1.Text.EndOfGameText;
 using CatsAndCastles1.UserInteractions;
 
 namespace CatsAndCastles1.EndOfGame.PassOutOrDie;
 
-public class PassOut
+public static class PassOut
 {
     public static void LooseALife(Hero cat)
     {
@@ -15,7 +15,7 @@ public class PassOut
 
         if (cat.Lives < 1)
         {
-            DoIfNoMoreLives(cat);
+            DoIfNoMoreLives();
             UserInput.DramaticPauseClrScreen();
             return;
         }
@@ -34,7 +34,7 @@ public class PassOut
         Console.Clear();
     }
 
-    static void DoIfNoMoreLives(Hero cat)
+    static void DoIfNoMoreLives()
     {
         Screen.Print(TextPassOutOrDie.AllLivesAreLost);
         UserInput.DramaticPauseClrScreen();

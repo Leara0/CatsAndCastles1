@@ -1,7 +1,6 @@
 using CatsAndCastles1.Characters;
 using CatsAndCastles1.ClassInstantiation;
 using CatsAndCastles1.Lists;
-using CatsAndCastles1.OldPartsOfTheGame;
 using CatsAndCastles1.Text;
 using CatsAndCastles1.Text.GuardEncounter;
 using CatsAndCastles1.Text.Inventory;
@@ -15,7 +14,6 @@ public static class SwitchTree3F
     public static void ThirdFloorSwitchboard(Inventory inventory, Hero cat, BadGuy guard1, Instances3F instances3F)
     {
         Console.Clear();
-        cat.EndGame = false;
         UIInventory uiInventory = new UIInventory();
         instances3F.ThirdFloor.PrintIntro();
 

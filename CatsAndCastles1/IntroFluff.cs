@@ -1,5 +1,5 @@
 using CatsAndCastles1.Characters;
-using CatsAndCastles1.Text;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
 
@@ -14,7 +14,9 @@ public class IntroFluff
         Animation.PrintWelcome();
         Thread.Sleep(1000);
         Animation.CatIntroAnimation();
-        UserInput.DramaticPauseClrScreen();
+        Animation.ContinueAnimation();
+        Console.Clear();
+        Thread.Sleep(500);
         
         Screen.Print(TextMainRoom.IntroCutScene);
         Screen.Print(TextMainRoom.StartInRoom);

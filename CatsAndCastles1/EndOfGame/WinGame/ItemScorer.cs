@@ -1,4 +1,4 @@
-using CatsAndCastles1.Text.EndOfGame;
+using CatsAndCastles1.Text.EndOfGameText;
 using CatsAndCastles1.Text.Inventory;
 
 
@@ -7,7 +7,7 @@ namespace CatsAndCastles1.EndOfGame.WinGame
     public static class ItemScorer
     {
         
-        public static readonly Dictionary<string, (int Points, string Category)> ItemPoints = new()
+        private static readonly Dictionary<string, (int Points, string Category)> ItemPoints = new()
         {
             { TextInventoryItems.Dagger, (3, TextScoreTabulation.CombatGear) },
             { TextInventoryItems.LongDagger, (3, TextScoreTabulation.CombatGear) },
@@ -59,10 +59,9 @@ namespace CatsAndCastles1.EndOfGame.WinGame
         {
             var totalScore = 0;
             var categoryWeaponsAndScores = new Dictionary<string, (int score, List<string> itemList)>();
-            var itemScores = new List<(string ItemName, int Points)>();
-//what am I trying to do?
+            
 
-
+            //Here's what's happening:
             // Score items
             foreach (var item in pack)
             {

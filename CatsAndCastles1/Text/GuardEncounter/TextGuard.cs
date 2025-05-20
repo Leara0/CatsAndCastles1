@@ -1,6 +1,6 @@
 namespace CatsAndCastles1.Text.GuardEncounter;
 
-public class TextGuard
+public static class TextGuard
 {
     
     public const string NoticeGuard1 =

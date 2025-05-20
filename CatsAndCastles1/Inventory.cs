@@ -1,18 +1,12 @@
-using System.Net.Mime;
-using CatsAndCastles1.UserInteractions;
-
 namespace CatsAndCastles1;
 
-public class Inventory //I got rid of the chance to use sheets to climb down. Now its just the rope options
+public class Inventory //I got rid of the chance to use sheets to climb down. Now it's just the rope options
 {
-    private readonly UserInput _userInput = new UserInput();
-
-    private int _purse = 0;
-
+    private int _purse;
     #region Properties
 
-    public List<string> Pack { get; set; }
-    public List<string> DiscardedItems { get; set; }
+    public List<string>? Pack { get; set; }
+    public List<string>? DiscardedItems { get; set; }
     #endregion
 
     public int AddGoldToPurse(string item)

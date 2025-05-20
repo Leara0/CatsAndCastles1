@@ -1,4 +1,4 @@
-using CatsAndCastles1.Text;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Text.Inventory;
 using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
@@ -8,8 +8,8 @@ namespace CatsAndCastles1.LocationClasses;
 public class LocationsWindow(string description, List<string> itemsThatWontHelp, List<string> needRope) :
     LocationsLocked(description, itemsThatWontHelp)
 {
-    private List<string> _allPossibleUsefulItems = needRope;
-    UILockedRooms _uiLockedRoom = new UILockedRooms();
+    private readonly List<string> _allPossibleUsefulItems = needRope;
+    readonly UILockedRooms _uiLockedRoom = new UILockedRooms();
     
     public override string GetObjectChoice(Inventory inventory)
     {
@@ -25,7 +25,7 @@ public class LocationsWindow(string description, List<string> itemsThatWontHelp,
         return itemChoice;
     }
 
-    public string InteractWithlockedWindow(Inventory inventory)
+    public string InteractWithLockedWindow(Inventory inventory)
     {
         Screen.Print(TextDoorAndWindow.AtWindowCheckInventory);
         if (!MakeListForInteractiveMenu(inventory).Contains(TextInventoryItems.Rope)) //you don't have the rope
@@ -71,5 +71,5 @@ public class LocationsWindow(string description, List<string> itemsThatWontHelp,
     }
 }
 
-//create a list that contains maybe rope and jumpdown
-//say find nothing in inventory can still do jumpdown or leave
+//create a list that contains maybe rope and jump down
+//say find nothing in inventory can still do jump down or leave

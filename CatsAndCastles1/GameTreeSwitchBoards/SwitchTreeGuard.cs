@@ -1,4 +1,5 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.GuardInteractions;
 using CatsAndCastles1.UserInteractions;
 
@@ -11,8 +12,7 @@ public static class SwitchTreeGuard
         if (badGuy.Health == 0 || badGuy.Bribe == BadGuy.Outcome.Success)
             return;
         Console.Clear();
-        cat.LostToGuard = false; //TODO do I still need this?
-
+        
         Screen.Print(badGuy.SpecificWording[0]);
         UserInput.DramaticPauseClrScreen();
 

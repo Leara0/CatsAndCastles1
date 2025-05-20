@@ -10,7 +10,7 @@ public static class SwitchTreeWindow
     public static void WindowSwitchboard(Inventory inventory, Hero cat, LocationsWindow place)
     {
         place.ApproachLockedDoor();
-        string item = place.InteractWithlockedWindow(inventory);
+        string item = place.InteractWithLockedWindow(inventory);
 
         Console.Clear();
         if (item == "leave")

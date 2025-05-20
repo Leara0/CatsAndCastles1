@@ -1,7 +1,7 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Lists;
-using CatsAndCastles1.Text;
-using CatsAndCastles1.Text.EndOfGame;
+using CatsAndCastles1.Text.EndOfGameText;
 using CatsAndCastles1.Text.GuardEncounter;
 using CatsAndCastles1.UserInteractions;
 
@@ -17,7 +17,7 @@ public static class GuardCombatHelper
         Reveal9Lives(cat);
     }
 
-    public static void Reveal9Lives(Hero cat)
+    private static void Reveal9Lives(Hero cat)
     {
         if (!cat.FirstCombatTriggered)
         {
@@ -43,7 +43,7 @@ public static class GuardCombatHelper
         UserInput.DramaticPauseClrScreen();
     }
 
-    public static void AssignBadGuyWeaponAndShield(BadGuy badGuy)
+    private static void AssignBadGuyWeaponAndShield(BadGuy badGuy)
     {
         var rnd = new Random();
         var pick = rnd.Next(0, ListWeaponsInfo.BadGuyWeapons.Count);
@@ -77,7 +77,7 @@ public static class GuardCombatHelper
     {
         Screen.Print(badGuy.Type != BadGuy.GuardType.Warden ? TextCombat.YouKilledGuard : 
             TextCombat.DefeatWarden, 0, ConsoleColor.DarkBlue);
-        badGuy.IsDead = true;
+        
 
         UserInput.DramaticPauseClrScreen();
     }

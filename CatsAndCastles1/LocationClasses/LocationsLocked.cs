@@ -1,6 +1,6 @@
 using CatsAndCastles1.Characters;
+using CatsAndCastles1.DisplayingText;
 using CatsAndCastles1.Lists;
-using CatsAndCastles1.Text;
 using CatsAndCastles1.Text.Inventory;
 using CatsAndCastles1.Text.Locations;
 using CatsAndCastles1.UserInteractions;
@@ -9,26 +9,25 @@ namespace CatsAndCastles1.LocationClasses;
 
 public class LocationsLocked : LocationsItems
 {
-    private readonly UserInput UserInput = new UserInput();
-    UILockedRooms _uiLockedRoom = new UILockedRooms();
+    readonly UILockedRooms _uiLockedRoom = new UILockedRooms();
     
-    private List<string> _allPossibleUsefulItems = ListLockPickingTools.AllPossibleOptions;
-    public List<string> ItemsThatWontHelp { get; set; }
+    private readonly List<string> _allPossibleUsefulItems = ListLockPickingTools.AllPossibleOptions;
+    private List<string> ItemsThatWontHelp { get; set; }
     
-    public string DoorDescription = "";
+    private readonly string _doorDescription;
 
     #region Constructors
 
     public LocationsLocked(string description, List<string> itemsThatWontHelp)
     {
-        DoorDescription = description;
+        _doorDescription = description;
         ItemsThatWontHelp = itemsThatWontHelp;
     }//use this one for the door in the main room
 
     public LocationsLocked(string doorDescription, string descriptionInsideRoom, List<string> itemsThatWontHelp, List<string> itemsAtLocation,
         List<string> longDescOfItemsAtLocation)
     {
-        DoorDescription = doorDescription;
+        _doorDescription = doorDescription;
         Description = descriptionInsideRoom;
         ItemsThatWontHelp = itemsThatWontHelp;
         LongDescriptionOfItemsAtLocation = longDescOfItemsAtLocation;
@@ -71,7 +70,7 @@ public class LocationsLocked : LocationsItems
     public void ApproachLockedDoor()
     {
         Console.Clear();
-        Screen.Print(DoorDescription); //@TODO change this to the description in the parameters
+        Screen.Print(_doorDescription); //@TODO change this to the description in the parameters
         UserInput.DramaticPauseClrScreen();
     }
 

@@ -1,6 +1,6 @@
 namespace CatsAndCastles1.Text.Inventory;
 
-public class TextWorkInventory
+public static class TextWorkInventory
 {
     public const string PackOption = "Your pack. You can inspect the contents and discard ones you no longer want.";
 

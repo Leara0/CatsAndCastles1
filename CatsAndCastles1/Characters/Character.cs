@@ -7,10 +7,8 @@ public abstract class Character
     public int WeaponDie { get; set; }
     public int WeaponMod { get; set; }
     public bool HasShield { get; set; }
-    public bool IsDead { get; set; }
-    public int MaxHealth { get; set; }
-    public string Name { get; set; } = "";
-
+  public int MaxHealth { get; set; }
+    
     public int SetHealth(int bottom, int top)
     {
         var rnd = new Random();

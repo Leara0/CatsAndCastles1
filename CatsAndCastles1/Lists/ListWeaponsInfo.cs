@@ -1,4 +1,3 @@
-using CatsAndCastles1.Text;
 using CatsAndCastles1.Text.GuardEncounter;
 using CatsAndCastles1.Text.Inventory;
 
@@ -6,7 +5,7 @@ namespace CatsAndCastles1.Lists;
 
 public class ListWeaponsInfo
 {
-    public static string[,] HeroWeaponsAndDamage =
+    public static readonly string[,] HeroWeaponsAndDamage =
     {
         {
             TextInventoryItems.BroomAndDustPan,
@@ -38,10 +37,10 @@ public class ListWeaponsInfo
            }
     };
 
-    public List<int> DieForHeroWeapon = [4, 6, 8, 4, 6, 6, 8, 4, 10, 4, 4, 4];
-    public List<int> ModForHeroWeapon = [1, 1, 2, 1, 2, 1, 3, 1, 2, 1, 1, 0];
+    public readonly List<int> DieForHeroWeapon = [4, 6, 8, 4, 6, 6, 8, 4, 10, 4, 4, 4];
+    public readonly List<int> ModForHeroWeapon = [1, 1, 2, 1, 2, 1, 3, 1, 2, 1, 1, 0];
 
-    public static List<string> BadGuyWeapons =
+    public static readonly List<string> BadGuyWeapons =
     [
         TextInventoryItems.Manacles,
         TextInventoryItems.Dagger,
@@ -51,10 +50,10 @@ public class ListWeaponsInfo
         TextInventoryItems.GuardPaws
     ];
 
-    public static List<int>  DieForBGWeapon = [6, 8, 8, 8, 8, 4];
-    public static List<int> ModForBGWeapon = [1, 2, 2, 2, 3, 0];
+    public static readonly List<int>  DieForBGWeapon = [6, 8, 8, 8, 8, 4];
+    public static readonly List<int> ModForBGWeapon = [1, 2, 2, 2, 3, 0];
 
-    public static List<string> ShieldOptions =
+    public static readonly List<string> ShieldOptions =
     [
         TextInventoryItems.BatteredShield,
         TextInventoryItems.CrudeShield,
@@ -65,13 +64,13 @@ public class ListWeaponsInfo
     {
         List<string> weaponsInPack = new List<string>();
         var positionInList = new List<int>();
-        for (int i = 0; i < inventoryPack.Count; i++)
+        foreach (var item in inventoryPack)
         {
             for (int j = 0; j < HeroWeaponsAndDamage.GetLength(1); j++)
             {
-                if (HeroWeaponsAndDamage[0, j] == inventoryPack[i])
+                if (HeroWeaponsAndDamage[0, j] == item)
                 {
-                    weaponsInPack.Add(inventoryPack[i] + "- damage: " + HeroWeaponsAndDamage[1, j]);
+                    weaponsInPack.Add(item + "- damage: " + HeroWeaponsAndDamage[1, j]);
                     positionInList.Add(j);
                 }
             }
