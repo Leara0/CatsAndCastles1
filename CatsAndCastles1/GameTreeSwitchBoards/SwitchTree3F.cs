@@ -31,7 +31,13 @@ public static class SwitchTree3F
         do
         {
             int choice = instances3F.ThirdFloor.DecideWhereToExplore();
-            var whereToExplore = ListOptionsAtLocations.ThirdFloorChoices[choice];
+            // My interactive menu functions with a list and an extra item added on (it helps in some situations)
+            // thus the pack option is not in the list so it needs to be addressed separately
+            var whereToExplore = "";
+            if (choice == ListOptionsAtLocations.ThirdFloorChoices.Count)
+                whereToExplore = TextWorkInventory.PackOption;
+            else
+                whereToExplore = ListOptionsAtLocations.ThirdFloorChoices[choice];
             Console.Clear();
             switch (whereToExplore) //this is a call on the Base Location class
             {

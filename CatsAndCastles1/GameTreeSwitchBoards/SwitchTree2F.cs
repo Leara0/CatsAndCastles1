@@ -23,7 +23,12 @@ public static class SwitchTree2F
         do
         {
             int choice = instances2F.SecondFloor.DecideWhereToExplore();
-            var whereToExplore = ListOptionsAtLocations.SecondFloorChoices[choice];
+            
+            var whereToExplore = "";
+            if (choice == ListOptionsAtLocations.SecondFloorChoices.Count)
+                whereToExplore = TextWorkInventory.PackOption;
+            else
+                whereToExplore = ListOptionsAtLocations.SecondFloorChoices[choice];
             Console.Clear();
             switch (whereToExplore) //this is a call on the Base Location class
             {
