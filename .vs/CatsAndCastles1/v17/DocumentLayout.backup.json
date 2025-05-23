@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\MainRoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CatsAndCastles1\\MainRoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\BackPack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CatsAndCastles1\\BackPack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\UserInput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CatsAndCastles1\\UserInput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\MainRoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CatsAndCastles1\\MainRoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,33 +22,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MainRoom.cs",
               "DocumentMoniker": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\MainRoom.cs",
               "RelativeDocumentMoniker": "CatsAndCastles1\\MainRoom.cs",
               "ToolTip": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\MainRoom.cs",
               "RelativeToolTip": "CatsAndCastles1\\MainRoom.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-27T03:57:39.447Z",
               "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BackPack.cs",
-              "DocumentMoniker": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\BackPack.cs",
-              "RelativeDocumentMoniker": "CatsAndCastles1\\BackPack.cs",
-              "ToolTip": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\BackPack.cs",
-              "RelativeToolTip": "CatsAndCastles1\\BackPack.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACsAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T19:22:59.589Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -61,15 +47,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "BackPack.cs",
+              "DocumentMoniker": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\BackPack.cs",
+              "RelativeDocumentMoniker": "CatsAndCastles1\\BackPack.cs",
+              "ToolTip": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\BackPack.cs",
+              "RelativeToolTip": "CatsAndCastles1\\BackPack.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAEAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T19:22:59.589Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UserInput.cs",
               "DocumentMoniker": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\UserInput.cs",
               "RelativeDocumentMoniker": "CatsAndCastles1\\UserInput.cs",
               "ToolTip": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\UserInput.cs",
               "RelativeToolTip": "CatsAndCastles1\\UserInput.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T04:33:21.334Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T04:33:21.334Z"
             },
             {
               "$type": "Bookmark",
