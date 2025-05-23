@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{80423F11-0549-4B72-8310-89590520374C}|CatsAndCastles1\\CatsAndCastles1.csproj|c:\\users\\sehers\\desktop\\repos\\catsandcastles1\\catsandcastles1\\displayingtext\\animation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80423F11-0549-4B72-8310-89590520374C}|CatsAndCastles1\\CatsAndCastles1.csproj|solutionrelative:catsandcastles1\\displayingtext\\animation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80423F11-0549-4B72-8310-89590520374C}|CatsAndCastles1\\CatsAndCastles1.csproj|c:\\users\\sehers\\desktop\\repos\\catsandcastles1\\catsandcastles1\\introfluff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80423F11-0549-4B72-8310-89590520374C}|CatsAndCastles1\\CatsAndCastles1.csproj|solutionrelative:catsandcastles1\\introfluff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -20,8 +29,30 @@
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Animation.cs",
+              "DocumentMoniker": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\DisplayingText\\Animation.cs",
+              "RelativeDocumentMoniker": "CatsAndCastles1\\DisplayingText\\Animation.cs",
+              "ToolTip": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\DisplayingText\\Animation.cs",
+              "RelativeToolTip": "CatsAndCastles1\\DisplayingText\\Animation.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T04:14:10.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IntroFluff.cs",
+              "DocumentMoniker": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\IntroFluff.cs",
+              "RelativeDocumentMoniker": "CatsAndCastles1\\IntroFluff.cs",
+              "ToolTip": "C:\\Users\\Sehers\\Desktop\\repos\\CatsAndCastles1\\CatsAndCastles1\\IntroFluff.cs",
+              "RelativeToolTip": "CatsAndCastles1\\IntroFluff.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T04:12:53.226Z",
+              "EditorCaption": ""
             }
           ]
         }

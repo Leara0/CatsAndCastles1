@@ -17,6 +17,9 @@ public class MainStory
         Console.CursorVisible = false;
         #region instantiating Classes
 
+        //The location classes here set up each spot where objects can be interacted with
+        //The locations have some intro text and 2 lists of the objects found at the location
+        // One list is more descriptive, the other list is succinct to make the menus easier. 
         var instancesMainRoom = new InstancesMainR();
         var instances3F = new Instances3F();
         var instances2F = new Instances2F();
@@ -36,7 +39,7 @@ public class MainStory
         instancesMainRoom.MainRoom.PrintIntro();
         
         # region gamecheats
-        //@TODO get rid of this to make game not skip ahead
+        //game cheats to help test game
         //inventory.AddGoldToPurse("50");
         //inventory.Pack.Add(TextInventoryItems.HardCheese);
         //inventory.Pack.Add(TextInventoryItems.Shield);
@@ -51,6 +54,7 @@ public class MainStory
         //instancesCharacters.Cat.Health = 5;
         #endregion
         
+        //this moves the player between major locations in the game.
         do
         {
             switch (instancesCharacters.Cat.Location)
@@ -78,10 +82,7 @@ public class MainStory
                 case Hero.Place.PassedOut:
                     PassOut.LooseALife(instancesCharacters.Cat);
                     break;
-                case Hero.Place.Escaped://@TODO Get rid?
-                   
-                    break;
-            }
+                }
         } while (true); 
     }
 }

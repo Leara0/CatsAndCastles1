@@ -7,4 +7,5 @@ class Program
         MainStory mainStory = new MainStory();
         mainStory.RunGame();
     }
+    
 }

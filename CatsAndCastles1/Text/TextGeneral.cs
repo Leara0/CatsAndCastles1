@@ -2,27 +2,45 @@ namespace CatsAndCastles1.Text;
 
 public static class TextGeneral
 {
-    #region Borders
+    public const string AnimationIntro1 = "=^.^=";
+    public const string AnimationIntro2 = "-   =^.^=   -";
+    public const string AnimationIntro3 = "*   -   =^.^=   -   *";
+    public const string AnimationIntro4 = "-   *   -   =^.^=   -   *   -";
+    public const string AnimationIntro5 = "-   -   *   -   =^.^=   -   *   -   -";
+    public const string AnimationIntro6 = "*   -   -   *   -   =^.^=   -   *   -   -   *";
+    public const string AnimationIntro7 = "-   *   -   -   *   -   =^.^=   -   *   -   -   *   -";
+    public const string AnimationIntro8 = "-   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -";
+    public const string AnimationIntro9 = "-   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   -";
 
-    public const string CatBorder1 =
-        "*   -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   -   *\n";
+    public const string AnimationIntro10 =
+        "*   -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   -   *";
 
-    public const string CatBorder2 =
-        "\n\n   <   <   <   <   <   <   <   <   =^.^=   >   >   >   >   >   >   >   >   >   \n";
+    public const string AnimationIntro11 =
+        "`  *   -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   -   *  .";
 
-    public const string CatBorder3 =
-        "\n   >   >   >   >   >   >   >   >   =^.^=   <   <   <   <   <   <   <   <   <   \n";
+    public const string AnimationIntro12 =
+        "` `* . -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   - .`*  `";
 
-    #endregion
+    public const string AnimationIntro13 =
+        " .`* . -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   - .`* . ";
+
+    public const string AnimationIntro14 =
+        "  `*   -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   - . *   ";
+
 
     public const string WelcomeTo = "Welcome to";
-    
+
+    public const string ESCAPETooSmallConsole =
+        "Welcome to ESCAPE. By Arael Seher\nYour screen is too small for optimal viewing. " +
+        "\nPlease increase the height to greater than 4.5 inches";
+
     public const string Welcome1 = @" _____  ____   ____     _     _____  _____ ";
     public const string Welcome2 = @"| ____|/ ___| / ___|   / \   |  __ \| ____|";
     public const string Welcome3 = @"|  _|  \___ \| |      / _ \  | |__) |  _|  ";
     public const string Welcome4 = @"| |___ ____) | |___  / ___ \ |  ___/| |___ ";
     public const string Welcome5 = @"|_____|_____/ \____|/_/   \_\|_|    |_____|";
     public const string ByMe = "By: Arael Seher";
+
 
     public const string HowToPickAnItem =
         "Please use the \u001b[35mup\u001b[0m and \u001b[35mdown\u001b[0m arrow key to " +

@@ -27,47 +27,26 @@ public static class Animation
 
     public static void CatIntroAnimation()
     {
-        PrintSegment("=^.^=",ConsoleColor.Blue);
-        PrintSegment("-   =^.^=   -", ConsoleColor.DarkCyan);
-        PrintSegment("*   -   =^.^=   -   *",ConsoleColor.Cyan, 150);
-        PrintSegment("-   *   -   =^.^=   -   *   -", ConsoleColor.DarkCyan, 150);
-        PrintSegment("-   -   *   -   =^.^=   -   *   -   -", ConsoleColor.Blue);
-        PrintSegment("*   -   -   *   -   =^.^=   -   *   -   -   *", ConsoleColor.DarkBlue,150);
-        PrintSegment("-   *   -   -   *   -   =^.^=   -   *   -   -   *   -", ConsoleColor.Blue);
-        PrintSegment("-   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -", ConsoleColor.DarkCyan);
-        PrintSegment("-   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   -",ConsoleColor.Cyan);
-        PrintSegment("*   -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   -   *", ConsoleColor.DarkCyan, 150);
-        PrintSegment("`  *   -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   -   *  .", ConsoleColor.Blue, 170);
-        PrintSegment("` `* . -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   - .`*  `", ConsoleColor.DarkBlue, 120);
-        PrintSegment(" .`* . -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   - .`* . ", ConsoleColor.Blue, 150);
-        PrintSegment("  `*   -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   - . *   ", ConsoleColor.DarkCyan, 200);
-        PrintSegment("*   -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   -   *", ConsoleColor.DarkBlue, 200);
+        PrintSegment(TextGeneral.AnimationIntro1,ConsoleColor.Blue);
+        PrintSegment(TextGeneral.AnimationIntro2, ConsoleColor.DarkCyan);
+        PrintSegment(TextGeneral.AnimationIntro3,ConsoleColor.Cyan, 150);
+        PrintSegment(TextGeneral.AnimationIntro4, ConsoleColor.DarkCyan, 150);
+        PrintSegment(TextGeneral.AnimationIntro5, ConsoleColor.Blue);
+        PrintSegment(TextGeneral.AnimationIntro6, ConsoleColor.DarkBlue,150);
+        PrintSegment(TextGeneral.AnimationIntro7, ConsoleColor.Blue);
+        PrintSegment(TextGeneral.AnimationIntro8, ConsoleColor.DarkCyan);
+        PrintSegment(TextGeneral.AnimationIntro9,ConsoleColor.Cyan);
+        PrintSegment(TextGeneral.AnimationIntro10, ConsoleColor.DarkCyan, 150);
+        PrintSegment(TextGeneral.AnimationIntro11, ConsoleColor.Blue, 170);
+        PrintSegment(TextGeneral.AnimationIntro12, ConsoleColor.DarkBlue, 120);
+        PrintSegment(TextGeneral.AnimationIntro13, ConsoleColor.Blue, 150);
+        PrintSegment(TextGeneral.AnimationIntro14, ConsoleColor.DarkCyan, 200);
+        PrintSegment(TextGeneral.AnimationIntro10, ConsoleColor.DarkBlue, 200);
     }
 
-    public static void ContinueAnimation()
-    {
-        while (true)
-        {
-            Screen.Print(TextGeneral.PressEnter);
-            if (Console.KeyAvailable)
-            {
-                var key = Console.ReadKey(true);
-                if (key.Key == ConsoleKey.Enter)
-                    break;
-            }
+    
 
-            PrintSegment("`  *   -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   -   *  .",
-                ConsoleColor.Blue, 170);
-            PrintSegment("` `* . -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   - .`*  `",
-                ConsoleColor.DarkBlue, 120);
-            PrintSegment(" .`* . -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   - .`* . ",
-                ConsoleColor.Blue, 150);
-            PrintSegment("  `*   -   -   -   *   -   -   *   -   =^.^=   -   *   -   -   *   -   -   - . *   ",
-                ConsoleColor.DarkCyan, 200);
-        }
-    }
-
-    private static void PrintSegment(string text, ConsoleColor color, int sleepTime=100)
+    public static void PrintSegment(string text, ConsoleColor color, int sleepTime=100)
     {
         var height = Console.WindowHeight;
         var top = height / 4 -1;
