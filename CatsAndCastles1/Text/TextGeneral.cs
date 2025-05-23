@@ -65,8 +65,7 @@ public static class TextGeneral
     public const string YourRoll = "You rolled: ";
     public const string Damage = "The total damage is ";
 
-    public const string YourHealth = "Your current health is ";
-    public const string OutOfTotalHealth = " out of ";
+    public const string YourHealth = "Your current health is {0} out of {1}";
 
     public const string FinishExploringInHall = "Feeling finished with this room, you step back into the hallway.";
 

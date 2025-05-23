@@ -26,20 +26,14 @@ public static class TextBribe
 
     public const string GuardRoll = "The guard rolls a ";
 
-    public const string GuardSuggestsBribeAmount1 =
+    public const string GuardSuggestsBribeAmount =
         "\n\nThe dog narrows its eyes, sniffing the air as it considers your words. Then, with a " +
         "slow smirk, it tilts its head. \"Hah. That depends. Let's say my memory’s not great... " +
-        "for ";
+        "for {0} gold coins I might be able to forget you're presence entirely\".";
 
-    public const string GuardSuggestsBribeAmount2 = " gold coins I might be able to forget " +
-                                                    "you're presence entirely\".";
-
-    public const string CheckCoinPurse1 =
+    public const string CheckCoinPurse =
         "\nYou glance down at your pack, pawing through its contents. The familiar weight of " +
-        "gold presses against your claws — ";
-
-    public const string CheckCoinPurse2 =
-        " coins. You have what the dog is asking for.\n\nDo you want to pay the bribe?.";
+        "gold presses against your claws — {0} coins. You have what the dog is asking for.\n\nDo you want to pay the bribe?.";
 
     public const string PayTheGuardBribe = "\nWithout hesitation, you drop the gold coins into the waiting paw." +
                                            "\n\nIt eyes the payment, then smirks. \"Pleasure doing business with you.\"" +
@@ -53,7 +47,7 @@ public static class TextBribe
 
     public const string NotEnoughGoldToPayBribe =
         "\nYou glance down at your pack, pawing through its contents. Your claws scrape against the coins at the bottom, " +
-        "but as you count them, your stomach sinks. You don't have enough. You look up, meeting its gaze. " +
+        "but as you count them, your stomach sinks, {0} is not enough. You look up, meeting its gaze. " +
         "It already knows. \n\nThe guard steps forward, teeth bared, hackles raised. \"Guess we’re doing this " +
         "the hard way.\" \n\nYou have no choice now — you must fight.";
 

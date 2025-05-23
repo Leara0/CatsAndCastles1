@@ -35,13 +35,13 @@ public static class GuardBribe
 
         if (playerGoldCoins < bribeAmount)
         {
-            Screen.Print(TextBribe.NotEnoughGoldToPayBribe);
+            Screen.Print(string.Format(TextBribe.NotEnoughGoldToPayBribe, inventory.CheckPurseInventory()));
             HandleBribeFailure(badGuy);
             return;
         }
 
 
-        Screen.Print(TextBribe.CheckCoinPurse1 + inventory.CheckPurseInventory() + TextBribe.CheckCoinPurse2);
+        Screen.Print(string.Format(TextBribe.CheckCoinPurse, inventory.CheckPurseInventory()));
         int choice = UserInteractiveMenu.GiveChoices(new List<string> { "yes"}, "no");
         Console.Clear();
 
@@ -90,8 +90,8 @@ public static class GuardBribe
 
     static int BribeAmount(Random rnd, BadGuy badGuy)
     {
-        var bribe = badGuy.Type == BadGuy.GuardType.Warden ? rnd.Next(50, 60) : rnd.Next(5, 12); //@TODO change this back to 20,35
-        Screen.Print(TextBribe.GuardSuggestsBribeAmount1 + bribe.ToString() + TextBribe.GuardSuggestsBribeAmount2);
+        var bribe = badGuy.Type == BadGuy.GuardType.Warden ? rnd.Next(50, 60) : rnd.Next(20, 35);
+        Screen.Print(string.Format(TextBribe.GuardSuggestsBribeAmount, bribe.ToString()));
         return bribe;
     }
 }

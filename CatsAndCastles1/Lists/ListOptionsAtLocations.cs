@@ -13,7 +13,6 @@ public static class ListOptionsAtLocations
         TextMainRoom.NightStandOption,
         TextMainRoom.BookshelfOption,
         TextMainRoom.HearthOption,
-        TextWorkInventory.PackOption,
         TextWorkInventory.DiscardRevisitOption
     ];
 

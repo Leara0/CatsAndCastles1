@@ -5,7 +5,7 @@ namespace CatsAndCastles1.ClassInstantiation;
 
 public class InstancesCharacters
 {
-    public Hero Cat { get; } = new Hero(135, 35);
+    public Hero Cat { get; } = new Hero(35, 35);
     public BadGuy GuardDog1 { get; }
     public BadGuy GuardDog2 { get; }
     public BadGuy Warden { get; }

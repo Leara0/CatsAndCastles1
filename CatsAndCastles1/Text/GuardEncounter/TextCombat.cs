@@ -55,9 +55,8 @@ public static class TextCombat
                                       "\n\nThe air is thick with tension. The dog's muscles bunch, its eyes locked onto you. " +
                                       "The fight is about to begin.\n\n";
 
-    public const string GuardsHealthCheck = "Your opponent's health is ";
-    public const string HeroHealthCheck = "Your health is ";
-    public const string OutOf = " out of ";
+    public const string GuardsHealthCheck = "Your opponent's health is {0} out of {1}";
+    public const string HeroHealthCheck = "Your health is {0} out of {1}";
     
 
     public const string GuardAttacksFirst =

@@ -30,7 +30,7 @@ public class UILockedRooms
         roll = Screen.DiceRoller(6) + 1;
         cat.Health -= roll;
         Screen.Print(TextGeneral.Damage + roll + "\n");
-        Screen.Print(TextGeneral.YourHealth + cat.Health + TextGeneral.OutOfTotalHealth + cat.MaxHealth);
+        Screen.Print(string.Format(TextGeneral.YourHealth,cat.Health, cat.MaxHealth));
         return false;
     }
 
@@ -60,7 +60,7 @@ public class UILockedRooms
         roll = Screen.DiceRoller(6) + 1;
         cat.Health -= roll;
         Screen.Print(TextGeneral.Damage + roll + "\n");
-        Screen.Print(TextGeneral.YourHealth + cat.Health + TextGeneral.OutOfTotalHealth + cat.MaxHealth);
+        Screen.Print(string.Format(TextGeneral.YourHealth, cat.Health, cat.MaxHealth));
         return false;
     }
 }

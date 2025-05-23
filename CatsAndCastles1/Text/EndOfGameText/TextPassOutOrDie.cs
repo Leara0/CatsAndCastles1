@@ -17,7 +17,7 @@ public static class TextPassOutOrDie
                                     "castle before the darkness takes you for good.";
 
     public const string RevealNineLives =
-        "\nYou brace for battle. A forgotten memory stirs — you were gifted nine lives, but most are already gone. " +
+        "\nAs you brace for battle, a forgotten memory stirs — you were gifted nine lives, but most are already gone. " +
         "Only three remain. Lose them all, and your journey ends.";
 
     public const string OptionsIntro =

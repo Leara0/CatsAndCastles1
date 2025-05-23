@@ -12,7 +12,7 @@ public static class GuardFlee
     {
         Console.Clear();
         Screen.Print(badGuy.SpecificWording[2]); //turn to run away
-        int roll = GuardSpecificRollForBribable(badGuy);
+        int roll = GuardSpecificRollForFlee(badGuy);
         if (!RollSuccessfulForFlee(roll, badGuy))
         {
             Screen.Print(TextFlee.GuardNoticesFleeAttempt);
@@ -26,13 +26,13 @@ public static class GuardFlee
         UserInput.DramaticPauseClrScreen();
     }
 
-    static int GuardSpecificRollForBribable(BadGuy badGuy)
+    static int GuardSpecificRollForFlee(BadGuy badGuy)
     {
         Screen.Print(badGuy.Type == BadGuy.GuardType.Warden? TextFlee.NecessaryRollToSneakAwayFromWarden :
             TextFlee.NecessaryRollToSneakAwayFromGuard);
         UserInput.DramaticPause();
         int roll = Screen.DiceRoller(20);
-        Screen.Print(TextBribe.GuardRoll + roll.ToString());
+        Screen.Print(TextGeneral.YourRoll + roll.ToString());
         return roll;
     }
 

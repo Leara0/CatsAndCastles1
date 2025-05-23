@@ -47,7 +47,7 @@ public static class GuardCombat
 
     static void HeroAttacks(Hero cat, BadGuy guard)
     {
-        Screen.Print(TextCombat.YouAttack + cat.WeaponDie, 0,ConsoleColor.DarkBlue);
+        Screen.Print(TextCombat.YouAttack + cat.WeaponDie, 0, ConsoleColor.DarkBlue);
         Attack(cat, guard);
         Console.WriteLine();
         HealthMessage(guard);
@@ -70,9 +70,11 @@ public static class GuardCombat
     public static void HealthMessage(Character character)
     {
         character.Health = Math.Max(character.Health, 0);
-        if (character is Hero)
-            Screen.Print(TextCombat.HeroHealthCheck + character.Health + TextCombat.OutOf + character.MaxHealth);
+        character.MaxHealth = Math.Max(character.MaxHealth, character.Health); // modifies max health if you drink an elixir
+        if (character is Hero cat)
+      
+            Screen.Print(string.Format(TextCombat.HeroHealthCheck, character.Health, character.MaxHealth));
         else
-            Screen.Print(TextCombat.GuardsHealthCheck + character.Health + TextCombat.OutOf + character.MaxHealth);
+            Screen.Print(string.Format(TextCombat.GuardsHealthCheck, character.Health, character.MaxHealth));
     }
 }
