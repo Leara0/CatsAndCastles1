@@ -18,7 +18,7 @@ public class TextDoorAndWindow
 
     public const string OpenDoor =
         "You approach the wooden door, its frame dark and imposing against the stone wall. " +
-        "The door is unlocked - inviting you to pass through. The mystery of what lies beyond" +
+        "The door is unlocked - inviting you to pass through. What lies beyond " +
         "is about to be revealed.";
 
     public const string LeapDown =
@@ -106,7 +106,7 @@ public class TextDoorAndWindow
         "shatters it into splinters.\n\nThis shield has been removed from your inventory.";
 
 
-    public const string UsePickOnDoor = "You carefully examine the rusty set of tools. With steady hands, " +
+    public const string UsePickOnDoor = "You carefully examine the rusty set of tools. With steady paws, " +
                                         "you select a small pick and a thin rod, using them to work the lock. The old lock " +
                                         "resists at first, but with a soft click, it finally gives way. " +
                                         "With a sigh of relief, you open the door slowly, careful not to make a sound.";

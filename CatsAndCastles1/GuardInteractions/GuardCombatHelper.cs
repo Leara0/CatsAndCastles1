@@ -67,6 +67,7 @@ public static class GuardCombatHelper
 
     public static void GuardAttacks(BadGuy guard, Hero cat)
     {
+        cat.MaxHealth = Math.Max(cat.MaxHealth, cat.Health);// modifies max health if you drink an elixir
         Screen.Print(TextCombat.OpponentAttack + guard.WeaponDie, 0, ConsoleColor.Red);
         GuardCombat.Attack(guard, cat);
         GuardCombat.HealthMessage(cat);

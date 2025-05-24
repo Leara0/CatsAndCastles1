@@ -49,7 +49,7 @@ public class UIWeapons
                 cat.WeaponMod = weaponModList.ModForHeroWeapon[selectedIndex];
             }
 
-            Screen.Print(TextCombat.ChosenWeapon + cat.Weapon);
+            Screen.Print(TextCombat.ChosenWeapon + cat.Weapon +".");
         }
 
         UserInput.DramaticPauseClrScreen();

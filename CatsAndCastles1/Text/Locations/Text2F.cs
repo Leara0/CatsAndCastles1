@@ -10,7 +10,7 @@ public class Text2F
         "Why is this hall unguarded? What makes it different? The silence presses in, thick with " +
         "dust and mystery.";
 
-    public const string SecondFloorTreeHeading = "Your tail flicks as you consider your options.?";
+    public const string SecondFloorTreeHeading = "Your tail flicks as you consider your options.";
 
     public const string MeetingRoomF2D1Option =
         "A sturdy and solid door, its frame slightly warped with age, marked with the number 1.";

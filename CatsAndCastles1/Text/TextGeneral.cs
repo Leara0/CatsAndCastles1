@@ -50,7 +50,7 @@ public static class TextGeneral
     public const string LeaveLocation = "leave this location";
     public const string LeaveLockedDoor = "leave the door alone and explore other areas instead";
 
-    public const string HeadUpStairs = "You turn and head back toward the stairs, making your way up. You feel there" +
+    public const string HeadUpStairs = "You turn and head back toward the stairs, making your way up. You feel there " +
                                        "must be something you missed and are eager to retrace your steps.";
 
     public const string HeadDownStairs =

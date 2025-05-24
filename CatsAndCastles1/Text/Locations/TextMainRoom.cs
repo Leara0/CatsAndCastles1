@@ -8,7 +8,7 @@ public class TextMainRoom
                                         "memories of it are little more than a haze. " +
                                         "\n\nYou wake, dazed and disoriented, your senses slow to return as you " +
                                         "instinctively groom your soft coat. By all rights, you should not be breathing. " +
-                                        "Yet somehow, you are.A quick glance reveals your trusty pack — a " +
+                                        "Yet somehow, you are. A quick glance reveals your trusty pack — a " +
                                         "container meant to carry up to five treasures. Yet as you inspect it, your heart sinks: " +
                                         "it is empty.";
 
@@ -19,7 +19,7 @@ public class TextMainRoom
                                       "seem to shift and writhe. " +
                                       "\n\nThe hairs along your spine bristle. Something about this place feels wrong, " +
                                       "as though unseen eyes watch from the darkness, waiting. " +
-                                      "\n\nYou must escape but are unsure where to begin.";
+                                      "\n\nYou must escape, but are unsure where to begin.";
 
     public const string SubsequentWakeUp = "You wake, dazed and disoriented, your senses slow to return. ";
 

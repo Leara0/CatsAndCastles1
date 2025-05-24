@@ -41,7 +41,10 @@ public class MainStory
         # region gamecheats
         //game cheats to help test game
         //inventory.AddGoldToPurse("50");
-        //inventory.Pack.Add(TextInventoryItems.HardCheese);
+        //inventory.Pack.Add(TextInventoryItems.GlassVial);
+        //inventory.Pack.Add(TextInventoryItems.GlassVial);
+        //inventory.Pack.Add(TextInventoryItems.GlassVial);
+        //inventory.Pack.Add(TextInventoryItems.GlassVial);
         //inventory.Pack.Add(TextInventoryItems.Shield);
         //inventory.Pack.Add(TextInventoryItems.RustedLanternDesc);
         //inventory.Pack.Add(TextInventoryItems.RingOfKeys);

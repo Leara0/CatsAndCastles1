@@ -37,7 +37,7 @@ public static class GuardCombat
     static void GuardAttacksFirstIfEvasionFailed(Hero cat, BadGuy badGuy)
     {
         if (badGuy.Bribe == BadGuy.Outcome.Failure ||
-            badGuy.Flee == BadGuy.Outcome.Failure) //TODO make sure this code is right
+            badGuy.Flee == BadGuy.Outcome.Failure) 
         {
             Screen.Print(TextCombat.GuardAttacksFirst);
             GuardCombatHelper.GuardAttacks(badGuy, cat);
@@ -70,9 +70,7 @@ public static class GuardCombat
     public static void HealthMessage(Character character)
     {
         character.Health = Math.Max(character.Health, 0);
-        character.MaxHealth = Math.Max(character.MaxHealth, character.Health); // modifies max health if you drink an elixir
         if (character is Hero cat)
-      
             Screen.Print(string.Format(TextCombat.HeroHealthCheck, character.Health, character.MaxHealth));
         else
             Screen.Print(string.Format(TextCombat.GuardsHealthCheck, character.Health, character.MaxHealth));
